@@ -11,7 +11,7 @@
   padding: 0 4em;
   height: 160px;
   margin: 0 auto;
-  background: linear-gradient(to bottom, #0e0e0e, transparent);
+  background: linear-gradient(to bottom, #0b0b0b, transparent);
 }
 
 .header-container {
@@ -125,7 +125,7 @@
 }
 
 .cta-button span {
-  background-color: #0e0e0e;
+  background-color: #0b0b0b;
   margin-left: 1em;
   margin-right: calc(1em - 8px);
   padding-top: .1em;

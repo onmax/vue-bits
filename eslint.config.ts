@@ -23,6 +23,7 @@ export default defineConfigWithVueTs(
     files: ['**/*.vue'],
     rules: {
       'vue/multi-word-component-names': 'off',
+      'vue/no-reserved-component-names': 'off',
     },
   },
 )

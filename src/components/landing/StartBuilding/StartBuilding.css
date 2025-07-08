@@ -57,7 +57,7 @@
 }
 
 .start-building-title {
-  color: #0e0e0e;
+  color: #0b0b0b;
   font-size: 2.6rem;
   font-weight: 600;
   margin: 0;
@@ -65,7 +65,7 @@
 }
 
 .start-building-subtitle {
-  color: #0e0e0e;
+  color: #0b0b0b;
   font-size: 1.2rem;
   font-weight: 500;
   margin: -1rem 0 0 0;
@@ -76,8 +76,8 @@
 
 .start-building-button {
   background: transparent;
-  color: #0e0e0e;
-  border: 2px solid #0e0e0e;
+  color: #0b0b0b;
+  border: 2px solid #0b0b0b;
   padding: .6rem 1.6rem;
   font-size: 1.1rem;
   font-weight: 600;
@@ -87,7 +87,7 @@
 }
 
 .start-building-button:hover {
-  background: #0e0e0e;
+  background: #0b0b0b;
   color: #27FF64;
 }
 

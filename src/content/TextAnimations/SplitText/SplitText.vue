@@ -47,6 +47,10 @@ const props = withDefaults(defineProps<SplitTextProps>(), {
   textAlign: 'center'
 })
 
+const emit = defineEmits<{
+  'animation-complete': []
+}>()
+
 const textRef = ref<HTMLParagraphElement | null>(null)
 const animationCompletedRef = ref(false)
 const scrollTriggerRef = ref<ScrollTrigger | null>(null)
@@ -130,6 +134,7 @@ const initializeAnimation = async () => {
         immediateRender: true,
       })
       props.onLetterAnimationComplete?.()
+      emit('animation-complete')
     },
   })
 
