@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import App from '@/App.vue'
+import LandingPage from '@/pages/LandingPage.vue'
+import CategoryPage from '@/pages/CategoryPage.vue'
+import CategoryLayout from '@/components/layouts/CategoryLayout.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -7,7 +9,18 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: App,
+      component: LandingPage,
+    },
+    {
+      path: '/:category/:subcategory',
+      name: 'category',
+      component: CategoryLayout,
+      children: [
+        {
+          path: '',
+          component: CategoryPage,
+        }
+      ]
     }
   ],
 })
