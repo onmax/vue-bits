@@ -4,30 +4,6 @@
   overflow-x: hidden;
 }
 
-.landing-wrapper::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 300px;
-  height: 100vh;
-  background: linear-gradient(to right, #0b0b0b, transparent);
-  z-index: 2;
-  pointer-events: none;
-}
-
-.landing-wrapper::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 300px;
-  height: 100vh;
-  background: linear-gradient(to left, #0b0b0b, transparent);
-  z-index: 2;
-  pointer-events: none;
-}
-
 .landing-content {
   position: relative;
   display: flex;

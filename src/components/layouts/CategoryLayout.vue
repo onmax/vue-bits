@@ -8,11 +8,13 @@
       </div>
     </section>
     <Toast position="bottom-right"
-      :closeButtonProps="{ style: { justifyContent: 'flex-end', right: '0', margin: '0', outline: 'none', border: 'none' } }"
+      :closeButtonProps="{ style: { right: '0', margin: '0', outline: 'none', border: 'none' } }"
       :pt="{
         message: {
           style: {
-            borderRadius: '10px'
+            borderRadius: '10px',
+            border: '1px solid #142216',
+            backgroundColor: '#0b0b0b',
           }
         },
         messageContent: {

@@ -17,7 +17,8 @@
     <Accordion expandIcon="pi pi-chevron-right" collapseIcon="pi pi-chevron-down">
       <AccordionPanel value="setup">
         <AccordionHeader>Setup Steps</AccordionHeader>
-        <AccordionContent>
+        <AccordionContent
+          :pt="{ transition: { enterFromClass: '', enterActiveClass: '', enterToClass: '', leaveFromClass: '', leaveActiveClass: '', leaveToClass: '' } }">
           <div class="setup-content">
             <p class="demo-extra-info">1. Initialize a config file for your project</p>
 
@@ -78,15 +79,32 @@ const { command } = defineProps<{
 }
 
 .code-block {
-  border-radius: 8px;
+  border-radius: 15px;
   overflow: hidden;
   border: 1px solid #142216;
 }
 
+:deep(.p-accordionpanel) {
+  border: none;
+}
+
 :deep(.p-accordion-header) {
-  background: #0b0b0b;
-  border: 1px solid #142216;
-  border-radius: 20px;
+  background: #0b0b0b !important;
+  border: 1px solid #142216 !important;
+  border-radius: 20px !important;
+}
+
+:deep(.p-accordionpanel:not(.p-disabled).p-accordionpanel-active > .p-accordionheader) {
+  background: #0b0b0b !important;
+  border: 1px solid #142216 !important;
+  border-radius: 15px 15px 0 0;
+  border-bottom: none !important;
+}
+
+:deep(.p-accordionpanel:not(.p-disabled) > .p-accordionheader) {
+  border: 1px solid #142216 !important;
+  border-radius: 15px;
+  background: #0b0b0b !important;
 }
 
 :deep(.p-accordionpanel) {
@@ -109,25 +127,24 @@ const { command } = defineProps<{
 }
 
 :deep(.p-accordion-content) {
-  background: #0b0b0b;
-  border: 1px solid #142216;
+  background: #0b0b0b !important;
+  border: 1px solid #142216 !important;
   border-top: none;
-  border-radius: 0 0 20px 20px;
+  border-radius: 0 0 15px 15px;
 }
 
+:deep(.p-accordioncontent-content) {
+  background: #0b0b0b !important;
+  border: 1px solid #142216 !important;
+  border-radius: 0 0 15px 15px;
+  border-top: none !important;
+}
+
+/* Code Block Styles */
 :deep(.v-code-block) {
   background: #0b0b0b;
   font-weight: 400;
   font-size: 14px;
-}
-
-:deep(.v-code-block--tab-highlightjs-github-dark-icon) {
-  color: #999 !important;
-  fill: #999 !important;
-}
-
-:deep(.v-code-block--me-1) {
-  margin-right: 0 !important;
 }
 
 :deep(.v-code-block pre) {
@@ -140,5 +157,14 @@ const { command } = defineProps<{
   background: #0b0b0b;
   color: #fff;
   font-size: 14px;
+}
+
+:deep(.v-code-block--tab-highlightjs-github-dark-icon) {
+  color: #999 !important;
+  fill: #999 !important;
+}
+
+:deep(.v-code-block--me-1) {
+  margin-right: 0 !important;
 }
 </style>

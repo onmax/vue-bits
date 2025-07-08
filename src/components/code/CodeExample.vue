@@ -1,10 +1,21 @@
 <template>
   <div class="code-example">
     <div v-for="[name, snippet] in codeEntries" :key="name" class="code-section">
-      <h2 v-if="shouldShowTitle()" class="demo-title">{{ getDisplayName(name) }}</h2>
+      <h2 class="demo-title">{{ getDisplayName(name) }}</h2>
 
-      <VCodeBlock v-if="snippet" :code="snippet" highlightjs :lang="getLanguage(name)" theme="nord"
-        :copy-button="true" :persistent-copy-button="true" class="code-block" />
+      <div v-if="snippet" class="code-container">
+        <div class="code-wrapper" :class="{ 'collapsed': shouldCollapse(snippet) && !isExpanded(name) }">
+          <VCodeBlock :code="snippet" highlightjs :lang="getLanguage(name)" theme="nord" :copy-button="true"
+            :persistent-copy-button="true" class="code-block" />
+
+          <div v-if="shouldCollapse(snippet) && !isExpanded(name)" class="fade-overlay" />
+
+          <button v-if="shouldCollapse(snippet)" class="expand-button" :class="{ 'expanded': isExpanded(name) }"
+            @click="toggleExpanded(name)">
+            {{ isExpanded(name) ? 'Collapse Snippet' : 'See Full Snippet' }}
+          </button>
+        </div>
+      </div>
 
       <div v-if="!snippet" class="no-code">
         <span>Nothing here yet!</span>
@@ -15,7 +26,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import { VCodeBlock } from '@wdns/vue-code-block'
 import type { CodeObject } from '../../types/code'
 
@@ -27,12 +38,28 @@ const skipKeys = [
   'cli'
 ]
 
+const expandedSections = ref<Set<string>>(new Set())
+
 const codeEntries = computed(() => {
   return Object.entries(props.codeObject).filter(([name]) => !skipKeys.includes(name))
 })
 
-const shouldShowTitle = () => {
-  return true // Show titles for all sections
+
+const shouldCollapse = (snippet: string) => {
+  const codeLines = snippet?.split('\n').length || 0
+  return codeLines > 35
+}
+
+const isExpanded = (name: string) => {
+  return expandedSections.value.has(name)
+}
+
+const toggleExpanded = (name: string) => {
+  if (expandedSections.value.has(name)) {
+    expandedSections.value.delete(name)
+  } else {
+    expandedSections.value.add(name)
+  }
 }
 
 const getDisplayName = (name: string) => {
@@ -62,10 +89,62 @@ const getLanguage = (name: string) => {
   margin-bottom: 2rem;
 }
 
-.code-block {
+.code-container {
+  position: relative;
+  margin-bottom: 1.2rem;
+}
+
+.code-wrapper {
+  position: relative;
   overflow: hidden;
   border: 1px solid #142216;
   border-radius: 15px;
+}
+
+.code-wrapper.collapsed {
+  max-height: 600px;
+}
+
+.code-block {
+  overflow: hidden;
+  border: none;
+  border-radius: 15px;
+}
+
+.fade-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60%;
+  background: linear-gradient(to bottom, transparent, #0b0b0b);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.expand-button {
+  position: absolute;
+  bottom: 0.75rem;
+  right: 0.75rem;
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
+  height: 2.5rem;
+  font-size: 14px;
+  font-weight: 500;
+  background-color: #0b0b0b;
+  border: 1px solid #142216;
+  color: white;
+  cursor: pointer;
+  z-index: 2;
+  transition: background-color 0.3s ease;
+}
+
+.expand-button:hover {
+  background-color: #111;
+}
+
+.expand-button:active {
+  background-color: #111;
 }
 
 .no-code {
@@ -82,7 +161,7 @@ const getLanguage = (name: string) => {
 
 :deep(.v-code-block) {
   background: #0b0b0b;
-  border-radius: 10px;
+  border-radius: 15px;
   font-size: 14px;
 }
 
