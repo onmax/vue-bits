@@ -82,7 +82,6 @@ import '../../css/sidebar.css'
 
 const HOVER_TIMEOUT_DELAY = 150
 
-// Reactive data
 const isDrawerOpen = ref(false)
 const linePosition = ref<number | null>(null)
 const isLineVisible = ref(false)
@@ -95,14 +94,12 @@ const isTransitioning = ref(false)
 const sidebarRef = ref<HTMLDivElement>()
 const sidebarContainerRef = ref<HTMLDivElement>()
 
-// Timeouts
 let hoverTimeoutRef: number | null = null
 let hoverDelayTimeoutRef: number | null = null
 
 const route = useRoute()
 const router = useRouter()
 
-// Helper functions
 const scrollToTop = () => window.scrollTo(0, 0)
 const slug = (str: string) => str.replace(/\s+/g, "-").toLowerCase()
 
@@ -115,7 +112,6 @@ const findActiveElement = () => {
       return activePath === expectedPath
     })
     if (activeItem) {
-      // Try to find the element within the sidebar
       const selector = `.sidebar a[href="${activePath}"]`
       const element = document.querySelector(selector) as HTMLElement
       return element
@@ -145,7 +141,6 @@ const handleTransitionNavigation = async (path: string) => {
 
   pendingActivePath.value = path
 
-  // Simple navigation without transition for now
   // TODO: Implement transition when available
   await router.push(path)
   scrollToTop()
@@ -158,7 +153,6 @@ const handleMobileTransitionNavigation = async (path: string) => {
   closeDrawer()
   pendingActivePath.value = path
 
-  // Simple navigation without transition for now
   // TODO: Implement transition when available
   await router.push(path)
   scrollToTop()
@@ -201,7 +195,6 @@ const handleScroll = () => {
 const updateActiveLine = async () => {
   await nextTick()
 
-  // Wait a bit more to ensure DOM is fully updated
   setTimeout(() => {
     const activeEl = findActiveElement()
 
@@ -220,7 +213,6 @@ const updateActiveLine = async () => {
   }, 100)
 }
 
-// Category Component
 const Category = defineComponent({
   name: 'Category',
   props: {
@@ -311,11 +303,9 @@ const Category = defineComponent({
   }
 })
 
-// Watchers
 watch(() => route.path, updateActiveLine)
 watch(pendingActivePath, updateActiveLine)
 
-// Lifecycle
 onMounted(() => {
   updateActiveLine()
   if (sidebarContainerRef.value) {

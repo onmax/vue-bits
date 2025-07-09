@@ -32,7 +32,6 @@ export function useStars() {
     } catch (error) {
       console.error('Error fetching stars:', error)
       
-      // Fall back to cached data if available
       const cachedData = localStorage.getItem(CACHE_KEY)
       if (cachedData) {
         const { count } = JSON.parse(cachedData)

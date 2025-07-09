@@ -60,7 +60,6 @@ const splitterRef = ref<GSAPSplitText | null>(null)
 const initializeAnimation = async () => {
   if (typeof window === 'undefined' || !textRef.value || !props.text) return
 
-  // Wait for DOM to be fully updated
   await nextTick()
   
   const el = textRef.value
@@ -174,7 +173,6 @@ onUnmounted(() => {
   cleanup()
 })
 
-// Watch for prop changes and reinitialize animation
 watch(
   [
     () => props.text,

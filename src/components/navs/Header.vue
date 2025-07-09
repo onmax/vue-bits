@@ -94,7 +94,6 @@ const stars = useStars()
 const route = useRoute()
 const router = useRouter()
 
-// Helper function
 const slug = (str: string) => str.replace(/\s+/g, "-").toLowerCase()
 
 const toggleDrawer = () => {
@@ -134,7 +133,6 @@ const handleKeyDown = (e: KeyboardEvent) => {
   }
 }
 
-// Category Component
 const Category = defineComponent({
   name: 'Category',
   props: {

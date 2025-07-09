@@ -117,17 +117,13 @@ void mainImage(out vec4 C, in vec2 U) {
 
   vec3 c = max(cos(d * pi2) - s * sqrt(d) - k, 0.0);
   
-  // Vue.js colors: #42B883 (green) and #35495e (dark gray)
   vec3 vueGreen = vec3(0.259, 0.722, 0.514);  // #42B883
   vec3 vueDark = vec3(0.208, 0.286, 0.369);   // #35495e
   
-  // Use different colors for different wave components
   vec3 finalColor = vec3(0.0);
   if (k.x < k.y) {
-    // First wave component - Vue green
     finalColor = vueGreen * c.x;
   } else {
-    // Second wave component - Vue dark gray
     finalColor = vueDark * c.y;
   }
   

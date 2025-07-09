@@ -8,7 +8,6 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 
-// PrimeVue imports
 import PrimeVue from 'primevue/config'
 import Aura from '@primeuix/themes/aura'
 import Button from 'primevue/button'
@@ -26,7 +25,6 @@ app.use(PrimeVue, {
 })
 app.use(ToastService)
 
-// Global components
 app.component('Button', Button)
 app.component('Toast', Toast)
 app.component('Select', Select)
