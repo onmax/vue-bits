@@ -19,7 +19,7 @@ export const CATEGORIES = [
   {
     name: 'Components',
     subcategories: [
-
+      'Masonry',
     ],
   },
   {

@@ -7,7 +7,7 @@ const textAnimations = {
 };
 
 const components = {
-
+  'masonry': () => import("../demo/Components/MasonryDemo.vue"),
 };
 
 const backgrounds = {

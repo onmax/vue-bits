@@ -13,6 +13,7 @@ import PrimeVue from 'primevue/config'
 import Aura from '@primeuix/themes/aura'
 import Button from 'primevue/button'
 import Toast from 'primevue/toast'
+import Select from 'primevue/select'
 import ToastService from 'primevue/toastservice'
 
 const app = createApp(App)
@@ -28,5 +29,6 @@ app.use(ToastService)
 // Global components
 app.component('Button', Button)
 app.component('Toast', Toast)
+app.component('Select', Select)
 
 app.mount('#app')

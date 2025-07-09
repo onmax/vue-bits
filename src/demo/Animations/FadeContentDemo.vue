@@ -16,8 +16,8 @@
             class="fade-content-demo-content"
           >
             <div class="demo-content">
-              <h4>Fade Content Example</h4>
-              <p>This content will fade in when it enters the viewport.</p>
+              <h4>Fade Content</h4>
+              <p>It will fade in when it enters the viewport.</p>
             </div>
           </FadeContent>
         </div>
