@@ -2,7 +2,7 @@ import code from '@content/Animations/FadeContent/FadeContent.vue?raw'
 import type { CodeObject } from '../../../types/code'
 
 export const fadeContent: CodeObject = {
-  cli: `npx jsrepo add https://vuebits.dev/Animations/FadeContent`,
+  cli: `npx jsrepo add https://vue-bits.dev/Animations/FadeContent`,
   usage: `<template>
   <FadeContent
     :blur="true"

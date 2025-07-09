@@ -24,7 +24,7 @@
 
 ## Documentation
 
-Go to [vuebits.dev](https://vuebits.dev/) to view the documentation.
+Go to [vue-bits.dev](https://vue-bits.dev/) to view the documentation.
 
 ## About
 
@@ -39,7 +39,7 @@ Vue Bits is a large collection of animated Vue components made to spice up your 
 ## CLI (<a href="https://jsrepo.dev"><img src="https://jsrepo.dev/badges/jsrepo.svg" width="50" alt="jsrepo"></a>)
 
 Vue Bits uses [jsrepo](https://jsrepo.dev) for installing components via CLI. </br>
-The setup steps can be found on each component's page in the [documentation](https://vuebits.dev/).
+The setup steps can be found on each component's page in the [documentation](https://vue-bits.dev/).
 
 ## How To Contribute?
 

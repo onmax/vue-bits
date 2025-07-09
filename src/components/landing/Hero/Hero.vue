@@ -23,7 +23,7 @@
     </div>
 
     <div v-if="!isMobile" class="hero-cards-container">
-      <div class="hero-card hero-card-1" @click="openUrl('https://vuebits.dev/backgrounds/dot-grid')">
+      <div class="hero-card hero-card-1" @click="openUrl('https://vue-bits.dev/backgrounds/dot-grid')">
         <div class="w-full h-full relative hero-dot-grid">
           <DotGrid base-color="#ffffff" active-color="rgba(138, 43, 226, 0.9)" :dot-size="8" :gap="16"
             :proximity="50" />
@@ -32,12 +32,12 @@
       </div>
 
       <div class="hero-cards-row">
-        <div class="hero-card hero-card-2" @click="openUrl('https://vuebits.dev/backgrounds/letter-glitch')">
+        <div class="hero-card hero-card-2" @click="openUrl('https://vue-bits.dev/backgrounds/letter-glitch')">
           <LetterGlitch class-name="hero-glitch" :glitch-colors="['#ffffff', '#999999', '#333333']" />
           <div class="placeholder-card"></div>
         </div>
 
-        <div class="hero-card hero-card-3" @click="openUrl('https://vuebits.dev/backgrounds/squares')">
+        <div class="hero-card hero-card-3" @click="openUrl('https://vue-bits.dev/backgrounds/squares')">
           <Squares border-color="#fff" :speed="0.2" direction="diagonal" hover-fill-color="#fff" />
           <div class="placeholder-card"></div>
         </div>

@@ -2,7 +2,7 @@ import code from '@content/Components/Masonry/Masonry.vue?raw'
 import type { CodeObject } from '../../../types/code'
 
 export const masonry: CodeObject = {
-  cli: `npx jsrepo add https://vuebits.dev/Components/Masonry`,
+  cli: `npx jsrepo add https://vue-bits.dev/Components/Masonry`,
   installation: `npm install gsap`,
   usage: `<template>
   <Masonry

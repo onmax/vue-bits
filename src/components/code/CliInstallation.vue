@@ -23,7 +23,7 @@
             <p class="demo-extra-info">1. Initialize a config file for your project</p>
 
             <div class="setup-option">
-              <VCodeBlock :persistent-copy-button="true" code="npx jsrepo init https://vuebits.dev" highlightjs
+              <VCodeBlock :persistent-copy-button="true" code="npx jsrepo init https://vue-bits.dev" highlightjs
                 lang="bash" theme="nord" :copy-button="true" class="code-block" />
             </div>
 

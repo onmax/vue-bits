@@ -4,7 +4,7 @@
 		"authors": ["David Haz"],
 		"description": "An open source collection of animated, interactive & fully customizable Vue components for building stunning, memorable user interfaces.",
 		"bugs": "https://github.com/DavidHDev/vue-bits/issues",
-		"homepage": "https://vuebits.dev",
+		"homepage": "https://vue-bits.dev",
 		"repository": "https://github.com/DavidHDev/vue-bits",
 		"tags": [
 			"vue",
