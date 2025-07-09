@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "npm run build:registry && run-p type-check \"build-only {@}\" --",
-    "build:registry": "jsrepo build --dirs ./src/content --output-dir ./public/components",
+    "build:registry": "jsrepo build --dirs ./src/content --output-dir ./public/ui",
     "preview": "vite preview",
     "build-only": "vite build",
     "type-check": "vue-tsc --build",
