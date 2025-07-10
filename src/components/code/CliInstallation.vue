@@ -140,7 +140,6 @@ const { command } = defineProps<{
   border-top: none !important;
 }
 
-/* Code Block Styles */
 :deep(.v-code-block) {
   background: #0b0b0b;
   font-weight: 400;

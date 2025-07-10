@@ -29,7 +29,6 @@ body {
   border: 1px solid #142216;
 }
 
-/* Mobile toast container fixes */
 @media (max-width: 640px) {
   .p-toast {
     position: fixed !important;

@@ -200,7 +200,6 @@
   transition: .3s ease;
 }
 
-/* Active and Hover Line Indicators */
 .active-line {
   position: absolute;
   left: 0;
@@ -225,7 +224,6 @@
   z-index: 1;
 }
 
-/* Categories Structure */
 .categories-list {
   display: flex;
   flex-direction: column;
@@ -279,7 +277,6 @@
   background-color: #0a0a0a;
 }
 
-/* Header Component Styles */
 .main-nav {
   position: fixed;
   top: 0;
@@ -427,7 +424,6 @@
   transition: 0.3s ease;
 }
 
-/* Mobile Drawer Styles */
 .drawer-overlay {
   position: fixed;
   top: 0;
@@ -536,7 +532,6 @@
   margin: 1rem 0;
 }
 
-/* Drawer Navigation Styles */
 .drawer-navigation {
   margin-bottom: 2rem;
 }

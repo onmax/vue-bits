@@ -431,7 +431,6 @@ div:has(> .props-table) {
   height: 300px;
 }
 
-/* Contribution Section Responsive Styles */
 .contribute-buttons {
   display: flex;
   align-items: center;
