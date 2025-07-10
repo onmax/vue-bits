@@ -48,6 +48,7 @@ export const CATEGORIES = [
       'Flying Posters',
       'Card Swap',
       'Infinite Scroll',
+      'Tilted Card',
       'Glass Icons',
       'Decay Card',
       'Flowing Menu',

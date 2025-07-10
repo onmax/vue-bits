@@ -40,6 +40,7 @@ const components = {
   'decay-card': () => import("../demo/Components/DecayCardDemo.vue"),
   'flowing-menu': () => import("../demo/Components/FlowingMenuDemo.vue"),
   'elastic-slider': () => import("../demo/Components/ElasticSliderDemo.vue"),
+  'tilted-card': () => import("../demo/Components/TiltedCardDemo.vue"),
 };
 
 const backgrounds = {
