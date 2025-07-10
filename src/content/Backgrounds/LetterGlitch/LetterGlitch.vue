@@ -1,6 +1,6 @@
 <template>
-  <div class="relative w-full h-full overflow-hidden">
-    <canvas ref="canvasRef" class="block w-full h-full" />
+  <div class="relative overflow-hidden">
+    <canvas ref="canvasRef" class="absolute top-0 left-0 w-full h-full" />
     <div v-if="outerVignette"
       class="absolute top-0 left-0 w-full h-full pointer-events-none bg-[radial-gradient(circle,_rgba(0,0,0,0)_60%,_rgba(0,0,0,1)_100%)]" />
     <div v-if="centerVignette"
@@ -112,19 +112,24 @@ const resizeCanvas = () => {
   if (!parent) return
 
   const dpr = window.devicePixelRatio || 1
-  const rect = parent.getBoundingClientRect()
+  
+  const parentWidth = parent.parentElement?.offsetWidth || parent.offsetWidth || window.innerWidth
+  const parentHeight = parent.parentElement?.offsetHeight || parent.offsetHeight || window.innerHeight
+  
+  const width = Math.max(parentWidth, 300)
+  const height = Math.max(parentHeight, 300)
 
-  canvas.width = rect.width * dpr
-  canvas.height = rect.height * dpr
+  canvas.width = width * dpr
+  canvas.height = height * dpr
 
-  canvas.style.width = `${rect.width}px`
-  canvas.style.height = `${rect.height}px`
+  canvas.style.width = `${width}px`
+  canvas.style.height = `${height}px`
 
   if (context.value) {
     context.value.setTransform(dpr, 0, 0, dpr, 0, 0)
   }
 
-  const { columns, rows } = calculateGrid(rect.width, rect.height)
+  const { columns, rows } = calculateGrid(width, height)
   initializeLetters(columns, rows)
   drawLetters()
 }
@@ -244,3 +249,21 @@ watch([() => props.glitchSpeed, () => props.smooth], () => {
   animate()
 })
 </script>
+
+<style scoped>
+div {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+:deep(canvas) {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+</style>

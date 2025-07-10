@@ -6,7 +6,7 @@
           <Particles :key="rerenderKey" :particle-colors="[color]" :particle-count="particleCount"
             :particle-spread="particleSpread" :speed="speed" :particle-base-size="baseSize"
             :move-particles-on-hover="moveParticlesOnHover" :alpha-particles="alphaParticles"
-            :disable-rotation="disableRotation" class="w-full h-96" />
+            :disable-rotation="disableRotation" class="w-full h-full" />
         </div>
 
         <Customize>

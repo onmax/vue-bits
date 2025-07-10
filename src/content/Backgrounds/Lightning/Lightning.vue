@@ -1,5 +1,5 @@
 <template>
-  <canvas ref="canvasRef" class="w-full h-full block mix-blend-screen"></canvas>
+  <canvas ref="canvasRef" class="w-full h-full block mix-blend-screen relative"></canvas>
 </template>
 
 <script setup lang="ts">
@@ -134,10 +134,38 @@ const initWebGL = () => {
 
   const resizeCanvas = () => {
     const rect = canvas.getBoundingClientRect()
-    canvas.width = rect.width
-    canvas.height = rect.height
-    canvas.style.width = rect.width + 'px'
-    canvas.style.height = rect.height + 'px'
+    const dpr = window.devicePixelRatio || 1
+    
+    let width = rect.width
+    let height = rect.height
+    
+    let parent = canvas.parentElement
+    while (parent && (!width || !height)) {
+      if (parent.offsetWidth && parent.offsetHeight) {
+        width = parent.offsetWidth
+        height = parent.offsetHeight
+        break
+      }
+      parent = parent.parentElement
+    }
+    
+    if (!width || !height) {
+      width = window.innerWidth
+      height = window.innerHeight
+    }
+    
+    width = Math.max(width, 300)
+    height = Math.max(height, 300)
+    
+    canvas.width = width * dpr
+    canvas.height = height * dpr
+    
+    canvas.style.width = '100%'
+    canvas.style.height = '100%'
+    canvas.style.display = 'block'
+    canvas.style.position = 'absolute'
+    canvas.style.top = '0'
+    canvas.style.left = '0'
   }
 
   resizeCanvas()
@@ -234,3 +262,16 @@ watch(
   () => {}
 )
 </script>
+
+<style scoped>
+canvas {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 100% !important;
+  display: block !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  z-index: 1 !important;
+}
+</style>

@@ -4,7 +4,7 @@
       <template #preview>
         <div class="demo-container">
           <Aurora :color-stops="colorStops" :amplitude="amplitude" :blend="blend" :speed="speed"
-            :intensity="intensity" class="w-full h-96" />
+            :intensity="intensity" class="w-full" />
         </div>
 
         <Customize>

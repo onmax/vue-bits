@@ -4,7 +4,7 @@
       <template #preview>
         <div class="demo-container">
           <Silk :speed="speed" :scale="scale" :color="color" :noise-intensity="noiseIntensity" :rotation="rotation"
-            class="w-full h-96" />
+            class="w-full h-full" />
         </div>
 
         <Customize>

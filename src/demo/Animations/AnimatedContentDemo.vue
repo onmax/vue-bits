@@ -5,7 +5,7 @@
         <div class="demo-container relative py-6 overflow-hidden">
           <RefreshButton @click="forceRerender" />
 
-          <div :key="key" class="flex justify-center items-center h-96">
+          <div :key="key" class="flex justify-center items-center">
             <AnimatedContent :direction="direction" :delay="delay" :distance="distance" :reverse="reverse"
               :duration="duration" :ease="ease" :initial-opacity="initialOpacity" :animate-opacity="animateOpacity"
               :scale="scale" :threshold="threshold" @complete="() => console.log('✅ Animation Complete!')">

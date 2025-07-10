@@ -1,5 +1,5 @@
 <template>
-  <div ref="containerRef" :class="className" class="relative w-full h-full"></div>
+  <div ref="containerRef" :class="className" class="relative"></div>
 </template>
 
 <script setup lang="ts">
@@ -142,19 +142,31 @@ const initParticles = () => {
   gl.canvas.style.width = '100%'
   gl.canvas.style.height = '100%'
   gl.canvas.style.display = 'block'
+  gl.canvas.style.position = 'absolute'
+  gl.canvas.style.top = '0'
+  gl.canvas.style.left = '0'
 
   camera = new Camera(gl, { fov: 15 })
   camera.position.set(0, 0, props.cameraDistance)
 
   const resize = () => {
-    const width = container.clientWidth
-    const height = container.clientHeight
+    if (!container) return
+    
+    const parentWidth = container.parentElement?.offsetWidth || container.offsetWidth || window.innerWidth
+    const parentHeight = container.parentElement?.offsetHeight || container.offsetHeight || window.innerHeight
+    
+    const width = Math.max(parentWidth, 300)
+    const height = Math.max(parentHeight, 300)
+    
     renderer!.setSize(width, height)
     camera!.perspective({ aspect: width / height })
 
     gl.canvas.style.width = '100%'
     gl.canvas.style.height = '100%'
     gl.canvas.style.display = 'block'
+    gl.canvas.style.position = 'absolute'
+    gl.canvas.style.top = '0'
+    gl.canvas.style.left = '0'
   }
   window.addEventListener('resize', resize, false)
   resize()
@@ -312,3 +324,21 @@ watch(
   () => {}
 )
 </script>
+
+<style scoped>
+div {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+:deep(canvas) {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+</style>

@@ -4,7 +4,7 @@
       <template #preview>
         <div class="demo-container">
           <Lightning :hue="hue" :x-offset="xOffset" :speed="speed" :intensity="intensity"
-            :size="size" class="w-full h-96" />
+            :size="size" class="w-full h-full" />
         </div>
 
         <Customize>

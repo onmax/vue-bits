@@ -10,7 +10,7 @@
             :center-vignette="showCenterVignette"
             :outer-vignette="showOuterVignette"
             :smooth="smooth"
-            class="w-full h-96"
+            class="w-full h-full"
           />
         </div>
 

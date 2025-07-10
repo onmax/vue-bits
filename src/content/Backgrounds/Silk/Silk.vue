@@ -125,8 +125,28 @@ const initSilk = () => {
 
   const resize = () => {
     if (!container || !camera) return
-    const width = container.offsetWidth
-    const height = container.offsetHeight
+    
+    let width = container.offsetWidth
+    let height = container.offsetHeight
+    
+    let parent = container.parentElement
+    while (parent && (!width || !height)) {
+      if (parent.offsetWidth && parent.offsetHeight) {
+        width = parent.offsetWidth
+        height = parent.offsetHeight
+        break
+      }
+      parent = parent.parentElement
+    }
+    
+    if (!width || !height) {
+      width = window.innerWidth
+      height = window.innerHeight
+    }
+    
+    width = Math.max(width, 300)
+    height = Math.max(height, 300)
+        
     renderer!.setSize(width, height)
     camera.perspective({ aspect: width / height })
 
@@ -168,6 +188,10 @@ const initSilk = () => {
   gl.canvas.style.width = '100%'
   gl.canvas.style.height = '100%'
   gl.canvas.style.display = 'block'
+  gl.canvas.style.position = 'absolute'
+  gl.canvas.style.top = '0'
+  gl.canvas.style.left = '0'
+  gl.canvas.style.zIndex = '1'
 
   let lastTime = 0
   const update = (t: number) => {
@@ -230,3 +254,20 @@ watch(
   () => {}
 )
 </script>
+
+<style scoped>
+div {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 100% !important;
+  display: block !important;
+}
+
+:deep(canvas) {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 100% !important;
+  display: block !important;
+  object-fit: cover !important;
+}
+</style>

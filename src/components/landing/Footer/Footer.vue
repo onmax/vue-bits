@@ -21,6 +21,9 @@
           <a href="https://www.jsrepo.com/" target="_blank" class="footer-link">
             CLI
           </a>
+          <a href="https://reactbits.dev/" target="_blank" class="footer-link">
+            React Bits
+          </a>
         </div>
       </div>
     </footer>

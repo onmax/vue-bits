@@ -3,7 +3,7 @@
     <TabbedLayout>
       <template #preview>
         <div class="demo-container">
-          <Waves :wave-speed-x="waveSpeedX" :line-color="color" class="w-full h-96" />
+          <Waves :wave-speed-x="waveSpeedX" :line-color="color" class="w-full h-full" />
         </div>
 
         <Customize>

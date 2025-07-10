@@ -1,5 +1,5 @@
 <template>
-  <div ref="containerRef" :class="className" :style="style" class="w-full h-full"></div>
+  <div ref="containerRef" :class="className" :style="style" class="relative"></div>
 </template>
 
 <script setup lang="ts">
@@ -162,8 +162,13 @@ const initAurora = () => {
 
   const resize = () => {
     if (!container) return
-    const width = container.offsetWidth
-    const height = container.offsetHeight
+
+    const parentWidth = container.parentElement?.offsetWidth || container.offsetWidth || window.innerWidth
+    const parentHeight = container.parentElement?.offsetHeight || container.offsetHeight || window.innerHeight
+
+    const width = Math.max(parentWidth, 300)
+    const height = Math.max(parentHeight, 300)
+
     renderer!.setSize(width, height)
     if (program) {
       program.uniforms.uResolution.value = [width, height]
@@ -189,7 +194,7 @@ const initAurora = () => {
       uTime: { value: 0 },
       uAmplitude: { value: props.amplitude },
       uColorStops: { value: colorStopsArray },
-      uResolution: { value: [container.offsetWidth, container.offsetHeight] },
+      uResolution: { value: [Math.max(container.parentElement?.offsetWidth || container.offsetWidth || window.innerWidth, 300), Math.max(container.parentElement?.offsetHeight || container.offsetHeight || window.innerHeight, 300)] },
       uBlend: { value: props.blend },
       uIntensity: { value: props.intensity },
     },
@@ -201,6 +206,9 @@ const initAurora = () => {
   gl.canvas.style.width = '100%'
   gl.canvas.style.height = '100%'
   gl.canvas.style.display = 'block'
+  gl.canvas.style.position = 'absolute'
+  gl.canvas.style.top = '0'
+  gl.canvas.style.left = '0'
 
   const update = (t: number) => {
     animateId = requestAnimationFrame(update)
@@ -264,3 +272,21 @@ watch(
   }
 )
 </script>
+
+<style scoped>
+div {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+:deep(canvas) {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+</style>

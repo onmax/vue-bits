@@ -14,7 +14,7 @@
             </p>
           </div>
 
-          <div class="w-full lg:w-1/2 h-96 lg:h-full relative">
+          <div class="w-full lg:w-1/2 h-full lg:h-full relative">
             <CardSwap :key="rerenderKey" :width="500" :height="400" :card-distance="cardDistance"
               :vertical-distance="verticalDistance" :delay="delay" :skew-amount="skewAmount" :easing="easing"
               :pause-on-hover="pauseOnHover" @card-click="handleCardClick">
