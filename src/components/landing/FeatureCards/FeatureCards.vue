@@ -26,8 +26,8 @@
             <img src="/assets/components.gif" alt="Components animation" className="components-gif" />
           </div>
           <h2>
-            <template v-if="isMobile">80</template>
-            <CountUp v-else :to="80" />+
+            <template v-if="isMobile">40</template>
+            <CountUp v-else :to="40" />+
           </h2>
           <h3>Curated Components</h3>
           <p>Growing weekly &amp; only getting better</p>
