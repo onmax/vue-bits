@@ -83,6 +83,7 @@
 
 .sidebar-item:hover {
   color: #fff;
+  cursor: pointer;
 }
 
 .active-sidebar-item {
@@ -123,7 +124,7 @@
 
 .sidebar-item .new-tag {
   color: #fff;
-  border: 1px solid #5227ff;
+  border: 1px solid #27FF64;
   background-color: rgba(82, 39, 255, 0.3);
 }
 
@@ -620,7 +621,7 @@
 
 .drawer-navigation .sidebar-item .new-tag {
   color: #fff;
-  border: 1px solid #5227ff;
+  border: 1px solid #27FF64;
   background-color: rgba(82, 39, 255, 0.3);
 }
 

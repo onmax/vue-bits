@@ -99,6 +99,13 @@
   justify-content: center;
 }
 
+.demo-title-extra {
+  font-size: 1.125rem;
+  font-weight: 900;
+  margin: 2rem 0 0 0;
+  color: #e5e7eb;
+}
+
 div:has(> .props-table) {
   border: 1px solid #142216;
   border-radius: 20px;
@@ -419,7 +426,6 @@ div:has(> .props-table) {
 
 .custom-spotlight-card {
   user-select: none;
-  background-color: #333333 !important;
   border: 1px solid #142216 !important;
   width: 350px;
   height: 300px;

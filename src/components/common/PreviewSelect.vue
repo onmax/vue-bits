@@ -67,7 +67,6 @@ const selectAttributes = computed(() => {
   font-size: 14px;
   color: #fff;
   white-space: nowrap;
-  min-width: 120px;
 }
 
 .custom-select {

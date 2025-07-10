@@ -3,8 +3,6 @@
     <TabbedLayout>
       <template #preview>
         <div class="demo-container" style="height: 500px; overflow: hidden;">
-          <RefreshButton @refresh="forceRerender" />
-
           <DotGrid :key="rerenderKey" :dot-size="dotSize" :gap="gap" :base-color="baseColor" :active-color="activeColor"
             :proximity="proximity" :speed-trigger="speedTrigger" :shock-radius="shockRadius"
             :shock-strength="shockStrength" :max-speed="maxSpeed" :resistance="resistance"
@@ -13,14 +11,8 @@
 
         <Customize>
           <div class="color-controls">
-            <div class="color-input">
-              <label>Base Color</label>
-              <input type="color" v-model="baseColor" @change="forceRerender" />
-            </div>
-            <div class="color-input">
-              <label>Active Color</label>
-              <input type="color" v-model="activeColor" @change="forceRerender" />
-            </div>
+            <PreviewColor title="Base Color" v-model="baseColor" @update:model-value="forceRerender" />
+            <PreviewColor title="Active Color" v-model="activeColor" @update:model-value="forceRerender" />
           </div>
 
           <PreviewSlider title="Dot Size" v-model="dotSize" :min="2" :max="50" :step="1"
@@ -68,13 +60,13 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import TabbedLayout from '../../components/common/TabbedLayout.vue'
-import RefreshButton from '../../components/common/RefreshButton.vue'
 import PropTable from '../../components/common/PropTable.vue'
 import Dependencies from '../../components/code/Dependencies.vue'
 import CliInstallation from '../../components/code/CliInstallation.vue'
 import CodeExample from '../../components/code/CodeExample.vue'
 import Customize from '../../components/common/Customize.vue'
 import PreviewSlider from '../../components/common/PreviewSlider.vue'
+import PreviewColor from '../../components/common/PreviewColor.vue'
 import DotGrid from '../../content/Backgrounds/DotGrid/DotGrid.vue'
 import { dotGrid } from '@/constants/code/Backgrounds/dotGridCode'
 import { useForceRerender } from '@/composables/useForceRerender'
@@ -119,35 +111,5 @@ const propData = [
   display: flex;
   gap: 1rem;
   margin-bottom: 1rem;
-}
-
-.color-input {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.color-input label {
-  font-size: 0.875rem;
-  color: #a1a1aa;
-  white-space: nowrap;
-}
-
-.color-input input[type="color"] {
-  width: 50px;
-  height: 32px;
-  border: 1px solid #333;
-  border-radius: 6px;
-  background: transparent;
-  cursor: pointer;
-}
-
-.color-input input[type="color"]::-webkit-color-swatch-wrapper {
-  padding: 0;
-}
-
-.color-input input[type="color"]::-webkit-color-swatch {
-  border: none;
-  border-radius: 4px;
 }
 </style>

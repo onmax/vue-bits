@@ -2,7 +2,7 @@ import { ref, onMounted } from 'vue'
 import { getStarsCount } from '@/utils/utils'
 
 const CACHE_KEY = 'github_stars_cache'
-const CACHE_DURATION = 24 * 60 * 60 * 1000 // 24 hours
+const CACHE_DURATION = 24 * 60 * 60 * 1000
 
 export function useStars() {
   const stars = ref<number>(0)

@@ -1,0 +1,105 @@
+<template>
+  <div class="particles-demo">
+    <TabbedLayout>
+      <template #preview>
+        <div class="demo-container">
+          <Particles :key="rerenderKey" :particle-colors="[color]" :particle-count="particleCount"
+            :particle-spread="particleSpread" :speed="speed" :particle-base-size="baseSize"
+            :move-particles-on-hover="moveParticlesOnHover" :alpha-particles="alphaParticles"
+            :disable-rotation="disableRotation" class="w-full h-96" />
+        </div>
+
+        <Customize>
+          <div class="flex gap-4 items-center">
+            <PreviewColor title="Color" :model-value="color" @update:model-value="updateColor" />
+          </div>
+
+          <PreviewSlider title="Count" :model-value="particleCount" @update:model-value="particleCount = $event"
+            :min="100" :max="1000" :step="100" />
+
+          <PreviewSlider title="Spread" :model-value="particleSpread" @update:model-value="particleSpread = $event"
+            :min="10" :max="100" :step="10" />
+
+          <PreviewSlider title="Speed" :model-value="speed" @update:model-value="speed = $event" :min="0" :max="2"
+            :step="0.1" />
+
+          <PreviewSlider title="Base Size" :model-value="baseSize" @update:model-value="baseSize = $event" :min="100"
+            :max="1000" :step="100" />
+
+          <PreviewSwitch title="Mouse Interaction" :model-value="moveParticlesOnHover"
+            @update:model-value="moveParticlesOnHover = $event" />
+
+          <PreviewSwitch title="Particle Transparency" :model-value="alphaParticles"
+            @update:model-value="alphaParticles = $event" />
+
+          <PreviewSwitch title="Disable Rotation" :model-value="disableRotation"
+            @update:model-value="disableRotation = $event" />
+        </Customize>
+
+        <PropTable :data="propData" />
+        <Dependencies :dependency-list="['ogl']" />
+      </template>
+
+      <template #code>
+        <CodeExample :code-object="particles" />
+      </template>
+
+      <template #cli>
+        <CliInstallation :command="particles.cli" />
+      </template>
+    </TabbedLayout>
+  </div>
+</template>
+
+<script setup lang="ts">
+import { ref } from 'vue'
+import TabbedLayout from '../../components/common/TabbedLayout.vue'
+import PropTable from '../../components/common/PropTable.vue'
+import Dependencies from '../../components/code/Dependencies.vue'
+import CliInstallation from '../../components/code/CliInstallation.vue'
+import CodeExample from '../../components/code/CodeExample.vue'
+import Customize from '../../components/common/Customize.vue'
+import Particles from '@/content/Backgrounds/Particles/Particles.vue'
+import PreviewSlider from '@/components/common/PreviewSlider.vue'
+import PreviewSwitch from '@/components/common/PreviewSwitch.vue'
+import PreviewColor from '@/components/common/PreviewColor.vue'
+import { particles } from '@/constants/code/Backgrounds/particlesCode'
+import { useForceRerender } from '@/composables/useForceRerender'
+
+const color = ref('#ffffff')
+const particleCount = ref(200)
+const particleSpread = ref(10)
+const speed = ref(0.1)
+const baseSize = ref(100)
+const moveParticlesOnHover = ref(true)
+const alphaParticles = ref(false)
+const disableRotation = ref(false)
+
+const { rerenderKey, forceRerender } = useForceRerender()
+
+const updateColor = (value: string) => {
+  color.value = value
+  forceRerender()
+}
+
+const propData = [
+  { name: 'particleCount', type: 'number', default: '200', description: 'The number of particles to generate.' },
+  { name: 'particleSpread', type: 'number', default: '10', description: 'Controls how far particles are spread from the center.' },
+  { name: 'speed', type: 'number', default: '0.1', description: 'Speed factor controlling the animation pace.' },
+  { name: 'particleColors', type: 'string[]', default: "['#ffffff']", description: 'An array of hex color strings used to color the particles.' },
+  { name: 'moveParticlesOnHover', type: 'boolean', default: 'false', description: 'Determines if particles should move in response to mouse hover.' },
+  { name: 'particleHoverFactor', type: 'number', default: '1', description: 'Multiplier for the particle movement when hovering.' },
+  { name: 'alphaParticles', type: 'boolean', default: 'false', description: 'If true, particles are rendered with varying transparency; otherwise, as solid circles.' },
+  { name: 'particleBaseSize', type: 'number', default: '100', description: 'The base size of the particles.' },
+  { name: 'sizeRandomness', type: 'number', default: '1', description: 'Controls the variation in particle sizes (0 means all particles have the same size).' },
+  { name: 'cameraDistance', type: 'number', default: '20', description: 'Distance from the camera to the particle system.' },
+  { name: 'disableRotation', type: 'boolean', default: 'false', description: 'If true, stops the particle system from rotating.' }
+]
+</script>
+
+<style scoped>
+.demo-container {
+  overflow: hidden;
+  padding: 0;
+}
+</style>

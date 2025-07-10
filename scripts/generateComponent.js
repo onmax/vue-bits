@@ -30,8 +30,8 @@ Object.values(paths).forEach((dir) => {
 
 const files = [
   path.join(paths.content, `${componentName}.vue`),
-  path.join(paths.demo, `${componentName}Demo.jsx`),
-  path.join(paths.constants, `${componentNameLower}Code.js`),
+  path.join(paths.demo, `${componentName}Demo.vue`),
+  path.join(paths.constants, `${componentNameLower}Code.ts`),
 ];
 
 files.forEach((file) => {
