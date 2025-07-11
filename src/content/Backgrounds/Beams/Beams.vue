@@ -453,17 +453,3 @@ onUnmounted(() => {
   cleanup()
 })
 </script>
-
-<style scoped>
-.beams-container {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-.beams-container canvas {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-</style>

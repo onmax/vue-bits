@@ -12,14 +12,11 @@
             :noise-intensity="noiseIntensity"
             :scale="scale"
             :rotation="rotation"
-            class="w-full h-full"
           />
         </div>
 
         <Customize>
-          <div class="flex gap-4 items-center">
-            <PreviewColor title="Color" :model-value="lightColor" @update:model-value="lightColor = $event" />
-          </div>
+          <PreviewColor title="Color" :model-value="lightColor" @update:model-value="lightColor = $event" />
 
           <PreviewSlider
             title="Beam Width"

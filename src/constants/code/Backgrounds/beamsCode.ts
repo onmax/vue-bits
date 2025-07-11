@@ -15,7 +15,6 @@ export const beams: CodeObject = {
       :noise-intensity="1.75"
       :scale="0.2"
       :rotation="0"
-      class="w-full h-full"
     />
   </div>
 </template>
