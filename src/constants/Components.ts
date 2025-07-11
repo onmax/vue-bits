@@ -23,6 +23,7 @@ const textAnimations = {
   'falling-text': () => import("../demo/TextAnimations/FallingTextDemo.vue"),
   'text-cursor': () => import("../demo/TextAnimations/TextCursorDemo.vue"),
   'decrypted-text': () => import("../demo/TextAnimations/DecryptedTextDemo.vue"),
+  'scroll-float': () => import("../demo/TextAnimations/ScrollFloatDemo.vue"),
 };
 
 const components = {
