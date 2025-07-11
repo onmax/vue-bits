@@ -375,7 +375,7 @@ const initThreeJS = () => {
   
   resize()
   
-  const animate = (time: number) => {
+  const animate = () => {
     animationId = requestAnimationFrame(animate)
     
     if (beamMesh && beamMesh.material) {
@@ -389,7 +389,7 @@ const initThreeJS = () => {
   
   animationId = requestAnimationFrame(animate)
   
-  ;(container as any)._resizeObserver = resizeObserver
+  ;(container as HTMLDivElement & { _resizeObserver?: ResizeObserver })._resizeObserver = resizeObserver
 }
 
 const cleanup = () => {
@@ -399,11 +399,11 @@ const cleanup = () => {
   }
   
   if (containerRef.value) {
-    const container = containerRef.value
+    const container = containerRef.value as HTMLDivElement & { _resizeObserver?: ResizeObserver }
     
-    if ((container as any)._resizeObserver) {
-      ;(container as any)._resizeObserver.disconnect()
-      delete (container as any)._resizeObserver
+    if (container._resizeObserver) {
+      container._resizeObserver.disconnect()
+      delete container._resizeObserver
     }
     
     if (renderer && renderer.domElement.parentNode === container) {
