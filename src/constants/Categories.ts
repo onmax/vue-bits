@@ -14,6 +14,7 @@ export const CATEGORIES = [
       'Text Pressure',
       'Curved Loop',
       'Fuzzy Text',
+      'Glitch Text',
       'Gradient Text',
       'Text Trail',
       'Falling Text',

@@ -18,6 +18,7 @@ const textAnimations = {
   'text-pressure': () => import("../demo/TextAnimations/TextPressureDemo.vue"),
   'curved-loop': () => import("../demo/TextAnimations/CurvedLoopDemo.vue"),
   'fuzzy-text': () => import("../demo/TextAnimations/FuzzyTextDemo.vue"),
+  'glitch-text': () => import("../demo/TextAnimations/GlitchTextDemo.vue"),
   'gradient-text': () => import("../demo/TextAnimations/GradientTextDemo.vue"),
   'text-trail': () => import("../demo/TextAnimations/TextTrailDemo.vue"),
   'falling-text': () => import("../demo/TextAnimations/FallingTextDemo.vue"),
