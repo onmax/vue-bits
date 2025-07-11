@@ -54,6 +54,7 @@ const backgrounds = {
   'iridescence': () => import("../demo/Backgrounds/IridescenceDemo.vue"),
   'threads': () => import("../demo/Backgrounds/ThreadsDemo.vue"),
   'aurora': () => import("../demo/Backgrounds/AuroraDemo.vue"),
+  'beams': () => import("../demo/Backgrounds/BeamsDemo.vue"),
 };
 
 export const componentMap = {
