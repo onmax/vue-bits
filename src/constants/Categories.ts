@@ -59,6 +59,7 @@ export const CATEGORIES = [
     name: 'Backgrounds',
     subcategories: [
       'Aurora',
+      'Beams',
       'Dot Grid',
       'Silk',
       'Lightning',
