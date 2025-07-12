@@ -57,11 +57,7 @@
             @update:model-value="forceRerender"
           />
 
-          <PreviewSwitch
-            title="Enable Waves"
-            v-model="enableWaves"
-            @update:model-value="forceRerender"
-          />
+          <PreviewSwitch title="Enable Waves" v-model="enableWaves" @update:model-value="forceRerender" />
 
           <div class="flex gap-4 flex-wrap">
             <button
@@ -92,28 +88,28 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import TabbedLayout from '@/components/common/TabbedLayout.vue'
-import RefreshButton from '@/components/common/RefreshButton.vue'
-import PropTable from '@/components/common/PropTable.vue'
-import Dependencies from '@/components/code/Dependencies.vue'
-import CliInstallation from '@/components/code/CliInstallation.vue'
-import CodeExample from '@/components/code/CodeExample.vue'
-import Customize from '@/components/common/Customize.vue'
-import PreviewSlider from '@/components/common/PreviewSlider.vue'
-import PreviewSwitch from '@/components/common/PreviewSwitch.vue'
-import AsciiText from '@/content/TextAnimations/AsciiText/AsciiText.vue'
-import { asciiText } from '@/constants/code/TextAnimations/asciiTextCode'
-import { useForceRerender } from '@/composables/useForceRerender'
+import { ref } from 'vue';
+import TabbedLayout from '@/components/common/TabbedLayout.vue';
+import RefreshButton from '@/components/common/RefreshButton.vue';
+import PropTable from '@/components/common/PropTable.vue';
+import Dependencies from '@/components/code/Dependencies.vue';
+import CliInstallation from '@/components/code/CliInstallation.vue';
+import CodeExample from '@/components/code/CodeExample.vue';
+import Customize from '@/components/common/Customize.vue';
+import PreviewSlider from '@/components/common/PreviewSlider.vue';
+import PreviewSwitch from '@/components/common/PreviewSwitch.vue';
+import AsciiText from '@/content/TextAnimations/AsciiText/AsciiText.vue';
+import { asciiText } from '@/constants/code/TextAnimations/asciiTextCode';
+import { useForceRerender } from '@/composables/useForceRerender';
 
-const text = ref('Hey!')
-const asciiFontSize = ref(8)
-const textFontSize = ref(200)
-const textColor = ref('#fdf9f3')
-const planeBaseHeight = ref(8)
-const enableWaves = ref(true)
+const text = ref('Hey!');
+const asciiFontSize = ref(8);
+const textFontSize = ref(200);
+const textColor = ref('#fdf9f3');
+const planeBaseHeight = ref(8);
+const enableWaves = ref(true);
 
-const { rerenderKey, forceRerender } = useForceRerender()
+const { rerenderKey, forceRerender } = useForceRerender();
 
 // Color options for easy selection
 const colorOptions = [
@@ -125,12 +121,12 @@ const colorOptions = [
   { name: 'Purple', value: '#9b59b6' },
   { name: 'Orange', value: '#f39c12' },
   { name: 'Pink', value: '#e91e63' }
-]
+];
 
 const changeColor = (color: string) => {
-  textColor.value = color
-  forceRerender()
-}
+  textColor.value = color;
+  forceRerender();
+};
 
 // Component properties documentation
 const propData = [
@@ -176,5 +172,5 @@ const propData = [
     default: '""',
     description: 'Additional CSS classes to apply to the component.'
   }
-]
+];
 </script>

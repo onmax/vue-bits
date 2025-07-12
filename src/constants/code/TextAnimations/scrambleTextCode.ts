@@ -1,5 +1,5 @@
-import code from '@content/TextAnimations/ScrambleText/ScrambleText.vue?raw'
-import type { CodeObject } from '../../../types/code'
+import code from '@content/TextAnimations/ScrambleText/ScrambleText.vue?raw';
+import type { CodeObject } from '../../../types/code';
 
 export const scrambleTextCode: CodeObject = {
   cli: `npx jsrepo add https://vue-bits.dev/ui/TextAnimations/ScrambleText`,
@@ -25,4 +25,4 @@ export const scrambleTextCode: CodeObject = {
   import ScrambleText from "./ScrambleText.vue";
 </script>`,
   code
-}
+};

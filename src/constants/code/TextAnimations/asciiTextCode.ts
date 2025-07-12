@@ -1,5 +1,5 @@
-import code from '@/content/TextAnimations/AsciiText/AsciiText.vue?raw'
-import type { CodeObject } from '../../../types/code'
+import code from '@/content/TextAnimations/AsciiText/AsciiText.vue?raw';
+import type { CodeObject } from '../../../types/code';
 
 export const asciiText: CodeObject = {
   cli: `npx jsrepo add https://vue-bits.dev/ui/TextAnimations/AsciiText`,
@@ -20,4 +20,4 @@ export const asciiText: CodeObject = {
   import AsciiText from "./AsciiText.vue";
 </script>`,
   code
-}
+};
