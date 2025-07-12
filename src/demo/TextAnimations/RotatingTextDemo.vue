@@ -33,7 +33,7 @@
       </div>
 
       <PropTable :data="propData" />
-      <Dependencies :dependency-list="['framer-motion']" />
+      <Dependencies :dependency-list="['motion-v']" />
     </template>
 
     <template #code>
