@@ -1,20 +1,24 @@
 <template>
   <main class="app-container">
     <Header />
+
     <section class="category-wrapper">
       <Sidebar />
+
       <div class="category-page">
         <router-view />
       </div>
     </section>
-    <Toast position="bottom-right"
+
+    <Toast
+      position="bottom-right"
       :closeButtonProps="{ style: { right: '0', margin: '0', outline: 'none', border: 'none' } }"
       :pt="{
         message: {
           style: {
             borderRadius: '10px',
             border: '1px solid #142216',
-            backgroundColor: '#0b0b0b',
+            backgroundColor: '#0b0b0b'
           }
         },
         messageContent: {
@@ -27,7 +31,8 @@
             display: 'none'
           }
         }
-      }" />
+      }"
+    />
   </main>
 </template>
 

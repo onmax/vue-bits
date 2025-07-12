@@ -1,5 +1,5 @@
-import code from '@content/Components/ProfileCard/ProfileCard.vue?raw'
-import type { CodeObject } from '../../../types/code'
+import code from '@content/Components/ProfileCard/ProfileCard.vue?raw';
+import type { CodeObject } from '../../../types/code';
 
 export const profileCard: CodeObject = {
   cli: `npx jsrepo add https://vue-bits.dev/ui/Components/ProfileCard`,
@@ -28,4 +28,4 @@ export const profileCard: CodeObject = {
   };
 </script>`,
   code
-}
+};

@@ -38,7 +38,7 @@ body {
     width: auto !important;
     max-width: calc(100vw - 2rem) !important;
   }
-  
+
   .p-toast-message {
     max-width: 100% !important;
     min-width: unset !important;
@@ -48,18 +48,18 @@ body {
     padding: 0.75rem !important;
     box-sizing: border-box !important;
   }
-  
+
   .p-toast-message-content {
     padding: 0.5rem !important;
     gap: 0.5rem !important;
   }
-  
+
   .p-toast-message-text {
     word-wrap: break-word !important;
     overflow-wrap: break-word !important;
     hyphens: auto !important;
   }
-  
+
   .p-toast-message-summary {
     font-size: 0.875rem !important;
     line-height: 1.25 !important;

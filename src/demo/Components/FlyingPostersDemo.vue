@@ -3,37 +3,83 @@
     <TabbedLayout>
       <template #preview>
         <div class="demo-container relative h-[600px] overflow-hidden flex items-center justify-center">
-          <FlyingPosters :key="rerenderKey" :items="items" :plane-width="planeWidth" :plane-height="planeHeight"
-            :distortion="distortion" :scroll-ease="scrollEase" :camera-fov="cameraFov" :camera-z="cameraZ"
-            class="h-full w-full" />
+          <FlyingPosters
+            :key="rerenderKey"
+            :items="items"
+            :plane-width="planeWidth"
+            :plane-height="planeHeight"
+            :distortion="distortion"
+            :scroll-ease="scrollEase"
+            :camera-fov="cameraFov"
+            :camera-z="cameraZ"
+            class="h-full w-full"
+          />
 
           <div
-            class="absolute inset-0 flex items-center justify-center pointer-events-none text-[4rem] font-[900] text-[#222] select-none">
+            class="absolute inset-0 flex items-center justify-center pointer-events-none text-[4rem] font-[900] text-[#222] select-none"
+          >
             Scroll.
           </div>
         </div>
 
         <Customize>
-          <PreviewSlider title="Plane Width" v-model="planeWidth" :min="200" :max="400" :step="20"
-            @update:model-value="forceRerender" />
+          <PreviewSlider
+            title="Plane Width"
+            v-model="planeWidth"
+            :min="200"
+            :max="400"
+            :step="20"
+            @update:model-value="forceRerender"
+          />
 
-          <PreviewSlider title="Plane Height" v-model="planeHeight" :min="200" :max="400" :step="20"
-            @update:model-value="forceRerender" />
+          <PreviewSlider
+            title="Plane Height"
+            v-model="planeHeight"
+            :min="200"
+            :max="400"
+            :step="20"
+            @update:model-value="forceRerender"
+          />
 
-          <PreviewSlider title="Distortion" v-model="distortion" :min="0" :max="10" :step="0.5"
-            @update:model-value="forceRerender" />
+          <PreviewSlider
+            title="Distortion"
+            v-model="distortion"
+            :min="0"
+            :max="10"
+            :step="0.5"
+            @update:model-value="forceRerender"
+          />
 
-          <PreviewSlider title="Scroll Ease" v-model="scrollEase" :min="0.005" :max="0.05" :step="0.005"
-            @update:model-value="forceRerender" />
+          <PreviewSlider
+            title="Scroll Ease"
+            v-model="scrollEase"
+            :min="0.005"
+            :max="0.05"
+            :step="0.005"
+            @update:model-value="forceRerender"
+          />
 
-          <PreviewSlider title="Camera FOV" v-model="cameraFov" :min="30" :max="90" :step="5"
-            @update:model-value="forceRerender" />
+          <PreviewSlider
+            title="Camera FOV"
+            v-model="cameraFov"
+            :min="30"
+            :max="90"
+            :step="5"
+            @update:model-value="forceRerender"
+          />
 
-          <PreviewSlider title="Camera Z" v-model="cameraZ" :min="10" :max="40" :step="2"
-            @update:model-value="forceRerender" />
+          <PreviewSlider
+            title="Camera Z"
+            v-model="cameraZ"
+            :min="10"
+            :max="40"
+            :step="2"
+            @update:model-value="forceRerender"
+          />
         </Customize>
 
         <PropTable :data="propData" />
+
         <Dependencies :dependency-list="['ogl']" />
       </template>
 
@@ -49,26 +95,26 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import TabbedLayout from '../../components/common/TabbedLayout.vue'
-import PropTable from '../../components/common/PropTable.vue'
-import Dependencies from '../../components/code/Dependencies.vue'
-import CliInstallation from '../../components/code/CliInstallation.vue'
-import CodeExample from '../../components/code/CodeExample.vue'
-import Customize from '../../components/common/Customize.vue'
-import PreviewSlider from '../../components/common/PreviewSlider.vue'
-import FlyingPosters from '../../content/Components/FlyingPosters/FlyingPosters.vue'
-import { flyingPosters } from '@/constants/code/Components/flyingPostersCode'
-import { useForceRerender } from '@/composables/useForceRerender'
+import { ref } from 'vue';
+import TabbedLayout from '../../components/common/TabbedLayout.vue';
+import PropTable from '../../components/common/PropTable.vue';
+import Dependencies from '../../components/code/Dependencies.vue';
+import CliInstallation from '../../components/code/CliInstallation.vue';
+import CodeExample from '../../components/code/CodeExample.vue';
+import Customize from '../../components/common/Customize.vue';
+import PreviewSlider from '../../components/common/PreviewSlider.vue';
+import FlyingPosters from '../../content/Components/FlyingPosters/FlyingPosters.vue';
+import { flyingPosters } from '@/constants/code/Components/flyingPostersCode';
+import { useForceRerender } from '@/composables/useForceRerender';
 
-const planeWidth = ref(320)
-const planeHeight = ref(320)
-const distortion = ref(3)
-const scrollEase = ref(0.01)
-const cameraFov = ref(45)
-const cameraZ = ref(20)
+const planeWidth = ref(320);
+const planeHeight = ref(320);
+const distortion = ref(3);
+const scrollEase = ref(0.01);
+const cameraFov = ref(45);
+const cameraZ = ref(20);
 
-const { rerenderKey, forceRerender } = useForceRerender()
+const { rerenderKey, forceRerender } = useForceRerender();
 
 const items = ref([
   'https://picsum.photos/800/800?grayscale&random=1',
@@ -85,65 +131,63 @@ const items = ref([
   'https://picsum.photos/800/800?grayscale&random=12',
   'https://picsum.photos/800/800?grayscale&random=13',
   'https://picsum.photos/800/800?grayscale&random=14',
-  'https://picsum.photos/800/800?grayscale&random=15',
-])
+  'https://picsum.photos/800/800?grayscale&random=15'
+]);
 
 const propData = [
   {
-    name: "items",
-    type: "string[]",
-    default: "[]",
+    name: 'items',
+    type: 'string[]',
+    default: '[]',
     description:
-      "An array of image URLs to display in the 3D poster gallery. Each URL should point to a valid image resource."
+      'An array of image URLs to display in the 3D poster gallery. Each URL should point to a valid image resource.'
   },
   {
-    name: "planeWidth",
-    type: "number",
-    default: "320",
+    name: 'planeWidth',
+    type: 'number',
+    default: '320',
     description:
-      "The width of each poster plane in pixels. This affects the visual size of the posters in the 3D space."
+      'The width of each poster plane in pixels. This affects the visual size of the posters in the 3D space.'
   },
   {
-    name: "planeHeight",
-    type: "number",
-    default: "320",
+    name: 'planeHeight',
+    type: 'number',
+    default: '320',
     description:
-      "The height of each poster plane in pixels. This affects the visual size of the posters in the 3D space."
+      'The height of each poster plane in pixels. This affects the visual size of the posters in the 3D space.'
   },
   {
-    name: "distortion",
-    type: "number",
-    default: "3",
+    name: 'distortion',
+    type: 'number',
+    default: '3',
     description:
-      "The amount of distortion effect applied to the posters during animation. Higher values create more dramatic effects."
+      'The amount of distortion effect applied to the posters during animation. Higher values create more dramatic effects.'
   },
   {
-    name: "scrollEase",
-    type: "number",
-    default: "0.01",
-    description:
-      "The easing factor for scroll animation. Lower values create smoother, more fluid scroll transitions."
+    name: 'scrollEase',
+    type: 'number',
+    default: '0.01',
+    description: 'The easing factor for scroll animation. Lower values create smoother, more fluid scroll transitions.'
   },
   {
-    name: "cameraFov",
-    type: "number",
-    default: "45",
+    name: 'cameraFov',
+    type: 'number',
+    default: '45',
     description:
-      "The field of view for the 3D camera in degrees. A wider FOV shows more of the scene but with perspective distortion."
+      'The field of view for the 3D camera in degrees. A wider FOV shows more of the scene but with perspective distortion.'
   },
   {
-    name: "cameraZ",
-    type: "number",
-    default: "20",
+    name: 'cameraZ',
+    type: 'number',
+    default: '20',
     description:
-      "The Z-axis position of the 3D camera. Higher values move the camera further back, showing more posters at once."
+      'The Z-axis position of the 3D camera. Higher values move the camera further back, showing more posters at once.'
   },
   {
-    name: "className",
-    type: "string",
+    name: 'className',
+    type: 'string',
     default: "''",
-    description:
-      "Additional CSS classes to apply to the component container."
+    description: 'Additional CSS classes to apply to the component container.'
   }
-]
+];
 </script>

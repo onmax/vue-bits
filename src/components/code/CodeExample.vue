@@ -4,14 +4,25 @@
       <h2 class="demo-title">{{ getDisplayName(name) }}</h2>
 
       <div v-if="snippet" class="code-container">
-        <div class="code-wrapper" :class="{ 'collapsed': shouldCollapse(snippet) && !isExpanded(name) }">
-          <VCodeBlock :code="snippet" highlightjs :lang="getLanguage(name)" theme="nord" :copy-button="true"
-            :persistent-copy-button="true" class="code-block" />
+        <div class="code-wrapper" :class="{ collapsed: shouldCollapse(snippet) && !isExpanded(name) }">
+          <VCodeBlock
+            :code="snippet"
+            highlightjs
+            :lang="getLanguage(name)"
+            theme="nord"
+            :copy-button="true"
+            :persistent-copy-button="true"
+            class="code-block"
+          />
 
           <div v-if="shouldCollapse(snippet) && !isExpanded(name)" class="fade-overlay" />
 
-          <button v-if="shouldCollapse(snippet)" class="expand-button" :class="{ 'expanded': isExpanded(name) }"
-            @click="toggleExpanded(name)">
+          <button
+            v-if="shouldCollapse(snippet)"
+            class="expand-button"
+            :class="{ expanded: isExpanded(name) }"
+            @click="toggleExpanded(name)"
+          >
             {{ isExpanded(name) ? 'Collapse Snippet' : 'See Full Snippet' }}
           </button>
         </div>
@@ -19,6 +30,7 @@
 
       <div v-if="!snippet" class="no-code">
         <span>Nothing here yet!</span>
+
         <i class="pi pi-face-sad"></i>
       </div>
     </div>
@@ -26,58 +38,55 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue'
-import { VCodeBlock } from '@wdns/vue-code-block'
-import type { CodeObject } from '../../types/code'
+import { computed, ref } from 'vue';
+import { VCodeBlock } from '@wdns/vue-code-block';
+import type { CodeObject } from '../../types/code';
 
 const props = defineProps<{
-  codeObject: CodeObject
-}>()
+  codeObject: CodeObject;
+}>();
 
-const skipKeys = [
-  'cli'
-]
+const skipKeys = ['cli'];
 
-const expandedSections = ref<Set<string>>(new Set())
+const expandedSections = ref<Set<string>>(new Set());
 
 const codeEntries = computed(() => {
-  return Object.entries(props.codeObject).filter(([name]) => !skipKeys.includes(name))
-})
-
+  return Object.entries(props.codeObject).filter(([name]) => !skipKeys.includes(name));
+});
 
 const shouldCollapse = (snippet: string) => {
-  const codeLines = snippet?.split('\n').length || 0
-  return codeLines > 35
-}
+  const codeLines = snippet?.split('\n').length || 0;
+  return codeLines > 35;
+};
 
 const isExpanded = (name: string) => {
-  return expandedSections.value.has(name)
-}
+  return expandedSections.value.has(name);
+};
 
 const toggleExpanded = (name: string) => {
   if (expandedSections.value.has(name)) {
-    expandedSections.value.delete(name)
+    expandedSections.value.delete(name);
   } else {
-    expandedSections.value.add(name)
+    expandedSections.value.add(name);
   }
-}
+};
 
 const getDisplayName = (name: string) => {
-  if (name === 'code') return 'Code'
-  if (name === 'cli') return 'CLI Command'
-  if (name === 'utility') return 'Utility'
-  if (name === 'usage') return 'Usage'
-  if (name === 'installation') return 'Installation'
-  return name.charAt(0).toUpperCase() + name.slice(1)
-}
+  if (name === 'code') return 'Code';
+  if (name === 'cli') return 'CLI Command';
+  if (name === 'utility') return 'Utility';
+  if (name === 'usage') return 'Usage';
+  if (name === 'installation') return 'Installation';
+  return name.charAt(0).toUpperCase() + name.slice(1);
+};
 
 const getLanguage = (name: string) => {
-  if (name === 'cli') return 'bash'
-  if (name === 'code') return 'html'
-  if (name === 'usage') return 'html'
-  if (name === 'installation') return 'bash'
-  return 'javascript'
-}
+  if (name === 'cli') return 'bash';
+  if (name === 'code') return 'html';
+  if (name === 'usage') return 'html';
+  if (name === 'installation') return 'bash';
+  return 'javascript';
+};
 </script>
 
 <style scoped>

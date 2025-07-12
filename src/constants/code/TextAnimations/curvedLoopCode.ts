@@ -1,5 +1,5 @@
-import code from '@content/TextAnimations/CurvedLoop/CurvedLoop.vue?raw'
-import type { CodeObject } from '../../../types/code'
+import code from '@content/TextAnimations/CurvedLoop/CurvedLoop.vue?raw';
+import type { CodeObject } from '../../../types/code';
 
 export const curvedLoop: CodeObject = {
   cli: `npx jsrepo add https://vue-bits.dev/ui/TextAnimations/CurvedLoop`,
@@ -17,4 +17,4 @@ export const curvedLoop: CodeObject = {
   import CurvedLoop from "./CurvedLoop.vue";
 </script>`,
   code
-}
+};

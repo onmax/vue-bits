@@ -1,5 +1,5 @@
-import code from '@/content/TextAnimations/FallingText/FallingText.vue?raw'
-import type { CodeObject } from '@/types/code'
+import code from '@/content/TextAnimations/FallingText/FallingText.vue?raw';
+import type { CodeObject } from '@/types/code';
 
 export const fallingText: CodeObject = {
   cli: `npx jsrepo add https://vue-bits.dev/ui/TextAnimations/FallingText`,
@@ -19,4 +19,4 @@ export const fallingText: CodeObject = {
   import FallingText from "./FallingText.vue";
 </script>`,
   code
-}
+};

@@ -1,5 +1,5 @@
-import code from '@content/Backgrounds/Aurora/Aurora.vue?raw'
-import type { CodeObject } from '../../../types/code'
+import code from '@content/Backgrounds/Aurora/Aurora.vue?raw';
+import type { CodeObject } from '../../../types/code';
 
 export const aurora: CodeObject = {
   cli: `npx jsrepo add https://vue-bits.dev/ui/Backgrounds/Aurora`,
@@ -30,4 +30,4 @@ export const aurora: CodeObject = {
   }
 </style>`,
   code
-}
+};

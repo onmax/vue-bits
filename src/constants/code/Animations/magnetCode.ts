@@ -1,5 +1,5 @@
-import code from '@content/Animations/Magnet/Magnet.vue?raw'
-import type { CodeObject } from '../../../types/code'
+import code from '@content/Animations/Magnet/Magnet.vue?raw';
+import type { CodeObject } from '../../../types/code';
 
 export const magnet: CodeObject = {
   cli: `npx jsrepo add https://vue-bits.dev/ui/Animations/Magnet`,
@@ -45,4 +45,4 @@ import Magnet from '@/content/Animations/Magnet/Magnet.vue'
 }
 </style>`,
   code
-}
+};

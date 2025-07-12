@@ -1,5 +1,5 @@
-import code from '@content/Components/FlowingMenu/FlowingMenu.vue?raw'
-import type { CodeObject } from '../../../types/code'
+import code from '@content/Components/FlowingMenu/FlowingMenu.vue?raw';
+import type { CodeObject } from '../../../types/code';
 
 export const flowingMenu: CodeObject = {
   cli: `npx jsrepo add https://vue-bits.dev/ui/Components/FlowingMenu`,
@@ -19,4 +19,4 @@ export const flowingMenu: CodeObject = {
   ];
 </script>`,
   code
-}
+};

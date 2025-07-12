@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { motion } from "motion-v";
-import { computed, nextTick, onMounted, onUnmounted, ref, watch } from "vue";
+import { motion } from 'motion-v';
+import { computed, nextTick, onMounted, onUnmounted, ref, watch } from 'vue';
 
 interface TrueFocusProps {
   sentence?: string;
@@ -13,16 +13,16 @@ interface TrueFocusProps {
 }
 
 const props = withDefaults(defineProps<TrueFocusProps>(), {
-  sentence: "True Focus",
+  sentence: 'True Focus',
   manualMode: false,
   blurAmount: 5,
-  borderColor: "green",
-  glowColor: "rgba(0, 255, 0, 0.6)",
+  borderColor: 'green',
+  glowColor: 'rgba(0, 255, 0, 0.6)',
   animationDuration: 0.5,
-  pauseBetweenAnimations: 1,
+  pauseBetweenAnimations: 1
 });
 
-const words = computed(() => props.sentence.split(" "));
+const words = computed(() => props.sentence.split(' '));
 const currentIndex = ref(0);
 const lastActiveIndex = ref<number | null>(null);
 const containerRef = ref<HTMLDivElement>();
@@ -32,12 +32,7 @@ const focusRect = ref({ x: 0, y: 0, width: 0, height: 0 });
 let interval: number | null = null;
 
 watch(
-  [
-    () => props.manualMode,
-    () => props.animationDuration,
-    () => props.pauseBetweenAnimations,
-    words,
-  ],
+  [() => props.manualMode, () => props.animationDuration, () => props.pauseBetweenAnimations, words],
   () => {
     if (interval) {
       clearInterval(interval);
@@ -49,11 +44,11 @@ watch(
         () => {
           currentIndex.value = (currentIndex.value + 1) % words.value.length;
         },
-        (props.animationDuration + props.pauseBetweenAnimations) * 1000,
+        (props.animationDuration + props.pauseBetweenAnimations) * 1000
       );
     }
   },
-  { immediate: true },
+  { immediate: true }
 );
 
 watch(
@@ -71,10 +66,10 @@ watch(
       x: activeRect.left - parentRect.left,
       y: activeRect.top - parentRect.top,
       width: activeRect.width,
-      height: activeRect.height,
+      height: activeRect.height
     };
   },
-  { immediate: true },
+  { immediate: true }
 );
 
 const handleMouseEnter = (index: number) => {
@@ -107,7 +102,7 @@ onMounted(async () => {
       x: activeRect.left - parentRect.left,
       y: activeRect.top - parentRect.top,
       width: activeRect.width,
-      height: activeRect.height,
+      height: activeRect.height
     };
   }
 });
@@ -121,36 +116,55 @@ onUnmounted(() => {
 
 <template>
   <div class="relative flex flex-wrap justify-center items-center gap-[1em]" ref="containerRef">
-    <span v-for="(word, index) in words" :key="index" :ref="(el) => setWordRef(el as HTMLSpanElement, index)"
-      class="relative font-black text-5xl transition-[filter,color] duration-300 ease-in-out cursor-pointer" :style="{
+    <span
+      v-for="(word, index) in words"
+      :key="index"
+      :ref="el => setWordRef(el as HTMLSpanElement, index)"
+      class="relative font-black text-5xl transition-[filter,color] duration-300 ease-in-out cursor-pointer"
+      :style="{
         filter: index === currentIndex ? 'blur(0px)' : `blur(${blurAmount}px)`,
         '--border-color': borderColor,
         '--glow-color': glowColor,
-        transition: `filter ${animationDuration}s ease`,
-      }" @mouseenter="handleMouseEnter(index)" @mouseleave="handleMouseLeave">
+        transition: `filter ${animationDuration}s ease`
+      }"
+      @mouseenter="handleMouseEnter(index)"
+      @mouseleave="handleMouseLeave"
+    >
       {{ word }}
     </span>
 
-    <motion.div class="top-0 left-0 box-content absolute border-none pointer-events-none" :animate="{
-      x: focusRect.x,
-      y: focusRect.y,
-      width: focusRect.width,
-      height: focusRect.height,
-      opacity: currentIndex >= 0 ? 1 : 0,
-    }" :transition="{
-        duration: animationDuration,
-      }" :style="{
+    <motion.div
+      class="top-0 left-0 box-content absolute border-none pointer-events-none"
+      :animate="{
+        x: focusRect.x,
+        y: focusRect.y,
+        width: focusRect.width,
+        height: focusRect.height,
+        opacity: currentIndex >= 0 ? 1 : 0
+      }"
+      :transition="{
+        duration: animationDuration
+      }"
+      :style="{
         '--border-color': borderColor,
-        '--glow-color': glowColor,
-      }">
+        '--glow-color': glowColor
+      }"
+    >
       <span
-        class="top-[-10px] left-[-10px] absolute [filter:drop-shadow(0_0_4px_var(--border-color,#fff))] border-[3px] border-[var(--border-color,#fff)] border-r-0 border-b-0 rounded-[3px] w-4 h-4 transition-none"></span>
+        class="top-[-10px] left-[-10px] absolute [filter:drop-shadow(0_0_4px_var(--border-color,#fff))] border-[3px] border-[var(--border-color,#fff)] border-r-0 border-b-0 rounded-[3px] w-4 h-4 transition-none"
+      ></span>
+
       <span
-        class="top-[-10px] right-[-10px] absolute [filter:drop-shadow(0_0_4px_var(--border-color,#fff))] border-[3px] border-[var(--border-color,#fff)] border-b-0 border-l-0 rounded-[3px] w-4 h-4 transition-none"></span>
+        class="top-[-10px] right-[-10px] absolute [filter:drop-shadow(0_0_4px_var(--border-color,#fff))] border-[3px] border-[var(--border-color,#fff)] border-b-0 border-l-0 rounded-[3px] w-4 h-4 transition-none"
+      ></span>
+
       <span
-        class="bottom-[-10px] left-[-10px] absolute [filter:drop-shadow(0_0_4px_var(--border-color,#fff))] border-[3px] border-[var(--border-color,#fff)] border-t-0 border-r-0 rounded-[3px] w-4 h-4 transition-none"></span>
+        class="bottom-[-10px] left-[-10px] absolute [filter:drop-shadow(0_0_4px_var(--border-color,#fff))] border-[3px] border-[var(--border-color,#fff)] border-t-0 border-r-0 rounded-[3px] w-4 h-4 transition-none"
+      ></span>
+
       <span
-        class="right-[-10px] bottom-[-10px] absolute [filter:drop-shadow(0_0_4px_var(--border-color,#fff))] border-[3px] border-[var(--border-color,#fff)] border-t-0 border-l-0 rounded-[3px] w-4 h-4 transition-none"></span>
+        class="right-[-10px] bottom-[-10px] absolute [filter:drop-shadow(0_0_4px_var(--border-color,#fff))] border-[3px] border-[var(--border-color,#fff)] border-t-0 border-l-0 rounded-[3px] w-4 h-4 transition-none"
+      ></span>
     </motion.div>
   </div>
 </template>

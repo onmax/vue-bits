@@ -5,7 +5,7 @@
     :style="{
       opacity: inView ? 1 : initialOpacity,
       transition: `opacity ${duration}ms ${easing}, filter ${duration}ms ${easing}`,
-      filter: blur ? (inView ? 'blur(0px)' : 'blur(10px)') : 'none',
+      filter: blur ? (inView ? 'blur(0px)' : 'blur(10px)') : 'none'
     }"
   >
     <slot />
@@ -13,16 +13,16 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue';
 
 interface Props {
-  blur?: boolean
-  duration?: number
-  easing?: string
-  delay?: number
-  threshold?: number
-  initialOpacity?: number
-  className?: string
+  blur?: boolean;
+  duration?: number;
+  easing?: string;
+  delay?: number;
+  threshold?: number;
+  initialOpacity?: number;
+  className?: string;
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -33,34 +33,34 @@ const props = withDefaults(defineProps<Props>(), {
   threshold: 0.1,
   initialOpacity: 0,
   className: ''
-})
+});
 
-const inView = ref(false)
-const elementRef = ref<HTMLDivElement | null>(null)
-let observer: IntersectionObserver | null = null
+const inView = ref(false);
+const elementRef = ref<HTMLDivElement | null>(null);
+let observer: IntersectionObserver | null = null;
 
 onMounted(() => {
-  const element = elementRef.value
-  if (!element) return
+  const element = elementRef.value;
+  if (!element) return;
 
   observer = new IntersectionObserver(
     ([entry]) => {
       if (entry.isIntersecting) {
-        observer?.unobserve(element)
+        observer?.unobserve(element);
         setTimeout(() => {
-          inView.value = true
-        }, props.delay)
+          inView.value = true;
+        }, props.delay);
       }
     },
     { threshold: props.threshold }
-  )
+  );
 
-  observer.observe(element)
-})
+  observer.observe(element);
+});
 
 onUnmounted(() => {
   if (observer) {
-    observer.disconnect()
+    observer.disconnect();
   }
-})
+});
 </script>

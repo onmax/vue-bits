@@ -1,9 +1,11 @@
 <template>
   <h2 ref="containerRef" :class="`overflow-hidden ${containerClassName}`">
-    <span :class="`inline-block text-center leading-relaxed font-black ${textClassName}`"
-      style="font-size: clamp(1.6rem, 8vw, 10rem);">
+    <span
+      :class="`inline-block text-center leading-relaxed font-black ${textClassName}`"
+      style="font-size: clamp(1.6rem, 8vw, 10rem)"
+    >
       <span v-for="(char, index) in splitText" :key="index" class="inline-block char">
-        {{ char === " " ? "\u00A0" : char }}
+        {{ char === ' ' ? '\u00A0' : char }}
       </span>
     </span>
   </h2>
@@ -43,7 +45,7 @@ let scrollTriggerInstance: ScrollTrigger | null = null;
 
 const splitText = computed(() => {
   const text = typeof props.children === 'string' ? props.children : '';
-  return text.split("");
+  return text.split('');
 });
 
 const initializeAnimation = () => {
@@ -51,9 +53,7 @@ const initializeAnimation = () => {
   if (!el) return;
 
   const scroller =
-    props.scrollContainerRef && props.scrollContainerRef.current
-      ? props.scrollContainerRef.current
-      : window;
+    props.scrollContainerRef && props.scrollContainerRef.current ? props.scrollContainerRef.current : window;
 
   const charElements = el.querySelectorAll('.char');
 

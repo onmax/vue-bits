@@ -1,5 +1,5 @@
-import code from '@content/Components/Masonry/Masonry.vue?raw'
-import type { CodeObject } from '../../../types/code'
+import code from '@content/Components/Masonry/Masonry.vue?raw';
+import type { CodeObject } from '../../../types/code';
 
 export const masonry: CodeObject = {
   cli: `npx jsrepo add https://vue-bits.dev/ui/Components/Masonry`,
@@ -29,4 +29,4 @@ const items = ref([
 ])
 </script>`,
   code
-}
+};

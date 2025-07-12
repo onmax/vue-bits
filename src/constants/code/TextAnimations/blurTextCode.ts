@@ -1,5 +1,5 @@
-import code from '@content/TextAnimations/BlurText/BlurText.vue?raw'
-import type { CodeObject } from '../../../types/code'
+import code from '@content/TextAnimations/BlurText/BlurText.vue?raw';
+import type { CodeObject } from '../../../types/code';
 
 export const blurText: CodeObject = {
   cli: `npx jsrepo add https://vue-bits.dev/ui/TextAnimations/BlurText`,
@@ -26,4 +26,4 @@ export const blurText: CodeObject = {
   };
 </script>`,
   code
-}
+};

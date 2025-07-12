@@ -1,26 +1,26 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
-import { Motion } from 'motion-v'
+import { ref, onMounted, onUnmounted } from 'vue';
+import { Motion } from 'motion-v';
 
 interface TextCursorProps {
-  text?: string
-  delay?: number
-  spacing?: number
-  followMouseDirection?: boolean
-  randomFloat?: boolean
-  exitDuration?: number
-  removalInterval?: number
-  maxPoints?: number
+  text?: string;
+  delay?: number;
+  spacing?: number;
+  followMouseDirection?: boolean;
+  randomFloat?: boolean;
+  exitDuration?: number;
+  removalInterval?: number;
+  maxPoints?: number;
 }
 
 interface TrailItem {
-  id: number
-  x: number
-  y: number
-  angle: number
-  randomX?: number
-  randomY?: number
-  randomRotate?: number
+  id: number;
+  x: number;
+  y: number;
+  angle: number;
+  randomX?: number;
+  randomY?: number;
+  randomRotate?: number;
 }
 
 const props = withDefaults(defineProps<TextCursorProps>(), {
@@ -32,24 +32,24 @@ const props = withDefaults(defineProps<TextCursorProps>(), {
   exitDuration: 0.5,
   removalInterval: 30,
   maxPoints: 5
-})
+});
 
-const containerRef = ref<HTMLDivElement>()
-const trail = ref<TrailItem[]>([])
-const lastMoveTime = ref(Date.now())
-const idCounter = ref(0)
+const containerRef = ref<HTMLDivElement>();
+const trail = ref<TrailItem[]>([]);
+const lastMoveTime = ref(Date.now());
+const idCounter = ref(0);
 
-let removalIntervalId: number | null = null
+let removalIntervalId: number | null = null;
 
 const handleMouseMove = (e: MouseEvent) => {
-  if (!containerRef.value) return
-  
-  const rect = containerRef.value.getBoundingClientRect()
-  const mouseX = e.clientX - rect.left
-  const mouseY = e.clientY - rect.top
+  if (!containerRef.value) return;
 
-  let newTrail = [...trail.value]
-  
+  const rect = containerRef.value.getBoundingClientRect();
+  const mouseX = e.clientX - rect.left;
+  const mouseY = e.clientY - rect.top;
+
+  let newTrail = [...trail.value];
+
   if (newTrail.length === 0) {
     newTrail.push({
       id: idCounter.value++,
@@ -61,24 +61,24 @@ const handleMouseMove = (e: MouseEvent) => {
         randomY: Math.random() * 10 - 5,
         randomRotate: Math.random() * 10 - 5
       })
-    })
+    });
   } else {
-    const last = newTrail[newTrail.length - 1]
-    const dx = mouseX - last.x
-    const dy = mouseY - last.y
-    const distance = Math.sqrt(dx * dx + dy * dy)
-    
+    const last = newTrail[newTrail.length - 1];
+    const dx = mouseX - last.x;
+    const dy = mouseY - last.y;
+    const distance = Math.sqrt(dx * dx + dy * dy);
+
     if (distance >= props.spacing) {
-      let rawAngle = (Math.atan2(dy, dx) * 180) / Math.PI
-      if (rawAngle > 90) rawAngle -= 180
-      else if (rawAngle < -90) rawAngle += 180
-      const computedAngle = props.followMouseDirection ? rawAngle : 0
-      const steps = Math.floor(distance / props.spacing)
-      
+      let rawAngle = (Math.atan2(dy, dx) * 180) / Math.PI;
+      if (rawAngle > 90) rawAngle -= 180;
+      else if (rawAngle < -90) rawAngle += 180;
+      const computedAngle = props.followMouseDirection ? rawAngle : 0;
+      const steps = Math.floor(distance / props.spacing);
+
       for (let i = 1; i <= steps; i++) {
-        const t = (props.spacing * i) / distance
-        const newX = last.x + dx * t
-        const newY = last.y + dy * t
+        const t = (props.spacing * i) / distance;
+        const newX = last.x + dx * t;
+        const newY = last.y + dy * t;
         newTrail.push({
           id: idCounter.value++,
           x: newX,
@@ -89,48 +89,48 @@ const handleMouseMove = (e: MouseEvent) => {
             randomY: Math.random() * 10 - 5,
             randomRotate: Math.random() * 10 - 5
           })
-        })
+        });
       }
     }
   }
-  
+
   if (newTrail.length > props.maxPoints) {
-    newTrail = newTrail.slice(newTrail.length - props.maxPoints)
+    newTrail = newTrail.slice(newTrail.length - props.maxPoints);
   }
-  
-  trail.value = newTrail
-  lastMoveTime.value = Date.now()
-}
+
+  trail.value = newTrail;
+  lastMoveTime.value = Date.now();
+};
 
 const startRemovalInterval = () => {
   if (removalIntervalId) {
-    clearInterval(removalIntervalId)
+    clearInterval(removalIntervalId);
   }
-  
+
   removalIntervalId = setInterval(() => {
     if (Date.now() - lastMoveTime.value > 100) {
       if (trail.value.length > 0) {
-        trail.value = trail.value.slice(1)
+        trail.value = trail.value.slice(1);
       }
     }
-  }, props.removalInterval)
-}
+  }, props.removalInterval);
+};
 
 onMounted(() => {
   if (containerRef.value) {
-    containerRef.value.addEventListener('mousemove', handleMouseMove)
-    startRemovalInterval()
+    containerRef.value.addEventListener('mousemove', handleMouseMove);
+    startRemovalInterval();
   }
-})
+});
 
 onUnmounted(() => {
   if (containerRef.value) {
-    containerRef.value.removeEventListener('mousemove', handleMouseMove)
+    containerRef.value.removeEventListener('mousemove', handleMouseMove);
   }
   if (removalIntervalId) {
-    clearInterval(removalIntervalId)
+    clearInterval(removalIntervalId);
   }
-})
+});
 </script>
 
 <template>
@@ -140,16 +140,14 @@ onUnmounted(() => {
         v-for="item in trail"
         :key="item.id"
         :initial="{ opacity: 0, scale: 1, rotate: item.angle }"
-        :animate="{ 
-          opacity: 1, 
+        :animate="{
+          opacity: 1,
           scale: 1,
           x: props.randomFloat ? [0, item.randomX || 0, 0] : 0,
           y: props.randomFloat ? [0, item.randomY || 0, 0] : 0,
-          rotate: props.randomFloat 
-            ? [item.angle, item.angle + (item.randomRotate || 0), item.angle]
-            : item.angle
+          rotate: props.randomFloat ? [item.angle, item.angle + (item.randomRotate || 0), item.angle] : item.angle
         }"
-        :transition="{ 
+        :transition="{
           duration: props.randomFloat ? 2 : props.exitDuration,
           repeat: props.randomFloat ? Infinity : 0,
           repeatType: props.randomFloat ? 'mirror' : 'loop'

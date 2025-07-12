@@ -7,22 +7,12 @@
 
       <div class="nav-cta-group">
         <nav class="landing-nav-items" ref="navRef">
-          <router-link 
-            class="nav-link" 
-            :class="{ 'active-link': activeItem === 'home' }" 
-            to="/"
-          >
-            Home
-          </router-link>
-          <router-link class="nav-link" to="/text-animations/split-text">
-            Docs
-          </router-link>
+          <router-link class="nav-link" :class="{ 'active-link': activeItem === 'home' }" to="/">Home</router-link>
+
+          <router-link class="nav-link" to="/text-animations/split-text">Docs</router-link>
         </nav>
 
-        <button 
-          class="cta-button" 
-          @click="openGitHub"
-        >
+        <button class="cta-button" @click="openGitHub">
           Star On GitHub
           <span ref="starCountRef" :style="{ opacity: 0 }">
             <img :src="starIcon" alt="Star Icon" />
@@ -35,43 +25,48 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from 'vue'
-import { gsap } from 'gsap'
-import VueBitsLogo from '@/components/common/Logo.vue'
-import { useStars } from '@/composables/useStars'
-import starIcon from '@/assets/common/star.svg'
-import './DisplayHeader.css'
+import { ref, watch } from 'vue';
+import { gsap } from 'gsap';
+import VueBitsLogo from '@/components/common/Logo.vue';
+import { useStars } from '@/composables/useStars';
+import starIcon from '@/assets/common/star.svg';
+import './DisplayHeader.css';
 
 interface Props {
   activeItem?: string | null;
 }
 
-defineProps<Props>()
+defineProps<Props>();
 
-const navRef = ref<HTMLElement | null>(null)
-const starCountRef = ref<HTMLElement | null>(null)
-const stars = useStars()
+const navRef = ref<HTMLElement | null>(null);
+const starCountRef = ref<HTMLElement | null>(null);
+const stars = useStars();
 
 const openGitHub = () => {
-  window.open('https://github.com/DavidHDev/vue-bits', '_blank')
-}
+  window.open('https://github.com/DavidHDev/vue-bits', '_blank');
+};
 
-watch(stars, (newStars) => {
-  if (newStars && starCountRef.value) {
-    gsap.fromTo(starCountRef.value,
-      {
-        scale: 0,
-        width: 0,
-        opacity: 0
-      },
-      {
-        scale: 1,
-        width: "100px",
-        opacity: 1,
-        duration: 0.8,
-        ease: "back.out(1)"
-      }
-    )
-  }
-}, { immediate: true })
+watch(
+  stars,
+  newStars => {
+    if (newStars && starCountRef.value) {
+      gsap.fromTo(
+        starCountRef.value,
+        {
+          scale: 0,
+          width: 0,
+          opacity: 0
+        },
+        {
+          scale: 1,
+          width: '100px',
+          opacity: 1,
+          duration: 0.8,
+          ease: 'back.out(1)'
+        }
+      );
+    }
+  },
+  { immediate: true }
+);
 </script>

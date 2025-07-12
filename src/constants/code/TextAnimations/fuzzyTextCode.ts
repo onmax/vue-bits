@@ -1,5 +1,5 @@
-import code from '@content/TextAnimations/FuzzyText/FuzzyText.vue?raw'
-import type { CodeObject } from '../../../types/code'
+import code from '@content/TextAnimations/FuzzyText/FuzzyText.vue?raw';
+import type { CodeObject } from '../../../types/code';
 
 export const fuzzyText: CodeObject = {
   cli: `npx jsrepo add https://vue-bits.dev/ui/TextAnimations/FuzzyText`,
@@ -19,4 +19,4 @@ export const fuzzyText: CodeObject = {
   import FuzzyText from "./FuzzyText.vue";
 </script>`,
   code
-}
+};

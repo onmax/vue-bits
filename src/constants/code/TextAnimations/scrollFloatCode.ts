@@ -1,5 +1,5 @@
-import code from '@content/TextAnimations/ScrollFloat/ScrollFloat.vue?raw'
-import type { CodeObject } from '../../../types/code'
+import code from '@content/TextAnimations/ScrollFloat/ScrollFloat.vue?raw';
+import type { CodeObject } from '../../../types/code';
 
 export const scrollFloatCode: CodeObject = {
   cli: `npx jsrepo add https://vue-bits.dev/ui/TextAnimations/ScrollFloat`,
@@ -22,4 +22,4 @@ export const scrollFloatCode: CodeObject = {
   import ScrollFloat from "./ScrollFloat.vue";
 </script>`,
   code
-}
+};

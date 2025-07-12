@@ -2,7 +2,7 @@
   <div class="tilted-card-demo">
     <TabbedLayout>
       <template #preview>
-        <div class="demo-container" style="min-height: 500px; position: relative; overflow: hidden;">
+        <div class="demo-container" style="min-height: 500px; position: relative; overflow: hidden">
           <TiltedCard
             image-src="https://i.scdn.co/image/ab67616d0000b273d9985092cd88bffd97653b58"
             alt-text="Kendrick Lamar - GNX Album Cover"
@@ -19,42 +19,23 @@
             :overlay-content="displayOverlayContent"
           >
             <template #overlay>
-              <p class="tilted-card-demo-text">
-                Kendrick Lamar - GNX
-              </p>
+              <p class="tilted-card-demo-text">Kendrick Lamar - GNX</p>
             </template>
           </TiltedCard>
         </div>
 
         <Customize>
-          <PreviewSlider
-            title="Rotate Amplitude"
-            v-model="rotateAmplitude"
-            :min="0"
-            :max="30"
-            :step="1"
-          />
+          <PreviewSlider title="Rotate Amplitude" v-model="rotateAmplitude" :min="0" :max="30" :step="1" />
 
-          <PreviewSlider
-            title="Scale on Hover"
-            v-model="scaleOnHover"
-            :min="1"
-            :max="1.5"
-            :step="0.05"
-          />
+          <PreviewSlider title="Scale on Hover" v-model="scaleOnHover" :min="1" :max="1.5" :step="0.05" />
 
-          <PreviewSwitch
-            title="Show Tooltip"
-            v-model="showTooltip"
-          />
+          <PreviewSwitch title="Show Tooltip" v-model="showTooltip" />
 
-          <PreviewSwitch
-            title="Show Overlay Content"
-            v-model="displayOverlayContent"
-          />
+          <PreviewSwitch title="Show Overlay Content" v-model="displayOverlayContent" />
         </Customize>
 
         <PropTable :data="propData" />
+
         <Dependencies :dependency-list="['motion-v']" />
       </template>
 
@@ -70,22 +51,22 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import TabbedLayout from '../../components/common/TabbedLayout.vue'
-import PropTable from '../../components/common/PropTable.vue'
-import Dependencies from '../../components/code/Dependencies.vue'
-import CliInstallation from '../../components/code/CliInstallation.vue'
-import CodeExample from '../../components/code/CodeExample.vue'
-import Customize from '../../components/common/Customize.vue'
-import PreviewSwitch from '../../components/common/PreviewSwitch.vue'
-import PreviewSlider from '../../components/common/PreviewSlider.vue'
-import TiltedCard from '../../content/Components/TiltedCard/TiltedCard.vue'
-import { tiltedCard } from '@/constants/code/Components/tiltedCardCode'
+import { ref } from 'vue';
+import TabbedLayout from '../../components/common/TabbedLayout.vue';
+import PropTable from '../../components/common/PropTable.vue';
+import Dependencies from '../../components/code/Dependencies.vue';
+import CliInstallation from '../../components/code/CliInstallation.vue';
+import CodeExample from '../../components/code/CodeExample.vue';
+import Customize from '../../components/common/Customize.vue';
+import PreviewSwitch from '../../components/common/PreviewSwitch.vue';
+import PreviewSlider from '../../components/common/PreviewSlider.vue';
+import TiltedCard from '../../content/Components/TiltedCard/TiltedCard.vue';
+import { tiltedCard } from '@/constants/code/Components/tiltedCardCode';
 
-const rotateAmplitude = ref(12)
-const scaleOnHover = ref(1.05)
-const showTooltip = ref(true)
-const displayOverlayContent = ref(true)
+const rotateAmplitude = ref(12);
+const scaleOnHover = ref(1.05);
+const showTooltip = ref(true);
+const displayOverlayContent = ref(true);
 
 const propData = [
   {
@@ -166,7 +147,7 @@ const propData = [
     default: 'false',
     description: 'Whether to show overlay content (use overlay slot for content).'
   }
-]
+];
 </script>
 
 <style scoped>
