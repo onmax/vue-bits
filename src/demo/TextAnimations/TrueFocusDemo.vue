@@ -3,7 +3,6 @@
     <TabbedLayout>
       <template #preview>
         <div class="relative py-6 overflow-hidden demo-container" style="min-height: 200px">
-          <RefreshButton @click="forceRerender" />
           <div :key="key" class="flex flex-col justify-center items-center m-8 pl-6 w-full">
             <TrueFocus v-bind="config" />
           </div>
@@ -77,7 +76,6 @@ import Customize from "../../components/common/Customize.vue";
 import PreviewColor from "../../components/common/PreviewColor.vue";
 import PreviewSlider from "../../components/common/PreviewSlider.vue";
 import PreviewSwitch from "../../components/common/PreviewSwitch.vue";
-import RefreshButton from "../../components/common/RefreshButton.vue";
 import TrueFocus from "../../content/TextAnimations/TrueFocus/TrueFocus.vue";
 import { trueFocus } from "../../constants/code/TextAnimations/trueFocusCode";
 import { useForceRerender } from "@/composables/useForceRerender";
@@ -88,7 +86,7 @@ const manualMode = ref(false);
 const blurAmount = ref(5);
 const animationDuration = ref(0.5);
 const pauseBetweenAnimations = ref(1);
-const borderColor = ref("#5227FF");
+const borderColor = ref("#27FF64");
 
 const config = computed(() => ({
   sentence: "True Focus",
@@ -144,15 +142,3 @@ const propData = [
   },
 ];
 </script>
-
-<style scoped>
-.truefocus-demo {
-  width: 100%;
-}
-
-.demo-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-</style>

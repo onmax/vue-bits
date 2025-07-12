@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { ref, onUnmounted, watch, nextTick, computed } from "vue";
+import { motion } from "motion-v";
+import { computed, nextTick, onMounted, onUnmounted, ref, watch } from "vue";
 
 interface TrueFocusProps {
   sentence?: string;
@@ -56,7 +57,7 @@ watch(
 );
 
 watch(
-  [currentIndex, words],
+  [currentIndex, words.value.length],
   async () => {
     if (currentIndex.value === null || currentIndex.value === -1) return;
     if (!wordRefs.value[currentIndex.value] || !containerRef.value) return;
@@ -95,6 +96,22 @@ const setWordRef = (el: HTMLSpanElement | null, index: number) => {
   }
 };
 
+onMounted(async () => {
+  await nextTick();
+  
+  if (wordRefs.value[0] && containerRef.value) {
+    const parentRect = containerRef.value.getBoundingClientRect();
+    const activeRect = wordRefs.value[0].getBoundingClientRect();
+
+    focusRect.value = {
+      x: activeRect.left - parentRect.left,
+      y: activeRect.top - parentRect.top,
+      width: activeRect.width,
+      height: activeRect.height,
+    };
+  }
+});
+
 onUnmounted(() => {
   if (interval) {
     clearInterval(interval);
@@ -103,16 +120,12 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="focus-container" ref="containerRef">
+  <div class="relative flex flex-wrap justify-center items-center gap-[1em]" ref="containerRef">
     <span
       v-for="(word, index) in words"
       :key="index"
       :ref="(el) => setWordRef(el as HTMLSpanElement, index)"
-      :class="[
-        'focus-word',
-        { manual: manualMode },
-        { active: index === currentIndex && !manualMode },
-      ]"
+      class="relative font-black text-5xl transition-[filter,color] duration-300 ease-in-out cursor-pointer"
       :style="{
         filter: index === currentIndex ? 'blur(0px)' : `blur(${blurAmount}px)`,
         '--border-color': borderColor,
@@ -125,94 +138,27 @@ onUnmounted(() => {
       {{ word }}
     </span>
 
-    <div
-      class="focus-frame"
+    <motion.div
+      class="top-0 left-0 box-content absolute border-none pointer-events-none"
+      :animate="{
+        x: focusRect.x,
+        y: focusRect.y,
+        width: focusRect.width,
+        height: focusRect.height,
+        opacity: currentIndex >= 0 ? 1 : 0,
+      }"
+      :transition="{
+        duration: animationDuration,
+      }"
       :style="{
         '--border-color': borderColor,
         '--glow-color': glowColor,
-        transform: `translate(${focusRect.x}px, ${focusRect.y}px)`,
-        width: `${focusRect.width}px`,
-        height: `${focusRect.height}px`,
-        opacity: currentIndex >= 0 ? 1 : 0,
-        transition: `all ${animationDuration}s ease`,
       }"
     >
-      <span class="top-left corner"></span>
-      <span class="top-right corner"></span>
-      <span class="bottom-left corner"></span>
-      <span class="bottom-right corner"></span>
-    </div>
+      <span class="top-[-10px] left-[-10px] absolute [filter:drop-shadow(0_0_4px_var(--border-color,#fff))] border-[3px] border-[var(--border-color,#fff)] border-r-0 border-b-0 rounded-[3px] w-4 h-4 transition-none"></span>
+      <span class="top-[-10px] right-[-10px] absolute [filter:drop-shadow(0_0_4px_var(--border-color,#fff))] border-[3px] border-[var(--border-color,#fff)] border-b-0 border-l-0 rounded-[3px] w-4 h-4 transition-none"></span>
+      <span class="bottom-[-10px] left-[-10px] absolute [filter:drop-shadow(0_0_4px_var(--border-color,#fff))] border-[3px] border-[var(--border-color,#fff)] border-t-0 border-r-0 rounded-[3px] w-4 h-4 transition-none"></span>
+      <span class="right-[-10px] bottom-[-10px] absolute [filter:drop-shadow(0_0_4px_var(--border-color,#fff))] border-[3px] border-[var(--border-color,#fff)] border-t-0 border-l-0 rounded-[3px] w-4 h-4 transition-none"></span>
+    </motion.div>
   </div>
 </template>
-
-<style scoped>
-.focus-container {
-  position: relative;
-  display: flex;
-  gap: 1em;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.focus-word {
-  position: relative;
-  font-size: 3rem;
-  font-weight: 900;
-  cursor: pointer;
-  transition:
-    filter 0.3s ease,
-    color 0.3s ease;
-}
-
-.focus-word.active {
-  filter: blur(0);
-}
-
-.focus-frame {
-  position: absolute;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  box-sizing: content-box;
-  border: none;
-}
-
-.corner {
-  position: absolute;
-  width: 1rem;
-  height: 1rem;
-  border: 3px solid var(--border-color, #fff);
-  filter: drop-shadow(0px 0px 4px var(--border-color, #fff));
-  border-radius: 3px;
-  transition: none;
-}
-
-.top-left {
-  top: -10px;
-  left: -10px;
-  border-right: none;
-  border-bottom: none;
-}
-
-.top-right {
-  top: -10px;
-  right: -10px;
-  border-left: none;
-  border-bottom: none;
-}
-
-.bottom-left {
-  bottom: -10px;
-  left: -10px;
-  border-right: none;
-  border-top: none;
-}
-
-.bottom-right {
-  bottom: -10px;
-  right: -10px;
-  border-left: none;
-  border-top: none;
-}
-</style>

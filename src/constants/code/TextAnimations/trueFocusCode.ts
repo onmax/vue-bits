@@ -7,11 +7,11 @@ export const trueFocus: CodeObject = {
   usage: `<template>
   <TrueFocus
     sentence="True Focus"
-    manualMode="false"
-    blurAmount="5"
+    :manualMode="false"
+    :blurAmount="5"
     borderColor="red"
-    animationDuration="2"
-    pauseBetweenAnimations="1"
+    :animationDuration="2"
+    :pauseBetweenAnimations="1"
   />
 </template>
 
