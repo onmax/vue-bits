@@ -25,8 +25,9 @@ const textAnimations = {
   'decrypted-text': () => import("../demo/TextAnimations/DecryptedTextDemo.vue"),
   'true-focus': () => import("../demo/TextAnimations/TrueFocusDemo.vue"),
   'scroll-float': () => import("../demo/TextAnimations/ScrollFloatDemo.vue"),
+  'scroll-reveal': ()=> import("../demo/TextAnimations/ScrollRevealDemo.vue"),
 };
-
+ 
 const components = {
   'masonry': () => import("../demo/Components/MasonryDemo.vue"),
   'profile-card': () => import("../demo/Components/ProfileCardDemo.vue"),
