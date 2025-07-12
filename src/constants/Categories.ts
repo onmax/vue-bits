@@ -22,7 +22,8 @@ export const CATEGORIES = [
       'True Focus',
       'Scroll Float',
       'Scroll Reveal',
-      'Rotating Text'
+      'Rotating Text',
+      'Glitch Text'
     ]
   },
   {
