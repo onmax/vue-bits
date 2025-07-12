@@ -8,6 +8,7 @@ const animations = {
   'magnet': () => import("../demo/Animations/MagnetDemo.vue"),
   'cubes': () => import("../demo/Animations/CubesDemo.vue"),
   'count-up': () => import("../demo/Animations/CountUpDemo.vue"),
+  'image-trail': () => import("../demo/Animations/ImageTrailDemo.vue"),
 };
 
 const textAnimations = {
