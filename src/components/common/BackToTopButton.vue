@@ -1,30 +1,12 @@
 <template>
-  <Button
-    :style="{
-      fontWeight: 500,
-      borderRadius: '0.75rem',
-      border: '1px solid #142216',
-      padding: '1rem',
-      position: 'fixed',
-      right: '2.3em',
-      zIndex: 98,
-      boxShadow: '10px 0 25px rgba(0, 0, 0, 0.2)',
-      transition: '0.3s ease',
-      opacity: visible ? 1 : 0,
-      bottom: visible ? '2.5em' : '1em',
-      cursor: visible ? 'pointer' : 'default'
-    }"
-    class="back-to-top"
-    @click="visible && scrollToTop()"
-  >
+  <button :class="['back-to-top', { visible }]" @click="visible && scrollToTop()">
     <i class="pi pi-arrow-up" style="color: #fff; font-size: 1rem"></i>
-  </Button>
+  </button>
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue';
 import { useToast } from 'primevue/usetoast';
-import Button from 'primevue/button';
 
 const toast = useToast();
 const visible = ref(false);

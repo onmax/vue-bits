@@ -8,21 +8,17 @@ import { createApp } from 'vue';
 import App from './App.vue';
 import router from './router';
 
-import PrimeVue from 'primevue/config';
-import Aura from '@primeuix/themes/aura';
-import Button from 'primevue/button';
-import Toast from 'primevue/toast';
-import Select from 'primevue/select';
 import ToastService from 'primevue/toastservice';
+import Aura from '@primeuix/themes/aura';
+import PrimeVue from 'primevue/config';
+import Button from 'primevue/button';
+import Select from 'primevue/select';
+import Toast from 'primevue/toast';
 
 const app = createApp(App);
 
 app.use(router);
-app.use(PrimeVue, {
-  theme: {
-    preset: Aura
-  }
-});
+app.use(PrimeVue, { theme: { preset: Aura } });
 app.use(ToastService);
 
 app.component('Button', Button);

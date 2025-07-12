@@ -32,3 +32,27 @@ export const decodeLabel = (label: string): string => {
     .map(word => word.charAt(0).toUpperCase() + word.slice(1))
     .join(' ');
 };
+
+/**
+ * Custom styles for PrimeVue Toast component
+ */
+export const customToastStyles = {
+  message: {
+    style: {
+      borderRadius: '10px',
+      border: '1px solid #142216',
+      backgroundColor: '#0b0b0b'
+    }
+  },
+  messageContent: {
+    style: {
+      alignItems: 'center'
+    }
+  },
+  messageIcon: {
+    style: {
+      display: 'none'
+    }
+  },
+  customToastCloseButton: { style: { right: '0', margin: '0', outline: 'none', border: 'none' } }
+};

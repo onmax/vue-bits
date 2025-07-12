@@ -66,28 +66,6 @@ import ContributionSection from './ContributionSection.vue';
 </script>
 
 <style scoped>
-.tabbed-layout {
-  width: 100%;
-}
-
-.tab-header {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  border: 1px solid #142216;
-  border-radius: 10px;
-  font-size: 14px;
-  height: 36px;
-  color: #ffffff;
-  background: transparent;
-  transition: all 0.3s ease;
-}
-
-.tab-header:hover {
-  background: #142216;
-}
-
 :deep(.p-tablist),
 :deep(.p-tablist-tab-list) {
   display: flex;

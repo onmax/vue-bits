@@ -212,6 +212,106 @@ div:has(> .props-table) {
   background-color: #222;
 }
 
+.tabbed-layout {
+  width: 100%;
+}
+
+.tab-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid #142216;
+  border-radius: 10px;
+  font-size: 14px;
+  height: 36px;
+  color: #ffffff;
+  background: transparent;
+  transition: all 0.3s ease;
+}
+
+.tab-header:hover {
+  background: #142216;
+}
+
+.code-example {
+  margin: 1.2rem 0;
+}
+
+.code-section {
+  margin-bottom: 2rem;
+}
+
+.code-container {
+  position: relative;
+  margin-bottom: 1.2rem;
+}
+
+.code-wrapper {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #142216;
+  border-radius: 15px;
+}
+
+.code-wrapper.collapsed {
+  max-height: 600px;
+}
+
+.code-block {
+  overflow: hidden;
+  border: none;
+  border-radius: 15px;
+}
+
+.fade-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60%;
+  background: linear-gradient(to bottom, transparent, #0b0b0b);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.expand-button {
+  position: absolute;
+  bottom: 0.75rem;
+  right: 0.75rem;
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
+  height: 2.5rem;
+  font-size: 14px;
+  font-weight: 500;
+  background-color: #0b0b0b;
+  border: 1px solid #142216;
+  color: white;
+  cursor: pointer;
+  z-index: 2;
+  transition: background-color 0.3s ease;
+}
+
+.expand-button:hover {
+  background-color: #111;
+}
+
+.expand-button:active {
+  background-color: #111;
+}
+
+.no-code {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #a1a1aa;
+  font-style: italic;
+  padding: 2rem;
+  background: #0b0b0b;
+  border: 1px solid #142216;
+  border-radius: 15px;
+}
+
 .demo-title {
   font-weight: 900;
   font-size: 1.6rem;

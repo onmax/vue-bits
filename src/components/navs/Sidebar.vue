@@ -1,6 +1,4 @@
 <template>
-  <!-- Mobile Drawer -->
-
   <div v-if="isDrawerOpen" class="drawer-overlay" @click="closeDrawer">
     <div class="drawer-content" :class="{ 'drawer-open': isDrawerOpen }" @click.stop>
       <div class="drawer-header sidebar-logo">
@@ -60,8 +58,6 @@
     </div>
   </div>
 
-  <!-- Desktop Sidebar -->
-
   <nav
     ref="sidebarContainerRef"
     class="sidebar"
@@ -69,8 +65,6 @@
     @scroll="handleScroll"
   >
     <div ref="sidebarRef" class="sidebar-content">
-      <!-- Active line indicator -->
-
       <div
         class="active-line"
         :style="{
@@ -79,8 +73,6 @@
           opacity: isLineVisible ? 1 : 0
         }"
       ></div>
-
-      <!-- Hover line indicator -->
 
       <div
         class="hover-line"

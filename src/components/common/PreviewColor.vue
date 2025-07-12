@@ -1,7 +1,6 @@
 <template>
   <div class="preview-color">
     <span class="color-label">{{ title }}</span>
-
     <input :value="modelValue" @input="handleColorChange" type="color" :disabled="disabled" class="color-input" />
   </div>
 </template>

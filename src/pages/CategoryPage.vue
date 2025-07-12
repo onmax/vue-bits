@@ -24,7 +24,6 @@ import { useRoute } from 'vue-router';
 import { componentMap } from '../constants/Components';
 import { decodeLabel } from '../utils/utils';
 import BackToTopButton from '@/components/common/BackToTopButton.vue';
-import '../css/category.css';
 
 const route = useRoute();
 const scrollRef = ref<HTMLDivElement | null>(null);
@@ -48,9 +47,9 @@ const SubcategoryComponent = computed(() => {
 
 watch(
   decodedLabel,
-  newLabel => {
-    if (newLabel) {
-      document.title = `Vue Bits - ${newLabel}`;
+  label => {
+    if (label) {
+      document.title = `Vue Bits - ${label}`;
     }
   },
   { immediate: true }

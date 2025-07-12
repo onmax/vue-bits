@@ -13,12 +13,10 @@ import DisplayHeader from '@/components/landing/DisplayHeader/DisplayHeader.vue'
 
 const route = useRoute();
 
+const isCategoryPage = computed(() => /^\/[^/]+\/[^/]+$/.test(route.path));
+
 const activeItem = computed(() => {
   if (route.path === '/') return 'home';
   return null;
-});
-
-const isCategoryPage = computed(() => {
-  return /^\/[^/]+\/[^/]+$/.test(route.path);
 });
 </script>

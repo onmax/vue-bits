@@ -25,8 +25,28 @@ body {
 }
 
 .back-to-top {
-  background: #0b0b0b !important;
+  background: #0b0b0b;
+  aspect-ratio: 1;
+  font-weight: 500;
+  border-radius: 0.75rem;
   border: 1px solid #142216;
+  width: 50px;
+  position: fixed;
+  right: 2.3em;
+  z-index: 98;
+  box-shadow: 10px 0 25px rgba(0, 0, 0, 0.2);
+  transition:
+    opacity 0.3s ease,
+    bottom 0.3s ease;
+  opacity: 0;
+  bottom: 1em;
+  cursor: default;
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  bottom: 2.5em;
+  cursor: pointer;
 }
 
 @media (max-width: 640px) {

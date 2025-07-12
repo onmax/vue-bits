@@ -5,7 +5,6 @@
     <div class="contribute-buttons">
       <a :href="bugReportUrl" target="_blank" rel="noreferrer" class="contribute-button">
         <i class="pi pi-exclamation-triangle"></i>
-
         <span>Report an issue</span>
       </a>
 
@@ -13,7 +12,6 @@
 
       <a :href="featureRequestUrl" target="_blank" rel="noreferrer" class="contribute-button">
         <i class="pi pi-lightbulb"></i>
-
         <span>Request a feature</span>
       </a>
     </div>

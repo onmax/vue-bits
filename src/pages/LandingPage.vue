@@ -10,13 +10,9 @@
     </div>
 
     <PlasmaWave :y-offset="-300" :x-offset="100" :rotation-deg="-30" />
-
     <Hero />
-
     <FeatureCards />
-
     <StartBuilding />
-
     <Footer />
   </section>
 </template>

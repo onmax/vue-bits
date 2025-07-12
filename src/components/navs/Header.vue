@@ -35,8 +35,6 @@
         </div>
 
         <div class="drawer-body">
-          <!-- Navigation Categories -->
-
           <div class="drawer-navigation">
             <div class="categories-container">
               <Category
