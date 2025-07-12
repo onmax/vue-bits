@@ -69,6 +69,7 @@ export const CATEGORIES = [
       'Squares',
       'Iridescence',
       'Threads',
+      'Grid Motion'
     ],
   }
 ];

@@ -55,6 +55,7 @@ const backgrounds = {
   'threads': () => import("../demo/Backgrounds/ThreadsDemo.vue"),
   'aurora': () => import("../demo/Backgrounds/AuroraDemo.vue"),
   'beams': () => import("../demo/Backgrounds/BeamsDemo.vue"),
+  'grid-motion': () => import("../demo/Backgrounds/GridMotionDemo.vue"),
 };
 
 export const componentMap = {
