@@ -1,5 +1,5 @@
 // Highlighted sidebar items
-export const NEW = [];
+export const NEW = ['Pixel Trail'];
 export const UPDATED = [];
 
 // Used for main sidebar navigation
@@ -27,6 +27,7 @@ export const CATEGORIES = [
       'Animated Content',
       'Fade Content',
       'Pixel Transition',
+      'Pixel Trail',
       'Glare Hover',
       'Magnet Lines',
       'Count Up',
