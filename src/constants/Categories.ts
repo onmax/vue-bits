@@ -20,6 +20,7 @@ export const CATEGORIES = [
       'Text Cursor',
       'Decrypted Text',
       'Ascii Text',
+      'Scramble Text',
       'True Focus',
       'Scroll Float',
       'Scroll Reveal',
