@@ -19,6 +19,7 @@ export const CATEGORIES = [
       'Falling Text',
       'Text Cursor',
       'Decrypted Text',
+      'Ascii Text',
     ]
   },
   {
