@@ -24,6 +24,7 @@ const textAnimations = {
   'text-cursor': () => import("../demo/TextAnimations/TextCursorDemo.vue"),
   'decrypted-text': () => import("../demo/TextAnimations/DecryptedTextDemo.vue"),
   'true-focus': () => import("../demo/TextAnimations/TrueFocusDemo.vue"),
+  'scroll-float': () => import("../demo/TextAnimations/ScrollFloatDemo.vue"),
 };
 
 const components = {
@@ -55,6 +56,7 @@ const backgrounds = {
   'iridescence': () => import("../demo/Backgrounds/IridescenceDemo.vue"),
   'threads': () => import("../demo/Backgrounds/ThreadsDemo.vue"),
   'aurora': () => import("../demo/Backgrounds/AuroraDemo.vue"),
+  'beams': () => import("../demo/Backgrounds/BeamsDemo.vue"),
 };
 
 export const componentMap = {

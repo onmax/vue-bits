@@ -19,7 +19,8 @@ export const CATEGORIES = [
       'Falling Text',
       'Text Cursor',
       'Decrypted Text',
-      'True Focus'
+      'True Focus',
+      'Scroll Float',
     ]
   },
   {
@@ -60,6 +61,7 @@ export const CATEGORIES = [
     name: 'Backgrounds',
     subcategories: [
       'Aurora',
+      'Beams',
       'Dot Grid',
       'Silk',
       'Lightning',
