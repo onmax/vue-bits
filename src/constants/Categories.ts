@@ -19,6 +19,7 @@ export const CATEGORIES = [
       'Falling Text',
       'Text Cursor',
       'Decrypted Text',
+      'Scramble Text',
       'True Focus',
       'Scroll Float',
       'Scroll Reveal',
