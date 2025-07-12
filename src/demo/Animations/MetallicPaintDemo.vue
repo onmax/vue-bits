@@ -89,53 +89,55 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
-import TabbedLayout from '../../components/common/TabbedLayout.vue'
-import PropTable from '../../components/common/PropTable.vue'
-import CliInstallation from '../../components/code/CliInstallation.vue'
-import CodeExample from '../../components/code/CodeExample.vue'
-import Customize from '../../components/common/Customize.vue'
-import PreviewSlider from '../../components/common/PreviewSlider.vue'
-import MetallicPaint from '../../content/Animations/MetallicPaint/MetallicPaint.vue'
-import { metallicPaint } from '@/constants/code/Animations/metallicPaintCode'
-import { parseImage } from '../../content/Animations/MetallicPaint/parseImage'
-import { useForceRerender } from '@/composables/useForceRerender'
-import logo from '@/assets/logos/vue-bits-logo-small-dark.svg'
+import { ref, onMounted } from 'vue';
+import TabbedLayout from '../../components/common/TabbedLayout.vue';
+import PropTable from '../../components/common/PropTable.vue';
+import CliInstallation from '../../components/code/CliInstallation.vue';
+import CodeExample from '../../components/code/CodeExample.vue';
+import Customize from '../../components/common/Customize.vue';
+import PreviewSlider from '../../components/common/PreviewSlider.vue';
+import MetallicPaint from '../../content/Animations/MetallicPaint/MetallicPaint.vue';
+import { metallicPaint } from '@/constants/code/Animations/metallicPaintCode';
+import { parseImage } from '../../content/Animations/MetallicPaint/parseImage';
+import { useForceRerender } from '@/composables/useForceRerender';
+import logo from '@/assets/logos/vue-bits-logo-small-dark.svg';
 
-const imageData = ref<ImageData | null>(null)
-const edge = ref(0)
-const patternScale = ref(2)
-const refraction = ref(0.015)
-const patternBlur = ref(0.005)
-const liquid = ref(0.07)
-const speed = ref(0.3)
+const imageData = ref<ImageData | null>(null);
+const edge = ref(0);
+const patternScale = ref(2);
+const refraction = ref(0.015);
+const patternBlur = ref(0.005);
+const liquid = ref(0.07);
+const speed = ref(0.3);
 
-const { rerenderKey, forceRerender } = useForceRerender()
+const { rerenderKey, forceRerender } = useForceRerender();
 
 const propData = [
   {
     name: 'imageData',
     type: 'ImageData',
     default: 'none (required)',
-    description: 'The processed image data generated from the parseImage utility. This image data is used by the shader to create the liquid paper effect.'
+    description:
+      'The processed image data generated from the parseImage utility. This image data is used by the shader to create the liquid paper effect.'
   },
   {
     name: 'params',
     type: 'ShaderParams',
     default: '',
-    description: 'An object to configure the shader effect. Properties include: patternScale, refraction, edge, patternBlur, liquid, speed'
+    description:
+      'An object to configure the shader effect. Properties include: patternScale, refraction, edge, patternBlur, liquid, speed'
   }
-]
+];
 
 onMounted(async () => {
   try {
-    const response = await fetch(logo)
-    const blob = await response.blob()
-    const file = new File([blob], 'default.png', { type: blob.type })
-    const { imageData: processedImageData } = await parseImage(file)
-    imageData.value = processedImageData
+    const response = await fetch(logo);
+    const blob = await response.blob();
+    const file = new File([blob], 'default.png', { type: blob.type });
+    const { imageData: processedImageData } = await parseImage(file);
+    imageData.value = processedImageData;
   } catch (err) {
-    console.error('Error loading default image:', err)
+    console.error('Error loading default image:', err);
   }
-})
+});
 </script>

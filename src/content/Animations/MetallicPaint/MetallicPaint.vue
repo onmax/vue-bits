@@ -3,20 +3,20 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, watch, nextTick } from 'vue'
+import { ref, onMounted, onUnmounted, watch, nextTick } from 'vue';
 
 interface ShaderParams {
-  patternScale: number
-  refraction: number
-  edge: number
-  patternBlur: number
-  liquid: number
-  speed: number
+  patternScale: number;
+  refraction: number;
+  edge: number;
+  patternBlur: number;
+  liquid: number;
+  speed: number;
 }
 
 interface Props {
-  imageData: ImageData
-  params?: ShaderParams
+  imageData: ImageData;
+  params?: ShaderParams;
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -28,14 +28,14 @@ const props = withDefaults(defineProps<Props>(), {
     liquid: 0.07,
     speed: 0.3
   })
-})
+});
 
-const canvasRef = ref<HTMLCanvasElement | null>(null)
-const gl = ref<WebGL2RenderingContext | null>(null)
-const uniforms = ref<Record<string, WebGLUniformLocation>>({})
-const totalAnimationTime = ref(0)
-const lastRenderTime = ref(0)
-const animationId = ref<number>()
+const canvasRef = ref<HTMLCanvasElement | null>(null);
+const gl = ref<WebGL2RenderingContext | null>(null);
+const uniforms = ref<Record<string, WebGLUniformLocation>>({});
+const totalAnimationTime = ref(0);
+const lastRenderTime = ref(0);
+const animationId = ref<number>();
 
 const vertexShaderSource = `#version 300 es
 precision mediump float;
@@ -46,7 +46,7 @@ out vec2 vUv;
 void main() {
     vUv = .5 * (a_position + 1.);
     gl_Position = vec4(a_position, 0.0, 1.0);
-}`
+}`;
 
 const liquidFragSource = `#version 300 es
 precision mediump float;
@@ -200,123 +200,123 @@ void main() {
     color *= opacity;
     fragColor = vec4(color, opacity);
 }
-`
+`;
 
 function updateUniforms() {
-  if (!gl.value || !uniforms.value) return
-  gl.value.uniform1f(uniforms.value.u_edge, props.params.edge)
-  gl.value.uniform1f(uniforms.value.u_patternBlur, props.params.patternBlur)
-  gl.value.uniform1f(uniforms.value.u_time, 0)
-  gl.value.uniform1f(uniforms.value.u_patternScale, props.params.patternScale)
-  gl.value.uniform1f(uniforms.value.u_refraction, props.params.refraction)
-  gl.value.uniform1f(uniforms.value.u_liquid, props.params.liquid)
+  if (!gl.value || !uniforms.value) return;
+  gl.value.uniform1f(uniforms.value.u_edge, props.params.edge);
+  gl.value.uniform1f(uniforms.value.u_patternBlur, props.params.patternBlur);
+  gl.value.uniform1f(uniforms.value.u_time, 0);
+  gl.value.uniform1f(uniforms.value.u_patternScale, props.params.patternScale);
+  gl.value.uniform1f(uniforms.value.u_refraction, props.params.refraction);
+  gl.value.uniform1f(uniforms.value.u_liquid, props.params.liquid);
 }
 
 function createShader(gl: WebGL2RenderingContext, sourceCode: string, type: number) {
-  const shader = gl.createShader(type)
+  const shader = gl.createShader(type);
   if (!shader) {
-    return null
+    return null;
   }
 
-  gl.shaderSource(shader, sourceCode)
-  gl.compileShader(shader)
+  gl.shaderSource(shader, sourceCode);
+  gl.compileShader(shader);
 
   if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
-    console.error('An error occurred compiling the shaders: ' + gl.getShaderInfoLog(shader))
-    gl.deleteShader(shader)
-    return null
+    console.error('An error occurred compiling the shaders: ' + gl.getShaderInfoLog(shader));
+    gl.deleteShader(shader);
+    return null;
   }
 
-  return shader
+  return shader;
 }
 
 function getUniforms(program: WebGLProgram, gl: WebGL2RenderingContext) {
-  const uniformsObj: Record<string, WebGLUniformLocation> = {}
-  const uniformCount = gl.getProgramParameter(program, gl.ACTIVE_UNIFORMS)
+  const uniformsObj: Record<string, WebGLUniformLocation> = {};
+  const uniformCount = gl.getProgramParameter(program, gl.ACTIVE_UNIFORMS);
   for (let i = 0; i < uniformCount; i++) {
-    const uniformName = gl.getActiveUniform(program, i)?.name
-    if (!uniformName) continue
-    uniformsObj[uniformName] = gl.getUniformLocation(program, uniformName) as WebGLUniformLocation
+    const uniformName = gl.getActiveUniform(program, i)?.name;
+    if (!uniformName) continue;
+    uniformsObj[uniformName] = gl.getUniformLocation(program, uniformName) as WebGLUniformLocation;
   }
-  return uniformsObj
+  return uniformsObj;
 }
 
 function initShader() {
-  const canvas = canvasRef.value
+  const canvas = canvasRef.value;
   const glContext = canvas?.getContext('webgl2', {
     antialias: true,
     alpha: true
-  })
+  });
   if (!canvas || !glContext) {
-    return
+    return;
   }
 
-  const vertexShader = createShader(glContext, vertexShaderSource, glContext.VERTEX_SHADER)
-  const fragmentShader = createShader(glContext, liquidFragSource, glContext.FRAGMENT_SHADER)
-  const program = glContext.createProgram()
+  const vertexShader = createShader(glContext, vertexShaderSource, glContext.VERTEX_SHADER);
+  const fragmentShader = createShader(glContext, liquidFragSource, glContext.FRAGMENT_SHADER);
+  const program = glContext.createProgram();
   if (!program || !vertexShader || !fragmentShader) {
-    return
+    return;
   }
 
-  glContext.attachShader(program, vertexShader)
-  glContext.attachShader(program, fragmentShader)
-  glContext.linkProgram(program)
+  glContext.attachShader(program, vertexShader);
+  glContext.attachShader(program, fragmentShader);
+  glContext.linkProgram(program);
 
   if (!glContext.getProgramParameter(program, glContext.LINK_STATUS)) {
-    console.error('Unable to initialize the shader program: ' + glContext.getProgramInfoLog(program))
-    return null
+    console.error('Unable to initialize the shader program: ' + glContext.getProgramInfoLog(program));
+    return null;
   }
 
-  const uniformsObj = getUniforms(program, glContext)
-  uniforms.value = uniformsObj
+  const uniformsObj = getUniforms(program, glContext);
+  uniforms.value = uniformsObj;
 
-  const vertices = new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1])
-  const vertexBuffer = glContext.createBuffer()
-  glContext.bindBuffer(glContext.ARRAY_BUFFER, vertexBuffer)
-  glContext.bufferData(glContext.ARRAY_BUFFER, vertices, glContext.STATIC_DRAW)
+  const vertices = new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]);
+  const vertexBuffer = glContext.createBuffer();
+  glContext.bindBuffer(glContext.ARRAY_BUFFER, vertexBuffer);
+  glContext.bufferData(glContext.ARRAY_BUFFER, vertices, glContext.STATIC_DRAW);
 
-  glContext.useProgram(program)
+  glContext.useProgram(program);
 
-  const positionLocation = glContext.getAttribLocation(program, 'a_position')
-  glContext.enableVertexAttribArray(positionLocation)
+  const positionLocation = glContext.getAttribLocation(program, 'a_position');
+  glContext.enableVertexAttribArray(positionLocation);
 
-  glContext.bindBuffer(glContext.ARRAY_BUFFER, vertexBuffer)
-  glContext.vertexAttribPointer(positionLocation, 2, glContext.FLOAT, false, 0, 0)
+  glContext.bindBuffer(glContext.ARRAY_BUFFER, vertexBuffer);
+  glContext.vertexAttribPointer(positionLocation, 2, glContext.FLOAT, false, 0, 0);
 
-  gl.value = glContext
+  gl.value = glContext;
 }
 
 function resizeCanvas() {
-  if (!canvasRef.value || !gl.value || !uniforms.value || !props.imageData) return
-  const imgRatio = props.imageData.width / props.imageData.height
-  gl.value.uniform1f(uniforms.value.u_img_ratio, imgRatio)
+  if (!canvasRef.value || !gl.value || !uniforms.value || !props.imageData) return;
+  const imgRatio = props.imageData.width / props.imageData.height;
+  gl.value.uniform1f(uniforms.value.u_img_ratio, imgRatio);
 
-  const side = 1000
-  canvasRef.value.width = side * devicePixelRatio
-  canvasRef.value.height = side * devicePixelRatio
-  gl.value.viewport(0, 0, canvasRef.value.height, canvasRef.value.height)
-  gl.value.uniform1f(uniforms.value.u_ratio, 1)
-  gl.value.uniform1f(uniforms.value.u_img_ratio, imgRatio)
+  const side = 1000;
+  canvasRef.value.width = side * devicePixelRatio;
+  canvasRef.value.height = side * devicePixelRatio;
+  gl.value.viewport(0, 0, canvasRef.value.height, canvasRef.value.height);
+  gl.value.uniform1f(uniforms.value.u_ratio, 1);
+  gl.value.uniform1f(uniforms.value.u_img_ratio, imgRatio);
 }
 
 function setupTexture() {
-  if (!gl.value || !uniforms.value) return
+  if (!gl.value || !uniforms.value) return;
 
-  const existingTexture = gl.value.getParameter(gl.value.TEXTURE_BINDING_2D)
+  const existingTexture = gl.value.getParameter(gl.value.TEXTURE_BINDING_2D);
   if (existingTexture) {
-    gl.value.deleteTexture(existingTexture)
+    gl.value.deleteTexture(existingTexture);
   }
 
-  const imageTexture = gl.value.createTexture()
-  gl.value.activeTexture(gl.value.TEXTURE0)
-  gl.value.bindTexture(gl.value.TEXTURE_2D, imageTexture)
+  const imageTexture = gl.value.createTexture();
+  gl.value.activeTexture(gl.value.TEXTURE0);
+  gl.value.bindTexture(gl.value.TEXTURE_2D, imageTexture);
 
-  gl.value.texParameteri(gl.value.TEXTURE_2D, gl.value.TEXTURE_MIN_FILTER, gl.value.LINEAR)
-  gl.value.texParameteri(gl.value.TEXTURE_2D, gl.value.TEXTURE_MAG_FILTER, gl.value.LINEAR)
-  gl.value.texParameteri(gl.value.TEXTURE_2D, gl.value.TEXTURE_WRAP_S, gl.value.CLAMP_TO_EDGE)
-  gl.value.texParameteri(gl.value.TEXTURE_2D, gl.value.TEXTURE_WRAP_T, gl.value.CLAMP_TO_EDGE)
+  gl.value.texParameteri(gl.value.TEXTURE_2D, gl.value.TEXTURE_MIN_FILTER, gl.value.LINEAR);
+  gl.value.texParameteri(gl.value.TEXTURE_2D, gl.value.TEXTURE_MAG_FILTER, gl.value.LINEAR);
+  gl.value.texParameteri(gl.value.TEXTURE_2D, gl.value.TEXTURE_WRAP_S, gl.value.CLAMP_TO_EDGE);
+  gl.value.texParameteri(gl.value.TEXTURE_2D, gl.value.TEXTURE_WRAP_T, gl.value.CLAMP_TO_EDGE);
 
-  gl.value.pixelStorei(gl.value.UNPACK_ALIGNMENT, 1)
+  gl.value.pixelStorei(gl.value.UNPACK_ALIGNMENT, 1);
 
   try {
     gl.value.texImage2D(
@@ -329,58 +329,66 @@ function setupTexture() {
       gl.value.RGBA,
       gl.value.UNSIGNED_BYTE,
       props.imageData?.data
-    )
+    );
 
-    gl.value.uniform1i(uniforms.value.u_image_texture, 0)
+    gl.value.uniform1i(uniforms.value.u_image_texture, 0);
   } catch (e) {
-    console.error('Error uploading texture:', e)
+    console.error('Error uploading texture:', e);
   }
 }
 
 function render(currentTime: number) {
-  if (!gl.value || !uniforms.value) return
+  if (!gl.value || !uniforms.value) return;
 
-  const deltaTime = currentTime - lastRenderTime.value
-  lastRenderTime.value = currentTime
+  const deltaTime = currentTime - lastRenderTime.value;
+  lastRenderTime.value = currentTime;
 
-  totalAnimationTime.value += deltaTime * props.params.speed
-  gl.value.uniform1f(uniforms.value.u_time, totalAnimationTime.value)
-  gl.value.drawArrays(gl.value.TRIANGLE_STRIP, 0, 4)
-  animationId.value = requestAnimationFrame(render)
+  totalAnimationTime.value += deltaTime * props.params.speed;
+  gl.value.uniform1f(uniforms.value.u_time, totalAnimationTime.value);
+  gl.value.drawArrays(gl.value.TRIANGLE_STRIP, 0, 4);
+  animationId.value = requestAnimationFrame(render);
 }
 
 function startAnimation() {
   if (animationId.value) {
-    cancelAnimationFrame(animationId.value)
+    cancelAnimationFrame(animationId.value);
   }
-  lastRenderTime.value = performance.now()
-  animationId.value = requestAnimationFrame(render)
+  lastRenderTime.value = performance.now();
+  animationId.value = requestAnimationFrame(render);
 }
 
 onMounted(async () => {
-  await nextTick()
-  initShader()
-  updateUniforms()
-  resizeCanvas()
-  setupTexture()
-  startAnimation()
-  
-  window.addEventListener('resize', resizeCanvas)
-})
+  await nextTick();
+  initShader();
+  updateUniforms();
+  resizeCanvas();
+  setupTexture();
+  startAnimation();
+
+  window.addEventListener('resize', resizeCanvas);
+});
 
 onUnmounted(() => {
   if (animationId.value) {
-    cancelAnimationFrame(animationId.value)
+    cancelAnimationFrame(animationId.value);
   }
-  window.removeEventListener('resize', resizeCanvas)
-})
+  window.removeEventListener('resize', resizeCanvas);
+});
 
-watch(() => props.params, () => {
-  updateUniforms()
-}, { deep: true })
+watch(
+  () => props.params,
+  () => {
+    updateUniforms();
+  },
+  { deep: true }
+);
 
-watch(() => props.imageData, () => {
-  setupTexture()
-  resizeCanvas()
-}, { deep: true })
+watch(
+  () => props.imageData,
+  () => {
+    setupTexture();
+    resizeCanvas();
+  },
+  { deep: true }
+);
 </script>

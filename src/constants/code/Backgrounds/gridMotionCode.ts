@@ -1,5 +1,5 @@
-import code from "@content/Backgrounds/GridMotion/GridMotion.vue?raw";
-import type { CodeObject } from "../../../types/code";
+import code from '@content/Backgrounds/GridMotion/GridMotion.vue?raw';
+import type { CodeObject } from '../../../types/code';
 
 export const gridMotion: CodeObject = {
   cli: `npx jsrepo add https://vue-bits.dev/ui/Backgrounds/GridMotion`,
@@ -17,5 +17,5 @@ export const gridMotion: CodeObject = {
   const numberOfImages = 30;
   const images = Array.from({ length: numberOfImages }, () => imageUrl);
 </script>`,
-  code,
+  code
 };
