@@ -72,6 +72,7 @@ export const CATEGORIES = [
       'Lightning',
       'Letter Glitch',
       'Particles',
+      'Shape Blur',
       'Waves',
       'Squares',
       'Iridescence',

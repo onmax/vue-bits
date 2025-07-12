@@ -62,7 +62,8 @@ const backgrounds = {
   'aurora': () => import('../demo/Backgrounds/AuroraDemo.vue'),
   'beams': () => import('../demo/Backgrounds/BeamsDemo.vue'),
   'grid-motion': () => import('../demo/Backgrounds/GridMotionDemo.vue'),
-  'hyperspeed': () => import('../demo/Backgrounds/HyperspeedDemo.vue')
+  'hyperspeed': () => import('../demo/Backgrounds/HyperspeedDemo.vue'),
+  'shape-blur': () => import('../demo/Backgrounds/ShapeBlurDemo.vue')
 };
 
 export const componentMap = {
