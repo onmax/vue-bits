@@ -1,6 +1,7 @@
 <template>
   <div class="preview-slider">
     <span class="slider-label">{{ title }}</span>
+
     <Slider
       :model-value="modelValue"
       @update:model-value="handleSliderChange"
@@ -10,31 +11,32 @@
       :disabled="disabled"
       class="custom-slider"
     />
+
     <span class="slider-value">{{ modelValue }}{{ valueUnit }}</span>
   </div>
 </template>
 
 <script setup lang="ts">
-import Slider from 'primevue/slider'
+import Slider from 'primevue/slider';
 
 defineProps<{
-  title: string
-  modelValue: number
-  min?: number
-  max?: number
-  step?: number
-  valueUnit?: string
-  disabled?: boolean
-}>()
+  title: string;
+  modelValue: number;
+  min?: number;
+  max?: number;
+  step?: number;
+  valueUnit?: string;
+  disabled?: boolean;
+}>();
 
 const emit = defineEmits<{
-  'update:modelValue': [value: number]
-}>()
+  'update:modelValue': [value: number];
+}>();
 
 const handleSliderChange = (value: number | number[]) => {
-  const numValue = Array.isArray(value) ? value[0] : value
-  emit('update:modelValue', numValue)
-}
+  const numValue = Array.isArray(value) ? value[0] : value;
+  emit('update:modelValue', numValue);
+};
 </script>
 
 <style scoped>

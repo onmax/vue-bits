@@ -1,6 +1,7 @@
 <template>
   <div class="preview-switch">
     <span class="switch-label">{{ title }}</span>
+
     <ToggleSwitch
       :model-value="modelValue"
       @update:model-value="$emit('update:modelValue', $event)"
@@ -10,17 +11,17 @@
 </template>
 
 <script setup lang="ts">
-import ToggleSwitch from 'primevue/toggleswitch'
+import ToggleSwitch from 'primevue/toggleswitch';
 
 defineProps<{
-  title: string
-  modelValue: boolean
-  disabled?: boolean
-}>()
+  title: string;
+  modelValue: boolean;
+  disabled?: boolean;
+}>();
 
 defineEmits<{
-  'update:modelValue': [value: boolean]
-}>()
+  'update:modelValue': [value: boolean];
+}>();
 </script>
 
 <style scoped>

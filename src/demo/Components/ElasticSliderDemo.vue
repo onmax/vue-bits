@@ -10,6 +10,7 @@
 
         <div class="demo-section">
           <h2 class="demo-title-extra">Using Steps</h2>
+
           <div class="demo-container relative min-h-[200px] flex items-center justify-center">
             <ElasticSlider :is-stepped="true" :step-size="10" />
           </div>
@@ -17,11 +18,13 @@
 
         <div class="demo-section">
           <h2 class="demo-title-extra">Custom Range & Icons</h2>
+
           <div class="demo-container relative min-h-[200px] flex items-center justify-center">
             <ElasticSlider :starting-value="500" :default-value="750" :max-value="1000">
               <template #left-icon>
                 <i class="pi pi-thumbs-down text-xl"></i>
               </template>
+
               <template #right-icon>
                 <i class="pi pi-thumbs-up text-xl"></i>
               </template>
@@ -44,12 +47,12 @@
 </template>
 
 <script setup lang="ts">
-import TabbedLayout from '@/components/common/TabbedLayout.vue'
-import PropTable from '@/components/common/PropTable.vue'
-import CodeExample from '@/components/code/CodeExample.vue'
-import CliInstallation from '@/components/code/CliInstallation.vue'
-import ElasticSlider from '@/content/Components/ElasticSlider/ElasticSlider.vue'
-import { elasticSlider } from '@/constants/code/Components/elasticSliderCode'
+import TabbedLayout from '@/components/common/TabbedLayout.vue';
+import PropTable from '@/components/common/PropTable.vue';
+import CodeExample from '@/components/code/CodeExample.vue';
+import CliInstallation from '@/components/code/CliInstallation.vue';
+import ElasticSlider from '@/content/Components/ElasticSlider/ElasticSlider.vue';
+import { elasticSlider } from '@/constants/code/Components/elasticSliderCode';
 
 const propData = [
   {
@@ -62,7 +65,7 @@ const propData = [
     name: 'startingValue',
     type: 'number',
     default: '0',
-    description: 'The starting point for the slider\'s range, e.g., startingValue=100 allows the slider to start at 100.'
+    description: "The starting point for the slider's range, e.g., startingValue=100 allows the slider to start at 100."
   },
   {
     name: 'maxValue',
@@ -91,16 +94,16 @@ const propData = [
   {
     name: 'leftIcon',
     type: 'Component | string',
-    default: '\'-\'',
+    default: "'-'",
     description: 'Custom Vue component or string to display on the left side of the slider.'
   },
   {
     name: 'rightIcon',
     type: 'Component | string',
-    default: '\'+\'',
+    default: "'+'",
     description: 'Custom Vue component or string to display on the right side of the slider.'
   }
-]
+];
 </script>
 
 <style scoped>

@@ -1,5 +1,5 @@
-import code from '@content/Backgrounds/Squares/Squares.vue?raw'
-import type { CodeObject } from '../../../types/code'
+import code from '@content/Backgrounds/Squares/Squares.vue?raw';
+import type { CodeObject } from '../../../types/code';
 
 export const squares: CodeObject = {
   cli: `npx jsrepo add https://vue-bits.dev/ui/Backgrounds/Squares`,
@@ -19,4 +19,4 @@ export const squares: CodeObject = {
   import Squares from "./Squares.vue";
 </script>`,
   code
-}
+};

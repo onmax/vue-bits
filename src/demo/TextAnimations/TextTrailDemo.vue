@@ -3,28 +3,59 @@
     <TabbedLayout>
       <template #preview>
         <div class="demo-container relative h-[500px] overflow-hidden p-0">
-          <TextTrail :key="`${key}-${animateColor}`" :noise-factor="noiseFactor" :noise-scale="noiseScale / 10000"
-            :font-weight="fontWeight" :alpha-persist-factor="alphaPersistFactor" :animate-color="animateColor"
-            :text-color="animateColor ? undefined : '#ffffff'" />
+          <TextTrail
+            :key="`${key}-${animateColor}`"
+            :noise-factor="noiseFactor"
+            :noise-scale="noiseScale / 10000"
+            :font-weight="fontWeight"
+            :alpha-persist-factor="alphaPersistFactor"
+            :animate-color="animateColor"
+            :text-color="animateColor ? undefined : '#ffffff'"
+          />
         </div>
 
         <Customize>
-          <PreviewSlider title="Noise Factor" v-model="noiseFactor" :min="1" :max="25" :step="1"
-            @update:model-value="forceRerender" />
+          <PreviewSlider
+            title="Noise Factor"
+            v-model="noiseFactor"
+            :min="1"
+            :max="25"
+            :step="1"
+            @update:model-value="forceRerender"
+          />
 
-          <PreviewSlider title="Noise Scale" v-model="noiseScale" :min="0" :max="100" :step="1"
-            @update:model-value="forceRerender" />
+          <PreviewSlider
+            title="Noise Scale"
+            v-model="noiseScale"
+            :min="0"
+            :max="100"
+            :step="1"
+            @update:model-value="forceRerender"
+          />
 
-          <PreviewSlider title="Font Weight" v-model="fontWeight" :min="100" :max="900" :step="100"
-            @update:model-value="forceRerender" />
+          <PreviewSlider
+            title="Font Weight"
+            v-model="fontWeight"
+            :min="100"
+            :max="900"
+            :step="100"
+            @update:model-value="forceRerender"
+          />
 
-          <PreviewSlider title="Alpha Persist Factor" v-model="alphaPersistFactor" :min="0.5" :max="0.95" :step="0.01"
-            @update:model-value="forceRerender" />
+          <PreviewSlider
+            title="Alpha Persist Factor"
+            v-model="alphaPersistFactor"
+            :min="0.5"
+            :max="0.95"
+            :step="0.01"
+            @update:model-value="forceRerender"
+          />
 
           <PreviewSwitch title="Animate Color" v-model="animateColor" @update:model-value="forceRerender" />
         </Customize>
 
         <PropTable :data="propData" />
+
         <Dependencies :dependency-list="['three']" />
       </template>
 
@@ -40,26 +71,26 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import TabbedLayout from '../../components/common/TabbedLayout.vue'
-import PropTable from '../../components/common/PropTable.vue'
-import Dependencies from '../../components/code/Dependencies.vue'
-import CliInstallation from '../../components/code/CliInstallation.vue'
-import CodeExample from '../../components/code/CodeExample.vue'
-import Customize from '../../components/common/Customize.vue'
-import PreviewSlider from '../../components/common/PreviewSlider.vue'
-import PreviewSwitch from '../../components/common/PreviewSwitch.vue'
-import TextTrail from '../../content/TextAnimations/TextTrail/TextTrail.vue'
-import { textTrail } from '@/constants/code/TextAnimations/textTrailCode'
-import { useForceRerender } from '@/composables/useForceRerender'
+import { ref } from 'vue';
+import TabbedLayout from '../../components/common/TabbedLayout.vue';
+import PropTable from '../../components/common/PropTable.vue';
+import Dependencies from '../../components/code/Dependencies.vue';
+import CliInstallation from '../../components/code/CliInstallation.vue';
+import CodeExample from '../../components/code/CodeExample.vue';
+import Customize from '../../components/common/Customize.vue';
+import PreviewSlider from '../../components/common/PreviewSlider.vue';
+import PreviewSwitch from '../../components/common/PreviewSwitch.vue';
+import TextTrail from '../../content/TextAnimations/TextTrail/TextTrail.vue';
+import { textTrail } from '@/constants/code/TextAnimations/textTrailCode';
+import { useForceRerender } from '@/composables/useForceRerender';
 
-const { rerenderKey: key, forceRerender } = useForceRerender()
+const { rerenderKey: key, forceRerender } = useForceRerender();
 
-const noiseFactor = ref(1)
-const noiseScale = ref(5)
-const fontWeight = ref(900)
-const alphaPersistFactor = ref(0.95)
-const animateColor = ref(false)
+const noiseFactor = ref(1);
+const noiseScale = ref(5);
+const fontWeight = ref(900);
+const alphaPersistFactor = ref(0.95);
+const animateColor = ref(false);
 
 const propData = [
   {
@@ -140,7 +171,7 @@ const propData = [
     default: '2',
     description: 'Supersampling factor for text quality (higher = better quality)'
   }
-]
+];
 </script>
 
 <style scoped>

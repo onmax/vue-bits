@@ -1,5 +1,5 @@
-import code from '@content/Components/GlassIcons/GlassIcons.vue?raw'
-import type { CodeObject } from '../../../types/code'
+import code from '@content/Components/GlassIcons/GlassIcons.vue?raw';
+import type { CodeObject } from '../../../types/code';
 
 export const glassIcons: CodeObject = {
   cli: `npx jsrepo add https://vue-bits.dev/ui/Components/GlassIcons`,
@@ -20,4 +20,4 @@ export const glassIcons: CodeObject = {
   ];
 </script>`,
   code
-}
+};

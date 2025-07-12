@@ -20,7 +20,7 @@ export const CATEGORIES = [
       'Text Cursor',
       'Decrypted Text',
       'True Focus',
-      'Scroll Float',
+      'Scroll Float'
     ]
   },
   {
@@ -34,7 +34,7 @@ export const CATEGORIES = [
       'Count Up',
       'Click Spark',
       'Magnet',
-      'Cubes',
+      'Cubes'
     ]
   },
   {
@@ -55,8 +55,8 @@ export const CATEGORIES = [
       'Glass Icons',
       'Decay Card',
       'Flowing Menu',
-      'Elastic Slider',
-    ],
+      'Elastic Slider'
+    ]
   },
   {
     name: 'Backgrounds',
@@ -73,6 +73,6 @@ export const CATEGORIES = [
       'Iridescence',
       'Threads',
       'Grid Motion'
-    ],
+    ]
   }
 ];

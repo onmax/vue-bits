@@ -1,5 +1,5 @@
-import code from '@content/Backgrounds/Iridescence/Iridescence.vue?raw'
-import type { CodeObject } from '../../../types/code'
+import code from '@content/Backgrounds/Iridescence/Iridescence.vue?raw';
+import type { CodeObject } from '../../../types/code';
 
 export const iridescence: CodeObject = {
   cli: `npx jsrepo add https://vue-bits.dev/ui/Backgrounds/Iridescence`,
@@ -19,4 +19,4 @@ export const iridescence: CodeObject = {
   import Iridescence from "./Iridescence.vue";
 </script>`,
   code
-}
+};

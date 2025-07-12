@@ -48,13 +48,13 @@
 }
 
 .footer-heart {
-  color: #27FF64;
+  color: #27ff64;
   font-size: 1em;
   display: inline-block;
 }
 
 .footer-creator-link {
-  color: #27FF64;
+  color: #27ff64;
   text-decoration: none;
   transition: color 0.2s ease;
 }

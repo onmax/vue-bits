@@ -1,6 +1,7 @@
 <template>
   <div class="prop-table-container">
     <h2 class="demo-title">Props</h2>
+
     <div class="table-wrapper">
       <DataTable :value="data" class="props-table">
         <Column field="name" header="Property">
@@ -8,16 +9,19 @@
             <div class="code-cell">{{ data.name }}</div>
           </template>
         </Column>
+
         <Column field="type" header="Type">
           <template #body="{ data }">
             <span class="type-text">{{ data.type }}</span>
           </template>
         </Column>
+
         <Column field="default" header="Default">
           <template #body="{ data }">
             <div class="code-cell">{{ data.default || '—' }}</div>
           </template>
         </Column>
+
         <Column field="description" header="Description">
           <template #body="{ data }">
             <div class="description-text">{{ data.description }}</div>
@@ -29,19 +33,19 @@
 </template>
 
 <script setup lang="ts">
-import DataTable from 'primevue/datatable'
-import Column from 'primevue/column'
+import DataTable from 'primevue/datatable';
+import Column from 'primevue/column';
 
 interface PropData {
-  name: string
-  type: string
-  default: string
-  description: string
+  name: string;
+  type: string;
+  default: string;
+  description: string;
 }
 
 defineProps<{
-  data: PropData[]
-}>()
+  data: PropData[];
+}>();
 </script>
 
 <style scoped>

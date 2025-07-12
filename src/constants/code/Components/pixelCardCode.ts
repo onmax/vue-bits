@@ -1,5 +1,5 @@
-import code from '@content/Components/PixelCard/PixelCard.vue?raw'
-import type { CodeObject } from '../../../types/code'
+import code from '@content/Components/PixelCard/PixelCard.vue?raw';
+import type { CodeObject } from '../../../types/code';
 
 export const pixelCard: CodeObject = {
   cli: `npx jsrepo add https://vue-bits.dev/ui/Components/PixelCard`,
@@ -18,4 +18,4 @@ export const pixelCard: CodeObject = {
   import PixelCard from "./PixelCard.vue";
 </script>`,
   code
-}
+};

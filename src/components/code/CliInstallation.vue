@@ -2,12 +2,21 @@
   <div class="cli-installation">
     <h2 class="demo-title">One-Time Installation</h2>
 
-    <VCodeBlock v-if="command" :code="command" :persistent-copy-button="true" highlightjs lang="bash" theme="nord"
-      :copy-button="true" class="code-block" />
+    <VCodeBlock
+      v-if="command"
+      :code="command"
+      :persistent-copy-button="true"
+      highlightjs
+      lang="bash"
+      theme="nord"
+      :copy-button="true"
+      class="code-block"
+    />
 
     <div class="cli-divider"></div>
 
     <h2 class="demo-title">Full CLI Setup</h2>
+
     <p class="jsrepo-info">
       Vue Bits uses
       <a href="https://jsrepo.dev/" target="_blank" rel="noreferrer">jsrepo</a>
@@ -17,23 +26,57 @@
     <Accordion expandIcon="pi pi-chevron-right" collapseIcon="pi pi-chevron-down">
       <AccordionPanel value="setup">
         <AccordionHeader>Setup Steps</AccordionHeader>
+
         <AccordionContent
-          :pt="{ transition: { enterFromClass: '', enterActiveClass: '', enterToClass: '', leaveFromClass: '', leaveActiveClass: '', leaveToClass: '' } }">
+          :pt="{
+            transition: {
+              enterFromClass: '',
+              enterActiveClass: '',
+              enterToClass: '',
+              leaveFromClass: '',
+              leaveActiveClass: '',
+              leaveToClass: ''
+            }
+          }"
+        >
           <div class="setup-content">
             <p class="demo-extra-info">1. Initialize a config file for your project</p>
 
             <div class="setup-option">
-              <VCodeBlock :persistent-copy-button="true" code="npx jsrepo init https://vue-bits.dev/ui" highlightjs
-                lang="bash" theme="nord" :copy-button="true" class="code-block" />
+              <VCodeBlock
+                :persistent-copy-button="true"
+                code="npx jsrepo init https://vue-bits.dev/ui"
+                highlightjs
+                lang="bash"
+                theme="nord"
+                :copy-button="true"
+                class="code-block"
+              />
             </div>
 
             <p class="demo-extra-info">2. Browse &amp; add components from the list</p>
-            <VCodeBlock :persistent-copy-button="true" code="npx jsrepo add" highlightjs lang="bash" theme="nord"
-              :copy-button="true" class="code-block" />
+
+            <VCodeBlock
+              :persistent-copy-button="true"
+              code="npx jsrepo add"
+              highlightjs
+              lang="bash"
+              theme="nord"
+              :copy-button="true"
+              class="code-block"
+            />
 
             <p class="demo-extra-info">3. Or just add a specific component</p>
-            <VCodeBlock :persistent-copy-button="true" code="npx jsrepo add Animations/AnimatedContainer" highlightjs
-              lang="bash" theme="nord" :copy-button="true" class="code-block" />
+
+            <VCodeBlock
+              :persistent-copy-button="true"
+              code="npx jsrepo add Animations/AnimatedContainer"
+              highlightjs
+              lang="bash"
+              theme="nord"
+              :copy-button="true"
+              class="code-block"
+            />
           </div>
         </AccordionContent>
       </AccordionPanel>
@@ -42,15 +85,15 @@
 </template>
 
 <script setup lang="ts">
-import { VCodeBlock } from '@wdns/vue-code-block'
-import Accordion from 'primevue/accordion'
-import AccordionPanel from 'primevue/accordionpanel'
-import AccordionHeader from 'primevue/accordionheader'
-import AccordionContent from 'primevue/accordioncontent'
+import { VCodeBlock } from '@wdns/vue-code-block';
+import Accordion from 'primevue/accordion';
+import AccordionPanel from 'primevue/accordionpanel';
+import AccordionHeader from 'primevue/accordionheader';
+import AccordionContent from 'primevue/accordioncontent';
 
 const { command } = defineProps<{
-  command?: string
-}>()
+  command?: string;
+}>();
 </script>
 
 <style scoped>
@@ -74,7 +117,7 @@ const { command } = defineProps<{
 }
 
 .jsrepo-info a {
-  color: #27FF64;
+  color: #27ff64;
   text-decoration: underline;
 }
 

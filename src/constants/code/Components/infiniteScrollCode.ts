@@ -1,5 +1,5 @@
-import code from '@content/Components/InfiniteScroll/InfiniteScroll.vue?raw'
-import type { CodeObject } from '../../../types/code'
+import code from '@content/Components/InfiniteScroll/InfiniteScroll.vue?raw';
+import type { CodeObject } from '../../../types/code';
 
 export const infiniteScroll: CodeObject = {
   cli: `npx jsrepo add https://vue-bits.dev/ui/Components/InfiniteScroll`,
@@ -31,4 +31,4 @@ export const infiniteScroll: CodeObject = {
   ];
 </script>`,
   code
-}
+};

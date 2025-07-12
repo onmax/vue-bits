@@ -1,5 +1,5 @@
-import code from '@content/Components/TiltedCard/TiltedCard.vue?raw'
-import type { CodeObject } from '../../../types/code'
+import code from '@content/Components/TiltedCard/TiltedCard.vue?raw';
+import type { CodeObject } from '../../../types/code';
 
 export const tiltedCard: CodeObject = {
   cli: `npx jsrepo add https://vue-bits.dev/ui/Components/TiltedCard`,
@@ -31,4 +31,4 @@ export const tiltedCard: CodeObject = {
   import TiltedCard from "./TiltedCard.vue";
 </script>`,
   code
-}
+};

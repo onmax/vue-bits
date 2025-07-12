@@ -1,6 +1,7 @@
 <template>
   <div class="preview-select">
     <span class="select-label">{{ title }}</span>
+
     <Select
       :model-value="modelValue"
       @update:model-value="handleSelectChange"
@@ -14,45 +15,45 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
-import Select from 'primevue/select'
+import { computed } from 'vue';
+import Select from 'primevue/select';
 
 interface Option {
-  label: string
-  value: string | number
+  label: string;
+  value: string | number;
 }
 
 const props = defineProps<{
-  title: string
-  modelValue: string | number
-  options: Option[] | string[] | number[]
-  optionLabel?: string
-  optionValue?: string
-  placeholder?: string
-  disabled?: boolean
-}>()
+  title: string;
+  modelValue: string | number;
+  options: Option[] | string[] | number[];
+  optionLabel?: string;
+  optionValue?: string;
+  placeholder?: string;
+  disabled?: boolean;
+}>();
 
 const emit = defineEmits<{
-  'update:modelValue': [value: string | number]
-}>()
+  'update:modelValue': [value: string | number];
+}>();
 
 const handleSelectChange = (value: string | number) => {
-  emit('update:modelValue', value)
-}
+  emit('update:modelValue', value);
+};
 
 const isObjectArray = computed(() => {
-  return props.options.length > 0 && typeof props.options[0] === 'object'
-})
+  return props.options.length > 0 && typeof props.options[0] === 'object';
+});
 
 const selectAttributes = computed(() => {
   if (isObjectArray.value) {
     return {
       optionLabel: props.optionLabel || 'label',
       optionValue: props.optionValue || 'value'
-    }
+    };
   }
-  return {}
-})
+  return {};
+});
 </script>
 
 <style scoped>

@@ -1,5 +1,5 @@
-import code from '@content/Components/FlyingPosters/FlyingPosters.vue?raw'
-import type { CodeObject } from '../../../types/code'
+import code from '@content/Components/FlyingPosters/FlyingPosters.vue?raw';
+import type { CodeObject } from '../../../types/code';
 
 export const flyingPosters: CodeObject = {
   cli: `npx jsrepo add https://vue-bits.dev/ui/Components/FlyingPosters`,
@@ -34,4 +34,4 @@ export const flyingPosters: CodeObject = {
   ];
 </script>`,
   code
-}
+};

@@ -2,7 +2,9 @@
   <div class="gooey-nav-demo">
     <TabbedLayout>
       <template #preview>
-        <div class="demo-container relative h-[500px] overflow-hidden bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 flex items-center justify-center">
+        <div
+          class="demo-container relative h-[500px] overflow-hidden bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 flex items-center justify-center"
+        >
           <GooeyNav
             :key="rerenderKey"
             :items="navItems"
@@ -60,78 +62,78 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import TabbedLayout from '../../components/common/TabbedLayout.vue'
-import PropTable from '../../components/common/PropTable.vue'
-import CliInstallation from '../../components/code/CliInstallation.vue'
-import CodeExample from '../../components/code/CodeExample.vue'
-import Customize from '../../components/common/Customize.vue'
-import PreviewSlider from '../../components/common/PreviewSlider.vue'
-import GooeyNav from '../../content/Components/GooeyNav/GooeyNav.vue'
-import { gooeyNav } from '@/constants/code/Components/gooeyNavCode'
-import { useForceRerender } from '@/composables/useForceRerender'
+import { ref } from 'vue';
+import TabbedLayout from '../../components/common/TabbedLayout.vue';
+import PropTable from '../../components/common/PropTable.vue';
+import CliInstallation from '../../components/code/CliInstallation.vue';
+import CodeExample from '../../components/code/CodeExample.vue';
+import Customize from '../../components/common/Customize.vue';
+import PreviewSlider from '../../components/common/PreviewSlider.vue';
+import GooeyNav from '../../content/Components/GooeyNav/GooeyNav.vue';
+import { gooeyNav } from '@/constants/code/Components/gooeyNavCode';
+import { useForceRerender } from '@/composables/useForceRerender';
 
-const particleCount = ref(15)
-const timeVariance = ref(300)
-const particleR = ref(100)
-const { rerenderKey, forceRerender } = useForceRerender()
+const particleCount = ref(15);
+const timeVariance = ref(300);
+const particleR = ref(100);
+const { rerenderKey, forceRerender } = useForceRerender();
 
 const navItems = [
-  { label: "Home", href: null },
-  { label: "About", href: null },
-  { label: "Contact", href: null },
-]
+  { label: 'Home', href: null },
+  { label: 'About', href: null },
+  { label: 'Contact', href: null }
+];
 
 const propData = [
   {
-    name: "items",
-    type: "GooeyNavItem[]",
-    default: "[]",
-    description: "Array of navigation items with label and href properties."
+    name: 'items',
+    type: 'GooeyNavItem[]',
+    default: '[]',
+    description: 'Array of navigation items with label and href properties.'
   },
   {
-    name: "animationTime",
-    type: "number",
-    default: "600",
-    description: "Duration (ms) of the main animation."
+    name: 'animationTime',
+    type: 'number',
+    default: '600',
+    description: 'Duration (ms) of the main animation.'
   },
   {
-    name: "particleCount",
-    type: "number",
-    default: "15",
-    description: "Number of bubble particles per transition."
+    name: 'particleCount',
+    type: 'number',
+    default: '15',
+    description: 'Number of bubble particles per transition.'
   },
   {
-    name: "particleDistances",
-    type: "[number, number]",
-    default: "[90, 10]",
-    description: "Outer and inner distances of bubble spread."
+    name: 'particleDistances',
+    type: '[number, number]',
+    default: '[90, 10]',
+    description: 'Outer and inner distances of bubble spread.'
   },
   {
-    name: "particleR",
-    type: "number",
-    default: "100",
-    description: "Radius factor influencing random particle rotation."
+    name: 'particleR',
+    type: 'number',
+    default: '100',
+    description: 'Radius factor influencing random particle rotation.'
   },
   {
-    name: "timeVariance",
-    type: "number",
-    default: "300",
-    description: "Random time variance (ms) for particle animations."
+    name: 'timeVariance',
+    type: 'number',
+    default: '300',
+    description: 'Random time variance (ms) for particle animations.'
   },
   {
-    name: "colors",
-    type: "number[]",
-    default: "[1, 2, 3, 1, 2, 3, 1, 4]",
-    description: "Color indices used when creating bubble particles."
+    name: 'colors',
+    type: 'number[]',
+    default: '[1, 2, 3, 1, 2, 3, 1, 4]',
+    description: 'Color indices used when creating bubble particles.'
   },
   {
-    name: "initialActiveIndex",
-    type: "number",
-    default: "0",
-    description: "Which item is selected on mount."
+    name: 'initialActiveIndex',
+    type: 'number',
+    default: '0',
+    description: 'Which item is selected on mount.'
   }
-]
+];
 </script>
 
 <style>

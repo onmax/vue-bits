@@ -3,11 +3,13 @@
     <TabbedLayout>
       <template #preview>
         <h2 class="demo-title-extra">Basic</h2>
+
         <div class="demo-container relative min-h-[150px] text-2xl flex items-center justify-center">
           <ShinyText text="Just some shiny text!" :disabled="false" :speed="3" class-name="shiny-text-demo" />
         </div>
 
         <h2 class="demo-title-extra">Button Text</h2>
+
         <div class="demo-container relative min-h-[150px] text-2xl flex items-center justify-center">
           <div class="shiny-button">
             <ShinyText text="Shiny Button" :disabled="false" :speed="3" class-name="shiny-text-demo" />
@@ -15,9 +17,14 @@
         </div>
 
         <h2 class="demo-title-extra">Configurable Speed</h2>
+
         <div class="demo-container relative min-h-[150px] text-2xl flex items-center justify-center">
-          <ShinyText :text="speed < 2.5 ? '🐎 This is fast!' : '🐌 This is slow!'" :disabled="false" :speed="speed"
-            class-name="shiny-text-demo" />
+          <ShinyText
+            :text="speed < 2.5 ? '🐎 This is fast!' : '🐌 This is slow!'"
+            :disabled="false"
+            :speed="speed"
+            class-name="shiny-text-demo"
+          />
         </div>
 
         <Customize>
@@ -39,17 +46,17 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import TabbedLayout from '../../components/common/TabbedLayout.vue'
-import PropTable from '../../components/common/PropTable.vue'
-import CliInstallation from '../../components/code/CliInstallation.vue'
-import CodeExample from '../../components/code/CodeExample.vue'
-import Customize from '../../components/common/Customize.vue'
-import PreviewSlider from '../../components/common/PreviewSlider.vue'
-import ShinyText from '../../content/TextAnimations/ShinyText/ShinyText.vue'
-import { shinyText } from '@/constants/code/TextAnimations/shinyTextCode'
+import { ref } from 'vue';
+import TabbedLayout from '../../components/common/TabbedLayout.vue';
+import PropTable from '../../components/common/PropTable.vue';
+import CliInstallation from '../../components/code/CliInstallation.vue';
+import CodeExample from '../../components/code/CodeExample.vue';
+import Customize from '../../components/common/Customize.vue';
+import PreviewSlider from '../../components/common/PreviewSlider.vue';
+import ShinyText from '../../content/TextAnimations/ShinyText/ShinyText.vue';
+import { shinyText } from '@/constants/code/TextAnimations/shinyTextCode';
 
-const speed = ref(3)
+const speed = ref(3);
 
 const propData = [
   {
@@ -76,7 +83,7 @@ const propData = [
     default: "''",
     description: 'Adds custom classes to the root element.'
   }
-]
+];
 </script>
 
 <style scoped>

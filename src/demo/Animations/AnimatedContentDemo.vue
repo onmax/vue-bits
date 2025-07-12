@@ -6,11 +6,22 @@
           <RefreshButton @click="forceRerender" />
 
           <div :key="key" class="flex justify-center items-center">
-            <AnimatedContent :direction="direction" :delay="delay" :distance="distance" :reverse="reverse"
-              :duration="duration" :ease="ease" :initial-opacity="initialOpacity" :animate-opacity="animateOpacity"
-              :scale="scale" :threshold="threshold" @complete="() => console.log('✅ Animation Complete!')">
+            <AnimatedContent
+              :direction="direction"
+              :delay="delay"
+              :distance="distance"
+              :reverse="reverse"
+              :duration="duration"
+              :ease="ease"
+              :initial-opacity="initialOpacity"
+              :animate-opacity="animateOpacity"
+              :scale="scale"
+              :threshold="threshold"
+              @complete="() => console.log('✅ Animation Complete!')"
+            >
               <div class="demo-content">
                 <h4>Animated Content</h4>
+
                 <p>It will animate in when it enters the viewport.</p>
               </div>
             </AnimatedContent>
@@ -18,29 +29,85 @@
         </div>
 
         <Customize>
-          <PreviewSelect title="Animation Direction" v-model="direction" :options="directionOptions"
-            @update:model-value="(val) => { direction = val as 'vertical' | 'horizontal'; forceRerender(); }" />
+          <PreviewSelect
+            title="Animation Direction"
+            v-model="direction"
+            :options="directionOptions"
+            @update:model-value="
+              val => {
+                direction = val as 'vertical' | 'horizontal';
+                forceRerender();
+              }
+            "
+          />
 
-          <PreviewSelect title="Easing Function" v-model="ease" :options="easeOptions"
-            @update:model-value="(val) => { ease = val as string; forceRerender(); }" />
+          <PreviewSelect
+            title="Easing Function"
+            v-model="ease"
+            :options="easeOptions"
+            @update:model-value="
+              val => {
+                ease = val as string;
+                forceRerender();
+              }
+            "
+          />
 
-          <PreviewSlider title="Distance" v-model="distance" :min="50" :max="300" :step="10"
-            @update:model-value="forceRerender" />
+          <PreviewSlider
+            title="Distance"
+            v-model="distance"
+            :min="50"
+            :max="300"
+            :step="10"
+            @update:model-value="forceRerender"
+          />
 
-          <PreviewSlider title="Duration" v-model="duration" :min="0.1" :max="3" :step="0.1" value-unit="s"
-            @update:model-value="forceRerender" />
+          <PreviewSlider
+            title="Duration"
+            v-model="duration"
+            :min="0.1"
+            :max="3"
+            :step="0.1"
+            value-unit="s"
+            @update:model-value="forceRerender"
+          />
 
-          <PreviewSlider title="Delay" v-model="delay" :min="0" :max="2" :step="0.1" value-unit="s"
-            @update:model-value="forceRerender" />
+          <PreviewSlider
+            title="Delay"
+            v-model="delay"
+            :min="0"
+            :max="2"
+            :step="0.1"
+            value-unit="s"
+            @update:model-value="forceRerender"
+          />
 
-          <PreviewSlider title="Initial Opacity" v-model="initialOpacity" :min="0" :max="1" :step="0.1"
-            @update:model-value="forceRerender" />
+          <PreviewSlider
+            title="Initial Opacity"
+            v-model="initialOpacity"
+            :min="0"
+            :max="1"
+            :step="0.1"
+            @update:model-value="forceRerender"
+          />
 
-          <PreviewSlider title="Initial Scale" v-model="scale" :min="0.1" :max="2" :step="0.1"
-            @update:model-value="forceRerender" />
+          <PreviewSlider
+            title="Initial Scale"
+            v-model="scale"
+            :min="0.1"
+            :max="2"
+            :step="0.1"
+            @update:model-value="forceRerender"
+          />
 
-          <PreviewSlider title="Threshold" v-model="threshold" :min="0.1" :max="1" :step="0.1"
-            @update:model-value="forceRerender" />
+          <PreviewSlider
+            title="Threshold"
+            v-model="threshold"
+            :min="0.1"
+            :max="1"
+            :step="0.1"
+            @update:model-value="forceRerender"
+          />
 
           <PreviewSwitch title="Reverse Direction" v-model="reverse" @update:model-value="forceRerender" />
 
@@ -48,6 +115,7 @@
         </Customize>
 
         <PropTable :data="propData" />
+
         <Dependencies :dependency-list="['gsap']" />
       </template>
 
@@ -63,44 +131,44 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import TabbedLayout from '../../components/common/TabbedLayout.vue'
-import PropTable from '../../components/common/PropTable.vue'
-import Dependencies from '../../components/code/Dependencies.vue'
-import CliInstallation from '../../components/code/CliInstallation.vue'
-import CodeExample from '../../components/code/CodeExample.vue'
-import Customize from '../../components/common/Customize.vue'
-import PreviewSlider from '../../components/common/PreviewSlider.vue'
-import PreviewSwitch from '../../components/common/PreviewSwitch.vue'
-import PreviewSelect from '../../components/common/PreviewSelect.vue'
-import RefreshButton from '../../components/common/RefreshButton.vue'
-import AnimatedContent from '../../content/Animations/AnimatedContent/AnimatedContent.vue'
-import { animatedContent } from '@/constants/code/Animations/animatedContentCode'
-import { useForceRerender } from '@/composables/useForceRerender'
+import { ref } from 'vue';
+import TabbedLayout from '../../components/common/TabbedLayout.vue';
+import PropTable from '../../components/common/PropTable.vue';
+import Dependencies from '../../components/code/Dependencies.vue';
+import CliInstallation from '../../components/code/CliInstallation.vue';
+import CodeExample from '../../components/code/CodeExample.vue';
+import Customize from '../../components/common/Customize.vue';
+import PreviewSlider from '../../components/common/PreviewSlider.vue';
+import PreviewSwitch from '../../components/common/PreviewSwitch.vue';
+import PreviewSelect from '../../components/common/PreviewSelect.vue';
+import RefreshButton from '../../components/common/RefreshButton.vue';
+import AnimatedContent from '../../content/Animations/AnimatedContent/AnimatedContent.vue';
+import { animatedContent } from '@/constants/code/Animations/animatedContentCode';
+import { useForceRerender } from '@/composables/useForceRerender';
 
-const { rerenderKey: key, forceRerender } = useForceRerender()
+const { rerenderKey: key, forceRerender } = useForceRerender();
 
-const direction = ref<'vertical' | 'horizontal'>('vertical')
-const distance = ref(100)
-const delay = ref(0)
-const reverse = ref(false)
-const duration = ref(0.8)
-const ease = ref('power3.out')
-const initialOpacity = ref(0)
-const animateOpacity = ref(true)
-const scale = ref(1)
-const threshold = ref(0.1)
+const direction = ref<'vertical' | 'horizontal'>('vertical');
+const distance = ref(100);
+const delay = ref(0);
+const reverse = ref(false);
+const duration = ref(0.8);
+const ease = ref('power3.out');
+const initialOpacity = ref(0);
+const animateOpacity = ref(true);
+const scale = ref(1);
+const threshold = ref(0.1);
 
 const directionOptions = [
   { label: 'Vertical', value: 'vertical' },
   { label: 'Horizontal', value: 'horizontal' }
-]
+];
 
 const easeOptions = [
   { label: 'Power3 Out', value: 'power3.out' },
   { label: 'Bounce Out', value: 'bounce.out' },
   { label: 'Elastic Out', value: 'elastic.out(1, 0.3)' }
-]
+];
 
 const propData = [
   {
@@ -169,7 +237,7 @@ const propData = [
     default: '""',
     description: 'Additional CSS classes for styling.'
   }
-]
+];
 </script>
 
 <style scoped>

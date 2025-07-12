@@ -1,5 +1,5 @@
-import code from "@/content/TextAnimations/TrueFocus/TrueFocus.vue?raw";
-import type { CodeObject } from "../../../types/code";
+import code from '@/content/TextAnimations/TrueFocus/TrueFocus.vue?raw';
+import type { CodeObject } from '../../../types/code';
 
 export const trueFocus: CodeObject = {
   cli: `npx jsrepo add https://vue-bits.dev/ui/TextAnimations/TrueFocus`,
@@ -18,5 +18,5 @@ export const trueFocus: CodeObject = {
 <script setup lang="ts">
   import TrueFocus from "./TrueFocus.vue";
 </script>`,
-  code,
+  code
 };

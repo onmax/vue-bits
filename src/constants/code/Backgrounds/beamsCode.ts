@@ -1,5 +1,5 @@
-import code from '@content/Backgrounds/Beams/Beams.vue?raw'
-import type { CodeObject } from '../../../types/code'
+import code from '@content/Backgrounds/Beams/Beams.vue?raw';
+import type { CodeObject } from '../../../types/code';
 
 export const beams: CodeObject = {
   cli: `npx jsrepo add https://vue-bits.dev/ui/Backgrounds/Beams`,
@@ -33,4 +33,4 @@ export const beams: CodeObject = {
   }
 </style>`,
   code
-}
+};

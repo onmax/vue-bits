@@ -1,5 +1,5 @@
-import code from '@/content/Animations/CountUp/CountUp.vue?raw'
-import type { CodeObject } from '@/types/code'
+import code from '@/content/Animations/CountUp/CountUp.vue?raw';
+import type { CodeObject } from '@/types/code';
 
 export const countup: CodeObject = {
   cli: `npx jsrepo add https://vue-bits.dev/ui/Animations/CountUp`,
@@ -30,4 +30,4 @@ export const countup: CodeObject = {
   };
 </script>`,
   code
-}
+};
