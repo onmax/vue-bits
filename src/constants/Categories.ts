@@ -31,6 +31,7 @@ export const CATEGORIES = [
       'Magnet Lines',
       'Count Up',
       'Click Spark',
+      'Splash Cursor',
       'Magnet',
       'Cubes',
     ]
