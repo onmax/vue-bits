@@ -17,7 +17,7 @@
               </motion.span>
               <RotatingText
                 :texts="words"
-                mainClassName="px-2 py-0.5 bg-[#27FF64] text-white overflow-hidden flex justify-center rounded-lg sm:py-1 md:py-2 md:px-3"
+                mainClassName="px-2 py-0.5 bg-[#27FF64] text-[#222] overflow-hidden flex justify-center rounded-lg sm:py-1 md:py-2 md:px-3"
                 staggerFrom="last"
                 :initial="{ y: '100%' }"
                 :animate="{ y: 0 }"
