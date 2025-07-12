@@ -5,8 +5,8 @@ const animations = {
   'glare-hover': () => import('../demo/Animations/GlareHoverDemo.vue'),
   'magnet-lines': () => import('../demo/Animations/MagnetLinesDemo.vue'),
   'click-spark': () => import('../demo/Animations/ClickSparkDemo.vue'),
-  magnet: () => import('../demo/Animations/MagnetDemo.vue'),
-  cubes: () => import('../demo/Animations/CubesDemo.vue'),
+  'magnet': () => import('../demo/Animations/MagnetDemo.vue'),
+  'cubes': () => import('../demo/Animations/CubesDemo.vue'),
   'count-up': () => import('../demo/Animations/CountUpDemo.vue')
 };
 
@@ -28,12 +28,12 @@ const textAnimations = {
 };
 
 const components = {
-  masonry: () => import('../demo/Components/MasonryDemo.vue'),
+  'masonry': () => import('../demo/Components/MasonryDemo.vue'),
   'profile-card': () => import('../demo/Components/ProfileCardDemo.vue'),
-  dock: () => import('../demo/Components/DockDemo.vue'),
+  'dock': () => import('../demo/Components/DockDemo.vue'),
   'gooey-nav': () => import('../demo/Components/GooeyNavDemo.vue'),
   'pixel-card': () => import('../demo/Components/PixelCardDemo.vue'),
-  carousel: () => import('../demo/Components/CarouselDemo.vue'),
+  'carousel': () => import('../demo/Components/CarouselDemo.vue'),
   'spotlight-card': () => import('../demo/Components/SpotlightCardDemo.vue'),
   'circular-gallery': () => import('../demo/Components/CircularGalleryDemo.vue'),
   'flying-posters': () => import('../demo/Components/FlyingPostersDemo.vue'),
@@ -48,16 +48,16 @@ const components = {
 
 const backgrounds = {
   'dot-grid': () => import('../demo/Backgrounds/DotGridDemo.vue'),
-  silk: () => import('../demo/Backgrounds/SilkDemo.vue'),
-  lightning: () => import('../demo/Backgrounds/LightningDemo.vue'),
+  'silk': () => import('../demo/Backgrounds/SilkDemo.vue'),
+  'lightning': () => import('../demo/Backgrounds/LightningDemo.vue'),
   'letter-glitch': () => import('../demo/Backgrounds/LetterGlitchDemo.vue'),
-  particles: () => import('../demo/Backgrounds/ParticlesDemo.vue'),
-  waves: () => import('../demo/Backgrounds/WavesDemo.vue'),
-  squares: () => import('../demo/Backgrounds/SquaresDemo.vue'),
-  iridescence: () => import('../demo/Backgrounds/IridescenceDemo.vue'),
-  threads: () => import('../demo/Backgrounds/ThreadsDemo.vue'),
-  aurora: () => import('../demo/Backgrounds/AuroraDemo.vue'),
-  beams: () => import('../demo/Backgrounds/BeamsDemo.vue'),
+  'particles': () => import('../demo/Backgrounds/ParticlesDemo.vue'),
+  'waves': () => import('../demo/Backgrounds/WavesDemo.vue'),
+  'squares': () => import('../demo/Backgrounds/SquaresDemo.vue'),
+  'iridescence': () => import('../demo/Backgrounds/IridescenceDemo.vue'),
+  'threads': () => import('../demo/Backgrounds/ThreadsDemo.vue'),
+  'aurora': () => import('../demo/Backgrounds/AuroraDemo.vue'),
+  'beams': () => import('../demo/Backgrounds/BeamsDemo.vue'),
   'grid-motion': () => import('../demo/Backgrounds/GridMotionDemo.vue')
 };
 
