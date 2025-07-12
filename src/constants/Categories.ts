@@ -32,6 +32,7 @@ export const CATEGORIES = [
       'Animated Content',
       'Fade Content',
       'Pixel Transition',
+      'Ribbons',
       'Glare Hover',
       'Magnet Lines',
       'Count Up',

@@ -40,7 +40,6 @@ const inlineStyles = computed(
 );
 
 const baseClasses = [
-  // Base styling
   'text-white',
   'font-black',
   'whitespace-nowrap',
@@ -50,7 +49,6 @@ const baseClasses = [
   'cursor-pointer',
   'text-[clamp(2rem,10vw,8rem)]',
 
-  // Pseudo-elements base
   'before:content-[attr(data-text)]',
   'before:absolute',
   'before:top-0',
@@ -69,19 +67,16 @@ const baseClasses = [
 ];
 
 const normalGlitchClasses = [
-  // After pseudo-element for normal mode
   'after:left-[10px]',
   'after:[text-shadow:var(--after-shadow,-10px_0_red)]',
   'after:[animation:animate-glitch_var(--after-duration,3s)_infinite_linear_alternate-reverse]',
 
-  // Before pseudo-element for normal mode
   'before:left-[-10px]',
   'before:[text-shadow:var(--before-shadow,10px_0_cyan)]',
   'before:[animation:animate-glitch_var(--before-duration,2s)_infinite_linear_alternate-reverse]'
 ];
 
 const hoverOnlyClasses = [
-  // Hide pseudo-elements by default
   'before:content-[""]',
   'before:opacity-0',
   'before:[animation:none]',
@@ -89,7 +84,6 @@ const hoverOnlyClasses = [
   'after:opacity-0',
   'after:[animation:none]',
 
-  // Show and animate on hover
   'hover:before:content-[attr(data-text)]',
   'hover:before:opacity-100',
   'hover:before:left-[-10px]',

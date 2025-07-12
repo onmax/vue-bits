@@ -5,6 +5,7 @@ const animations = {
   'glare-hover': () => import('../demo/Animations/GlareHoverDemo.vue'),
   'magnet-lines': () => import('../demo/Animations/MagnetLinesDemo.vue'),
   'click-spark': () => import('../demo/Animations/ClickSparkDemo.vue'),
+  'ribbons': () => import('../demo/Animations/RibbonsDemo.vue'),
   'metallic-paint': () => import('../demo/Animations/MetallicPaintDemo.vue'),
   'magnet': () => import('../demo/Animations/MagnetDemo.vue'),
   'cubes': () => import('../demo/Animations/CubesDemo.vue'),

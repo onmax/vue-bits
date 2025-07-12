@@ -469,7 +469,7 @@ class CarLights {
     const geometry = new THREE.TubeGeometry(curve, 40, 1, 8, false);
 
     const instanced = new THREE.InstancedBufferGeometry();
-    // Copy geometry attributes
+
     for (const key in geometry.attributes) {
       instanced.setAttribute(key, geometry.attributes[key]);
     }
@@ -634,7 +634,7 @@ class LightsSticks {
     const options = this.options;
     const geometry = new THREE.PlaneGeometry(1, 1);
     const instanced = new THREE.InstancedBufferGeometry();
-    // Copy geometry attributes
+
     for (const key in geometry.attributes) {
       instanced.setAttribute(key, geometry.attributes[key]);
     }
@@ -1038,17 +1038,14 @@ class App {
     this.onMouseUp = this.onMouseUp.bind(this);
     this.onWindowResize = this.onWindowResize.bind(this);
 
-    // Use ResizeObserver for better container tracking
     if (typeof ResizeObserver !== 'undefined') {
       const resizeObserver = new ResizeObserver(() => {
         this.onWindowResize();
       });
       resizeObserver.observe(container);
 
-      // Store reference for cleanup
       this.resizeObserver = resizeObserver;
     } else {
-      // Fallback to window resize
       window.addEventListener('resize', this.onWindowResize);
     }
   }
@@ -1220,7 +1217,6 @@ class App {
   tick() {
     if (this.disposed || !this) return;
 
-    // Ensure renderer stays within container bounds
     const containerWidth = this.container.offsetWidth;
     const containerHeight = this.container.offsetHeight;
 
