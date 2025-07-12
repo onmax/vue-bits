@@ -68,40 +68,24 @@ onMounted(() => {
 
 <template>
   <div ref="gridRef" class="w-full h-full overflow-hidden">
-    <section
-      class="relative flex justify-center items-center w-full h-screen overflow-hidden"
-      :style="{
-        background: `radial-gradient(circle, ${gradientColor} 0%, transparent 100%)`,
-      }"
-    >
+    <section class="relative flex justify-center items-center w-full h-screen overflow-hidden" :style="{
+      background: `radial-gradient(circle, ${gradientColor} 0%, transparent 100%)`,
+    }">
       <div class="z-[4] absolute inset-0 bg-[length:250px] pointer-events-none"></div>
 
       <div
-        class="z-[2] relative flex-none gap-4 grid grid-cols-1 grid-rows-4 w-[150vw] h-[150vh] rotate-[-15deg] origin-center"
-      >
-        <div
-          v-for="rowIndex in 4"
-          :key="rowIndex"
-          class="gap-4 grid grid-cols-7"
-          :style="{ willChange: 'transform, filter' }"
-          ref="rowRefs"
-        >
+        class="z-[2] relative flex-none gap-4 grid grid-cols-1 grid-rows-4 w-[150vw] h-[150vh] rotate-[-15deg] origin-center">
+        <div v-for="rowIndex in 4" :key="rowIndex" class="gap-4 grid grid-cols-7"
+          :style="{ willChange: 'transform, filter' }" ref="rowRefs">
           <div v-for="itemIndex in 7" :key="itemIndex" class="relative">
             <div
-              class="relative flex justify-center items-center bg-[#111] rounded-[10px] w-full h-full overflow-hidden text-[1.5rem] text-white"
-            >
-              <div
-                v-if="isImage(combinedItems[(rowIndex - 1) * 7 + (itemIndex - 1)])"
-                class="top-0 left-0 absolute bg-cover bg-center w-full h-full"
-                :style="{
+              class="relative flex justify-center items-center bg-[#111] rounded-[10px] w-full h-full overflow-hidden text-[1.5rem] text-white">
+              <div v-if="isImage(combinedItems[(rowIndex - 1) * 7 + (itemIndex - 1)])"
+                class="top-0 left-0 absolute bg-cover bg-center w-full h-full" :style="{
                   backgroundImage: `url(${combinedItems[(rowIndex - 1) * 7 + (itemIndex - 1)]})`,
-                }"
-              ></div>
-              <div
-                v-else-if="isTag(combinedItems[(rowIndex - 1) * 7 + (itemIndex - 1)])"
-                class="z-[2] p-4 text-center"
-                v-html="combinedItems[(rowIndex - 1) * 7 + (itemIndex - 1)]"
-              ></div>
+                }"></div>
+              <div v-else-if="isTag(combinedItems[(rowIndex - 1) * 7 + (itemIndex - 1)])" class="z-[2] p-4 text-center"
+                v-html="combinedItems[(rowIndex - 1) * 7 + (itemIndex - 1)]"></div>
               <div v-else class="z-[1] p-4 text-center">
                 {{ combinedItems[(rowIndex - 1) * 7 + (itemIndex - 1)] }}
               </div>
