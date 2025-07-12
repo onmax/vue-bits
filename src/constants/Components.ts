@@ -27,7 +27,6 @@ const textAnimations = {
   'scroll-float': () => import("../demo/TextAnimations/ScrollFloatDemo.vue"),
   'scroll-reveal': ()=> import("../demo/TextAnimations/ScrollRevealDemo.vue"),
 };
- 
 const components = {
   'masonry': () => import("../demo/Components/MasonryDemo.vue"),
   'profile-card': () => import("../demo/Components/ProfileCardDemo.vue"),
