@@ -2,8 +2,12 @@
   <TabbedLayout>
     <template #preview>
       <div class="relative demo-container h-[500px] overflow-hidden p-0">
-        <Threads :amplitude="amplitude" :distance="distance" :enableMouseInteraction="enableMouseInteraction"
-          :color="[1, 1, 1]" />
+        <Threads
+          :amplitude="amplitude"
+          :distance="distance"
+          :enableMouseInteraction="enableMouseInteraction"
+          :color="[1, 1, 1]"
+        />
       </div>
 
       <Customize>
@@ -15,6 +19,7 @@
       </Customize>
 
       <PropTable :data="propData" />
+
       <Dependencies :dependencyList="['ogl']" />
     </template>
 
@@ -29,48 +34,48 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import TabbedLayout from '../../components/common/TabbedLayout.vue'
-import Customize from '../../components/common/Customize.vue'
-import PreviewSlider from '../../components/common/PreviewSlider.vue'
-import PreviewSwitch from '../../components/common/PreviewSwitch.vue'
-import PropTable from '../../components/common/PropTable.vue'
-import Dependencies from '../../components/code/Dependencies.vue'
-import CodeExample from '../../components/code/CodeExample.vue'
-import CliInstallation from '../../components/code/CliInstallation.vue'
-import Threads from '../../content/Backgrounds/Threads/Threads.vue'
-import { threads } from '../../constants/code/Backgrounds/threadsCode'
+import { ref } from 'vue';
+import TabbedLayout from '../../components/common/TabbedLayout.vue';
+import Customize from '../../components/common/Customize.vue';
+import PreviewSlider from '../../components/common/PreviewSlider.vue';
+import PreviewSwitch from '../../components/common/PreviewSwitch.vue';
+import PropTable from '../../components/common/PropTable.vue';
+import Dependencies from '../../components/code/Dependencies.vue';
+import CodeExample from '../../components/code/CodeExample.vue';
+import CliInstallation from '../../components/code/CliInstallation.vue';
+import Threads from '../../content/Backgrounds/Threads/Threads.vue';
+import { threads } from '../../constants/code/Backgrounds/threadsCode';
 
-const amplitude = ref(1)
-const distance = ref(0)
-const enableMouseInteraction = ref(true)
+const amplitude = ref(1);
+const distance = ref(0);
+const enableMouseInteraction = ref(true);
 
 const propData = [
   {
-    name: "color",
-    type: "[number, number, number]",
-    default: "[1, 1, 1]",
-    description: "Customizes the color of the lines (RGB)."
+    name: 'color',
+    type: '[number, number, number]',
+    default: '[1, 1, 1]',
+    description: 'Customizes the color of the lines (RGB).'
   },
   {
-    name: "amplitude",
-    type: "number",
-    default: "1",
-    description: "Adjusts the intensity of the wave effect on the lines."
+    name: 'amplitude',
+    type: 'number',
+    default: '1',
+    description: 'Adjusts the intensity of the wave effect on the lines.'
   },
   {
-    name: "distance",
-    type: "number",
-    default: "0",
-    description: "Controls the spacing between the lines. A value of 0 means no offset."
+    name: 'distance',
+    type: 'number',
+    default: '0',
+    description: 'Controls the spacing between the lines. A value of 0 means no offset.'
   },
   {
-    name: "enableMouseInteraction",
-    type: "boolean",
-    default: "false",
+    name: 'enableMouseInteraction',
+    type: 'boolean',
+    default: 'false',
     description: "Enables smooth mouse hover effects that modulate the line's movement and amplitude."
   }
-]
+];
 </script>
 
 <style scoped>

@@ -4,17 +4,33 @@
       <template #preview>
         <div class="demo-container relative bg-[#060010] min-h-[400px] max-h-[450px] overflow-hidden mb-6">
           <div class="w-full h-full">
-            <TextPressure :key="rerenderKey" :text="text" :flex="flex" :alpha="alpha" :stroke="stroke" :width="width"
-              :weight="weight" :italic="italic" :text-color="textColor" :stroke-color="strokeColor"
-              :min-font-size="36" />
+            <TextPressure
+              :key="rerenderKey"
+              :text="text"
+              :flex="flex"
+              :alpha="alpha"
+              :stroke="stroke"
+              :width="width"
+              :weight="weight"
+              :italic="italic"
+              :text-color="textColor"
+              :stroke-color="strokeColor"
+              :min-font-size="36"
+            />
           </div>
         </div>
 
         <Customize>
           <div class="mb-4">
             <label class="block text-sm font-medium mb-2">Text</label>
-            <input v-model="text" type="text" placeholder="Your text here..." maxlength="10"
-              class="w-[200px] px-3 py-2 bg-[#0b0b0b] border border-[#333] rounded-md text-white focus:outline-none focus:border-[#666]" />
+
+            <input
+              v-model="text"
+              type="text"
+              placeholder="Your text here..."
+              maxlength="10"
+              class="w-[200px] px-3 py-2 bg-[#0b0b0b] border border-[#333] rounded-md text-white focus:outline-none focus:border-[#666]"
+            />
           </div>
 
           <div class="color-controls">
@@ -24,19 +40,73 @@
           </div>
 
           <p class="mt-6 text-[#999] text-sm">Animation Settings</p>
+
           <div class="flex gap-4 flex-wrap">
-            <PreviewSwitch title="Flex" :model-value="flex"
-              @update:model-value="(val: boolean) => { flex = val; forceRerender() }" />
-            <PreviewSwitch title="Alpha" :model-value="alpha"
-              @update:model-value="(val: boolean) => { alpha = val; forceRerender() }" />
-            <PreviewSwitch title="Stroke" :model-value="stroke"
-              @update:model-value="(val: boolean) => { stroke = val; forceRerender() }" />
-            <PreviewSwitch title="Width" :model-value="width"
-              @update:model-value="(val: boolean) => { width = val; forceRerender() }" />
-            <PreviewSwitch title="Weight" :model-value="weight"
-              @update:model-value="(val: boolean) => { weight = val; forceRerender() }" />
-            <PreviewSwitch title="Italic" :model-value="italic"
-              @update:model-value="(val: boolean) => { italic = val; forceRerender() }" />
+            <PreviewSwitch
+              title="Flex"
+              :model-value="flex"
+              @update:model-value="
+                (val: boolean) => {
+                  flex = val;
+                  forceRerender();
+                }
+              "
+            />
+
+            <PreviewSwitch
+              title="Alpha"
+              :model-value="alpha"
+              @update:model-value="
+                (val: boolean) => {
+                  alpha = val;
+                  forceRerender();
+                }
+              "
+            />
+
+            <PreviewSwitch
+              title="Stroke"
+              :model-value="stroke"
+              @update:model-value="
+                (val: boolean) => {
+                  stroke = val;
+                  forceRerender();
+                }
+              "
+            />
+
+            <PreviewSwitch
+              title="Width"
+              :model-value="width"
+              @update:model-value="
+                (val: boolean) => {
+                  width = val;
+                  forceRerender();
+                }
+              "
+            />
+
+            <PreviewSwitch
+              title="Weight"
+              :model-value="weight"
+              @update:model-value="
+                (val: boolean) => {
+                  weight = val;
+                  forceRerender();
+                }
+              "
+            />
+
+            <PreviewSwitch
+              title="Italic"
+              :model-value="italic"
+              @update:model-value="
+                (val: boolean) => {
+                  italic = val;
+                  forceRerender();
+                }
+              "
+            />
           </div>
         </Customize>
 
@@ -55,29 +125,29 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import TabbedLayout from '../../components/common/TabbedLayout.vue'
-import PropTable from '../../components/common/PropTable.vue'
-import CliInstallation from '../../components/code/CliInstallation.vue'
-import CodeExample from '../../components/code/CodeExample.vue'
-import Customize from '../../components/common/Customize.vue'
-import PreviewSwitch from '../../components/common/PreviewSwitch.vue'
-import PreviewColor from '../../components/common/PreviewColor.vue'
-import TextPressure from '../../content/TextAnimations/TextPressure/TextPressure.vue'
-import { textPressure } from '@/constants/code/TextAnimations/textPressureCode'
-import { useForceRerender } from '@/composables/useForceRerender'
+import { ref } from 'vue';
+import TabbedLayout from '../../components/common/TabbedLayout.vue';
+import PropTable from '../../components/common/PropTable.vue';
+import CliInstallation from '../../components/code/CliInstallation.vue';
+import CodeExample from '../../components/code/CodeExample.vue';
+import Customize from '../../components/common/Customize.vue';
+import PreviewSwitch from '../../components/common/PreviewSwitch.vue';
+import PreviewColor from '../../components/common/PreviewColor.vue';
+import TextPressure from '../../content/TextAnimations/TextPressure/TextPressure.vue';
+import { textPressure } from '@/constants/code/TextAnimations/textPressureCode';
+import { useForceRerender } from '@/composables/useForceRerender';
 
-const text = ref('Hello!')
-const flex = ref(true)
-const alpha = ref(false)
-const stroke = ref(false)
-const width = ref(true)
-const weight = ref(true)
-const italic = ref(true)
-const textColor = ref('#ffffff')
-const strokeColor = ref('#27FF64')
+const text = ref('Hello!');
+const flex = ref(true);
+const alpha = ref(false);
+const stroke = ref(false);
+const width = ref(true);
+const weight = ref(true);
+const italic = ref(true);
+const textColor = ref('#ffffff');
+const strokeColor = ref('#27FF64');
 
-const { rerenderKey, forceRerender } = useForceRerender()
+const { rerenderKey, forceRerender } = useForceRerender();
 
 const propData = [
   {
@@ -164,7 +234,7 @@ const propData = [
     default: '24',
     description: 'Sets a minimum font-size to avoid overly tiny text on smaller screens.'
   }
-]
+];
 </script>
 
 <style scoped>

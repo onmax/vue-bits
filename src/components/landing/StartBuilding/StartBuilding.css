@@ -17,9 +17,7 @@
   max-width: 1200px;
   user-select: none;
   margin: 0 auto;
-  background: linear-gradient(135deg,
-      #3aed6d,
-      rgba(24, 255, 93, 0.6));
+  background: linear-gradient(135deg, #3aed6d, rgba(24, 255, 93, 0.6));
   background-size: 200% 200%;
   border-radius: 16px;
   padding: 4rem 3rem;
@@ -78,7 +76,7 @@
   background: transparent;
   color: #0b0b0b;
   border: 2px solid #0b0b0b;
-  padding: .6rem 1.6rem;
+  padding: 0.6rem 1.6rem;
   font-size: 1.1rem;
   font-weight: 600;
   border-radius: 50px;
@@ -88,7 +86,7 @@
 
 .start-building-button:hover {
   background: #0b0b0b;
-  color: #27FF64;
+  color: #27ff64;
 }
 
 @media (max-width: 1280px) {

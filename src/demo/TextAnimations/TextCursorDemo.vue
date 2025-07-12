@@ -3,10 +3,16 @@
     <TabbedLayout>
       <template #preview>
         <div class="demo-container relative h-[500px] overflow-hidden">
-          <TextCursor :key="key" :text="text" :follow-mouse-direction="followMouseDirection"
-            :random-float="randomFloat" />
+          <TextCursor
+            :key="key"
+            :text="text"
+            :follow-mouse-direction="followMouseDirection"
+            :random-float="randomFloat"
+          />
+
           <div
-            class="absolute inset-0 flex items-center justify-center pointer-events-none text-[4rem] font-[900] text-[#222] select-none">
+            class="absolute inset-0 flex items-center justify-center pointer-events-none text-[4rem] font-[900] text-[#222] select-none"
+          >
             Hover Around!
           </div>
         </div>
@@ -14,17 +20,27 @@
         <Customize>
           <div class="mb-4">
             <label class="block text-sm font-medium mb-2">Text</label>
-            <input v-model="text" type="text" placeholder="Enter text..." maxlength="10"
-              class="w-[160px] px-3 py-2 bg-[#0b0b0b] border border-[#333] rounded-md text-white focus:outline-none focus:border-[#666]" />
+
+            <input
+              v-model="text"
+              type="text"
+              placeholder="Enter text..."
+              maxlength="10"
+              class="w-[160px] px-3 py-2 bg-[#0b0b0b] border border-[#333] rounded-md text-white focus:outline-none focus:border-[#666]"
+            />
           </div>
 
-          <PreviewSwitch title="Follow Mouse Direction" v-model="followMouseDirection"
-            @update:model-value="forceRerender" />
+          <PreviewSwitch
+            title="Follow Mouse Direction"
+            v-model="followMouseDirection"
+            @update:model-value="forceRerender"
+          />
 
           <PreviewSwitch title="Enable Random Floating" v-model="randomFloat" @update:model-value="forceRerender" />
         </Customize>
 
         <PropTable :data="propData" />
+
         <Dependencies :dependency-list="['motion-v']" />
       </template>
 
@@ -40,23 +56,23 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import TabbedLayout from '../../components/common/TabbedLayout.vue'
-import PropTable from '../../components/common/PropTable.vue'
-import Dependencies from '../../components/code/Dependencies.vue'
-import CliInstallation from '../../components/code/CliInstallation.vue'
-import CodeExample from '../../components/code/CodeExample.vue'
-import Customize from '../../components/common/Customize.vue'
-import PreviewSwitch from '../../components/common/PreviewSwitch.vue'
-import TextCursor from '../../content/TextAnimations/TextCursor/TextCursor.vue'
-import { textCursor } from '@/constants/code/TextAnimations/textCursorCode'
-import { useForceRerender } from '@/composables/useForceRerender'
+import { ref } from 'vue';
+import TabbedLayout from '../../components/common/TabbedLayout.vue';
+import PropTable from '../../components/common/PropTable.vue';
+import Dependencies from '../../components/code/Dependencies.vue';
+import CliInstallation from '../../components/code/CliInstallation.vue';
+import CodeExample from '../../components/code/CodeExample.vue';
+import Customize from '../../components/common/Customize.vue';
+import PreviewSwitch from '../../components/common/PreviewSwitch.vue';
+import TextCursor from '../../content/TextAnimations/TextCursor/TextCursor.vue';
+import { textCursor } from '@/constants/code/TextAnimations/textCursorCode';
+import { useForceRerender } from '@/composables/useForceRerender';
 
-const { rerenderKey: key, forceRerender } = useForceRerender()
+const { rerenderKey: key, forceRerender } = useForceRerender();
 
-const text = ref('💚')
-const followMouseDirection = ref(true)
-const randomFloat = ref(true)
+const text = ref('💚');
+const followMouseDirection = ref(true);
+const randomFloat = ref(true);
 
 const propData = [
   {
@@ -107,5 +123,5 @@ const propData = [
     default: '5',
     description: 'The maximum number of trail points to display.'
   }
-]
+];
 </script>

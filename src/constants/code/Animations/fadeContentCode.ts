@@ -1,5 +1,5 @@
-import code from '@content/Animations/FadeContent/FadeContent.vue?raw'
-import type { CodeObject } from '../../../types/code'
+import code from '@content/Animations/FadeContent/FadeContent.vue?raw';
+import type { CodeObject } from '../../../types/code';
 
 export const fadeContent: CodeObject = {
   cli: `npx jsrepo add https://vue-bits.dev/ui/Animations/FadeContent`,
@@ -24,4 +24,4 @@ export const fadeContent: CodeObject = {
   import FadeContent from "./FadeContent.vue";
 </script>`,
   code
-}
+};

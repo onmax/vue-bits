@@ -1,5 +1,5 @@
-import code from '@content/Components/Dock/Dock.vue?raw'
-import type { CodeObject } from '../../../types/code'
+import code from '@content/Components/Dock/Dock.vue?raw';
+import type { CodeObject } from '../../../types/code';
 
 export const dock: CodeObject = {
   cli: `npx jsrepo add https://vue-bits.dev/ui/Components/Dock`,
@@ -44,4 +44,4 @@ export const dock: CodeObject = {
   ];
 </script>`,
   code
-}
+};

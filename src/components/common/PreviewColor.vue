@@ -7,19 +7,19 @@
 
 <script setup lang="ts">
 defineProps<{
-  title: string
-  modelValue: string
-  disabled?: boolean
-}>()
+  title: string;
+  modelValue: string;
+  disabled?: boolean;
+}>();
 
 const emit = defineEmits<{
-  'update:modelValue': [value: string]
-}>()
+  'update:modelValue': [value: string];
+}>();
 
 const handleColorChange = (event: Event) => {
-  const target = event.target as HTMLInputElement
-  emit('update:modelValue', target.value)
-}
+  const target = event.target as HTMLInputElement;
+  emit('update:modelValue', target.value);
+};
 </script>
 
 <style scoped>

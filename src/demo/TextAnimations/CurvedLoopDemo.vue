@@ -3,26 +3,57 @@
     <TabbedLayout>
       <template #preview>
         <div class="demo-container relative h-[500px] overflow-hidden p-0">
-          <CurvedLoop :key="rerenderKey" :marquee-text="marqueeText" :speed="speed" :curve-amount="curveAmount"
-            :interactive="interactive" />
+          <CurvedLoop
+            :key="rerenderKey"
+            :marquee-text="marqueeText"
+            :speed="speed"
+            :curve-amount="curveAmount"
+            :interactive="interactive"
+          />
         </div>
 
         <Customize>
           <div class="mb-4">
             <label class="block text-sm font-medium mb-2">Marquee Text</label>
-            <input v-model="marqueeText" type="text" placeholder="Enter text..."
+
+            <input
+              v-model="marqueeText"
+              type="text"
+              placeholder="Enter text..."
               class="w-[300px] px-3 py-2 bg-[#0b0b0b] border border-[#333] rounded-md text-white focus:outline-none focus:border-[#666]"
-              @input="forceRerender" />
+              @input="forceRerender"
+            />
           </div>
 
-          <PreviewSlider title="Speed" v-model="speed" :min="0" :max="10" :step="0.1"
-            @update:model-value="forceRerender" />
+          <PreviewSlider
+            title="Speed"
+            v-model="speed"
+            :min="0"
+            :max="10"
+            :step="0.1"
+            @update:model-value="forceRerender"
+          />
 
-          <PreviewSlider title="Curve Amount" v-model="curveAmount" :min="-400" :max="400" :step="10" value-unit="px"
-            @update:model-value="forceRerender" />
+          <PreviewSlider
+            title="Curve Amount"
+            v-model="curveAmount"
+            :min="-400"
+            :max="400"
+            :step="10"
+            value-unit="px"
+            @update:model-value="forceRerender"
+          />
 
-          <PreviewSwitch title="Draggable" :model-value="interactive"
-            @update:model-value="(val: boolean) => { interactive = val; forceRerender() }" />
+          <PreviewSwitch
+            title="Draggable"
+            :model-value="interactive"
+            @update:model-value="
+              (val: boolean) => {
+                interactive = val;
+                forceRerender();
+              }
+            "
+          />
         </Customize>
 
         <PropTable :data="propData" />
@@ -40,24 +71,24 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import TabbedLayout from '../../components/common/TabbedLayout.vue'
-import PropTable from '../../components/common/PropTable.vue'
-import CliInstallation from '../../components/code/CliInstallation.vue'
-import CodeExample from '../../components/code/CodeExample.vue'
-import Customize from '../../components/common/Customize.vue'
-import PreviewSlider from '../../components/common/PreviewSlider.vue'
-import PreviewSwitch from '../../components/common/PreviewSwitch.vue'
-import CurvedLoop from '../../content/TextAnimations/CurvedLoop/CurvedLoop.vue'
-import { curvedLoop } from '@/constants/code/TextAnimations/curvedLoopCode'
-import { useForceRerender } from '@/composables/useForceRerender'
+import { ref } from 'vue';
+import TabbedLayout from '../../components/common/TabbedLayout.vue';
+import PropTable from '../../components/common/PropTable.vue';
+import CliInstallation from '../../components/code/CliInstallation.vue';
+import CodeExample from '../../components/code/CodeExample.vue';
+import Customize from '../../components/common/Customize.vue';
+import PreviewSlider from '../../components/common/PreviewSlider.vue';
+import PreviewSwitch from '../../components/common/PreviewSwitch.vue';
+import CurvedLoop from '../../content/TextAnimations/CurvedLoop/CurvedLoop.vue';
+import { curvedLoop } from '@/constants/code/TextAnimations/curvedLoopCode';
+import { useForceRerender } from '@/composables/useForceRerender';
 
-const marqueeText = ref('Be ✦ Creative ✦ With ✦ Vue ✦ Bits ✦')
-const speed = ref(2)
-const curveAmount = ref(400)
-const interactive = ref(true)
+const marqueeText = ref('Be ✦ Creative ✦ With ✦ Vue ✦ Bits ✦');
+const speed = ref(2);
+const curveAmount = ref(400);
+const interactive = ref(true);
 
-const { rerenderKey, forceRerender } = useForceRerender()
+const { rerenderKey, forceRerender } = useForceRerender();
 
 const propData = [
   {
@@ -96,5 +127,5 @@ const propData = [
     default: 'true',
     description: 'Whether the marquee can be dragged by the user'
   }
-]
+];
 </script>

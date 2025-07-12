@@ -2,15 +2,18 @@
   <div class="decay-card-demo">
     <TabbedLayout>
       <template #preview>
-        <div class="demo-container" style="overflow: hidden;">
+        <div class="demo-container" style="overflow: hidden">
           <DecayCard>
             <div class="text-[2rem]">
-              Decay<br />Card
+              Decay
+              <br />
+              Card
             </div>
           </DecayCard>
         </div>
 
         <PropTable :data="propData" />
+
         <Dependencies :dependency-list="['gsap']" />
       </template>
 
@@ -26,13 +29,13 @@
 </template>
 
 <script setup lang="ts">
-import TabbedLayout from '../../components/common/TabbedLayout.vue'
-import PropTable from '../../components/common/PropTable.vue'
-import Dependencies from '../../components/code/Dependencies.vue'
-import CliInstallation from '../../components/code/CliInstallation.vue'
-import CodeExample from '../../components/code/CodeExample.vue'
-import DecayCard from '../../content/Components/DecayCard/DecayCard.vue'
-import { decayCard } from '@/constants/code/Components/decayCardCode'
+import TabbedLayout from '../../components/common/TabbedLayout.vue';
+import PropTable from '../../components/common/PropTable.vue';
+import Dependencies from '../../components/code/Dependencies.vue';
+import CliInstallation from '../../components/code/CliInstallation.vue';
+import CodeExample from '../../components/code/CodeExample.vue';
+import DecayCard from '../../content/Components/DecayCard/DecayCard.vue';
+import { decayCard } from '@/constants/code/Components/decayCardCode';
 
 const propData = [
   {
@@ -59,5 +62,5 @@ const propData = [
     default: 'https://picsum.photos/300/400?grayscale',
     description: 'Allows setting the background image of the card.'
   }
-]
+];
 </script>

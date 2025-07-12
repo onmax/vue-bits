@@ -1,5 +1,5 @@
-import code from '@/content/TextAnimations/TextCursor/TextCursor.vue?raw'
-import type { CodeObject } from '@/types/code'
+import code from '@/content/TextAnimations/TextCursor/TextCursor.vue?raw';
+import type { CodeObject } from '@/types/code';
 
 export const textCursor: CodeObject = {
   cli: `npx jsrepo add https://vue-bits.dev/ui/TextAnimations/TextCursor`,
@@ -21,4 +21,4 @@ export const textCursor: CodeObject = {
   import TextCursor from "./TextCursor.vue";
 </script>`,
   code
-}
+};

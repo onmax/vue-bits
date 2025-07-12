@@ -1,5 +1,5 @@
-import code from '@content/Components/CardSwap/CardSwap.vue?raw'
-import type { CodeObject } from '../../../types/code'
+import code from '@content/Components/CardSwap/CardSwap.vue?raw';
+import type { CodeObject } from '../../../types/code';
 
 export const cardSwap: CodeObject = {
   cli: `npx jsrepo add https://vue-bits.dev/ui/Components/CardSwap`,
@@ -51,4 +51,4 @@ export const cardSwap: CodeObject = {
   };
 </script>`,
   code
-}
+};

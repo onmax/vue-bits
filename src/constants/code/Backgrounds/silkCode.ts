@@ -1,5 +1,5 @@
-import code from '@content/Backgrounds/Silk/Silk.vue?raw'
-import type { CodeObject } from '../../../types/code'
+import code from '@content/Backgrounds/Silk/Silk.vue?raw';
+import type { CodeObject } from '../../../types/code';
 
 export const silk: CodeObject = {
   cli: `npx jsrepo add https://vue-bits.dev/ui/Backgrounds/Silk`,
@@ -30,4 +30,4 @@ export const silk: CodeObject = {
   }
 </style>`,
   code
-}
+};

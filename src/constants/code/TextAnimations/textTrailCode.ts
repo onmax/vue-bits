@@ -1,5 +1,5 @@
-import code from '@/content/TextAnimations/TextTrail/TextTrail.vue?raw'
-import type { CodeObject } from '@/types/code'
+import code from '@/content/TextAnimations/TextTrail/TextTrail.vue?raw';
+import type { CodeObject } from '@/types/code';
 
 export const textTrail: CodeObject = {
   cli: `npx jsrepo add https://vue-bits.dev/ui/TextAnimations/TextTrail`,
@@ -20,4 +20,4 @@ export const textTrail: CodeObject = {
   import TextTrail from "./TextTrail.vue";
 </script>`,
   code
-}
+};

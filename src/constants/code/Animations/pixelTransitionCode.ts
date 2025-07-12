@@ -1,5 +1,5 @@
-import code from '@/content/Animations/PixelTransition/PixelTransition.vue?raw'
-import type { CodeObject } from '@/types/code'
+import code from '@/content/Animations/PixelTransition/PixelTransition.vue?raw';
+import type { CodeObject } from '@/types/code';
 
 export const pixelTransition: CodeObject = {
   cli: `npx jsrepo add https://vue-bits.dev/ui/Animations/PixelTransition`,
@@ -26,4 +26,4 @@ export const pixelTransition: CodeObject = {
   import PixelTransition from './PixelTransition.vue';
 </script>`,
   code
-}
+};

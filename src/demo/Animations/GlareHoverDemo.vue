@@ -4,12 +4,19 @@
       <template #preview>
         <div class="demo-container relative h-[600px] overflow-hidden">
           <div class="flex justify-center items-center h-full">
-            <GlareHover background="#111" border-color="#222" border-radius="20px" width="400px" height="300px"
-              :glare-color="glareColor" :glare-opacity="glareOpacity" :glare-size="glareSize"
-              :transition-duration="transitionDuration" :play-once="playOnce">
-              <div class="text-center text-5xl font-black text-[#222] m-0">
-                Hover Me
-              </div>
+            <GlareHover
+              background="#111"
+              border-color="#222"
+              border-radius="20px"
+              width="400px"
+              height="300px"
+              :glare-color="glareColor"
+              :glare-opacity="glareOpacity"
+              :glare-size="glareSize"
+              :transition-duration="transitionDuration"
+              :play-once="playOnce"
+            >
+              <div class="text-center text-5xl font-black text-[#222] m-0">Hover Me</div>
             </GlareHover>
           </div>
         </div>
@@ -21,8 +28,14 @@
 
           <PreviewSlider title="Glare Size" v-model="glareSize" :min="100" :max="500" :step="25" value-unit="%" />
 
-          <PreviewSlider title="Transition Duration" v-model="transitionDuration" :min="200" :max="2000" :step="50"
-            value-unit="ms" />
+          <PreviewSlider
+            title="Transition Duration"
+            v-model="transitionDuration"
+            :min="200"
+            :max="2000"
+            :step="50"
+            value-unit="ms"
+          />
 
           <PreviewSwitch title="Play Once" v-model="playOnce" />
         </Customize>
@@ -42,23 +55,23 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import TabbedLayout from '../../components/common/TabbedLayout.vue'
-import PropTable from '../../components/common/PropTable.vue'
-import CliInstallation from '../../components/code/CliInstallation.vue'
-import CodeExample from '../../components/code/CodeExample.vue'
-import Customize from '../../components/common/Customize.vue'
-import PreviewSlider from '../../components/common/PreviewSlider.vue'
-import PreviewSwitch from '../../components/common/PreviewSwitch.vue'
-import PreviewColor from '../../components/common/PreviewColor.vue'
-import GlareHover from '../../content/Animations/GlareHover/GlareHover.vue'
-import { glareHover } from '@/constants/code/Animations/glareHoverCode'
+import { ref } from 'vue';
+import TabbedLayout from '../../components/common/TabbedLayout.vue';
+import PropTable from '../../components/common/PropTable.vue';
+import CliInstallation from '../../components/code/CliInstallation.vue';
+import CodeExample from '../../components/code/CodeExample.vue';
+import Customize from '../../components/common/Customize.vue';
+import PreviewSlider from '../../components/common/PreviewSlider.vue';
+import PreviewSwitch from '../../components/common/PreviewSwitch.vue';
+import PreviewColor from '../../components/common/PreviewColor.vue';
+import GlareHover from '../../content/Animations/GlareHover/GlareHover.vue';
+import { glareHover } from '@/constants/code/Animations/glareHoverCode';
 
-const glareColor = ref('#ffffff')
-const glareOpacity = ref(0.3)
-const glareSize = ref(300)
-const transitionDuration = ref(800)
-const playOnce = ref(false)
+const glareColor = ref('#ffffff');
+const glareOpacity = ref(0.3);
+const glareSize = ref(300);
+const transitionDuration = ref(800);
+const playOnce = ref(false);
 
 const propData = [
   {
@@ -125,7 +138,7 @@ const propData = [
     name: 'playOnce',
     type: 'boolean',
     default: 'false',
-    description: 'If true, the glare only animates on hover and doesn\'t return on mouse leave.'
+    description: "If true, the glare only animates on hover and doesn't return on mouse leave."
   },
   {
     name: 'className',
@@ -139,5 +152,5 @@ const propData = [
     default: '{}',
     description: 'Additional inline styles.'
   }
-]
+];
 </script>

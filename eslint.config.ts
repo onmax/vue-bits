@@ -1,11 +1,11 @@
-import { globalIgnores } from 'eslint/config'
-import { defineConfigWithVueTs, vueTsConfigs } from '@vue/eslint-config-typescript'
-import pluginVue from 'eslint-plugin-vue'
+import { globalIgnores } from 'eslint/config';
+import { defineConfigWithVueTs, vueTsConfigs } from '@vue/eslint-config-typescript';
+import pluginVue from 'eslint-plugin-vue';
 
 export default defineConfigWithVueTs(
   {
     name: 'app/files-to-lint',
-    files: ['**/*.{ts,mts,tsx,vue}'],
+    files: ['**/*.{ts,mts,tsx,vue}']
   },
 
   globalIgnores(['**/dist/**', '**/dist-ssr/**', '**/coverage/**']),
@@ -18,7 +18,7 @@ export default defineConfigWithVueTs(
     files: ['**/*.vue'],
     rules: {
       'vue/multi-word-component-names': 'off',
-      'vue/no-reserved-component-names': 'off',
-    },
-  },
-)
+      'vue/no-reserved-component-names': 'off'
+    }
+  }
+);

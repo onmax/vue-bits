@@ -1,5 +1,5 @@
-import code from '@content/Animations/ClickSpark/ClickSpark.vue?raw'
-import type { CodeObject } from '../../../types/code'
+import code from '@content/Animations/ClickSpark/ClickSpark.vue?raw';
+import type { CodeObject } from '../../../types/code';
 
 export const clickSpark: CodeObject = {
   cli: `npx jsrepo add https://vue-bits.dev/ui/Animations/ClickSpark`,
@@ -44,4 +44,4 @@ import ClickSpark from '@/content/Animations/ClickSpark/ClickSpark.vue'
 }
 </style>`,
   code
-}
+};

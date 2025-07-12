@@ -1,5 +1,5 @@
-import code from '@/content/TextAnimations/DecryptedText/DecryptedText.vue?raw'
-import type { CodeObject } from '@/types/code'
+import code from '@/content/TextAnimations/DecryptedText/DecryptedText.vue?raw';
+import type { CodeObject } from '@/types/code';
 
 export const decryptedText: CodeObject = {
   cli: `npx jsrepo add https://vue-bits.dev/ui/TextAnimations/DecryptedText`,
@@ -21,4 +21,4 @@ export const decryptedText: CodeObject = {
   import DecryptedText from "./DecryptedText.vue";
 </script>`,
   code
-}
+};

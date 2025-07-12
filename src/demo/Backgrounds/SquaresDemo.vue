@@ -3,21 +3,31 @@
     <template #preview>
       <div class="relative min-h-[200px] demo-container overflow-hidden p-0">
         <div class="w-full h-[500px] overflow-hidden">
-          <Squares :squareSize="size" :speed="speed" :direction="direction" :borderColor="borderColor"
-            :hoverFillColor="hoverColor" />
+          <Squares
+            :squareSize="size"
+            :speed="speed"
+            :direction="direction"
+            :borderColor="borderColor"
+            :hoverFillColor="hoverColor"
+          />
         </div>
       </div>
 
       <Customize>
         <div class="flex items-center mb-6">
           <span class="text-sm mr-2">Direction</span>
+
           <div class="flex">
-            <button v-for="dir in directions" :key="dir.value" @click="direction = dir.value" :class="[
-              'px-3 py-2 text-xs h-8 text-white border-r border-[#333] cursor-pointer last:border-r-0',
-              direction === dir.value
-                ? 'bg-[#222] hover:bg-[#222]'
-                : 'bg-[#111] hover:bg-[#111]'
-            ]" class="first:rounded-l last:rounded-r">
+            <button
+              v-for="dir in directions"
+              :key="dir.value"
+              @click="direction = dir.value"
+              :class="[
+                'px-3 py-2 text-xs h-8 text-white border-r border-[#333] cursor-pointer last:border-r-0',
+                direction === dir.value ? 'bg-[#222] hover:bg-[#222]' : 'bg-[#111] hover:bg-[#111]'
+              ]"
+              class="first:rounded-l last:rounded-r"
+            >
               {{ dir.label }}
             </button>
           </div>
@@ -32,7 +42,6 @@
 
           <PreviewColor v-model="hoverColor" title="Hover Color" />
         </div>
-
       </Customize>
 
       <PropTable :data="propData" />
@@ -49,22 +58,22 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import TabbedLayout from '../../components/common/TabbedLayout.vue'
-import Customize from '../../components/common/Customize.vue'
-import PreviewSlider from '../../components/common/PreviewSlider.vue'
-import PreviewColor from '../../components/common/PreviewColor.vue'
-import PropTable from '../../components/common/PropTable.vue'
-import CodeExample from '../../components/code/CodeExample.vue'
-import CliInstallation from '../../components/code/CliInstallation.vue'
-import Squares from '../../content/Backgrounds/Squares/Squares.vue'
-import { squares } from '../../constants/code/Backgrounds/squaresCode'
+import { ref } from 'vue';
+import TabbedLayout from '../../components/common/TabbedLayout.vue';
+import Customize from '../../components/common/Customize.vue';
+import PreviewSlider from '../../components/common/PreviewSlider.vue';
+import PreviewColor from '../../components/common/PreviewColor.vue';
+import PropTable from '../../components/common/PropTable.vue';
+import CodeExample from '../../components/code/CodeExample.vue';
+import CliInstallation from '../../components/code/CliInstallation.vue';
+import Squares from '../../content/Backgrounds/Squares/Squares.vue';
+import { squares } from '../../constants/code/Backgrounds/squaresCode';
 
-const direction = ref<'diagonal' | 'up' | 'right' | 'down' | 'left'>('diagonal')
-const borderColor = ref('#333')
-const hoverColor = ref('#27FF64')
-const size = ref(40)
-const speed = ref(0.5)
+const direction = ref<'diagonal' | 'up' | 'right' | 'down' | 'left'>('diagonal');
+const borderColor = ref('#333');
+const hoverColor = ref('#27FF64');
+const size = ref(40);
+const speed = ref(0.5);
 
 const directions = [
   { value: 'diagonal', label: 'Diagonal' },
@@ -72,40 +81,40 @@ const directions = [
   { value: 'right', label: 'Right' },
   { value: 'down', label: 'Down' },
   { value: 'left', label: 'Left' }
-] as const
+] as const;
 
 const propData = [
   {
-    name: "direction",
-    type: "string",
+    name: 'direction',
+    type: 'string',
     default: "'right'",
     description: "Direction of square animation. Options: 'diagonal', 'up', 'right', 'down', 'left'."
   },
   {
-    name: "speed",
-    type: "number",
-    default: "1",
-    description: "Animation speed multiplier."
+    name: 'speed',
+    type: 'number',
+    default: '1',
+    description: 'Animation speed multiplier.'
   },
   {
-    name: "borderColor",
-    type: "string",
+    name: 'borderColor',
+    type: 'string',
     default: "'#999'",
-    description: "Color of the square borders."
+    description: 'Color of the square borders.'
   },
   {
-    name: "squareSize",
-    type: "number",
-    default: "40",
-    description: "Size of individual squares in pixels."
+    name: 'squareSize',
+    type: 'number',
+    default: '40',
+    description: 'Size of individual squares in pixels.'
   },
   {
-    name: "hoverFillColor",
-    type: "string",
+    name: 'hoverFillColor',
+    type: 'string',
     default: "'#222'",
-    description: "Fill color when hovering over squares."
+    description: 'Fill color when hovering over squares.'
   }
-]
+];
 </script>
 
 <style scoped>

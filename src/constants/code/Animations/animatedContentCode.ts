@@ -1,5 +1,5 @@
-import code from '@/content/Animations/AnimatedContent/AnimatedContent.vue?raw'
-import type { CodeObject } from '@/types/code'
+import code from '@/content/Animations/AnimatedContent/AnimatedContent.vue?raw';
+import type { CodeObject } from '@/types/code';
 
 export const animatedContent: CodeObject = {
   cli: `npx jsrepo add https://vue-bits.dev/ui/Animations/AnimatedContent`,
@@ -32,4 +32,4 @@ export const animatedContent: CodeObject = {
   };
 </script>`,
   code
-}
+};

@@ -1,5 +1,5 @@
-import code from '@/content/Animations/GlareHover/GlareHover.vue?raw'
-import type { CodeObject } from '@/types/code'
+import code from '@/content/Animations/GlareHover/GlareHover.vue?raw';
+import type { CodeObject } from '@/types/code';
 
 export const glareHover: CodeObject = {
   cli: `npx jsrepo add https://vue-bits.dev/ui/Animations/GlareHover`,
@@ -26,4 +26,4 @@ export const glareHover: CodeObject = {
   import GlareHover from "./GlareHover.vue";
 </script>`,
   code
-}
+};

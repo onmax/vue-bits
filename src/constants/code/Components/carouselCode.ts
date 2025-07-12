@@ -1,5 +1,5 @@
-import code from '@content/Components/Carousel/Carousel.vue?raw'
-import type { CodeObject } from '../../../types/code'
+import code from '@content/Components/Carousel/Carousel.vue?raw';
+import type { CodeObject } from '../../../types/code';
 
 export const carousel: CodeObject = {
   cli: `npx jsrepo add https://vue-bits.dev/ui/Components/Carousel`,
@@ -37,4 +37,4 @@ export const carousel: CodeObject = {
   ];
 </script>`,
   code
-}
+};
