@@ -33,6 +33,7 @@ export const CATEGORIES = [
       'Glare Hover',
       'Magnet Lines',
       'Count Up',
+      'Metallic Paint',
       'Click Spark',
       'Magnet',
       'Cubes'
