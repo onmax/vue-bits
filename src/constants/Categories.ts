@@ -47,6 +47,7 @@ export const CATEGORIES = [
       'Pixel Card',
       'Carousel',
       'Spotlight Card',
+      'Circular Gallery',
       'Flying Posters',
       'Card Swap',
       'Infinite Scroll',

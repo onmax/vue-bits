@@ -35,6 +35,7 @@ const components = {
   'pixel-card': () => import("../demo/Components/PixelCardDemo.vue"),
   'carousel': () => import("../demo/Components/CarouselDemo.vue"),
   'spotlight-card': () => import("../demo/Components/SpotlightCardDemo.vue"),
+  'circular-gallery': () => import("../demo/Components/CircularGalleryDemo.vue"),
   'flying-posters': () => import("../demo/Components/FlyingPostersDemo.vue"),
   'card-swap': () => import("../demo/Components/CardSwapDemo.vue"),
   'infinite-scroll': () => import("../demo/Components/InfiniteScrollDemo.vue"),
