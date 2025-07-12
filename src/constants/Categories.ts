@@ -19,7 +19,8 @@ export const CATEGORIES = [
       'Falling Text',
       'Text Cursor',
       'Decrypted Text',
-      'Scroll Float'
+      'True Focus',
+      'Scroll Float',
     ]
   },
   {
