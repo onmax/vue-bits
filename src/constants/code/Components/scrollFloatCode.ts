@@ -2,7 +2,7 @@ import code from '@content/TextAnimations/ScrollFloat/ScrollFloat.vue?raw'
 import type { CodeObject } from '../../../types/code'
 
 export const scrollFloatCode: CodeObject = {
-  cli: `npx jsrepo add https://vue-bits.dev/ui/Components/ProfileCard`,
+  cli: `npx jsrepo add https://vue-bits.dev/ui/TextAnimations/ScrollFloat`,
   usage: `<template>
   <ScrollFloat
     :children="scrollText"

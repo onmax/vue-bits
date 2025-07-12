@@ -1,5 +1,4 @@
 <template>
-  <div class="profile-card-demo">
     <TabbedLayout>
       <template #preview>
         <div 
@@ -47,7 +46,6 @@
         <CliInstallation :command="scrollFloatCode.cli" />
       </template>
     </TabbedLayout>
-  </div>
 </template>
 
 <script setup lang="ts">
