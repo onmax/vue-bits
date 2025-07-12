@@ -1,16 +1,8 @@
 <template>
   <TabbedLayout>
     <template #preview>
-      <h2 className="demo-title-extra">Images</h2>
-
-      <div class="relative py-6 rounded-3xl overflow-hidden demo-container" style="height: 700px">
+      <div class="demo-container h-[600px]">
         <GridMotion :items="images" />
-      </div>
-
-      <h2 className="demo-title-extra">Custom Content</h2>
-
-      <div class="relative py-6 rounded-3xl overflow-hidden demo-container" style="height: 700px">
-        <GridMotion :items="items" />
       </div>
 
       <PropTable :data="propData" />
@@ -53,34 +45,14 @@ const propData = [
 ];
 
 const imageUrl =
-  'https://images.unsplash.com/photo-1723403804231-f4e9b515fe9d?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
+  'https://images.unsplash.com/photo-1748370987492-eb390a61dcda?q=80&w=1364&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
 const numberOfImages = 30;
 const images = Array.from({ length: numberOfImages }, () => imageUrl);
-
-const items = [
-  'Item 1',
-  `<div key="item-1">Custom Content</div>`,
-  'https://images.unsplash.com/photo-1723403804231-f4e9b515fe9d?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-  'Item 2',
-  `<div key="item-2">Custom Content</div>`,
-  'Item 4',
-  `<div key="item-3">Custom Content</div>`,
-  'https://images.unsplash.com/photo-1723403804231-f4e9b515fe9d?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-  'Item 5',
-  `<div key="item-4">Custom Content</div>`,
-  'Item 7',
-  `<div key="item-5">Custom Content</div>`,
-  'https://images.unsplash.com/photo-1723403804231-f4e9b515fe9d?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-  'Item 8',
-  `<div key="item-6">Custom Content</div>`,
-  'Item 10',
-  `<div key="item-7">Custom Content</div>`,
-  'https://images.unsplash.com/photo-1723403804231-f4e9b515fe9d?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-  'Item 11',
-  `<div key="item-8">Custom Content</div>`,
-  'Item 13',
-  `<div key="item-9">Custom Content</div>`,
-  'https://images.unsplash.com/photo-1723403804231-f4e9b515fe9d?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-  'Item 14'
-];
 </script>
+
+<style scoped>
+.demo-container {
+  padding: 0;
+  overflow: hidden;
+}
+</style>

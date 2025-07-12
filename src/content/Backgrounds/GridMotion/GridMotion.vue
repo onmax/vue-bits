@@ -9,16 +9,25 @@ interface GridMotionProps {
 
 const props = withDefaults(defineProps<GridMotionProps>(), {
   items: () => [],
-  gradientColor: 'black'
+  gradientColor: '#222222'
 });
 
 const gridRef = ref<HTMLElement | null>(null);
 const rowRefs = ref<HTMLElement[]>([]);
 const mouseX = ref(window.innerWidth / 2);
 
-const totalItems = 28;
-const defaultItems = Array.from({ length: totalItems }, (_, i) => `Item ${i + 1}`);
-const combinedItems = computed(() => (props.items.length > 0 ? props.items.slice(0, totalItems) : defaultItems));
+const totalItems = 70;
+const combinedItems = computed(() => {
+  if (props.items.length === 0) {
+    return [];
+  }
+
+  const repeatedItems = [];
+  for (let i = 0; i < totalItems; i++) {
+    repeatedItems.push(props.items[i % props.items.length]);
+  }
+  return repeatedItems;
+});
 
 function isImage(item: string) {
   return typeof item === 'string' && item.startsWith('http');
@@ -68,22 +77,26 @@ onMounted(() => {
     <section
       class="relative flex justify-center items-center w-full h-screen overflow-hidden"
       :style="{
-        background: `radial-gradient(circle, ${gradientColor} 0%, transparent 100%)`
+        background: `radial-gradient(circle, ${gradientColor} 0%, transparent 100%)`,
+        backgroundPosition: 'center'
       }"
     >
       <div class="z-[4] absolute inset-0 bg-[length:250px] pointer-events-none"></div>
 
-      <div
-        class="z-[2] relative flex-none gap-4 grid grid-cols-1 grid-rows-4 w-[150vw] h-[150vh] rotate-[-15deg] origin-center"
-      >
+      <div class="z-[2] relative flex-none gap-4 grid grid-cols-1 w-[150vw] h-[150vh] rotate-[-15deg] origin-center">
         <div
-          v-for="rowIndex in 4"
+          v-for="rowIndex in 10"
           :key="rowIndex"
           class="gap-4 grid grid-cols-7"
           :style="{ willChange: 'transform, filter' }"
           ref="rowRefs"
         >
-          <div v-for="itemIndex in 7" :key="itemIndex" class="relative">
+          <div
+            v-for="itemIndex in 7"
+            :key="itemIndex"
+            class="relative h-[200px]"
+            v-show="combinedItems[(rowIndex - 1) * 7 + (itemIndex - 1)]"
+          >
             <div
               class="relative flex justify-center items-center bg-[#111] rounded-[10px] w-full h-full overflow-hidden text-[1.5rem] text-white"
             >

@@ -6,40 +6,16 @@ export const gridMotion: CodeObject = {
   installation: `npm i gsap`,
   usage: `<template>
     <GridMotion
-      :items="items"
+      :items="images"
     />
 </template>
 
 <script setup lang="ts">
   import GridMotion from "./GridMotion.vue";
 
-  const items = [ 
-   "Item 1", 
-   `<div key='item-1'>Custom Content</div>`, 
-   "https://images.unsplash.com/photo-1723403804231-f4e9b515fe9d?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", 
-   "Item 2", 
-   `<div key='item-1'>Custom Content</div>`, 
-   "Item 4", 
-   `<div key='item-1'>Custom Content</div>`, 
-   "https://images.unsplash.com/photo-1723403804231-f4e9b515fe9d?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", 
-   "Item 5", 
-   `<div key='item-1'>Custom Content</div>`, 
-   "Item 7", 
-   `<div key='item-1'>Custom Content</div>`, 
-   "https://images.unsplash.com/photo-1723403804231-f4e9b515fe9d?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", 
-   "Item 8", 
-   `<div key='item-1'>Custom Content</div>`, 
-   "Item 10", 
-   `<div key='item-1'>Custom Content</div>`, 
-   "https://images.unsplash.com/photo-1723403804231-f4e9b515fe9d?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", 
-   "Item 11", 
-   `<div key='item-1'>Custom Content</div>`, 
-   "Item 13", 
-   `<div key='item-1'>Custom Content</div>`, 
-   "https://images.unsplash.com/photo-1723403804231-f4e9b515fe9d?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", 
-   "Item 14", 
-   // Add more items as needed 
- ];
+  const imageUrl = 'https://images.unsplash.com/photo-1723403804231-f4e9b515fe9d?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
+  const numberOfImages = 30;
+  const images = Array.from({ length: numberOfImages }, () => imageUrl);
 </script>`,
   code,
 };
