@@ -67,6 +67,7 @@ export const CATEGORIES = [
       'Aurora',
       'Beams',
       'Dot Grid',
+      'Hyperspeed',
       'Silk',
       'Lightning',
       'Letter Glitch',
