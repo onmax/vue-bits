@@ -59,7 +59,7 @@ import PreviewSlider from '../../components/common/PreviewSlider.vue';
 import { scrollFloatCode } from '@/constants/code/TextAnimations/scrollFloatCode';
 
 const containerRef = ref<HTMLElement | null>(null);
-const scrollText = ref('vuebits');
+const scrollText = ref('Vue Bits!');
 const animationDuration = ref(1);
 const ease = ref('back.inOut(2)');
 const scrollStart = ref('center bottom+=50%');
