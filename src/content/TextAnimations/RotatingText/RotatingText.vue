@@ -46,7 +46,7 @@ const props = withDefaults(defineProps<RotatingTextProps>(), {
 });
 
 const currentTextIndex = ref<number>(0);
-let intervalId: number | undefined = undefined;
+let intervalId: number | null = null;
 
 const splitIntoCharacters = (text: string): string[] => {
   if (typeof Intl !== 'undefined' && Intl.Segmenter) {
@@ -85,14 +85,6 @@ const elements = computed(() => {
   }));
 });
 
-const getPreviousCharsCount = (wordIndex: number): number => {
-  return elements.value.slice(0, wordIndex).reduce((sum, word) => sum + word.characters.length, 0);
-};
-
-const getTotalCharsCount = (): number => {
-  return elements.value.reduce((sum, word) => sum + word.characters.length, 0);
-};
-
 const getStaggerDelay = (index: number, totalChars: number): number => {
   const total = totalChars;
 
@@ -112,9 +104,7 @@ const getStaggerDelay = (index: number, totalChars: number): number => {
 
 const handleIndexChange = (newIndex: number) => {
   currentTextIndex.value = newIndex;
-  if (props.onNext) {
-    props.onNext(newIndex);
-  }
+  if (props.onNext) props.onNext(newIndex);
 };
 
 const next = () => {
@@ -150,7 +140,7 @@ const jumpTo = (index: number) => {
 
 const reset = () => {
   if (currentTextIndex.value !== 0) {
-    currentTextIndex.value = 0;
+    handleIndexChange(0);
   }
 };
 
@@ -162,14 +152,14 @@ defineExpose({
 });
 
 watch(
-  () => props.auto,
-  newAuto => {
+  () => [props.auto, props.rotationInterval],
+  () => {
     if (intervalId) {
       clearInterval(intervalId);
-      intervalId = undefined;
+      intervalId = null;
     }
 
-    if (newAuto) {
+    if (props.auto) {
       intervalId = setInterval(next, props.rotationInterval);
     }
   },
@@ -206,8 +196,8 @@ onUnmounted(() => {
         :key="currentTextIndex"
         tag="span"
         :class="cn(splitBy === 'lines' ? 'flex flex-col w-full' : 'flex flex-wrap whitespace-pre-wrap relative')"
-        layout
         aria-hidden="true"
+        layout
       >
         <span v-for="(wordObj, wordIndex) in elements" :key="wordIndex" :class="cn('inline-flex', splitLevelClassName)">
           <Motion
@@ -219,13 +209,16 @@ onUnmounted(() => {
             :exit="exit"
             :transition="{
               ...transition,
-              delay: getStaggerDelay(getPreviousCharsCount(wordIndex) + charIndex, getTotalCharsCount())
+              delay: getStaggerDelay(
+                elements.slice(0, wordIndex).reduce((sum, word) => sum + word.characters.length, 0) + charIndex,
+                elements.reduce((sum, word) => sum + word.characters.length, 0)
+              )
             }"
             :class="cn('inline-block', elementLevelClassName)"
           >
             {{ char }}
           </Motion>
-          <span v-if="wordObj.needsSpace" class="inline-block">&nbsp;</span>
+          <span v-if="wordObj.needsSpace" class="whitespace-pre"> </span>
         </span>
       </Motion>
     </AnimatePresence>
