@@ -30,7 +30,7 @@ Go to [vue-bits.dev](https://vue-bits.dev/) to view the documentation.
 
 This is the official Vue port of [React Bits](https://reactbits.dev)!
 
-Vue Bits is a large collection of animated Vue UI components made to spice up your web creations. We've got animations, components, backgrounds, and awesome stuff that you won't be able to find anywhere else - all free for you to use!
+Vue Bits is a large collection of animated VueJS UI components made to spice up your web creations. We've got animations, components, backgrounds, and awesome stuff that you won't be able to find anywhere else - all free for you to use!
 
 These components are all enhanced with customization options as props, to make it easy for you to get exactly what you need.
 
