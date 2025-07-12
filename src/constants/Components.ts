@@ -11,20 +11,21 @@ const animations = {
 };
 
 const textAnimations = {
-  'split-text': () => import('../demo/TextAnimations/SplitTextDemo.vue'),
-  'blur-text': () => import('../demo/TextAnimations/BlurTextDemo.vue'),
-  'circular-text': () => import('../demo/TextAnimations/CircularTextDemo.vue'),
-  'shiny-text': () => import('../demo/TextAnimations/ShinyTextDemo.vue'),
-  'text-pressure': () => import('../demo/TextAnimations/TextPressureDemo.vue'),
-  'curved-loop': () => import('../demo/TextAnimations/CurvedLoopDemo.vue'),
-  'fuzzy-text': () => import('../demo/TextAnimations/FuzzyTextDemo.vue'),
-  'gradient-text': () => import('../demo/TextAnimations/GradientTextDemo.vue'),
-  'text-trail': () => import('../demo/TextAnimations/TextTrailDemo.vue'),
-  'falling-text': () => import('../demo/TextAnimations/FallingTextDemo.vue'),
-  'text-cursor': () => import('../demo/TextAnimations/TextCursorDemo.vue'),
-  'decrypted-text': () => import('../demo/TextAnimations/DecryptedTextDemo.vue'),
-  'true-focus': () => import('../demo/TextAnimations/TrueFocusDemo.vue'),
-  'scroll-float': () => import('../demo/TextAnimations/ScrollFloatDemo.vue')
+  'split-text': () => import("../demo/TextAnimations/SplitTextDemo.vue"),
+  'blur-text': () => import("../demo/TextAnimations/BlurTextDemo.vue"),
+  'circular-text': () => import("../demo/TextAnimations/CircularTextDemo.vue"),
+  'shiny-text': () => import("../demo/TextAnimations/ShinyTextDemo.vue"),
+  'text-pressure': () => import("../demo/TextAnimations/TextPressureDemo.vue"),
+  'curved-loop': () => import("../demo/TextAnimations/CurvedLoopDemo.vue"),
+  'fuzzy-text': () => import("../demo/TextAnimations/FuzzyTextDemo.vue"),
+  'gradient-text': () => import("../demo/TextAnimations/GradientTextDemo.vue"),
+  'text-trail': () => import("../demo/TextAnimations/TextTrailDemo.vue"),
+  'falling-text': () => import("../demo/TextAnimations/FallingTextDemo.vue"),
+  'text-cursor': () => import("../demo/TextAnimations/TextCursorDemo.vue"),
+  'decrypted-text': () => import("../demo/TextAnimations/DecryptedTextDemo.vue"),
+  'true-focus': () => import("../demo/TextAnimations/TrueFocusDemo.vue"),
+  'scroll-float': () => import("../demo/TextAnimations/ScrollFloatDemo.vue"),
+  'scroll-reveal': ()=> import("../demo/TextAnimations/ScrollRevealDemo.vue")
 };
 
 const components = {
