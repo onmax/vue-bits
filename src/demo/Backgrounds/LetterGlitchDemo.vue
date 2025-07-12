@@ -31,11 +31,7 @@
             :step="5"
           />
 
-          <PreviewSwitch
-            title="Smooth Animation"
-            :model-value="smooth"
-            @update:model-value="updateSmooth"
-          />
+          <PreviewSwitch title="Smooth Animation" :model-value="smooth" @update:model-value="updateSmooth" />
 
           <PreviewSwitch
             title="Show Center Vignette"
@@ -51,6 +47,7 @@
         </Customize>
 
         <PropTable :data="propData" />
+
         <Dependencies :dependency-list="[]" />
       </template>
 
@@ -66,58 +63,88 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import TabbedLayout from '../../components/common/TabbedLayout.vue'
-import PropTable from '../../components/common/PropTable.vue'
-import Dependencies from '../../components/code/Dependencies.vue'
-import CliInstallation from '../../components/code/CliInstallation.vue'
-import CodeExample from '../../components/code/CodeExample.vue'
-import Customize from '../../components/common/Customize.vue'
-import LetterGlitch from '@/content/Backgrounds/LetterGlitch/LetterGlitch.vue'
-import PreviewSlider from '@/components/common/PreviewSlider.vue'
-import PreviewSwitch from '@/components/common/PreviewSwitch.vue'
-import { letterGlitch } from '@/constants/code/Backgrounds/letterGlitchCode'
-import { useForceRerender } from '@/composables/useForceRerender'
+import { ref } from 'vue';
+import TabbedLayout from '../../components/common/TabbedLayout.vue';
+import PropTable from '../../components/common/PropTable.vue';
+import Dependencies from '../../components/code/Dependencies.vue';
+import CliInstallation from '../../components/code/CliInstallation.vue';
+import CodeExample from '../../components/code/CodeExample.vue';
+import Customize from '../../components/common/Customize.vue';
+import LetterGlitch from '@/content/Backgrounds/LetterGlitch/LetterGlitch.vue';
+import PreviewSlider from '@/components/common/PreviewSlider.vue';
+import PreviewSwitch from '@/components/common/PreviewSwitch.vue';
+import { letterGlitch } from '@/constants/code/Backgrounds/letterGlitchCode';
+import { useForceRerender } from '@/composables/useForceRerender';
 
-const smooth = ref(true)
-const speed = ref(10)
-const colors = ref(['#2b4539', '#61dca3', '#61b3dc'])
-const showCenterVignette = ref(true)
-const showOuterVignette = ref(false)
+const smooth = ref(true);
+const speed = ref(10);
+const colors = ref(['#2b4539', '#61dca3', '#61b3dc']);
+const showCenterVignette = ref(true);
+const showOuterVignette = ref(false);
 
-const { rerenderKey, forceRerender } = useForceRerender()
+const { rerenderKey, forceRerender } = useForceRerender();
 
 const randomHex = () => {
-  return '#' + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0')
-}
+  return (
+    '#' +
+    Math.floor(Math.random() * 16777215)
+      .toString(16)
+      .padStart(6, '0')
+  );
+};
 
 const randomizeColors = () => {
-  colors.value = [randomHex(), randomHex(), randomHex()]
-  forceRerender()
-}
+  colors.value = [randomHex(), randomHex(), randomHex()];
+  forceRerender();
+};
 
 const updateSmooth = (value: boolean) => {
-  smooth.value = value
-  forceRerender()
-}
+  smooth.value = value;
+  forceRerender();
+};
 
 const updateCenterVignette = (value: boolean) => {
-  showCenterVignette.value = value
-  forceRerender()
-}
+  showCenterVignette.value = value;
+  forceRerender();
+};
 
 const updateOuterVignette = (value: boolean) => {
-  showOuterVignette.value = value
-  forceRerender()
-}
+  showOuterVignette.value = value;
+  forceRerender();
+};
 
 const propData = [
-  { name: 'glitchColors', type: 'string[]', default: "['#2b4539', '#61dca3', '#61b3dc']", description: 'Controls the colors of the letters rendered in the canvas.' },
-  { name: 'glitchSpeed', type: 'number', default: '50', description: 'Controls the speed at which letters scramble in the animation.' },
-  { name: 'centerVignette', type: 'boolean', default: 'false', description: 'When true, renders a radial gradient in the center of the container' },
-  { name: 'outerVignette', type: 'boolean', default: 'true', description: 'When true, renders an inner radial gradient around the edges of the container.' },
-  { name: 'smooth', type: 'boolean', default: 'true', description: 'When true, smoothens the animation of the letters for a more subtle feel.' }
-]
+  {
+    name: 'glitchColors',
+    type: 'string[]',
+    default: "['#2b4539', '#61dca3', '#61b3dc']",
+    description: 'Controls the colors of the letters rendered in the canvas.'
+  },
+  {
+    name: 'glitchSpeed',
+    type: 'number',
+    default: '50',
+    description: 'Controls the speed at which letters scramble in the animation.'
+  },
+  {
+    name: 'centerVignette',
+    type: 'boolean',
+    default: 'false',
+    description: 'When true, renders a radial gradient in the center of the container'
+  },
+  {
+    name: 'outerVignette',
+    type: 'boolean',
+    default: 'true',
+    description: 'When true, renders an inner radial gradient around the edges of the container.'
+  },
+  {
+    name: 'smooth',
+    type: 'boolean',
+    default: 'true',
+    description: 'When true, smoothens the animation of the letters for a more subtle feel.'
+  }
+];
 </script>
 
 <style scoped>

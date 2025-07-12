@@ -1,5 +1,5 @@
-import code from '@content/TextAnimations/CircularText/CircularText.vue?raw'
-import type { CodeObject } from '../../../types/code'
+import code from '@content/TextAnimations/CircularText/CircularText.vue?raw';
+import type { CodeObject } from '../../../types/code';
 
 export const circularText: CodeObject = {
   cli: `npx jsrepo add https://vue-bits.dev/ui/TextAnimations/CircularText`,
@@ -17,4 +17,4 @@ export const circularText: CodeObject = {
   import CircularText from "./CircularText.vue";
 </script>`,
   code
-}
+};

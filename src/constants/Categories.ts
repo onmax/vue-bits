@@ -20,6 +20,11 @@ export const CATEGORIES = [
       'Text Cursor',
       'Decrypted Text',
       'Scramble Text',
+      'True Focus',
+      'Scroll Float',
+      'Scroll Reveal',
+      'Rotating Text',
+      'Glitch Text'
     ]
   },
   {
@@ -27,13 +32,16 @@ export const CATEGORIES = [
     subcategories: [
       'Animated Content',
       'Fade Content',
+      'Splash Cursor',
       'Pixel Transition',
+      'Ribbons',
       'Glare Hover',
       'Magnet Lines',
       'Count Up',
+      'Metallic Paint',
       'Click Spark',
       'Magnet',
-      'Cubes',
+      'Cubes'
     ]
   },
   {
@@ -46,6 +54,7 @@ export const CATEGORIES = [
       'Pixel Card',
       'Carousel',
       'Spotlight Card',
+      'Circular Gallery',
       'Flying Posters',
       'Card Swap',
       'Infinite Scroll',
@@ -53,8 +62,8 @@ export const CATEGORIES = [
       'Glass Icons',
       'Decay Card',
       'Flowing Menu',
-      'Elastic Slider',
-    ],
+      'Elastic Slider'
+    ]
   },
   {
     name: 'Backgrounds',
@@ -62,14 +71,17 @@ export const CATEGORIES = [
       'Aurora',
       'Beams',
       'Dot Grid',
+      'Hyperspeed',
       'Silk',
       'Lightning',
       'Letter Glitch',
       'Particles',
+      'Shape Blur',
       'Waves',
       'Squares',
       'Iridescence',
       'Threads',
-    ],
+      'Grid Motion'
+    ]
   }
 ];

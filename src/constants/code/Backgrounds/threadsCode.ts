@@ -1,5 +1,5 @@
-import code from '@content/Backgrounds/Threads/Threads.vue?raw'
-import type { CodeObject } from '../../../types/code'
+import code from '@content/Backgrounds/Threads/Threads.vue?raw';
+import type { CodeObject } from '../../../types/code';
 
 export const threads: CodeObject = {
   cli: `npx jsrepo add https://vue-bits.dev/ui/Backgrounds/Threads`,
@@ -19,4 +19,4 @@ export const threads: CodeObject = {
   import Threads from "./Threads.vue";
 </script>`,
   code
-}
+};

@@ -1,29 +1,32 @@
 <template>
-  <div v-if="!isMobile" ref="containerRef" :style="{
-    position: 'absolute',
-    inset: 0,
-    overflow: 'hidden',
-    width: '100vw',
-    height: '100vh'
-  }">
-  </div>
+  <div
+    v-if="!isMobile"
+    ref="containerRef"
+    :style="{
+      position: 'absolute',
+      inset: 0,
+      overflow: 'hidden',
+      width: '100vw',
+      height: '100vh'
+    }"
+  ></div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, watch } from 'vue'
-import { Renderer, Camera, Transform, Program, Mesh, Geometry } from 'ogl'
+import { ref, onMounted, onUnmounted, watch } from 'vue';
+import { Renderer, Camera, Transform, Program, Mesh, Geometry } from 'ogl';
 
 interface Props {
-  xOffset?: number
-  yOffset?: number
-  rotationDeg?: number
-  focalLength?: number
-  speed1?: number
-  speed2?: number
-  dir2?: number
-  bend1?: number
-  bend2?: number
-  fadeInDuration?: number
+  xOffset?: number;
+  yOffset?: number;
+  rotationDeg?: number;
+  focalLength?: number;
+  speed1?: number;
+  speed2?: number;
+  dir2?: number;
+  bend1?: number;
+  bend2?: number;
+  fadeInDuration?: number;
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -37,7 +40,7 @@ const props = withDefaults(defineProps<Props>(), {
   bend1: 0.9,
   bend2: 0.6,
   fadeInDuration: 2000
-})
+});
 
 const vertex = /* glsl */ `
 attribute vec2 position;
@@ -46,7 +49,7 @@ void main() {
   vUv = position * 0.5 + 0.5;
   gl_Position = vec4(position, 0.0, 1.0);
 }
-`
+`;
 
 const fragment = /* glsl */ `
 precision mediump float;
@@ -143,40 +146,40 @@ void main() {
   mainImage(color, coord);
   gl_FragColor = color;
 }
-`
+`;
 
-const isMobile = ref(false)
-const isVisible = ref(true)
-const containerRef = ref<HTMLDivElement | null>(null)
-const uniformOffset = ref(new Float32Array([props.xOffset, props.yOffset]))
-const uniformResolution = ref(new Float32Array([1, 1]))
-const rendererRef = ref<Renderer | null>(null)
-const fadeStartTime = ref<number | null>(null)
-const lastTimeRef = ref(0)
-const pausedTimeRef = ref(0)
-const rafId = ref<number | null>(null)
-const resizeObserver = ref<ResizeObserver | null>(null)
-const intersectionObserver = ref<IntersectionObserver | null>(null)
+const isMobile = ref(false);
+const isVisible = ref(true);
+const containerRef = ref<HTMLDivElement | null>(null);
+const uniformOffset = ref(new Float32Array([props.xOffset, props.yOffset]));
+const uniformResolution = ref(new Float32Array([1, 1]));
+const rendererRef = ref<Renderer | null>(null);
+const fadeStartTime = ref<number | null>(null);
+const lastTimeRef = ref(0);
+const pausedTimeRef = ref(0);
+const rafId = ref<number | null>(null);
+const resizeObserver = ref<ResizeObserver | null>(null);
+const intersectionObserver = ref<IntersectionObserver | null>(null);
 
 const checkIsMobile = () => {
-  isMobile.value = window.innerWidth <= 768
-}
+  isMobile.value = window.innerWidth <= 768;
+};
 
 const resize = () => {
-  if (!containerRef.value || !rendererRef.value) return
+  if (!containerRef.value || !rendererRef.value) return;
 
-  const { width, height } = containerRef.value.getBoundingClientRect()
-  rendererRef.value.setSize(width, height)
-  uniformResolution.value[0] = width * rendererRef.value.dpr
-  uniformResolution.value[1] = height * rendererRef.value.dpr
+  const { width, height } = containerRef.value.getBoundingClientRect();
+  rendererRef.value.setSize(width, height);
+  uniformResolution.value[0] = width * rendererRef.value.dpr;
+  uniformResolution.value[1] = height * rendererRef.value.dpr;
 
-  const gl = rendererRef.value.gl
-  gl.viewport(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight)
-  gl.clear(gl.COLOR_BUFFER_BIT)
-}
+  const gl = rendererRef.value.gl;
+  gl.viewport(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight);
+  gl.clear(gl.COLOR_BUFFER_BIT);
+};
 
 const initWebGL = () => {
-  if (isMobile.value || !containerRef.value) return
+  if (isMobile.value || !containerRef.value) return;
 
   const renderer = new Renderer({
     alpha: true,
@@ -184,20 +187,20 @@ const initWebGL = () => {
     antialias: false,
     depth: false,
     stencil: false,
-    powerPreference: 'high-performance',
-  })
-  rendererRef.value = renderer
+    powerPreference: 'high-performance'
+  });
+  rendererRef.value = renderer;
 
-  const gl = renderer.gl
-  gl.clearColor(0, 0, 0, 0)
-  containerRef.value.appendChild(gl.canvas)
+  const gl = renderer.gl;
+  gl.clearColor(0, 0, 0, 0);
+  containerRef.value.appendChild(gl.canvas);
 
-  const camera = new Camera(gl)
-  const scene = new Transform()
+  const camera = new Camera(gl);
+  const scene = new Transform();
 
   const geometry = new Geometry(gl, {
-    position: { size: 2, data: new Float32Array([-1, -1, 3, -1, -1, 3]) },
-  })
+    position: { size: 2, data: new Float32Array([-1, -1, 3, -1, -1, 3]) }
+  });
 
   const program = new Program(gl, {
     vertex,
@@ -215,117 +218,117 @@ const initWebGL = () => {
       bend2: { value: props.bend2 },
       bendAdj1: { value: 0 },
       bendAdj2: { value: 0 },
-      uOpacity: { value: 0 },
-    },
-  })
-  new Mesh(gl, { geometry, program }).setParent(scene)
+      uOpacity: { value: 0 }
+    }
+  });
+  new Mesh(gl, { geometry, program }).setParent(scene);
 
-  resize()
+  resize();
 
-  resizeObserver.value = new ResizeObserver(resize)
-  resizeObserver.value.observe(containerRef.value)
+  resizeObserver.value = new ResizeObserver(resize);
+  resizeObserver.value.observe(containerRef.value);
 
   const loop = (now: number) => {
     if (isVisible.value) {
       if (lastTimeRef.value === 0) {
-        lastTimeRef.value = now - pausedTimeRef.value
+        lastTimeRef.value = now - pausedTimeRef.value;
       }
 
-      const t = (now - lastTimeRef.value) * 0.001
+      const t = (now - lastTimeRef.value) * 0.001;
 
       if (fadeStartTime.value === null && t > 0.1) {
-        fadeStartTime.value = now
+        fadeStartTime.value = now;
       }
 
-      let opacity = 0
+      let opacity = 0;
       if (fadeStartTime.value !== null) {
-        const fadeElapsed = now - fadeStartTime.value
-        opacity = Math.min(fadeElapsed / props.fadeInDuration, 1)
-        opacity = 1 - Math.pow(1 - opacity, 3)
+        const fadeElapsed = now - fadeStartTime.value;
+        opacity = Math.min(fadeElapsed / props.fadeInDuration, 1);
+        opacity = 1 - Math.pow(1 - opacity, 3);
       }
 
-      uniformOffset.value[0] = props.xOffset
-      uniformOffset.value[1] = props.yOffset
+      uniformOffset.value[0] = props.xOffset;
+      uniformOffset.value[1] = props.yOffset;
 
-      program.uniforms.iTime.value = t
-      program.uniforms.uRotation.value = props.rotationDeg * Math.PI / 180
-      program.uniforms.focalLength.value = props.focalLength
-      program.uniforms.uOpacity.value = opacity
+      program.uniforms.iTime.value = t;
+      program.uniforms.uRotation.value = (props.rotationDeg * Math.PI) / 180;
+      program.uniforms.focalLength.value = props.focalLength;
+      program.uniforms.uOpacity.value = opacity;
 
-      renderer.render({ scene, camera })
+      renderer.render({ scene, camera });
     } else {
       if (lastTimeRef.value !== 0) {
-        pausedTimeRef.value = now - lastTimeRef.value
-        lastTimeRef.value = 0
+        pausedTimeRef.value = now - lastTimeRef.value;
+        lastTimeRef.value = 0;
       }
     }
 
-    rafId.value = requestAnimationFrame(loop)
-  }
+    rafId.value = requestAnimationFrame(loop);
+  };
 
-  rafId.value = requestAnimationFrame(loop)
-}
+  rafId.value = requestAnimationFrame(loop);
+};
 
 const setupIntersectionObserver = () => {
-  if (!containerRef.value || isMobile.value) return
+  if (!containerRef.value || isMobile.value) return;
 
   intersectionObserver.value = new IntersectionObserver(
     ([entry]) => {
-      isVisible.value = entry.isIntersecting
+      isVisible.value = entry.isIntersecting;
     },
     {
       rootMargin: '50px',
-      threshold: 0.1,
+      threshold: 0.1
     }
-  )
+  );
 
-  intersectionObserver.value.observe(containerRef.value)
-}
+  intersectionObserver.value.observe(containerRef.value);
+};
 
 const cleanup = () => {
   if (rafId.value) {
-    cancelAnimationFrame(rafId.value)
-    rafId.value = null
+    cancelAnimationFrame(rafId.value);
+    rafId.value = null;
   }
 
   if (resizeObserver.value) {
-    resizeObserver.value.disconnect()
-    resizeObserver.value = null
+    resizeObserver.value.disconnect();
+    resizeObserver.value = null;
   }
 
   if (intersectionObserver.value) {
-    intersectionObserver.value.disconnect()
-    intersectionObserver.value = null
+    intersectionObserver.value.disconnect();
+    intersectionObserver.value = null;
   }
 
   if (rendererRef.value) {
-    rendererRef.value.gl.canvas.remove()
-    rendererRef.value = null
+    rendererRef.value.gl.canvas.remove();
+    rendererRef.value = null;
   }
 
-  window.removeEventListener('resize', checkIsMobile)
-}
+  window.removeEventListener('resize', checkIsMobile);
+};
 
 onMounted(() => {
-  checkIsMobile()
-  window.addEventListener('resize', checkIsMobile)
+  checkIsMobile();
+  window.addEventListener('resize', checkIsMobile);
 
   if (!isMobile.value) {
-    initWebGL()
-    setupIntersectionObserver()
+    initWebGL();
+    setupIntersectionObserver();
   }
-})
+});
 
 onUnmounted(() => {
-  cleanup()
-})
+  cleanup();
+});
 
-watch(isMobile, (newIsMobile) => {
+watch(isMobile, newIsMobile => {
   if (newIsMobile) {
-    cleanup()
+    cleanup();
   } else {
-    initWebGL()
-    setupIntersectionObserver()
+    initWebGL();
+    setupIntersectionObserver();
   }
-})
+});
 </script>

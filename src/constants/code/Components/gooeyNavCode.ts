@@ -1,5 +1,5 @@
-import code from '@content/Components/GooeyNav/GooeyNav.vue?raw'
-import type { CodeObject } from '../../../types/code'
+import code from '@content/Components/GooeyNav/GooeyNav.vue?raw';
+import type { CodeObject } from '../../../types/code';
 
 export const gooeyNav: CodeObject = {
   cli: `npx jsrepo add https://vue-bits.dev/ui/Components/GooeyNav`,
@@ -37,4 +37,4 @@ export const gooeyNav: CodeObject = {
   }
 </style>`,
   code
-}
+};

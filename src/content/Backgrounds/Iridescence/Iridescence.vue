@@ -3,15 +3,15 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, watch } from 'vue'
-import { Renderer, Program, Mesh, Color, Triangle } from 'ogl'
-import type { OGLRenderingContext } from 'ogl'
+import { ref, onMounted, onUnmounted, watch } from 'vue';
+import { Renderer, Program, Mesh, Color, Triangle } from 'ogl';
+import type { OGLRenderingContext } from 'ogl';
 
 interface Props {
-  color?: [number, number, number]
-  speed?: number
-  amplitude?: number
-  mouseReact?: boolean
+  color?: [number, number, number];
+  speed?: number;
+  amplitude?: number;
+  mouseReact?: boolean;
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -19,16 +19,16 @@ const props = withDefaults(defineProps<Props>(), {
   speed: 1.0,
   amplitude: 0.1,
   mouseReact: true
-})
+});
 
-const containerRef = ref<HTMLDivElement | null>(null)
-const mousePos = ref({ x: 0.5, y: 0.5 })
+const containerRef = ref<HTMLDivElement | null>(null);
+const mousePos = ref({ x: 0.5, y: 0.5 });
 
-let renderer: Renderer | null = null
-let gl: OGLRenderingContext | null = null
-let program: Program | null = null
-let mesh: Mesh | null = null
-let animationId: number | null = null
+let renderer: Renderer | null = null;
+let gl: OGLRenderingContext | null = null;
+let program: Program | null = null;
+let mesh: Mesh | null = null;
+let animationId: number | null = null;
 
 const vertexShader = `
 attribute vec2 uv;
@@ -40,7 +40,7 @@ void main() {
   vUv = uv;
   gl_Position = vec4(position, 0, 1);
 }
-`
+`;
 
 const fragmentShader = `
 precision highp float;
@@ -71,57 +71,57 @@ void main() {
   col = cos(col * cos(vec3(d, a, 2.5)) * 0.5 + 0.5) * uColor;
   gl_FragColor = vec4(col, 1.0);
 }
-`
+`;
 
 const resize = () => {
-  if (!containerRef.value || !renderer || !program || !gl) return
+  if (!containerRef.value || !renderer || !program || !gl) return;
 
-  const container = containerRef.value
-  const scale = 1
-  renderer.setSize(container.offsetWidth * scale, container.offsetHeight * scale)
+  const container = containerRef.value;
+  const scale = 1;
+  renderer.setSize(container.offsetWidth * scale, container.offsetHeight * scale);
 
   if (program) {
     program.uniforms.uResolution.value = new Color(
       gl.canvas.width,
       gl.canvas.height,
       gl.canvas.width / gl.canvas.height
-    )
+    );
   }
-}
+};
 
 const handleMouseMove = (e: MouseEvent) => {
-  if (!containerRef.value || !program) return
+  if (!containerRef.value || !program) return;
 
-  const rect = containerRef.value.getBoundingClientRect()
-  const x = (e.clientX - rect.left) / rect.width
-  const y = 1.0 - (e.clientY - rect.top) / rect.height
+  const rect = containerRef.value.getBoundingClientRect();
+  const x = (e.clientX - rect.left) / rect.width;
+  const y = 1.0 - (e.clientY - rect.top) / rect.height;
 
-  mousePos.value = { x, y }
+  mousePos.value = { x, y };
   if (program.uniforms.uMouse.value) {
-    program.uniforms.uMouse.value[0] = x
-    program.uniforms.uMouse.value[1] = y
+    program.uniforms.uMouse.value[0] = x;
+    program.uniforms.uMouse.value[1] = y;
   }
-}
+};
 
 const update = (t: number) => {
-  if (!program || !renderer || !mesh) return
+  if (!program || !renderer || !mesh) return;
 
-  animationId = requestAnimationFrame(update)
-  program.uniforms.uTime.value = t * 0.001
-  renderer.render({ scene: mesh })
-}
+  animationId = requestAnimationFrame(update);
+  program.uniforms.uTime.value = t * 0.001;
+  renderer.render({ scene: mesh });
+};
 
 const initializeScene = () => {
-  if (!containerRef.value) return
+  if (!containerRef.value) return;
 
-  cleanup()
+  cleanup();
 
-  const container = containerRef.value
-  renderer = new Renderer()
-  gl = renderer.gl
-  gl.clearColor(1, 1, 1, 1)
+  const container = containerRef.value;
+  renderer = new Renderer();
+  gl = renderer.gl;
+  gl.clearColor(1, 1, 1, 1);
 
-  const geometry = new Triangle(gl)
+  const geometry = new Triangle(gl);
   program = new Program(gl, {
     vertex: vertexShader,
     fragment: fragmentShader,
@@ -129,76 +129,72 @@ const initializeScene = () => {
       uTime: { value: 0 },
       uColor: { value: new Color(...props.color) },
       uResolution: {
-        value: new Color(
-          gl.canvas.width,
-          gl.canvas.height,
-          gl.canvas.width / gl.canvas.height
-        )
+        value: new Color(gl.canvas.width, gl.canvas.height, gl.canvas.width / gl.canvas.height)
       },
       uMouse: { value: new Float32Array([mousePos.value.x, mousePos.value.y]) },
       uAmplitude: { value: props.amplitude },
       uSpeed: { value: props.speed }
     }
-  })
+  });
 
-  mesh = new Mesh(gl, { geometry, program })
+  mesh = new Mesh(gl, { geometry, program });
 
-  const canvas = gl.canvas as HTMLCanvasElement
-  canvas.style.width = '100%'
-  canvas.style.height = '100%'
-  canvas.style.display = 'block'
+  const canvas = gl.canvas as HTMLCanvasElement;
+  canvas.style.width = '100%';
+  canvas.style.height = '100%';
+  canvas.style.display = 'block';
 
-  container.appendChild(canvas)
+  container.appendChild(canvas);
 
-  window.addEventListener('resize', resize)
+  window.addEventListener('resize', resize);
   if (props.mouseReact) {
-    container.addEventListener('mousemove', handleMouseMove)
+    container.addEventListener('mousemove', handleMouseMove);
   }
 
-  resize()
-  animationId = requestAnimationFrame(update)
-}
+  resize();
+  animationId = requestAnimationFrame(update);
+};
 
 const cleanup = () => {
   if (animationId) {
-    cancelAnimationFrame(animationId)
-    animationId = null
+    cancelAnimationFrame(animationId);
+    animationId = null;
   }
 
-  window.removeEventListener('resize', resize)
+  window.removeEventListener('resize', resize);
 
   if (containerRef.value) {
-    containerRef.value.removeEventListener('mousemove', handleMouseMove)
+    containerRef.value.removeEventListener('mousemove', handleMouseMove);
 
-    const canvas = containerRef.value.querySelector('canvas')
+    const canvas = containerRef.value.querySelector('canvas');
     if (canvas) {
-      containerRef.value.removeChild(canvas)
+      containerRef.value.removeChild(canvas);
     }
   }
 
   if (gl) {
-    gl.getExtension('WEBGL_lose_context')?.loseContext()
+    gl.getExtension('WEBGL_lose_context')?.loseContext();
   }
 
-  renderer = null
-  gl = null
-  program = null
-  mesh = null
-}
+  renderer = null;
+  gl = null;
+  program = null;
+  mesh = null;
+};
 
 onMounted(() => {
-  initializeScene()
-})
+  initializeScene();
+});
 
 onUnmounted(() => {
-  cleanup()
-})
+  cleanup();
+});
 
 watch(
   [() => props.color, () => props.speed, () => props.amplitude, () => props.mouseReact],
   () => {
-    initializeScene()
+    initializeScene();
   },
   { deep: true }
-)
+);
 </script>

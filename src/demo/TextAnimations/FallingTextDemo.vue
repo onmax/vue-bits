@@ -3,10 +3,15 @@
     <TabbedLayout>
       <template #preview>
         <div class="demo-container relative h-[400px] overflow-hidden p-0 flex justify-center items-center">
-          <FallingText :key="key"
+          <FallingText
+            :key="key"
             text="Vue Bits is a library of animated and interactive Vue components designed to streamline UI development and simplify your workflow."
-            :highlight-words="['Vue', 'Bits', 'animated', 'components', 'simplify']" :trigger="trigger"
-            :gravity="gravity" font-size="2rem" :mouse-constraint-stiffness="mouseConstraintStiffness" />
+            :highlight-words="['Vue', 'Bits', 'animated', 'components', 'simplify']"
+            :trigger="trigger"
+            :gravity="gravity"
+            font-size="2rem"
+            :mouse-constraint-stiffness="mouseConstraintStiffness"
+          />
 
           <div class="absolute z-0 text-[4rem] font-[900] text-[#222] select-none" v-if="!effectStarted">
             {{ trigger === 'hover' ? 'Hover Me' : trigger === 'click' ? 'Click Me' : 'Auto Start' }}
@@ -14,17 +19,34 @@
         </div>
 
         <Customize>
-          <PreviewSelect title="Animation Trigger" v-model="trigger" :options="triggerOptions"
-            @update:model-value="forceRerender" />
+          <PreviewSelect
+            title="Animation Trigger"
+            v-model="trigger"
+            :options="triggerOptions"
+            @update:model-value="forceRerender"
+          />
 
-          <PreviewSlider title="Gravity" v-model="gravity" :min="0.1" :max="2" :step="0.01"
-            @update:model-value="forceRerender" />
+          <PreviewSlider
+            title="Gravity"
+            v-model="gravity"
+            :min="0.1"
+            :max="2"
+            :step="0.01"
+            @update:model-value="forceRerender"
+          />
 
-          <PreviewSlider title="Mouse Constraint Stiffness" v-model="mouseConstraintStiffness" :min="0.1" :max="2"
-            :step="0.1" @update:model-value="forceRerender" />
+          <PreviewSlider
+            title="Mouse Constraint Stiffness"
+            v-model="mouseConstraintStiffness"
+            :min="0.1"
+            :max="2"
+            :step="0.1"
+            @update:model-value="forceRerender"
+          />
         </Customize>
 
         <PropTable :data="propData" />
+
         <Dependencies :dependency-list="['matter-js']" />
       </template>
 
@@ -40,33 +62,33 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
-import TabbedLayout from '../../components/common/TabbedLayout.vue'
-import PropTable from '../../components/common/PropTable.vue'
-import Dependencies from '../../components/code/Dependencies.vue'
-import CliInstallation from '../../components/code/CliInstallation.vue'
-import CodeExample from '../../components/code/CodeExample.vue'
-import Customize from '../../components/common/Customize.vue'
-import PreviewSlider from '../../components/common/PreviewSlider.vue'
-import PreviewSelect from '../../components/common/PreviewSelect.vue'
-import FallingText from '../../content/TextAnimations/FallingText/FallingText.vue'
-import { fallingText } from '@/constants/code/TextAnimations/fallingTextCode'
-import { useForceRerender } from '@/composables/useForceRerender'
+import { ref, computed } from 'vue';
+import TabbedLayout from '../../components/common/TabbedLayout.vue';
+import PropTable from '../../components/common/PropTable.vue';
+import Dependencies from '../../components/code/Dependencies.vue';
+import CliInstallation from '../../components/code/CliInstallation.vue';
+import CodeExample from '../../components/code/CodeExample.vue';
+import Customize from '../../components/common/Customize.vue';
+import PreviewSlider from '../../components/common/PreviewSlider.vue';
+import PreviewSelect from '../../components/common/PreviewSelect.vue';
+import FallingText from '../../content/TextAnimations/FallingText/FallingText.vue';
+import { fallingText } from '@/constants/code/TextAnimations/fallingTextCode';
+import { useForceRerender } from '@/composables/useForceRerender';
 
-const { rerenderKey: key, forceRerender } = useForceRerender()
+const { rerenderKey: key, forceRerender } = useForceRerender();
 
-const gravity = ref(0.56)
-const mouseConstraintStiffness = ref(0.9)
-const trigger = ref<'hover' | 'click' | 'auto' | 'scroll'>('hover')
+const gravity = ref(0.56);
+const mouseConstraintStiffness = ref(0.9);
+const trigger = ref<'hover' | 'click' | 'auto' | 'scroll'>('hover');
 
-const effectStarted = computed(() => trigger.value === 'auto')
+const effectStarted = computed(() => trigger.value === 'auto');
 
 const triggerOptions = [
   { value: 'hover', label: 'Hover' },
   { value: 'click', label: 'Click' },
   { value: 'auto', label: 'Auto' },
   { value: 'scroll', label: 'Scroll' }
-]
+];
 
 const propData = [
   {
@@ -117,7 +139,7 @@ const propData = [
     default: '"1rem"',
     description: 'Font size applied to the text before it falls.'
   }
-]
+];
 </script>
 
 <style scoped></style>

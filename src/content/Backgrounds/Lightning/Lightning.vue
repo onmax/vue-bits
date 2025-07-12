@@ -3,14 +3,14 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, watch } from 'vue'
+import { ref, onMounted, onUnmounted, watch } from 'vue';
 
 interface LightningProps {
-  hue?: number
-  xOffset?: number
-  speed?: number
-  intensity?: number
-  size?: number
+  hue?: number;
+  xOffset?: number;
+  speed?: number;
+  intensity?: number;
+  size?: number;
 }
 
 const props = withDefaults(defineProps<LightningProps>(), {
@@ -19,20 +19,20 @@ const props = withDefaults(defineProps<LightningProps>(), {
   speed: 1,
   intensity: 1,
   size: 1
-})
+});
 
-const canvasRef = ref<HTMLCanvasElement>()
-let animationId = 0
-let gl: WebGLRenderingContext | null = null
-let program: WebGLProgram | null = null
-let startTime = 0
+const canvasRef = ref<HTMLCanvasElement>();
+let animationId = 0;
+let gl: WebGLRenderingContext | null = null;
+let program: WebGLProgram | null = null;
+let startTime = 0;
 
 const vertexShaderSource = `
 attribute vec2 aPosition;
 void main() {
   gl_Position = vec4(aPosition, 0.0, 1.0);
 }
-`
+`;
 
 const fragmentShaderSource = `
 precision mediump float;
@@ -112,155 +112,153 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord ) {
 void main() {
     mainImage(gl_FragColor, gl_FragCoord.xy);
 }
-`
+`;
 
 const compileShader = (source: string, type: number): WebGLShader | null => {
-  if (!gl) return null
-  const shader = gl.createShader(type)
-  if (!shader) return null
-  gl.shaderSource(shader, source)
-  gl.compileShader(shader)
+  if (!gl) return null;
+  const shader = gl.createShader(type);
+  if (!shader) return null;
+  gl.shaderSource(shader, source);
+  gl.compileShader(shader);
   if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
-    console.error('Shader compile error:', gl.getShaderInfoLog(shader))
-    gl.deleteShader(shader)
-    return null
+    console.error('Shader compile error:', gl.getShaderInfoLog(shader));
+    gl.deleteShader(shader);
+    return null;
   }
-  return shader
-}
+  return shader;
+};
 
 const initWebGL = () => {
-  const canvas = canvasRef.value
-  if (!canvas) return
+  const canvas = canvasRef.value;
+  if (!canvas) return;
 
   const resizeCanvas = () => {
-    const rect = canvas.getBoundingClientRect()
-    const dpr = window.devicePixelRatio || 1
-    
-    let width = rect.width
-    let height = rect.height
-    
-    let parent = canvas.parentElement
+    const rect = canvas.getBoundingClientRect();
+    const dpr = window.devicePixelRatio || 1;
+
+    let width = rect.width;
+    let height = rect.height;
+
+    let parent = canvas.parentElement;
     while (parent && (!width || !height)) {
       if (parent.offsetWidth && parent.offsetHeight) {
-        width = parent.offsetWidth
-        height = parent.offsetHeight
-        break
+        width = parent.offsetWidth;
+        height = parent.offsetHeight;
+        break;
       }
-      parent = parent.parentElement
+      parent = parent.parentElement;
     }
-    
+
     if (!width || !height) {
-      width = window.innerWidth
-      height = window.innerHeight
+      width = window.innerWidth;
+      height = window.innerHeight;
     }
-    
-    width = Math.max(width, 300)
-    height = Math.max(height, 300)
-    
-    canvas.width = width * dpr
-    canvas.height = height * dpr
-    
-    canvas.style.width = '100%'
-    canvas.style.height = '100%'
-    canvas.style.display = 'block'
-    canvas.style.position = 'absolute'
-    canvas.style.top = '0'
-    canvas.style.left = '0'
-  }
 
-  resizeCanvas()
-  window.addEventListener('resize', resizeCanvas)
+    width = Math.max(width, 300);
+    height = Math.max(height, 300);
 
-  gl = canvas.getContext('webgl')
+    canvas.width = width * dpr;
+    canvas.height = height * dpr;
+
+    canvas.style.width = '100%';
+    canvas.style.height = '100%';
+    canvas.style.display = 'block';
+    canvas.style.position = 'absolute';
+    canvas.style.top = '0';
+    canvas.style.left = '0';
+  };
+
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas);
+
+  gl = canvas.getContext('webgl');
   if (!gl) {
-    console.error('WebGL not supported')
-    return
+    console.error('WebGL not supported');
+    return;
   }
 
-  const vertexShader = compileShader(vertexShaderSource, gl.VERTEX_SHADER)
-  const fragmentShader = compileShader(fragmentShaderSource, gl.FRAGMENT_SHADER)
-  if (!vertexShader || !fragmentShader) return
+  const vertexShader = compileShader(vertexShaderSource, gl.VERTEX_SHADER);
+  const fragmentShader = compileShader(fragmentShaderSource, gl.FRAGMENT_SHADER);
+  if (!vertexShader || !fragmentShader) return;
 
-  program = gl.createProgram()
-  if (!program) return
-  gl.attachShader(program, vertexShader)
-  gl.attachShader(program, fragmentShader)
-  gl.linkProgram(program)
+  program = gl.createProgram();
+  if (!program) return;
+  gl.attachShader(program, vertexShader);
+  gl.attachShader(program, fragmentShader);
+  gl.linkProgram(program);
   if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
-    console.error('Program linking error:', gl.getProgramInfoLog(program))
-    return
+    console.error('Program linking error:', gl.getProgramInfoLog(program));
+    return;
   }
-  gl.useProgram(program)
+  gl.useProgram(program);
 
-  const vertices = new Float32Array([
-    -1, -1, 1, -1, -1, 1, -1, 1, 1, -1, 1, 1,
-  ])
-  const vertexBuffer = gl.createBuffer()
-  gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer)
-  gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW)
+  const vertices = new Float32Array([-1, -1, 1, -1, -1, 1, -1, 1, 1, -1, 1, 1]);
+  const vertexBuffer = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
+  gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
 
-  const aPosition = gl.getAttribLocation(program, 'aPosition')
-  gl.enableVertexAttribArray(aPosition)
-  gl.vertexAttribPointer(aPosition, 2, gl.FLOAT, false, 0, 0)
+  const aPosition = gl.getAttribLocation(program, 'aPosition');
+  gl.enableVertexAttribArray(aPosition);
+  gl.vertexAttribPointer(aPosition, 2, gl.FLOAT, false, 0, 0);
 
-  startTime = performance.now()
-  render()
+  startTime = performance.now();
+  render();
 
   return () => {
-    window.removeEventListener('resize', resizeCanvas)
-  }
-}
+    window.removeEventListener('resize', resizeCanvas);
+  };
+};
 
 const render = () => {
-  if (!gl || !program || !canvasRef.value) return
+  if (!gl || !program || !canvasRef.value) return;
 
-  const canvas = canvasRef.value
+  const canvas = canvasRef.value;
 
-  const rect = canvas.getBoundingClientRect()
+  const rect = canvas.getBoundingClientRect();
   if (canvas.width !== rect.width || canvas.height !== rect.height) {
-    canvas.width = rect.width
-    canvas.height = rect.height
-    canvas.style.width = rect.width + 'px'
-    canvas.style.height = rect.height + 'px'
+    canvas.width = rect.width;
+    canvas.height = rect.height;
+    canvas.style.width = rect.width + 'px';
+    canvas.style.height = rect.height + 'px';
   }
 
-  gl.viewport(0, 0, canvas.width, canvas.height)
+  gl.viewport(0, 0, canvas.width, canvas.height);
 
-  const iResolutionLocation = gl.getUniformLocation(program, 'iResolution')
-  const iTimeLocation = gl.getUniformLocation(program, 'iTime')
-  const uHueLocation = gl.getUniformLocation(program, 'uHue')
-  const uXOffsetLocation = gl.getUniformLocation(program, 'uXOffset')
-  const uSpeedLocation = gl.getUniformLocation(program, 'uSpeed')
-  const uIntensityLocation = gl.getUniformLocation(program, 'uIntensity')
-  const uSizeLocation = gl.getUniformLocation(program, 'uSize')
+  const iResolutionLocation = gl.getUniformLocation(program, 'iResolution');
+  const iTimeLocation = gl.getUniformLocation(program, 'iTime');
+  const uHueLocation = gl.getUniformLocation(program, 'uHue');
+  const uXOffsetLocation = gl.getUniformLocation(program, 'uXOffset');
+  const uSpeedLocation = gl.getUniformLocation(program, 'uSpeed');
+  const uIntensityLocation = gl.getUniformLocation(program, 'uIntensity');
+  const uSizeLocation = gl.getUniformLocation(program, 'uSize');
 
-  gl.uniform2f(iResolutionLocation, canvas.width, canvas.height)
-  const currentTime = performance.now()
-  gl.uniform1f(iTimeLocation, (currentTime - startTime) / 1000.0)
-  gl.uniform1f(uHueLocation, props.hue)
-  gl.uniform1f(uXOffsetLocation, props.xOffset)
-  gl.uniform1f(uSpeedLocation, props.speed)
-  gl.uniform1f(uIntensityLocation, props.intensity)
-  gl.uniform1f(uSizeLocation, props.size)
+  gl.uniform2f(iResolutionLocation, canvas.width, canvas.height);
+  const currentTime = performance.now();
+  gl.uniform1f(iTimeLocation, (currentTime - startTime) / 1000.0);
+  gl.uniform1f(uHueLocation, props.hue);
+  gl.uniform1f(uXOffsetLocation, props.xOffset);
+  gl.uniform1f(uSpeedLocation, props.speed);
+  gl.uniform1f(uIntensityLocation, props.intensity);
+  gl.uniform1f(uSizeLocation, props.size);
 
-  gl.drawArrays(gl.TRIANGLES, 0, 6)
-  animationId = requestAnimationFrame(render)
-}
+  gl.drawArrays(gl.TRIANGLES, 0, 6);
+  animationId = requestAnimationFrame(render);
+};
 
 onMounted(() => {
-  initWebGL()
-})
+  initWebGL();
+});
 
 onUnmounted(() => {
   if (animationId) {
-    cancelAnimationFrame(animationId)
+    cancelAnimationFrame(animationId);
   }
-})
+});
 
 watch(
   () => [props.hue, props.xOffset, props.speed, props.intensity, props.size],
   () => {}
-)
+);
 </script>
 
 <style scoped>

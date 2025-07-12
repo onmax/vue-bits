@@ -2,10 +2,19 @@
   <div class="infinite-scroll-demo">
     <TabbedLayout>
       <template #preview>
-        <div class="demo-container"
-          style="height: 500px; overflow: hidden; display: flex; justify-content: center; align-items: center;">
-          <InfiniteScroll :items="items" :is-tilted="isTilted" :tilt-direction="tiltDirection" :autoplay="autoplay"
-            :autoplay-speed="1" :autoplay-direction="autoplayDirection" :pause-on-hover="pauseOnHover" />
+        <div
+          class="demo-container"
+          style="height: 500px; overflow: hidden; display: flex; justify-content: center; align-items: center"
+        >
+          <InfiniteScroll
+            :items="items"
+            :is-tilted="isTilted"
+            :tilt-direction="tiltDirection"
+            :autoplay="autoplay"
+            :autoplay-speed="1"
+            :autoplay-direction="autoplayDirection"
+            :pause-on-hover="pauseOnHover"
+          />
         </div>
 
         <Customize>
@@ -13,7 +22,7 @@
 
           <PreviewSelect v-if="isTilted" title="Tilt Direction" :options="tiltOptions" v-model="tiltDirection" />
 
-          <hr style="margin: 1rem 0; border-color: #222;" />
+          <hr style="margin: 1rem 0; border-color: #222" />
 
           <PreviewSwitch title="Autoplay" v-model="autoplay" />
 
@@ -25,6 +34,7 @@
         </Customize>
 
         <PropTable :data="propData" />
+
         <Dependencies :dependency-list="['gsap']" />
       </template>
 
@@ -40,23 +50,23 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import TabbedLayout from '../../components/common/TabbedLayout.vue'
-import PropTable from '../../components/common/PropTable.vue'
-import Dependencies from '../../components/code/Dependencies.vue'
-import CliInstallation from '../../components/code/CliInstallation.vue'
-import CodeExample from '../../components/code/CodeExample.vue'
-import Customize from '../../components/common/Customize.vue'
-import PreviewSwitch from '../../components/common/PreviewSwitch.vue'
-import PreviewSelect from '../../components/common/PreviewSelect.vue'
-import InfiniteScroll from '../../content/Components/InfiniteScroll/InfiniteScroll.vue'
-import { infiniteScroll } from '@/constants/code/Components/infiniteScrollCode'
+import { ref } from 'vue';
+import TabbedLayout from '../../components/common/TabbedLayout.vue';
+import PropTable from '../../components/common/PropTable.vue';
+import Dependencies from '../../components/code/Dependencies.vue';
+import CliInstallation from '../../components/code/CliInstallation.vue';
+import CodeExample from '../../components/code/CodeExample.vue';
+import Customize from '../../components/common/Customize.vue';
+import PreviewSwitch from '../../components/common/PreviewSwitch.vue';
+import PreviewSelect from '../../components/common/PreviewSelect.vue';
+import InfiniteScroll from '../../content/Components/InfiniteScroll/InfiniteScroll.vue';
+import { infiniteScroll } from '@/constants/code/Components/infiniteScrollCode';
 
-const isTilted = ref(true)
-const tiltDirection = ref<'left' | 'right'>('left')
-const autoplay = ref(true)
-const autoplayDirection = ref<'up' | 'down'>('up')
-const pauseOnHover = ref(true)
+const isTilted = ref(true);
+const tiltDirection = ref<'left' | 'right'>('left');
+const autoplay = ref(true);
+const autoplayDirection = ref<'up' | 'down'>('up');
+const pauseOnHover = ref(true);
 
 const items = [
   { content: 'Paragraph Item 2' },
@@ -72,17 +82,17 @@ const items = [
   { content: 'Paragraph Item 12' },
   { content: 'Text Item 13' },
   { content: 'Paragraph Item 14' }
-]
+];
 
 const autoplayOptions = [
   { value: 'up', label: 'Up' },
   { value: 'down', label: 'Down' }
-]
+];
 
 const tiltOptions = [
   { value: 'left', label: 'Left' },
   { value: 'right', label: 'Right' }
-]
+];
 
 const propData = [
   {
@@ -101,7 +111,8 @@ const propData = [
     name: 'items',
     type: 'array',
     default: '[]',
-    description: 'Array of items with custom content. Each item should have a "content" property containing a string or Vue component.'
+    description:
+      'Array of items with custom content. Each item should have a "content" property containing a string or Vue component.'
   },
   {
     name: 'itemMinHeight',
@@ -151,5 +162,5 @@ const propData = [
     default: '"-0.5em"',
     description: 'Negative margin to reduce spacing between items.'
   }
-]
+];
 </script>

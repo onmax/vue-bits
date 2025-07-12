@@ -1,5 +1,5 @@
-import code from '@content/Animations/Cubes/Cubes.vue?raw'
-import type { CodeObject } from '../../../types/code'
+import code from '@content/Animations/Cubes/Cubes.vue?raw';
+import type { CodeObject } from '../../../types/code';
 
 export const cubes: CodeObject = {
   cli: `npx jsrepo add https://vue-bits.dev/ui/Animations/Cubes`,
@@ -29,4 +29,4 @@ export const cubes: CodeObject = {
   import Cubes from "./Cubes.vue";
 </script>`,
   code
-}
+};

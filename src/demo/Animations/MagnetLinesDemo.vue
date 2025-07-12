@@ -3,13 +3,7 @@
     <TabbedLayout>
       <template #preview>
         <div class="demo-container overflow-hidden flex justify-center pb-4 items-center">
-          <MagnetLines 
-            :rows="10" 
-            :columns="12" 
-            container-size="40vmin" 
-            line-width="2px" 
-            line-height="30px" 
-          />
+          <MagnetLines :rows="10" :columns="12" container-size="40vmin" line-width="2px" line-height="30px" />
         </div>
 
         <PropTable :data="propData" />
@@ -27,12 +21,12 @@
 </template>
 
 <script setup lang="ts">
-import TabbedLayout from '../../components/common/TabbedLayout.vue'
-import PropTable from '../../components/common/PropTable.vue'
-import CliInstallation from '../../components/code/CliInstallation.vue'
-import CodeExample from '../../components/code/CodeExample.vue'
-import MagnetLines from '../../content/Animations/MagnetLines/MagnetLines.vue'
-import { magnetLines } from '@/constants/code/Animations/magnetLinesCode'
+import TabbedLayout from '../../components/common/TabbedLayout.vue';
+import PropTable from '../../components/common/PropTable.vue';
+import CliInstallation from '../../components/code/CliInstallation.vue';
+import CodeExample from '../../components/code/CodeExample.vue';
+import MagnetLines from '../../content/Animations/MagnetLines/MagnetLines.vue';
+import { magnetLines } from '@/constants/code/Animations/magnetLinesCode';
 
 const propData = [
   {
@@ -89,5 +83,5 @@ const propData = [
     default: '{}',
     description: 'Inline styles for the container.'
   }
-]
+];
 </script>

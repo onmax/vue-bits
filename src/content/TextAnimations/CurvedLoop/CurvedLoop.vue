@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, watch, computed, nextTick } from 'vue'
+import { ref, onMounted, onUnmounted, watch, computed, nextTick } from 'vue';
 
 interface CurvedLoopProps {
-  marqueeText?: string
-  speed?: number
-  className?: string
-  curveAmount?: number
-  direction?: 'left' | 'right'
-  interactive?: boolean
+  marqueeText?: string;
+  speed?: number;
+  className?: string;
+  curveAmount?: number;
+  direction?: 'left' | 'right';
+  interactive?: boolean;
 }
 
 const props = withDefaults(defineProps<CurvedLoopProps>(), {
@@ -17,161 +17,166 @@ const props = withDefaults(defineProps<CurvedLoopProps>(), {
   curveAmount: 400,
   direction: 'left',
   interactive: true
-})
+});
 
 const text = computed(() => {
-  const hasTrailing = /\s|\u00A0$/.test(props.marqueeText)
-  return (
-    (hasTrailing ? props.marqueeText.replace(/\s+$/, '') : props.marqueeText) + '\u00A0'
-  )
-})
+  const hasTrailing = /\s|\u00A0$/.test(props.marqueeText);
+  return (hasTrailing ? props.marqueeText.replace(/\s+$/, '') : props.marqueeText) + '\u00A0';
+});
 
-const measureRef = ref<SVGTextElement | null>(null)
-const tspansRef = ref<SVGTSpanElement[]>([])
-const pathRef = ref<SVGPathElement | null>(null)
-const pathLength = ref(0)
-const spacing = ref(0)
-const uid = Math.random().toString(36).substr(2, 9)
-const pathId = `curve-${uid}`
+const measureRef = ref<SVGTextElement | null>(null);
+const tspansRef = ref<SVGTSpanElement[]>([]);
+const pathRef = ref<SVGPathElement | null>(null);
+const pathLength = ref(0);
+const spacing = ref(0);
+const uid = Math.random().toString(36).substr(2, 9);
+const pathId = `curve-${uid}`;
 
-const pathD = computed(() => `M-100,40 Q500,${40 + props.curveAmount} 1540,40`)
+const pathD = computed(() => `M-100,40 Q500,${40 + props.curveAmount} 1540,40`);
 
-const dragRef = ref(false)
-const lastXRef = ref(0)
-const dirRef = ref<'left' | 'right'>(props.direction)
-const velRef = ref(0)
+const dragRef = ref(false);
+const lastXRef = ref(0);
+const dirRef = ref<'left' | 'right'>(props.direction);
+const velRef = ref(0);
 
-let animationFrame: number | null = null
+let animationFrame: number | null = null;
 
 const updateSpacing = () => {
   if (measureRef.value) {
-    spacing.value = measureRef.value.getComputedTextLength()
+    spacing.value = measureRef.value.getComputedTextLength();
   }
-}
+};
 
 const updatePathLength = () => {
   if (pathRef.value) {
-    pathLength.value = pathRef.value.getTotalLength()
+    pathLength.value = pathRef.value.getTotalLength();
   }
-}
+};
 
 const animate = () => {
-  if (!spacing.value) return
+  if (!spacing.value) return;
 
   const step = () => {
-    tspansRef.value.forEach((t) => {
-      if (!t) return
-      let x = parseFloat(t.getAttribute('x') || '0')
+    tspansRef.value.forEach(t => {
+      if (!t) return;
+      let x = parseFloat(t.getAttribute('x') || '0');
       if (!dragRef.value) {
-        const delta = dirRef.value === 'right' ? Math.abs(props.speed) : -Math.abs(props.speed)
-        x += delta
+        const delta = dirRef.value === 'right' ? Math.abs(props.speed) : -Math.abs(props.speed);
+        x += delta;
       }
-      const maxX = (tspansRef.value.length - 1) * spacing.value
-      if (x < -spacing.value) x = maxX
-      if (x > maxX) x = -spacing.value
-      t.setAttribute('x', x.toString())
-    })
-    animationFrame = requestAnimationFrame(step)
-  }
-  step()
-}
+      const maxX = (tspansRef.value.length - 1) * spacing.value;
+      if (x < -spacing.value) x = maxX;
+      if (x > maxX) x = -spacing.value;
+      t.setAttribute('x', x.toString());
+    });
+    animationFrame = requestAnimationFrame(step);
+  };
+  step();
+};
 
 const stopAnimation = () => {
   if (animationFrame) {
-    cancelAnimationFrame(animationFrame)
-    animationFrame = null
+    cancelAnimationFrame(animationFrame);
+    animationFrame = null;
   }
-}
+};
 
 const repeats = computed(() => {
-  return pathLength.value && spacing.value ? Math.ceil(pathLength.value / spacing.value) + 2 : 0
-})
+  return pathLength.value && spacing.value ? Math.ceil(pathLength.value / spacing.value) + 2 : 0;
+});
 
-const ready = computed(() => pathLength.value > 0 && spacing.value > 0)
+const ready = computed(() => pathLength.value > 0 && spacing.value > 0);
 
 const onPointerDown = (e: PointerEvent) => {
-  if (!props.interactive) return
-  dragRef.value = true
-  lastXRef.value = e.clientX
-  velRef.value = 0
-    ; (e.target as HTMLElement).setPointerCapture(e.pointerId)
-}
+  if (!props.interactive) return;
+  dragRef.value = true;
+  lastXRef.value = e.clientX;
+  velRef.value = 0;
+  (e.target as HTMLElement).setPointerCapture(e.pointerId);
+};
 
 const onPointerMove = (e: PointerEvent) => {
-  if (!props.interactive || !dragRef.value) return
-  const dx = e.clientX - lastXRef.value
-  lastXRef.value = e.clientX
-  velRef.value = dx
-  tspansRef.value.forEach((t) => {
-    if (!t) return
-    let x = parseFloat(t.getAttribute('x') || '0')
-    x += dx
-    const maxX = (tspansRef.value.length - 1) * spacing.value
-    if (x < -spacing.value) x = maxX
-    if (x > maxX) x = -spacing.value
-    t.setAttribute('x', x.toString())
-  })
-}
+  if (!props.interactive || !dragRef.value) return;
+  const dx = e.clientX - lastXRef.value;
+  lastXRef.value = e.clientX;
+  velRef.value = dx;
+  tspansRef.value.forEach(t => {
+    if (!t) return;
+    let x = parseFloat(t.getAttribute('x') || '0');
+    x += dx;
+    const maxX = (tspansRef.value.length - 1) * spacing.value;
+    if (x < -spacing.value) x = maxX;
+    if (x > maxX) x = -spacing.value;
+    t.setAttribute('x', x.toString());
+  });
+};
 
 const endDrag = () => {
-  if (!props.interactive) return
-  dragRef.value = false
-  dirRef.value = velRef.value > 0 ? 'right' : 'left'
-}
+  if (!props.interactive) return;
+  dragRef.value = false;
+  dirRef.value = velRef.value > 0 ? 'right' : 'left';
+};
 
 const cursorStyle = computed(() => {
-  return props.interactive
-    ? dragRef.value
-      ? 'grabbing'
-      : 'grab'
-    : 'auto'
-})
+  return props.interactive ? (dragRef.value ? 'grabbing' : 'grab') : 'auto';
+});
 
 onMounted(() => {
   nextTick(() => {
-    updateSpacing()
-    updatePathLength()
-    animate()
-  })
-})
+    updateSpacing();
+    updatePathLength();
+    animate();
+  });
+});
 
 onUnmounted(() => {
-  stopAnimation()
-})
+  stopAnimation();
+});
 
 watch([text, () => props.className], () => {
   nextTick(() => {
-    updateSpacing()
-  })
-})
+    updateSpacing();
+  });
+});
 
-watch(() => props.curveAmount, () => {
-  nextTick(() => {
-    updatePathLength()
-  })
-})
+watch(
+  () => props.curveAmount,
+  () => {
+    nextTick(() => {
+      updatePathLength();
+    });
+  }
+);
 
 watch([spacing, () => props.speed], () => {
-  stopAnimation()
+  stopAnimation();
   if (spacing.value) {
-    animate()
+    animate();
   }
-})
+});
 
 watch(repeats, () => {
-  tspansRef.value = []
-})
+  tspansRef.value = [];
+});
 </script>
 
 <template>
-  <div class="min-h-screen flex items-center justify-center w-full" :style="{
-    visibility: ready ? 'visible' : 'hidden',
-    cursor: cursorStyle
-  }" @pointerdown="onPointerDown" @pointermove="onPointerMove" @pointerup="endDrag" @pointerleave="endDrag">
+  <div
+    class="min-h-screen flex items-center justify-center w-full"
+    :style="{
+      visibility: ready ? 'visible' : 'hidden',
+      cursor: cursorStyle
+    }"
+    @pointerdown="onPointerDown"
+    @pointermove="onPointerMove"
+    @pointerup="endDrag"
+    @pointerleave="endDrag"
+  >
     <svg
       class="select-none w-full overflow-visible block aspect-[100/12] text-[6rem] font-bold tracking-[5px] uppercase leading-none"
-      viewBox="0 0 1440 120">
-      <text ref="measureRef" xml:space="preserve" style="visibility: hidden; opacity: 0; pointer-events: none;">
+      viewBox="0 0 1440 120"
+    >
+      <text ref="measureRef" xml:space="preserve" style="visibility: hidden; opacity: 0; pointer-events: none">
         {{ text }}
       </text>
 
@@ -181,9 +186,16 @@ watch(repeats, () => {
 
       <text v-if="ready" xml:space="preserve" :class="`fill-white ${className}`">
         <textPath :href="`#${pathId}`" xml:space="preserve">
-          <tspan v-for="i in repeats" :key="i" :x="(i - 1) * spacing" :ref="(el) => {
-            if (el) tspansRef[i - 1] = el as SVGTSpanElement
-          }">
+          <tspan
+            v-for="i in repeats"
+            :key="i"
+            :x="(i - 1) * spacing"
+            :ref="
+              el => {
+                if (el) tspansRef[i - 1] = el as SVGTSpanElement;
+              }
+            "
+          >
             {{ text }}
           </tspan>
         </textPath>

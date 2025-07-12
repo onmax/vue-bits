@@ -1,10 +1,5 @@
 <template>
-  <div
-    :class="[
-      'grid gap-[5em] grid-cols-2 md:grid-cols-3 mx-auto py-[3em] overflow-visible',
-      className
-    ]"
-  >
+  <div :class="['grid gap-[5em] grid-cols-2 md:grid-cols-3 mx-auto py-[3em] overflow-visible', className]">
     <button
       v-for="(item, index) in items"
       :key="index"
@@ -29,15 +24,14 @@
           boxShadow: '0 0 0 0.1em hsla(0, 0%, 100%, 0.3) inset'
         }"
       >
-        <span
-          class="m-auto w-[1.5em] h-[1.5em] flex items-center justify-center"
-          aria-hidden="true"
-        >
+        <span class="m-auto w-[1.5em] h-[1.5em] flex items-center justify-center" aria-hidden="true">
           <i :class="item.icon" class="text-xl"></i>
         </span>
       </span>
 
-      <span class="absolute top-full left-0 right-0 text-center whitespace-nowrap leading-[2] text-base opacity-0 transition-[opacity,transform] duration-300 ease-[cubic-bezier(0.83,0,0.17,1)] translate-y-0 group-hover:opacity-100 group-hover:[transform:translateY(20%)]">
+      <span
+        class="absolute top-full left-0 right-0 text-center whitespace-nowrap leading-[2] text-base opacity-0 transition-[opacity,transform] duration-300 ease-[cubic-bezier(0.83,0,0.17,1)] translate-y-0 group-hover:opacity-100 group-hover:[transform:translateY(20%)]"
+      >
         {{ item.label }}
       </span>
     </button>
@@ -46,21 +40,21 @@
 
 <script setup lang="ts">
 interface GlassIconsItem {
-  icon: string
-  color: string
-  label: string
-  customClass?: string
+  icon: string;
+  color: string;
+  label: string;
+  customClass?: string;
 }
 
 interface Props {
-  items: GlassIconsItem[]
-  className?: string
+  items: GlassIconsItem[];
+  className?: string;
 }
 
 withDefaults(defineProps<Props>(), {
   items: () => [],
   className: ''
-})
+});
 
 const gradientMapping: Record<string, string> = {
   blue: 'linear-gradient(hsl(223, 90%, 50%), hsl(208, 90%, 50%))',
@@ -69,12 +63,12 @@ const gradientMapping: Record<string, string> = {
   indigo: 'linear-gradient(hsl(253, 90%, 50%), hsl(238, 90%, 50%))',
   orange: 'linear-gradient(hsl(43, 90%, 50%), hsl(28, 90%, 50%))',
   green: 'linear-gradient(hsl(123, 90%, 40%), hsl(108, 90%, 40%))'
-}
+};
 
 const getBackgroundStyle = (color: string): Record<string, string> => {
   if (gradientMapping[color]) {
-    return { background: gradientMapping[color] }
+    return { background: gradientMapping[color] };
   }
-  return { background: color }
-}
+  return { background: color };
+};
 </script>

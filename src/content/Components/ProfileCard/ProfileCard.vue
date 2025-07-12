@@ -3,30 +3,52 @@
     <section ref="cardRef" class="pc-card">
       <div class="pc-inside">
         <div class="pc-shine" />
+
         <div class="pc-glare" />
+
         <div class="pc-content pc-avatar-content">
-          <img class="avatar" :src="avatarUrl" :alt="`${name || 'User'} avatar`" loading="lazy"
-            @error="handleAvatarError" />
+          <img
+            class="avatar"
+            :src="avatarUrl"
+            :alt="`${name || 'User'} avatar`"
+            loading="lazy"
+            @error="handleAvatarError"
+          />
+
           <div v-if="showUserInfo" class="pc-user-info">
             <div class="pc-user-details">
               <div class="pc-mini-avatar">
-                <img :src="miniAvatarUrl || avatarUrl" :alt="`${name || 'User'} mini avatar`" loading="lazy"
-                  @error="handleMiniAvatarError" />
+                <img
+                  :src="miniAvatarUrl || avatarUrl"
+                  :alt="`${name || 'User'} mini avatar`"
+                  loading="lazy"
+                  @error="handleMiniAvatarError"
+                />
               </div>
+
               <div class="pc-user-text">
                 <div class="pc-handle">@{{ handle }}</div>
+
                 <div class="pc-status">{{ status }}</div>
               </div>
             </div>
-            <button class="pc-contact-btn" @click="handleContactClick" style="pointer-events: auto" type="button"
-              :aria-label="`Contact ${name || 'user'}`">
+
+            <button
+              class="pc-contact-btn"
+              @click="handleContactClick"
+              style="pointer-events: auto"
+              type="button"
+              :aria-label="`Contact ${name || 'user'}`"
+            >
               {{ contactText }}
             </button>
           </div>
         </div>
+
         <div class="pc-content">
           <div class="pc-details">
             <h3>{{ name }}</h3>
+
             <p>{{ title }}</p>
           </div>
         </div>
@@ -36,24 +58,24 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue';
 
 interface Props {
-  avatarUrl?: string
-  iconUrl?: string
-  grainUrl?: string
-  behindGradient?: string
-  innerGradient?: string
-  showBehindGradient?: boolean
-  className?: string
-  enableTilt?: boolean
-  miniAvatarUrl?: string
-  name?: string
-  title?: string
-  handle?: string
-  status?: string
-  contactText?: string
-  showUserInfo?: boolean
+  avatarUrl?: string;
+  iconUrl?: string;
+  grainUrl?: string;
+  behindGradient?: string;
+  innerGradient?: string;
+  showBehindGradient?: boolean;
+  className?: string;
+  enableTilt?: boolean;
+  miniAvatarUrl?: string;
+  name?: string;
+  title?: string;
+  handle?: string;
+  status?: string;
+  contactText?: string;
+  showUserInfo?: boolean;
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -72,60 +94,47 @@ const props = withDefaults(defineProps<Props>(), {
   status: 'Online',
   contactText: 'Contact',
   showUserInfo: true
-})
+});
 
 const emit = defineEmits<{
-  contactClick: []
-}>()
+  contactClick: [];
+}>();
 
-const wrapRef = ref<HTMLDivElement>()
-const cardRef = ref<HTMLElement>()
+const wrapRef = ref<HTMLDivElement>();
+const cardRef = ref<HTMLElement>();
 
-const DEFAULT_BEHIND_GRADIENT = "radial-gradient(farthest-side circle at var(--pointer-x) var(--pointer-y),hsla(266,100%,90%,var(--card-opacity)) 4%,hsla(266,50%,80%,calc(var(--card-opacity)*0.75)) 10%,hsla(266,25%,70%,calc(var(--card-opacity)*0.5)) 50%,hsla(266,0%,60%,0) 100%),radial-gradient(35% 52% at 55% 20%,#00ffaac4 0%,#073aff00 100%),radial-gradient(100% 100% at 50% 50%,#00c1ffff 1%,#073aff00 76%),conic-gradient(from 124deg at 50% 50%,#c137ffff 0%,#07c6ffff 40%,#07c6ffff 60%,#c137ffff 100%)"
+const DEFAULT_BEHIND_GRADIENT =
+  'radial-gradient(farthest-side circle at var(--pointer-x) var(--pointer-y),hsla(266,100%,90%,var(--card-opacity)) 4%,hsla(266,50%,80%,calc(var(--card-opacity)*0.75)) 10%,hsla(266,25%,70%,calc(var(--card-opacity)*0.5)) 50%,hsla(266,0%,60%,0) 100%),radial-gradient(35% 52% at 55% 20%,#00ffaac4 0%,#073aff00 100%),radial-gradient(100% 100% at 50% 50%,#00c1ffff 1%,#073aff00 76%),conic-gradient(from 124deg at 50% 50%,#c137ffff 0%,#07c6ffff 40%,#07c6ffff 60%,#c137ffff 100%)';
 
-const DEFAULT_INNER_GRADIENT = "linear-gradient(145deg,#60496e8c 0%,#71C4FF44 100%)"
+const DEFAULT_INNER_GRADIENT = 'linear-gradient(145deg,#60496e8c 0%,#71C4FF44 100%)';
 
 const ANIMATION_CONFIG = {
   SMOOTH_DURATION: 600,
   INITIAL_DURATION: 1500,
   INITIAL_X_OFFSET: 70,
-  INITIAL_Y_OFFSET: 60,
-} as const
+  INITIAL_Y_OFFSET: 60
+} as const;
 
-const clamp = (value: number, min = 0, max = 100): number =>
-  Math.min(Math.max(value, min), max)
+const clamp = (value: number, min = 0, max = 100): number => Math.min(Math.max(value, min), max);
 
-const round = (value: number, precision = 3): number =>
-  parseFloat(value.toFixed(precision))
+const round = (value: number, precision = 3): number => parseFloat(value.toFixed(precision));
 
-const adjust = (
-  value: number,
-  fromMin: number,
-  fromMax: number,
-  toMin: number,
-  toMax: number
-): number =>
-  round(toMin + ((toMax - toMin) * (value - fromMin)) / (fromMax - fromMin))
+const adjust = (value: number, fromMin: number, fromMax: number, toMin: number, toMax: number): number =>
+  round(toMin + ((toMax - toMin) * (value - fromMin)) / (fromMax - fromMin));
 
-const easeInOutCubic = (x: number): number =>
-  x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2
+const easeInOutCubic = (x: number): number => (x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2);
 
-let rafId: number | null = null
+let rafId: number | null = null;
 
-const updateCardTransform = (
-  offsetX: number,
-  offsetY: number,
-  card: HTMLElement,
-  wrap: HTMLElement
-) => {
-  const width = card.clientWidth
-  const height = card.clientHeight
+const updateCardTransform = (offsetX: number, offsetY: number, card: HTMLElement, wrap: HTMLElement) => {
+  const width = card.clientWidth;
+  const height = card.clientHeight;
 
-  const percentX = clamp((100 / width) * offsetX)
-  const percentY = clamp((100 / height) * offsetY)
+  const percentX = clamp((100 / width) * offsetX);
+  const percentY = clamp((100 / height) * offsetY);
 
-  const centerX = percentX - 50
-  const centerY = percentY - 50
+  const centerX = percentX - 50;
+  const centerY = percentY - 50;
 
   const properties = {
     '--pointer-x': `${percentX}%`,
@@ -136,13 +145,13 @@ const updateCardTransform = (
     '--pointer-from-top': `${percentY / 100}`,
     '--pointer-from-left': `${percentX / 100}`,
     '--rotate-x': `${round(-(centerX / 5))}deg`,
-    '--rotate-y': `${round(centerY / 4)}deg`,
-  }
+    '--rotate-y': `${round(centerY / 4)}deg`
+  };
 
   Object.entries(properties).forEach(([property, value]) => {
-    wrap.style.setProperty(property, value)
-  })
-}
+    wrap.style.setProperty(property, value);
+  });
+};
 
 const createSmoothAnimation = (
   duration: number,
@@ -151,138 +160,119 @@ const createSmoothAnimation = (
   card: HTMLElement,
   wrap: HTMLElement
 ) => {
-  const startTime = performance.now()
-  const targetX = wrap.clientWidth / 2
-  const targetY = wrap.clientHeight / 2
+  const startTime = performance.now();
+  const targetX = wrap.clientWidth / 2;
+  const targetY = wrap.clientHeight / 2;
 
   const animationLoop = (currentTime: number) => {
-    const elapsed = currentTime - startTime
-    const progress = clamp(elapsed / duration)
-    const easedProgress = easeInOutCubic(progress)
+    const elapsed = currentTime - startTime;
+    const progress = clamp(elapsed / duration);
+    const easedProgress = easeInOutCubic(progress);
 
-    const currentX = adjust(easedProgress, 0, 1, startX, targetX)
-    const currentY = adjust(easedProgress, 0, 1, startY, targetY)
+    const currentX = adjust(easedProgress, 0, 1, startX, targetX);
+    const currentY = adjust(easedProgress, 0, 1, startY, targetY);
 
-    updateCardTransform(currentX, currentY, card, wrap)
+    updateCardTransform(currentX, currentY, card, wrap);
 
     if (progress < 1) {
-      rafId = requestAnimationFrame(animationLoop)
+      rafId = requestAnimationFrame(animationLoop);
     }
-  }
+  };
 
-  rafId = requestAnimationFrame(animationLoop)
-}
+  rafId = requestAnimationFrame(animationLoop);
+};
 
 const cancelAnimation = () => {
   if (rafId) {
-    cancelAnimationFrame(rafId)
-    rafId = null
+    cancelAnimationFrame(rafId);
+    rafId = null;
   }
-}
+};
 
 const handlePointerMove = (event: PointerEvent) => {
-  const card = cardRef.value
-  const wrap = wrapRef.value
+  const card = cardRef.value;
+  const wrap = wrapRef.value;
 
-  if (!card || !wrap || !props.enableTilt) return
+  if (!card || !wrap || !props.enableTilt) return;
 
-  const rect = card.getBoundingClientRect()
-  updateCardTransform(
-    event.clientX - rect.left,
-    event.clientY - rect.top,
-    card,
-    wrap
-  )
-}
+  const rect = card.getBoundingClientRect();
+  updateCardTransform(event.clientX - rect.left, event.clientY - rect.top, card, wrap);
+};
 
 const handlePointerEnter = () => {
-  const card = cardRef.value
-  const wrap = wrapRef.value
+  const card = cardRef.value;
+  const wrap = wrapRef.value;
 
-  if (!card || !wrap || !props.enableTilt) return
+  if (!card || !wrap || !props.enableTilt) return;
 
-  cancelAnimation()
-  wrap.classList.add('active')
-  card.classList.add('active')
-}
+  cancelAnimation();
+  wrap.classList.add('active');
+  card.classList.add('active');
+};
 
 const handlePointerLeave = (event: PointerEvent) => {
-  const card = cardRef.value
-  const wrap = wrapRef.value
+  const card = cardRef.value;
+  const wrap = wrapRef.value;
 
-  if (!card || !wrap || !props.enableTilt) return
+  if (!card || !wrap || !props.enableTilt) return;
 
-  createSmoothAnimation(
-    ANIMATION_CONFIG.SMOOTH_DURATION,
-    event.offsetX,
-    event.offsetY,
-    card,
-    wrap
-  )
-  wrap.classList.remove('active')
-  card.classList.remove('active')
-}
+  createSmoothAnimation(ANIMATION_CONFIG.SMOOTH_DURATION, event.offsetX, event.offsetY, card, wrap);
+  wrap.classList.remove('active');
+  card.classList.remove('active');
+};
 
 const cardStyle = computed(() => ({
   '--icon': props.iconUrl ? `url(${props.iconUrl})` : 'none',
   '--grain': props.grainUrl ? `url(${props.grainUrl})` : 'none',
-  '--behind-gradient': props.showBehindGradient
-    ? (props.behindGradient ?? DEFAULT_BEHIND_GRADIENT)
-    : 'none',
-  '--inner-gradient': props.innerGradient ?? DEFAULT_INNER_GRADIENT,
-}))
+  '--behind-gradient': props.showBehindGradient ? (props.behindGradient ?? DEFAULT_BEHIND_GRADIENT) : 'none',
+  '--inner-gradient': props.innerGradient ?? DEFAULT_INNER_GRADIENT
+}));
 
 const handleContactClick = () => {
-  emit('contactClick')
-}
+  emit('contactClick');
+};
 
 const handleAvatarError = (event: Event) => {
-  const target = event.target as HTMLImageElement
-  target.style.display = 'none'
-}
+  const target = event.target as HTMLImageElement;
+  target.style.display = 'none';
+};
 
 const handleMiniAvatarError = (event: Event) => {
-  const target = event.target as HTMLImageElement
-  target.style.opacity = '0.5'
-  target.src = props.avatarUrl
-}
+  const target = event.target as HTMLImageElement;
+  target.style.opacity = '0.5';
+  target.src = props.avatarUrl;
+};
 
 onMounted(() => {
-  if (!props.enableTilt) return
+  if (!props.enableTilt) return;
 
-  const card = cardRef.value
-  const wrap = wrapRef.value
+  const card = cardRef.value;
+  const wrap = wrapRef.value;
 
-  if (!card || !wrap) return
+  if (!card || !wrap) return;
 
-  card.addEventListener('pointerenter', handlePointerEnter)
-  card.addEventListener('pointermove', handlePointerMove)
-  card.addEventListener('pointerleave', handlePointerLeave)
+  card.addEventListener('pointerenter', handlePointerEnter);
+  card.addEventListener('pointermove', handlePointerMove);
+  card.addEventListener('pointerleave', handlePointerLeave);
 
-  const initialX = wrap.clientWidth - ANIMATION_CONFIG.INITIAL_X_OFFSET
-  const initialY = ANIMATION_CONFIG.INITIAL_Y_OFFSET
+  const initialX = wrap.clientWidth - ANIMATION_CONFIG.INITIAL_X_OFFSET;
+  const initialY = ANIMATION_CONFIG.INITIAL_Y_OFFSET;
 
-  updateCardTransform(initialX, initialY, card, wrap)
-  createSmoothAnimation(
-    ANIMATION_CONFIG.INITIAL_DURATION,
-    initialX,
-    initialY,
-    card,
-    wrap
-  )
-})
+  updateCardTransform(initialX, initialY, card, wrap);
+  createSmoothAnimation(ANIMATION_CONFIG.INITIAL_DURATION, initialX, initialY, card, wrap);
+});
 
 onUnmounted(() => {
-  const card = cardRef.value
+  const card = cardRef.value;
 
   if (card) {
-    card.removeEventListener('pointerenter', handlePointerEnter)
-    card.removeEventListener('pointermove', handlePointerMove)
-    card.removeEventListener('pointerleave', handlePointerLeave)
+    card.removeEventListener('pointerenter', handlePointerEnter);
+    card.removeEventListener('pointermove', handlePointerMove);
+    card.removeEventListener('pointerleave', handlePointerLeave);
   }
 
-  cancelAnimation()
-})
+  cancelAnimation();
+});
 </script>
 
 <style scoped>
@@ -357,12 +347,27 @@ onUnmounted(() => {
   position: relative;
   background-blend-mode: color-dodge, normal, normal, normal;
   animation: glow-bg 12s linear infinite;
-  box-shadow: rgba(0, 0, 0, 0.8) calc((var(--pointer-from-left) * 10px) - 3px) calc((var(--pointer-from-top) * 20px) - 6px) 20px -5px;
+  box-shadow: rgba(0, 0, 0, 0.8) calc((var(--pointer-from-left) * 10px) - 3px)
+    calc((var(--pointer-from-top) * 20px) - 6px) 20px -5px;
   transition: transform 1s ease;
   transform: translate3d(0, 0, 0.1px) rotateX(0deg) rotateY(0deg);
   background-size: 100% 100%;
-  background-position: 0 0, 0 0, 50% 50%, 0 0;
-  background-image: radial-gradient(farthest-side circle at var(--pointer-x) var(--pointer-y), hsla(266, 100%, 90%, var(--card-opacity)) 4%, hsla(266, 50%, 80%, calc(var(--card-opacity) * 0.75)) 10%, hsla(266, 25%, 70%, calc(var(--card-opacity) * 0.5)) 50%, hsla(266, 0%, 60%, 0) 100%), radial-gradient(35% 52% at 55% 20%, #00ffaac4 0%, #073aff00 100%), radial-gradient(100% 100% at 50% 50%, #00c1ffff 1%, #073aff00 76%), conic-gradient(from 124deg at 50% 50%, #c137ffff 0%, #07c6ffff 40%, #07c6ffff 60%, #c137ffff 100%);
+  background-position:
+    0 0,
+    0 0,
+    50% 50%,
+    0 0;
+  background-image:
+    radial-gradient(
+      farthest-side circle at var(--pointer-x) var(--pointer-y),
+      hsla(266, 100%, 90%, var(--card-opacity)) 4%,
+      hsla(266, 50%, 80%, calc(var(--card-opacity) * 0.75)) 10%,
+      hsla(266, 25%, 70%, calc(var(--card-opacity) * 0.5)) 50%,
+      hsla(266, 0%, 60%, 0) 100%
+    ),
+    radial-gradient(35% 52% at 55% 20%, #00ffaac4 0%, #073aff00 100%),
+    radial-gradient(100% 100% at 50% 50%, #00c1ffff 1%, #073aff00 76%),
+    conic-gradient(from 124deg at 50% 50%, #c137ffff 0%, #07c6ffff 40%, #07c6ffff 60%, #c137ffff 100%);
   overflow: hidden;
 }
 
@@ -415,10 +420,41 @@ onUnmounted(() => {
   background: transparent;
   background-size: cover;
   background-position: center;
-  background-image: repeating-linear-gradient(0deg, var(--sunpillar-clr-1) calc(var(--space) * 1), var(--sunpillar-clr-2) calc(var(--space) * 2), var(--sunpillar-clr-3) calc(var(--space) * 3), var(--sunpillar-clr-4) calc(var(--space) * 4), var(--sunpillar-clr-5) calc(var(--space) * 5), var(--sunpillar-clr-6) calc(var(--space) * 6), var(--sunpillar-clr-1) calc(var(--space) * 7)), repeating-linear-gradient(var(--angle), #0e152e 0%, hsl(180, 10%, 60%) 3.8%, hsl(180, 29%, 66%) 4.5%, hsl(180, 10%, 60%) 5.2%, #0e152e 10%, #0e152e 12%), radial-gradient(farthest-corner circle at var(--pointer-x) var(--pointer-y), hsla(0, 0%, 0%, 0.1) 12%, hsla(0, 0%, 0%, 0.15) 20%, hsla(0, 0%, 0%, 0.25) 120%);
-  background-position: 0 var(--background-y), var(--background-x) var(--background-y), center;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      var(--sunpillar-clr-1) calc(var(--space) * 1),
+      var(--sunpillar-clr-2) calc(var(--space) * 2),
+      var(--sunpillar-clr-3) calc(var(--space) * 3),
+      var(--sunpillar-clr-4) calc(var(--space) * 4),
+      var(--sunpillar-clr-5) calc(var(--space) * 5),
+      var(--sunpillar-clr-6) calc(var(--space) * 6),
+      var(--sunpillar-clr-1) calc(var(--space) * 7)
+    ),
+    repeating-linear-gradient(
+      var(--angle),
+      #0e152e 0%,
+      hsl(180, 10%, 60%) 3.8%,
+      hsl(180, 29%, 66%) 4.5%,
+      hsl(180, 10%, 60%) 5.2%,
+      #0e152e 10%,
+      #0e152e 12%
+    ),
+    radial-gradient(
+      farthest-corner circle at var(--pointer-x) var(--pointer-y),
+      hsla(0, 0%, 0%, 0.1) 12%,
+      hsla(0, 0%, 0%, 0.15) 20%,
+      hsla(0, 0%, 0%, 0.25) 120%
+    );
+  background-position:
+    0 var(--background-y),
+    var(--background-x) var(--background-y),
+    center;
   background-blend-mode: color, hard-light;
-  background-size: 500% 500%, 300% 300%, 200% 200%;
+  background-size:
+    500% 500%,
+    300% 300%,
+    200% 200%;
   background-repeat: repeat;
 }
 
@@ -445,19 +481,68 @@ onUnmounted(() => {
 }
 
 .pc-shine::before {
-  background-image: linear-gradient(45deg, var(--sunpillar-4), var(--sunpillar-5), var(--sunpillar-6), var(--sunpillar-1), var(--sunpillar-2), var(--sunpillar-3)), radial-gradient(circle at var(--pointer-x) var(--pointer-y), hsl(0, 0%, 70%) 0%, hsla(0, 0%, 30%, 0.2) 90%), var(--grain);
-  background-size: 250% 250%, 100% 100%, 220px 220px;
-  background-position: var(--pointer-x) var(--pointer-y), center, calc(var(--pointer-x) * 0.01) calc(var(--pointer-y) * 0.01);
+  background-image:
+    linear-gradient(
+      45deg,
+      var(--sunpillar-4),
+      var(--sunpillar-5),
+      var(--sunpillar-6),
+      var(--sunpillar-1),
+      var(--sunpillar-2),
+      var(--sunpillar-3)
+    ),
+    radial-gradient(circle at var(--pointer-x) var(--pointer-y), hsl(0, 0%, 70%) 0%, hsla(0, 0%, 30%, 0.2) 90%),
+    var(--grain);
+  background-size:
+    250% 250%,
+    100% 100%,
+    220px 220px;
+  background-position:
+    var(--pointer-x) var(--pointer-y),
+    center,
+    calc(var(--pointer-x) * 0.01) calc(var(--pointer-y) * 0.01);
   background-blend-mode: color-dodge;
-  filter: brightness(calc(2 - var(--pointer-from-center))) contrast(calc(var(--pointer-from-center) + 2)) saturate(calc(0.5 + var(--pointer-from-center)));
+  filter: brightness(calc(2 - var(--pointer-from-center))) contrast(calc(var(--pointer-from-center) + 2))
+    saturate(calc(0.5 + var(--pointer-from-center)));
   mix-blend-mode: luminosity;
 }
 
 .pc-shine::after {
   content: '';
-  background-image: repeating-linear-gradient(0deg, var(--sunpillar-clr-1) calc(5% * 1), var(--sunpillar-clr-2) calc(5% * 2), var(--sunpillar-clr-3) calc(5% * 3), var(--sunpillar-clr-4) calc(5% * 4), var(--sunpillar-clr-5) calc(5% * 5), var(--sunpillar-clr-6) calc(5% * 6), var(--sunpillar-clr-1) calc(5% * 7)), repeating-linear-gradient(-45deg, #0e152e 0%, hsl(180, 10%, 60%) 3.8%, hsl(180, 29%, 66%) 4.5%, hsl(180, 10%, 60%) 5.2%, #0e152e 10%, #0e152e 12%), radial-gradient(farthest-corner circle at var(--pointer-x) var(--pointer-y), hsla(0, 0%, 0%, 0.1) 12%, hsla(0, 0%, 0%, 0.15) 20%, hsla(0, 0%, 0%, 0.25) 120%);
-  background-position: 0 var(--background-y), calc(var(--background-x) * 0.4) calc(var(--background-y) * 0.5), center;
-  background-size: 200% 300%, 700% 700%, 100% 100%;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      var(--sunpillar-clr-1) calc(5% * 1),
+      var(--sunpillar-clr-2) calc(5% * 2),
+      var(--sunpillar-clr-3) calc(5% * 3),
+      var(--sunpillar-clr-4) calc(5% * 4),
+      var(--sunpillar-clr-5) calc(5% * 5),
+      var(--sunpillar-clr-6) calc(5% * 6),
+      var(--sunpillar-clr-1) calc(5% * 7)
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      #0e152e 0%,
+      hsl(180, 10%, 60%) 3.8%,
+      hsl(180, 29%, 66%) 4.5%,
+      hsl(180, 10%, 60%) 5.2%,
+      #0e152e 10%,
+      #0e152e 12%
+    ),
+    radial-gradient(
+      farthest-corner circle at var(--pointer-x) var(--pointer-y),
+      hsla(0, 0%, 0%, 0.1) 12%,
+      hsla(0, 0%, 0%, 0.15) 20%,
+      hsla(0, 0%, 0%, 0.25) 120%
+    );
+  background-position:
+    0 var(--background-y),
+    calc(var(--background-x) * 0.4) calc(var(--background-y) * 0.5),
+    center;
+  background-size:
+    200% 300%,
+    700% 700%,
+    100% 100%;
   mix-blend-mode: difference;
   filter: brightness(0.8) contrast(1.5);
 }
@@ -465,7 +550,11 @@ onUnmounted(() => {
 .pc-glare {
   transform: translate3d(0, 0, 1.1px);
   overflow: hidden;
-  background-image: radial-gradient(farthest-corner circle at var(--pointer-x) var(--pointer-y), hsl(248, 25%, 80%) 12%, hsla(207, 40%, 30%, 0.8) 90%);
+  background-image: radial-gradient(
+    farthest-corner circle at var(--pointer-x) var(--pointer-y),
+    hsl(248, 25%, 80%) 12%,
+    hsla(207, 40%, 30%, 0.8) 90%
+  );
   mix-blend-mode: overlay;
   filter: brightness(0.8) contrast(1.2);
   z-index: 4;
@@ -486,16 +575,18 @@ onUnmounted(() => {
 }
 
 .pc-avatar-content::before {
-  content: "";
+  content: '';
   position: absolute;
   inset: 0;
   z-index: 1;
   backdrop-filter: blur(30px);
-  mask: linear-gradient(to bottom,
-      rgba(0, 0, 0, 0) 0%,
-      rgba(0, 0, 0, 0) 60%,
-      rgba(0, 0, 0, 1) 90%,
-      rgba(0, 0, 0, 1) 100%);
+  mask: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0) 60%,
+    rgba(0, 0, 0, 1) 90%,
+    rgba(0, 0, 0, 1) 100%
+  );
   pointer-events: none;
 }
 
@@ -582,7 +673,11 @@ onUnmounted(() => {
   overflow: hidden;
   text-align: center;
   position: relative;
-  transform: translate3d(calc(var(--pointer-from-left) * -6px + 3px), calc(var(--pointer-from-top) * -6px + 3px), 0.1px) !important;
+  transform: translate3d(
+    calc(var(--pointer-from-left) * -6px + 3px),
+    calc(var(--pointer-from-top) * -6px + 3px),
+    0.1px
+  ) !important;
   z-index: 5;
   mix-blend-mode: luminosity;
 }
@@ -634,11 +729,17 @@ onUnmounted(() => {
 
 @keyframes holo-bg {
   0% {
-    background-position: 0 var(--background-y), 0 0, center;
+    background-position:
+      0 var(--background-y),
+      0 0,
+      center;
   }
 
   100% {
-    background-position: 0 var(--background-y), 90% 90%, center;
+    background-position:
+      0 var(--background-y),
+      90% 90%,
+      center;
   }
 }
 

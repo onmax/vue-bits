@@ -1,5 +1,5 @@
-import code from '@content/TextAnimations/ShinyText/ShinyText.vue?raw'
-import type { CodeObject } from '../../../types/code'
+import code from '@content/TextAnimations/ShinyText/ShinyText.vue?raw';
+import type { CodeObject } from '../../../types/code';
 
 export const shinyText: CodeObject = {
   cli: `npx jsrepo add https://vue-bits.dev/ui/TextAnimations/ShinyText`,
@@ -16,4 +16,4 @@ export const shinyText: CodeObject = {
   import ShinyText from "./ShinyText.vue";
 </script>`,
   code
-}
+};

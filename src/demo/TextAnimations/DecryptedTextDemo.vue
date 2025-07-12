@@ -4,20 +4,52 @@
       <template #preview>
         <div class="demo-container relative py-6 overflow-hidden">
           <RefreshButton @click="forceRerender" />
+
           <div :key="key" class="pl-6 m-8 w-full flex flex-col justify-start items-start">
-            <DecryptedText :speed="speed" text="Ahoy, matey!" :max-iterations="maxIterations" :sequential="sequential"
-              :reveal-direction="revealDirection" parent-class-name="decrypted-text"
-              :use-original-chars-only="useOriginalCharsOnly" :animate-on="animateOn" />
-            <DecryptedText :speed="speed" text="Set yer eyes on this" :max-iterations="maxIterations"
-              :sequential="sequential" :reveal-direction="revealDirection" parent-class-name="decrypted-text"
-              :use-original-chars-only="useOriginalCharsOnly" :animate-on="animateOn" />
-            <DecryptedText :speed="speed" text="And try tinkerin' round'" :max-iterations="maxIterations"
-              :sequential="sequential" :reveal-direction="revealDirection" parent-class-name="decrypted-text"
-              :use-original-chars-only="useOriginalCharsOnly" :animate-on="animateOn" />
-            <DecryptedText :speed="speed" text="with these here props, arr!" :max-iterations="maxIterations"
-              :sequential="sequential" :reveal-direction="revealDirection" parent-class-name="decrypted-text"
-              :use-original-chars-only="useOriginalCharsOnly" :animate-on="animateOn"
-              @animation-complete="() => console.log('✅ Animation Finished!')" />
+            <DecryptedText
+              :speed="speed"
+              text="Ahoy, matey!"
+              :max-iterations="maxIterations"
+              :sequential="sequential"
+              :reveal-direction="revealDirection"
+              parent-class-name="decrypted-text"
+              :use-original-chars-only="useOriginalCharsOnly"
+              :animate-on="animateOn"
+            />
+
+            <DecryptedText
+              :speed="speed"
+              text="Set yer eyes on this"
+              :max-iterations="maxIterations"
+              :sequential="sequential"
+              :reveal-direction="revealDirection"
+              parent-class-name="decrypted-text"
+              :use-original-chars-only="useOriginalCharsOnly"
+              :animate-on="animateOn"
+            />
+
+            <DecryptedText
+              :speed="speed"
+              text="And try tinkerin' round'"
+              :max-iterations="maxIterations"
+              :sequential="sequential"
+              :reveal-direction="revealDirection"
+              parent-class-name="decrypted-text"
+              :use-original-chars-only="useOriginalCharsOnly"
+              :animate-on="animateOn"
+            />
+
+            <DecryptedText
+              :speed="speed"
+              text="with these here props, arr!"
+              :max-iterations="maxIterations"
+              :sequential="sequential"
+              :reveal-direction="revealDirection"
+              parent-class-name="decrypted-text"
+              :use-original-chars-only="useOriginalCharsOnly"
+              :animate-on="animateOn"
+              @animation-complete="() => console.log('✅ Animation Finished!')"
+            />
           </div>
         </div>
 
@@ -26,17 +58,48 @@
 
           <PreviewSwitch title="Original Chars" v-model="useOriginalCharsOnly" @update:model-value="forceRerender" />
 
-          <PreviewSlider title="Speed" v-model="speed" :min="10" :max="200" :step="10" value-unit="ms"
-            @update:model-value="forceRerender" />
+          <PreviewSlider
+            title="Speed"
+            v-model="speed"
+            :min="10"
+            :max="200"
+            :step="10"
+            value-unit="ms"
+            @update:model-value="forceRerender"
+          />
 
-          <PreviewSlider title="Iterations" v-model="maxIterations" :min="1" :max="50" :step="1"
-            @update:model-value="forceRerender" />
+          <PreviewSlider
+            title="Iterations"
+            v-model="maxIterations"
+            :min="1"
+            :max="50"
+            :step="1"
+            @update:model-value="forceRerender"
+          />
 
-          <PreviewSelect title="Animation Trigger" v-model="animateOn" :options="animateOptions"
-            @update:model-value="(val) => { animateOn = val as 'view' | 'hover'; forceRerender(); }" />
+          <PreviewSelect
+            title="Animation Trigger"
+            v-model="animateOn"
+            :options="animateOptions"
+            @update:model-value="
+              val => {
+                animateOn = val as 'view' | 'hover';
+                forceRerender();
+              }
+            "
+          />
 
-          <PreviewSelect title="Animation Direction" v-model="revealDirection" :options="directionOptions"
-            @update:model-value="(val) => { revealDirection = val as 'start' | 'end' | 'center'; forceRerender(); }" />
+          <PreviewSelect
+            title="Animation Direction"
+            v-model="revealDirection"
+            :options="directionOptions"
+            @update:model-value="
+              val => {
+                revealDirection = val as 'start' | 'end' | 'center';
+                forceRerender();
+              }
+            "
+          />
         </Customize>
 
         <PropTable :data="propData" />
@@ -54,39 +117,39 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import TabbedLayout from '../../components/common/TabbedLayout.vue'
-import PropTable from '../../components/common/PropTable.vue'
-import CliInstallation from '../../components/code/CliInstallation.vue'
-import CodeExample from '../../components/code/CodeExample.vue'
-import Customize from '../../components/common/Customize.vue'
-import PreviewSlider from '../../components/common/PreviewSlider.vue'
-import PreviewSwitch from '../../components/common/PreviewSwitch.vue'
-import PreviewSelect from '../../components/common/PreviewSelect.vue'
-import RefreshButton from '../../components/common/RefreshButton.vue'
-import DecryptedText from '../../content/TextAnimations/DecryptedText/DecryptedText.vue'
-import { decryptedText } from '@/constants/code/TextAnimations/decryptedTextCode'
-import { useForceRerender } from '@/composables/useForceRerender'
+import { ref } from 'vue';
+import TabbedLayout from '../../components/common/TabbedLayout.vue';
+import PropTable from '../../components/common/PropTable.vue';
+import CliInstallation from '../../components/code/CliInstallation.vue';
+import CodeExample from '../../components/code/CodeExample.vue';
+import Customize from '../../components/common/Customize.vue';
+import PreviewSlider from '../../components/common/PreviewSlider.vue';
+import PreviewSwitch from '../../components/common/PreviewSwitch.vue';
+import PreviewSelect from '../../components/common/PreviewSelect.vue';
+import RefreshButton from '../../components/common/RefreshButton.vue';
+import DecryptedText from '../../content/TextAnimations/DecryptedText/DecryptedText.vue';
+import { decryptedText } from '@/constants/code/TextAnimations/decryptedTextCode';
+import { useForceRerender } from '@/composables/useForceRerender';
 
-const { rerenderKey: key, forceRerender } = useForceRerender()
+const { rerenderKey: key, forceRerender } = useForceRerender();
 
-const speed = ref(60)
-const maxIterations = ref(10)
-const sequential = ref(true)
-const useOriginalCharsOnly = ref(false)
-const revealDirection = ref<'start' | 'end' | 'center'>('start')
-const animateOn = ref<'view' | 'hover'>('view')
+const speed = ref(60);
+const maxIterations = ref(10);
+const sequential = ref(true);
+const useOriginalCharsOnly = ref(false);
+const revealDirection = ref<'start' | 'end' | 'center'>('start');
+const animateOn = ref<'view' | 'hover'>('view');
 
 const animateOptions = [
   { label: 'View', value: 'view' },
   { label: 'Hover', value: 'hover' }
-]
+];
 
 const directionOptions = [
   { label: 'Start', value: 'start' },
   { label: 'End', value: 'end' },
   { label: 'Center', value: 'center' }
-]
+];
 
 const propData = [
   {
@@ -149,7 +212,7 @@ const propData = [
     default: '"hover"',
     description: 'Trigger scrambling on hover or scroll-into-view.'
   }
-]
+];
 </script>
 
 <style scoped>

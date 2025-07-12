@@ -83,6 +83,7 @@
         </Customize>
 
         <PropTable :data="propData" />
+
         <Dependencies :dependency-list="['three']" />
       </template>
 
@@ -98,26 +99,26 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import TabbedLayout from '@/components/common/TabbedLayout.vue'
-import PropTable from '@/components/common/PropTable.vue'
-import Dependencies from '@/components/code/Dependencies.vue'
-import CliInstallation from '@/components/code/CliInstallation.vue'
-import CodeExample from '@/components/code/CodeExample.vue'
-import Customize from '@/components/common/Customize.vue'
-import Beams from '@/content/Backgrounds/Beams/Beams.vue'
-import PreviewColor from '@/components/common/PreviewColor.vue'
-import PreviewSlider from '@/components/common/PreviewSlider.vue'
-import { beams } from '@/constants/code/Backgrounds/beamsCode'
+import { ref } from 'vue';
+import TabbedLayout from '@/components/common/TabbedLayout.vue';
+import PropTable from '@/components/common/PropTable.vue';
+import Dependencies from '@/components/code/Dependencies.vue';
+import CliInstallation from '@/components/code/CliInstallation.vue';
+import CodeExample from '@/components/code/CodeExample.vue';
+import Customize from '@/components/common/Customize.vue';
+import Beams from '@/content/Backgrounds/Beams/Beams.vue';
+import PreviewColor from '@/components/common/PreviewColor.vue';
+import PreviewSlider from '@/components/common/PreviewSlider.vue';
+import { beams } from '@/constants/code/Backgrounds/beamsCode';
 
-const beamWidth = ref(3)
-const beamHeight = ref(30)
-const beamNumber = ref(20)
-const lightColor = ref('#ffffff')
-const speed = ref(2)
-const noiseIntensity = ref(1.75)
-const scale = ref(0.2)
-const rotation = ref(30)
+const beamWidth = ref(3);
+const beamHeight = ref(30);
+const beamNumber = ref(20);
+const lightColor = ref('#ffffff');
+const speed = ref(2);
+const noiseIntensity = ref(1.75);
+const scale = ref(0.2);
+const rotation = ref(30);
 
 const propData = [
   {
@@ -168,7 +169,7 @@ const propData = [
     default: '0',
     description: 'Rotation of the entire beams system in degrees.'
   }
-]
+];
 </script>
 
 <style scoped>
