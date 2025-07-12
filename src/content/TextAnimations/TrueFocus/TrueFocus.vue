@@ -98,7 +98,7 @@ const setWordRef = (el: HTMLSpanElement | null, index: number) => {
 
 onMounted(async () => {
   await nextTick();
-  
+
   if (wordRefs.value[0] && containerRef.value) {
     const parentRect = containerRef.value.getBoundingClientRect();
     const activeRect = wordRefs.value[0].getBoundingClientRect();
@@ -121,44 +121,36 @@ onUnmounted(() => {
 
 <template>
   <div class="relative flex flex-wrap justify-center items-center gap-[1em]" ref="containerRef">
-    <span
-      v-for="(word, index) in words"
-      :key="index"
-      :ref="(el) => setWordRef(el as HTMLSpanElement, index)"
-      class="relative font-black text-5xl transition-[filter,color] duration-300 ease-in-out cursor-pointer"
-      :style="{
+    <span v-for="(word, index) in words" :key="index" :ref="(el) => setWordRef(el as HTMLSpanElement, index)"
+      class="relative font-black text-5xl transition-[filter,color] duration-300 ease-in-out cursor-pointer" :style="{
         filter: index === currentIndex ? 'blur(0px)' : `blur(${blurAmount}px)`,
         '--border-color': borderColor,
         '--glow-color': glowColor,
         transition: `filter ${animationDuration}s ease`,
-      }"
-      @mouseenter="handleMouseEnter(index)"
-      @mouseleave="handleMouseLeave"
-    >
+      }" @mouseenter="handleMouseEnter(index)" @mouseleave="handleMouseLeave">
       {{ word }}
     </span>
 
-    <motion.div
-      class="top-0 left-0 box-content absolute border-none pointer-events-none"
-      :animate="{
-        x: focusRect.x,
-        y: focusRect.y,
-        width: focusRect.width,
-        height: focusRect.height,
-        opacity: currentIndex >= 0 ? 1 : 0,
-      }"
-      :transition="{
+    <motion.div class="top-0 left-0 box-content absolute border-none pointer-events-none" :animate="{
+      x: focusRect.x,
+      y: focusRect.y,
+      width: focusRect.width,
+      height: focusRect.height,
+      opacity: currentIndex >= 0 ? 1 : 0,
+    }" :transition="{
         duration: animationDuration,
-      }"
-      :style="{
+      }" :style="{
         '--border-color': borderColor,
         '--glow-color': glowColor,
-      }"
-    >
-      <span class="top-[-10px] left-[-10px] absolute [filter:drop-shadow(0_0_4px_var(--border-color,#fff))] border-[3px] border-[var(--border-color,#fff)] border-r-0 border-b-0 rounded-[3px] w-4 h-4 transition-none"></span>
-      <span class="top-[-10px] right-[-10px] absolute [filter:drop-shadow(0_0_4px_var(--border-color,#fff))] border-[3px] border-[var(--border-color,#fff)] border-b-0 border-l-0 rounded-[3px] w-4 h-4 transition-none"></span>
-      <span class="bottom-[-10px] left-[-10px] absolute [filter:drop-shadow(0_0_4px_var(--border-color,#fff))] border-[3px] border-[var(--border-color,#fff)] border-t-0 border-r-0 rounded-[3px] w-4 h-4 transition-none"></span>
-      <span class="right-[-10px] bottom-[-10px] absolute [filter:drop-shadow(0_0_4px_var(--border-color,#fff))] border-[3px] border-[var(--border-color,#fff)] border-t-0 border-l-0 rounded-[3px] w-4 h-4 transition-none"></span>
+      }">
+      <span
+        class="top-[-10px] left-[-10px] absolute [filter:drop-shadow(0_0_4px_var(--border-color,#fff))] border-[3px] border-[var(--border-color,#fff)] border-r-0 border-b-0 rounded-[3px] w-4 h-4 transition-none"></span>
+      <span
+        class="top-[-10px] right-[-10px] absolute [filter:drop-shadow(0_0_4px_var(--border-color,#fff))] border-[3px] border-[var(--border-color,#fff)] border-b-0 border-l-0 rounded-[3px] w-4 h-4 transition-none"></span>
+      <span
+        class="bottom-[-10px] left-[-10px] absolute [filter:drop-shadow(0_0_4px_var(--border-color,#fff))] border-[3px] border-[var(--border-color,#fff)] border-t-0 border-r-0 rounded-[3px] w-4 h-4 transition-none"></span>
+      <span
+        class="right-[-10px] bottom-[-10px] absolute [filter:drop-shadow(0_0_4px_var(--border-color,#fff))] border-[3px] border-[var(--border-color,#fff)] border-t-0 border-l-0 rounded-[3px] w-4 h-4 transition-none"></span>
     </motion.div>
   </div>
 </template>

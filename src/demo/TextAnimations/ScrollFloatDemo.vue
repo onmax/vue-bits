@@ -1,51 +1,44 @@
 <template>
-    <TabbedLayout>
-      <template #preview>
-        <div 
-          ref="containerRef"
-          class="demo-container"
-          @wheel="smoothScroll"
-        >
-       
-          <div class="scroll-instruction">
-            Scroll Down
-          </div>
-          
-          <div class="scroll-content">
-            <ScrollFloat
-              :children="scrollText"
-              :animation-duration="animationDuration"
-              :ease="ease"
-              :scroll-start="scrollStart"
-              :scroll-end="scrollEnd"
-              :stagger="stagger"
-              :container-class-name="containerClassName"
-              :text-class-name="textClassName"
-              :scroll-container-ref="{ current: containerRef }"
-              :key="rerenderKey"
-            />
-          </div>
+  <TabbedLayout>
+    <template #preview>
+      <div ref="containerRef" class="demo-container" @wheel="smoothScroll">
+
+        <div class="scroll-instruction">
+          Scroll Down
         </div>
 
-        <Customize>
-        
-            <PreviewSlider title="Stagger:" v-model="stagger" :min="0.01" :max="0.1" :step="0.01" value-unit="s" />
-            <PreviewSlider title="Animation Duration:" v-model="animationDuration" :min="1" :max="10" :step="0.1" value-unit="s" />
-            
+        <div class="scroll-content">
+          <ScrollFloat 
+            :children="scrollText" 
+            :animation-duration="animationDuration" 
+            :ease="ease"
+            :scroll-start="scrollStart" 
+            :scroll-end="scrollEnd" 
+            :stagger="stagger"
+            :container-class-name="containerClassName" 
+            :text-class-name="textClassName"
+            :scroll-container-ref="{ current: containerRef }" 
+            :key="rerenderKey" 
+          />
+        </div>
+      </div>
 
-        </Customize>
+      <Customize>
+        <PreviewSlider title="Stagger:" v-model="stagger" :min="0.01" :max="0.1" :step="0.01" value-unit="s" />
+        <PreviewSlider title="Animation Duration:" v-model="animationDuration" :min="1" :max="10" :step="0.1" value-unit="s" />
+      </Customize>
 
-        <PropTable :data="propData" />
-      </template>
+      <PropTable :data="propData" />
+    </template>
 
-      <template #code>
-        <CodeExample :code-object="scrollFloatCode" />
-      </template>
+    <template #code>
+      <CodeExample :code-object="scrollFloatCode" />
+    </template>
 
-      <template #cli>
-        <CliInstallation :command="scrollFloatCode.cli" />
-      </template>
-    </TabbedLayout>
+    <template #cli>
+      <CliInstallation :command="scrollFloatCode.cli" />
+    </template>
+  </TabbedLayout>
 </template>
 
 <script setup lang="ts">
@@ -80,10 +73,10 @@ const smoothScroll = (e: WheelEvent) => {
 
   const delta = e.deltaY || e.detail
   const scrollAmount = delta * 2
-  
+
   gsap.to(container, {
     scrollTop: container.scrollTop + scrollAmount,
-    duration: 2,
+    duration: 1,
     ease: "power3.out",
     overwrite: "auto"
   })
@@ -163,17 +156,18 @@ const propData = [
 </script>
 <style scoped>
 .demo-container {
-  height: 60vh ;
+  height: 60vh;
   overflow-y: auto;
 }
 
 .scroll-content {
-  padding-top: 150vh !important; 
+  padding-top: 150vh !important;
   padding-bottom: 50vh;
 }
+
 .scroll-instruction {
   text-align: center;
-  color: #271E37;
+  color: #222;
   font-size: clamp(4rem, 6vw, 4rem);
   font-weight: 900;
   position: absolute;
@@ -182,8 +176,8 @@ const propData = [
   right: 0;
   transform: translateY(-50%);
 }
-.scroll-content{
+
+.scroll-content {
   color: aliceblue;
 }
-
 </style>

@@ -9,45 +9,18 @@
         </div>
 
         <Customize>
-          <PreviewColor title="Text Color" v-model="borderColor" @update:model-value="forceRerender" />
+          <PreviewColor title="Corners Color" v-model="borderColor" @update:model-value="forceRerender" />
 
-          <PreviewSwitch
-            title="Hover Mode"
-            v-model="manualMode"
-            @update:model-value="forceRerender"
-          />
+          <PreviewSwitch title="Hover Mode" v-model="manualMode" @update:model-value="forceRerender" />
 
-          <PreviewSlider
-            title="Blur Amount"
-            v-model="blurAmount"
-            :min="0"
-            :max="15"
-            :step="0.5"
-            value-unit="px"
-            @update:model-value="forceRerender"
-          />
+          <PreviewSlider title="Blur Amount" v-model="blurAmount" :min="0" :max="15" :step="0.5" value-unit="px"
+            @update:model-value="forceRerender" />
 
-          <PreviewSlider
-            title="Animation Duration"
-            v-model="animationDuration"
-            :min="0.1"
-            :max="3"
-            :step="0.1"
-            value-unit="s"
-            :disabled="!manualMode"
-            @update:model-value="forceRerender"
-          />
+          <PreviewSlider title="Animation Duration" v-model="animationDuration" :min="0.1" :max="3" :step="0.1"
+            value-unit="s" :disabled="!manualMode" @update:model-value="forceRerender" />
 
-          <PreviewSlider
-            title="Pause Between Animations"
-            v-model="pauseBetweenAnimations"
-            :min="0"
-            :max="5"
-            :step="0.5"
-            value-unit="s"
-            :disabled="manualMode"
-            @update:model-value="forceRerender"
-          />
+          <PreviewSlider title="Pause Between Animations" v-model="pauseBetweenAnimations" :min="0" :max="5" :step="0.5"
+            value-unit="s" :disabled="manualMode" @update:model-value="forceRerender" />
         </Customize>
 
         <PropTable :data="propData" />

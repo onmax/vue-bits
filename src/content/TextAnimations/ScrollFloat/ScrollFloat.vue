@@ -1,11 +1,8 @@
 <template>
   <h2 ref="containerRef" :class="`overflow-hidden ${containerClassName}`">
-    <span :class="`inline-block text-center leading-relaxed font-black ${textClassName}`" style="font-size: clamp(1.6rem, 8vw, 10rem);">
-      <span
-        v-for="(char, index) in splitText"
-        :key="index"
-        class="inline-block char"
-      >
+    <span :class="`inline-block text-center leading-relaxed font-black ${textClassName}`"
+      style="font-size: clamp(1.6rem, 8vw, 10rem);">
+      <span v-for="(char, index) in splitText" :key="index" class="inline-block char">
         {{ char === " " ? "\u00A0" : char }}
       </span>
     </span>
