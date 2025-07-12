@@ -9,7 +9,8 @@ const animations = {
   'metallic-paint': () => import('../demo/Animations/MetallicPaintDemo.vue'),
   'magnet': () => import('../demo/Animations/MagnetDemo.vue'),
   'cubes': () => import('../demo/Animations/CubesDemo.vue'),
-  'count-up': () => import('../demo/Animations/CountUpDemo.vue')
+  'count-up': () => import('../demo/Animations/CountUpDemo.vue'),
+  'splash-cursor': () => import('../demo/Animations/SplashCursorDemo.vue'),
 };
 
 const textAnimations = {
