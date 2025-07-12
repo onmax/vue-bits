@@ -58,7 +58,7 @@ import CodeExample from '../../components/code/CodeExample.vue'
 import Customize from '../../components/common/Customize.vue'
 import ScrollFloat from '../../content/TextAnimations/ScrollFloat/ScrollFloat.vue'
 import PreviewSlider from '../../components/common/PreviewSlider.vue'
-import { scrollFloatCode } from '@/constants/code/Components/scrollFloatCode'
+import { scrollFloatCode } from '@/constants/code/TextAnimations/scrollFloatCode'
 
 
 const containerRef = ref<HTMLElement | null>(null)
