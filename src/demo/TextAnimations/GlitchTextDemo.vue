@@ -39,7 +39,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import TabbedLayout from '../../components/common/TabbedLayout.vue';
 import CodeExample from '../../components/code/CodeExample.vue';
 import CliInstallation from '../../components/code/CliInstallation.vue';
@@ -54,6 +54,10 @@ const text = ref('Vue Bits');
 const speed = ref(0.5);
 const enableShadows = ref(true);
 const enableOnHover = ref(false);
+
+watch(enableOnHover, newValue => {
+  text.value = newValue ? 'Hover Me' : 'Vue Bits';
+});
 
 const propData = [
   {
