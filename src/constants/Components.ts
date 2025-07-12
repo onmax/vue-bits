@@ -26,6 +26,7 @@ const textAnimations = {
   'falling-text': () => import("../demo/TextAnimations/FallingTextDemo.vue"),
   'text-cursor': () => import("../demo/TextAnimations/TextCursorDemo.vue"),
   'decrypted-text': () => import("../demo/TextAnimations/DecryptedTextDemo.vue"),
+  'ascii-text': () => import("../demo/TextAnimations/AsciiTextDemo.vue"),
   'scramble-text': () => import("../demo/TextAnimations/ScrambleTextDemo.vue"),
   'true-focus': () => import("../demo/TextAnimations/TrueFocusDemo.vue"),
   'scroll-float': () => import("../demo/TextAnimations/ScrollFloatDemo.vue"),
