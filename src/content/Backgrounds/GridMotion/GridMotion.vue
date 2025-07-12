@@ -16,7 +16,7 @@ const gridRef = ref<HTMLElement | null>(null);
 const rowRefs = ref<HTMLElement[]>([]);
 const mouseX = ref(window.innerWidth / 2);
 
-const totalItems = 70;
+const totalItems = 150;
 const combinedItems = computed(() => {
   if (props.items.length === 0) {
     return [];
@@ -87,35 +87,35 @@ onMounted(() => {
         <div
           v-for="rowIndex in 10"
           :key="rowIndex"
-          class="gap-4 grid grid-cols-7"
+          class="gap-4 flex"
           :style="{ willChange: 'transform, filter' }"
           ref="rowRefs"
         >
           <div
-            v-for="itemIndex in 7"
+            v-for="itemIndex in 15"
             :key="itemIndex"
-            class="relative h-[200px]"
-            v-show="combinedItems[(rowIndex - 1) * 7 + (itemIndex - 1)]"
+            class="relative h-[250px] min-w-[300px] flex-shrink-0"
+            v-show="combinedItems[(rowIndex - 1) * 15 + (itemIndex - 1)]"
           >
             <div
               class="relative flex justify-center items-center bg-[#111] rounded-[10px] w-full h-full overflow-hidden text-[1.5rem] text-white"
             >
               <div
-                v-if="isImage(combinedItems[(rowIndex - 1) * 7 + (itemIndex - 1)])"
+                v-if="isImage(combinedItems[(rowIndex - 1) * 15 + (itemIndex - 1)])"
                 class="top-0 left-0 absolute bg-cover bg-center w-full h-full"
                 :style="{
-                  backgroundImage: `url(${combinedItems[(rowIndex - 1) * 7 + (itemIndex - 1)]})`
+                  backgroundImage: `url(${combinedItems[(rowIndex - 1) * 15 + (itemIndex - 1)]})`
                 }"
               ></div>
 
               <div
-                v-else-if="isTag(combinedItems[(rowIndex - 1) * 7 + (itemIndex - 1)])"
+                v-else-if="isTag(combinedItems[(rowIndex - 1) * 15 + (itemIndex - 1)])"
                 class="z-[2] p-4 text-center"
-                v-html="combinedItems[(rowIndex - 1) * 7 + (itemIndex - 1)]"
+                v-html="combinedItems[(rowIndex - 1) * 15 + (itemIndex - 1)]"
               ></div>
 
               <div v-else class="z-[1] p-4 text-center">
-                {{ combinedItems[(rowIndex - 1) * 7 + (itemIndex - 1)] }}
+                {{ combinedItems[(rowIndex - 1) * 15 + (itemIndex - 1)] }}
               </div>
             </div>
           </div>
