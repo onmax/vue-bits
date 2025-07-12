@@ -2,9 +2,7 @@
   <div class="ascii-text-demo">
     <TabbedLayout>
       <template #preview>
-        <div class="demo-container relative min-h-[400px] max-h-[400px] overflow-hidden">
-          <RefreshButton @refresh="forceRerender" />
-
+        <div class="demo-container">
           <AsciiText
             :key="rerenderKey"
             :text="text"
@@ -13,22 +11,11 @@
             :text-color="textColor"
             :plane-base-height="planeBaseHeight"
             :enable-waves="enableWaves"
-            class-name="w-full h-full"
           />
         </div>
 
         <Customize>
-          <div class="flex flex-col gap-2">
-            <label class="text-sm font-medium text-gray-300">Text</label>
-            <input
-              v-model="text"
-              type="text"
-              placeholder="Enter text..."
-              maxlength="10"
-              class="px-3 py-2 bg-[#0b0b0b] border border-[#1e3721] rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#1e3721] focus:border-transparent"
-              @input="forceRerender"
-            />
-          </div>
+          <PreviewText title="Text" v-model="text" @update:model-value="forceRerender" />
 
           <PreviewSlider
             title="ASCII Font Size"
@@ -59,12 +46,12 @@
 
           <PreviewSwitch title="Enable Waves" v-model="enableWaves" @update:model-value="forceRerender" />
 
-          <div class="flex gap-4 flex-wrap">
+          <div class="flex gap-2 flex-wrap">
             <button
               v-for="color in colorOptions"
               :key="color.name"
-              class="text-xs bg-[#0b0b0b] rounded-[10px] border border-[#1e3721] hover:bg-[#1e3721] text-white h-8 px-3 transition-colors"
-              :class="{ 'bg-[#1e3721]': textColor === color.value }"
+              class="text-xs cursor-pointer bg-[#0b0b0b] rounded-[10px] border border-[#333] hover:bg-[#333] text-white h-8 px-3 transition-colors"
+              :class="{ 'bg-[#333]': textColor === color.value }"
               @click="changeColor(color.value)"
             >
               {{ color.name }}
@@ -90,7 +77,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import TabbedLayout from '@/components/common/TabbedLayout.vue';
-import RefreshButton from '@/components/common/RefreshButton.vue';
 import PropTable from '@/components/common/PropTable.vue';
 import Dependencies from '@/components/code/Dependencies.vue';
 import CliInstallation from '@/components/code/CliInstallation.vue';
@@ -98,6 +84,7 @@ import CodeExample from '@/components/code/CodeExample.vue';
 import Customize from '@/components/common/Customize.vue';
 import PreviewSlider from '@/components/common/PreviewSlider.vue';
 import PreviewSwitch from '@/components/common/PreviewSwitch.vue';
+import PreviewText from '@/components/common/PreviewText.vue';
 import AsciiText from '@/content/TextAnimations/AsciiText/AsciiText.vue';
 import { asciiText } from '@/constants/code/TextAnimations/asciiTextCode';
 import { useForceRerender } from '@/composables/useForceRerender';
@@ -111,9 +98,7 @@ const enableWaves = ref(true);
 
 const { rerenderKey, forceRerender } = useForceRerender();
 
-// Color options for easy selection
 const colorOptions = [
-  { name: 'Cream', value: '#fdf9f3' },
   { name: 'White', value: '#ffffff' },
   { name: 'Red', value: '#ff6b6b' },
   { name: 'Blue', value: '#4ecdc4' },
@@ -128,7 +113,6 @@ const changeColor = (color: string) => {
   forceRerender();
 };
 
-// Component properties documentation
 const propData = [
   {
     name: 'text',

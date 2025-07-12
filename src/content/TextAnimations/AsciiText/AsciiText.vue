@@ -143,21 +143,37 @@ class AsciiFilter {
 
   reset() {
     this.context!.font = `${this.fontSize}px ${this.fontFamily}`;
-    const charWidth = this.context!.measureText('A').width;
 
-    this.cols = Math.floor(this.width / (this.fontSize * (charWidth / this.fontSize)));
-    this.rows = Math.floor(this.height / this.fontSize);
+    const testChar = 'M';
+    const charMetrics = this.context!.measureText(testChar);
+    const charWidth = charMetrics.width;
+    const charHeight = this.fontSize;
+
+    this.cols = Math.floor(this.width / charWidth);
+    this.rows = Math.floor(this.height / charHeight);
 
     this.canvas.width = this.cols;
     this.canvas.height = this.rows;
+
+    const totalWidth = this.cols * charWidth;
+    const totalHeight = this.rows * charHeight;
+    const offsetX = (this.width - totalWidth) / 2;
+    const offsetY = (this.height - totalHeight) / 2;
+
     this.pre.style.fontFamily = this.fontFamily;
     this.pre.style.fontSize = `${this.fontSize}px`;
     this.pre.style.margin = '0';
     this.pre.style.padding = '0';
-    this.pre.style.lineHeight = '1em';
+    this.pre.style.lineHeight = `${this.fontSize}px`;
     this.pre.style.position = 'absolute';
-    this.pre.style.left = '0';
-    this.pre.style.top = '0';
+    this.pre.style.left = `${offsetX}px`;
+    this.pre.style.top = `${offsetY}px`;
+    this.pre.style.width = `${totalWidth}px`;
+    this.pre.style.height = `${totalHeight}px`;
+    this.pre.style.letterSpacing = '0';
+    this.pre.style.wordSpacing = '0';
+    this.pre.style.whiteSpace = 'pre';
+    this.pre.style.overflow = 'hidden';
     this.pre.style.zIndex = '9';
     this.pre.style.backgroundImage = 'radial-gradient(circle, #ff6188 0%, #fc9867 50%, #ffd866 100%)';
     this.pre.style.backgroundAttachment = 'fixed';
@@ -597,11 +613,9 @@ watch(
   margin: 0;
   user-select: none;
   padding: 0;
-  line-height: 1em;
-  text-align: left;
   position: absolute;
-  left: 0;
-  top: 0;
+  white-space: pre;
+  overflow: hidden;
   background-image: radial-gradient(circle, #ff6188 0%, #fc9867 50%, #ffd866 100%);
   background-attachment: fixed;
   -webkit-text-fill-color: transparent;
@@ -609,5 +623,7 @@ watch(
   background-clip: text;
   z-index: 9;
   mix-blend-mode: difference;
+  font-variant-ligatures: none;
+  font-feature-settings: 'liga' 0;
 }
 </style>
