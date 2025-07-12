@@ -33,6 +33,7 @@ export const CATEGORIES = [
       'Click Spark',
       'Magnet',
       'Cubes',
+      'Ribbons',
     ]
   },
   {
