@@ -26,7 +26,8 @@ const textAnimations = {
   'decrypted-text': () => import("../demo/TextAnimations/DecryptedTextDemo.vue"),
   'true-focus': () => import("../demo/TextAnimations/TrueFocusDemo.vue"),
   'scroll-float': () => import("../demo/TextAnimations/ScrollFloatDemo.vue"),
-  'scroll-reveal': ()=> import("../demo/TextAnimations/ScrollRevealDemo.vue")
+  'scroll-reveal': ()=> import("../demo/TextAnimations/ScrollRevealDemo.vue"),
+  'rotating-text': ()=> import("../demo/TextAnimations/RotatingTextDemo.vue")
 };
 
 const components = {

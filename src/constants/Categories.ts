@@ -21,7 +21,8 @@ export const CATEGORIES = [
       'Decrypted Text',
       'True Focus',
       'Scroll Float',
-      'Scroll Reveal'
+      'Scroll Reveal',
+      'Rotating Text'
     ]
   },
   {
