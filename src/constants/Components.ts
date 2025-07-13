@@ -11,6 +11,7 @@ const animations = {
   'cubes': () => import('../demo/Animations/CubesDemo.vue'),
   'count-up': () => import('../demo/Animations/CountUpDemo.vue'),
   'splash-cursor': () => import('../demo/Animations/SplashCursorDemo.vue'),
+  'blob-cursor': () => import('../demo/Animations/BlobCursorDemo.vue'),
 };
 
 const textAnimations = {
