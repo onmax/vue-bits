@@ -34,35 +34,9 @@
         </button>
 
         <div class="flex flex-col gap-2 mt-2 text-xs">
-          <div class="flex items-center gap-3">
-            <label for="fillColor">Fill Color:</label>
-            <input
-              id="fillColor"
-              type="color"
-              v-model="fillColor"
-              class="bg-transparent rounded-full w-16 h-8 appearance-none cursor-pointer"
-            />
-          </div>
-
-          <div class="flex items-center gap-3">
-            <label for="innerColor">Inner Color:</label>
-            <input
-              id="innerColor"
-              type="color"
-              v-model="innerColor"
-              class="bg-transparent rounded-full w-16 h-8 appearance-none cursor-pointer"
-            />
-          </div>
-
-          <div class="flex items-center gap-3">
-            <label for="shadowColor">Shadow Color:</label>
-            <input
-              id="shadowColor"
-              type="color"
-              v-model="shadowColor"
-              class="bg-transparent rounded-full w-16 h-8 appearance-none cursor-pointer"
-            />
-          </div>
+          <PreviewColor title="Fill Color" v-model="fillColor" @update:model-value="forceRerender" />
+          <PreviewColor title="Inner Color" v-model="innerColor" @update:model-value="forceRerender" />
+          <PreviewColor title="Shadow Color" v-model="shadowColor" @update:model-value="forceRerender" />
         </div>
 
         <PreviewSlider
@@ -202,7 +176,7 @@
         />
       </Customize>
 
-      <p className="demo-extra-info" style="margin-top: 20px">
+      <p class="flex items-center gap-[0.5em] mx-0 my-[1em] text-[#a1a1aa]" style="margin-top: 20px">
         SVG filters are not fully supported on Safari. Performance may vary.
       </p>
 
@@ -230,7 +204,11 @@ import TabbedLayout from '../../components/common/TabbedLayout.vue';
 import { blobCursor } from '../../constants/code/Animations/blobCursorCode';
 import Customize from '../../components/common/Customize.vue';
 import PreviewSlider from '../../components/common/PreviewSlider.vue';
+import PreviewColor from '../../components/common/PreviewColor.vue';
 import BlobCursor from '../../content/Animations/BlobCursor/BlobCursor.vue';
+import { useForceRerender } from '@/composables/useForceRerender';
+
+const { forceRerender } = useForceRerender();
 
 const blobType = ref<'circle' | 'square'>('circle');
 const fillColor = ref<string>('#27FF64');
