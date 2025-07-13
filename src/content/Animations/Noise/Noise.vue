@@ -1,20 +1,24 @@
+<template>
+  <canvas
+    ref="grainRef"
+    class="pointer-events-none absolute top-0 left-0 h-screen w-screen"
+    :style="`image-rendering: pixelated; mix-blend-mode: ${props.mixBlendMode}`"
+  ></canvas>
+</template>
+
 <script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount } from 'vue';
 
 interface NoiseProps {
-    patternSize?: number;
-    patternScaleX?: number;
-    patternScaleY?: number;
-    patternRefreshInterval?: number;
-    patternAlpha?: number;
+  patternRefreshInterval?: number;
+  patternAlpha?: number;
+  mixBlendMode?: string;
 }
 
 const props = withDefaults(defineProps<NoiseProps>(), {
-    patternSize: 250,
-    patternScaleX: 1,
-    patternScaleY: 1,
-    patternRefreshInterval: 2,
-    patternAlpha: 10,
+  patternRefreshInterval: 2,
+  patternAlpha: 10,
+  mixBlendMode: 'normal'
 });
 
 const grainRef = ref<HTMLCanvasElement | null>(null);
@@ -24,58 +28,56 @@ let frame = 0;
 const canvasSize = 1024;
 
 const resize = () => {
-    const canvas = grainRef.value;
-    if (!canvas) return;
-
-    canvas.width = canvasSize;
-    canvas.height = canvasSize;
-    canvas.style.width = '100vw';
-    canvas.style.height = '100vh';
+  const canvas = grainRef.value;
+  if (!canvas) return;
+  canvas.width = canvasSize;
+  canvas.height = canvasSize;
+  canvas.style.width = '100vw';
+  canvas.style.height = '100vh';
 };
 
-const drawGrain = (ctx: CanvasRenderingContext2D) => {
-    const imageData = ctx.createImageData(canvasSize, canvasSize);
-    const data = imageData.data;
+let noiseData: ImageData;
+let noise32: Uint32Array;
 
-    for (let i = 0; i < data.length; i += 4) {
-        const value = Math.random() * 255;
-        data[i] = value;
-        data[i + 1] = value;
-        data[i + 2] = value;
-        data[i + 3] = props.patternAlpha;
-    }
+const initImageData = (ctx: CanvasRenderingContext2D) => {
+  noiseData = ctx.createImageData(canvasSize, canvasSize);
+  noise32 = new Uint32Array(noiseData.data.buffer);
+};
 
-    ctx.putImageData(imageData, 0, 0);
+const drawGrain = () => {
+  const a = props.patternAlpha << 24;
+  for (let i = 0; i < noise32.length; i++) {
+    const v = (Math.random() * 255) | 0;
+    noise32[i] = a | (v << 16) | (v << 8) | v;
+  }
 };
 
 const loop = (ctx: CanvasRenderingContext2D) => {
-    if (frame % props.patternRefreshInterval === 0) {
-        drawGrain(ctx);
-    }
-    frame++;
-    animationId = requestAnimationFrame(() => loop(ctx));
+  if (frame % Math.max(1, Math.round(props.patternRefreshInterval)) === 0) {
+    drawGrain();
+    ctx.putImageData(noiseData, 0, 0);
+  }
+  frame++;
+  animationId = requestAnimationFrame(() => loop(ctx));
 };
 
 onMounted(() => {
-    const canvas = grainRef.value;
-    if (!canvas) return;
+  const canvas = grainRef.value;
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d', { alpha: true });
+  if (!ctx) return;
 
-    const ctx = canvas.getContext('2d', { alpha: true });
-    if (!ctx) return;
+  resize();
+  initImageData(ctx);
+  drawGrain();
+  ctx.putImageData(noiseData, 0, 0);
+  loop(ctx);
 
-    resize();
-    loop(ctx);
-    window.addEventListener('resize', resize);
+  window.addEventListener('resize', resize);
 });
 
 onBeforeUnmount(() => {
-    window.removeEventListener('resize', resize);
-    cancelAnimationFrame(animationId);
+  window.removeEventListener('resize', resize);
+  cancelAnimationFrame(animationId);
 });
 </script>
-
-<template>
-    <canvas ref="grainRef" class="pointer-events-none absolute top-0 left-0 h-screen w-screen"
-        style="image-rendering: pixelated">
-    </canvas>
-</template>
