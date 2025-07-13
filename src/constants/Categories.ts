@@ -43,7 +43,8 @@ export const CATEGORIES = [
       'Metallic Paint',
       'Click Spark',
       'Magnet',
-      'Cubes'
+      'Cubes',
+      'Blob Cursor',
     ]
   },
   {

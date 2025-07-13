@@ -27,6 +27,7 @@ const handleColorChange = (event: Event) => {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .color-label {
