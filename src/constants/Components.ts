@@ -30,8 +30,8 @@ const textAnimations = {
   'scramble-text': () => import("../demo/TextAnimations/ScrambleTextDemo.vue"),
   'true-focus': () => import("../demo/TextAnimations/TrueFocusDemo.vue"),
   'scroll-float': () => import("../demo/TextAnimations/ScrollFloatDemo.vue"),
-  'scroll-reveal': ()=> import("../demo/TextAnimations/ScrollRevealDemo.vue"),
-  'rotating-text': ()=> import("../demo/TextAnimations/RotatingTextDemo.vue"),
+  'scroll-reveal': () => import("../demo/TextAnimations/ScrollRevealDemo.vue"),
+  'rotating-text': () => import("../demo/TextAnimations/RotatingTextDemo.vue"),
   'glitch-text': () => import("../demo/TextAnimations/GlitchTextDemo.vue"),
 };
 
@@ -51,7 +51,8 @@ const components = {
   'decay-card': () => import('../demo/Components/DecayCardDemo.vue'),
   'flowing-menu': () => import('../demo/Components/FlowingMenuDemo.vue'),
   'elastic-slider': () => import('../demo/Components/ElasticSliderDemo.vue'),
-  'tilted-card': () => import('../demo/Components/TiltedCardDemo.vue')
+  'tilted-card': () => import('../demo/Components/TiltedCardDemo.vue'),
+  'stack': () => import('../demo/Components/StackDemo.vue'),
 };
 
 const backgrounds = {
