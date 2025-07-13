@@ -33,6 +33,7 @@ export const CATEGORIES = [
     subcategories: [
       'Animated Content',
       'Fade Content',
+      'Noise',
       'Splash Cursor',
       'Pixel Transition',
       'Ribbons',
