@@ -1,7 +1,7 @@
 <template>
   <TabbedLayout>
     <template #preview>
-      <div class="relative h-[600px] overflow-hidden demo-container">
+      <div class="relative h-[400px] overflow-hidden demo-container">
         <BlobCursor
           :blobType="blobType"
           :fillColor="fillColor"
@@ -27,17 +27,15 @@
               blobType = blobType === 'circle' ? 'square' : 'circle';
             }
           "
-          class="bg-[#170D27] hover:bg-[#271E37] mb-2 px-3 border border-[#271E37] rounded-[10px] h-8 text-white text-xs transition"
+          class="bg-[#0b0b0b] hover:bg-[#222] px-3 border border-[#333] rounded-[10px] h-8 text-white text-xs transition mb-[1.5rem]"
         >
           Blob Type:
           <span class="ml-1 text-gray-400">{{ blobType }}</span>
         </button>
 
-        <div class="flex flex-col gap-2 mt-2 text-xs">
-          <PreviewColor title="Fill Color" v-model="fillColor" @update:model-value="forceRerender" />
-          <PreviewColor title="Inner Color" v-model="innerColor" @update:model-value="forceRerender" />
-          <PreviewColor title="Shadow Color" v-model="shadowColor" @update:model-value="forceRerender" />
-        </div>
+        <PreviewColor title="Fill Color" v-model="fillColor" @update:model-value="forceRerender" />
+        <PreviewColor title="Inner Color" v-model="innerColor" @update:model-value="forceRerender" />
+        <PreviewColor title="Shadow Color" v-model="shadowColor" @update:model-value="forceRerender" />
 
         <PreviewSlider
           title="Trail Count"
@@ -63,6 +61,7 @@
             }
           "
         />
+
         <PreviewSlider
           title="Lead Blob Size"
           :min="10"
@@ -76,6 +75,7 @@
           "
           :isDisabled="trailCount < 1"
         />
+
         <PreviewSlider
           title="Lead Inner Dot Size"
           :min="1"
@@ -89,6 +89,7 @@
           "
           :isDisabled="trailCount < 1"
         />
+
         <PreviewSlider
           title="Lead Blob Opacity"
           :min="0.1"
@@ -102,6 +103,7 @@
           "
           :isDisabled="trailCount < 1"
         />
+
         <PreviewSlider
           title="Shadow Blur"
           :min="0"
@@ -114,6 +116,7 @@
             }
           "
         />
+
         <PreviewSlider
           title="Shadow Offset X"
           :min="-50"
@@ -126,6 +129,7 @@
             }
           "
         />
+
         <PreviewSlider
           title="Shadow Offset Y"
           :min="-50"
@@ -138,6 +142,7 @@
             }
           "
         />
+
         <PreviewSlider
           title="Fast Duration (Lead)"
           :min="0.01"
@@ -150,6 +155,7 @@
             }
           "
         />
+
         <PreviewSlider
           title="Slow Duration (Trail)"
           :min="0.01"
@@ -162,6 +168,7 @@
             }
           "
         />
+
         <PreviewSlider
           title="Z-Index"
           :min="0"
@@ -176,8 +183,9 @@
         />
       </Customize>
 
-      <p class="flex items-center gap-[0.5em] mx-0 my-[1em] text-[#a1a1aa]" style="margin-top: 20px">
-        SVG filters are not fully supported on Safari. Performance may vary.
+      <p class="flex items-center gap-[0.5em] mx-0 my-[1em] text-[#a1a1aa]">
+        <i class="pi pi-exclamation-triangle"></i>
+        SVG filters are not fully supported on Safari.
       </p>
 
       <PropTable :data="propData" />
