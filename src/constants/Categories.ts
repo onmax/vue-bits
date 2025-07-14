@@ -46,6 +46,7 @@ export const CATEGORIES = [
       'Cubes',
       'Blob Cursor',
       'Meta Balls',
+      'Image Trail',
     ]
   },
   {
