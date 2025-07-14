@@ -1,5 +1,5 @@
 <template>
-  <div ref="containerRef" :class="className" :style="style" class="balatro-container" />
+  <div ref="containerRef" :class="className" :style="style" class="w-full h-full" />
 </template>
 
 <script setup lang="ts">
@@ -271,10 +271,3 @@ watch(
   }
 );
 </script>
-
-<style scoped>
-.balatro-container {
-  width: 100%;
-  height: 100%;
-}
-</style>

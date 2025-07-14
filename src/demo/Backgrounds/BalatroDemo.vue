@@ -1,50 +1,48 @@
 <template>
-  <div class="balatro-demo">
-    <TabbedLayout>
-      <template #preview>
-        <div class="demo-container" style="height: 500px">
-          <Balatro
-            :is-rotate="rotate"
-            :mouse-interaction="mouseInteractionEnabled"
-            :pixel-filter="pixelation"
-            :color1="colorStops[0]"
-            :color2="colorStops[1]"
-            :color3="colorStops[2]"
-            class="h-full w-full"
+  <TabbedLayout>
+    <template #preview>
+      <div class="demo-container">
+        <Balatro
+          :is-rotate="rotate"
+          :mouse-interaction="mouseInteractionEnabled"
+          :pixel-filter="pixelation"
+          :color1="colorStops[0]"
+          :color2="colorStops[1]"
+          :color3="colorStops[2]"
+          class="h-full w-full"
+        />
+      </div>
+
+      <Customize>
+        <div class="flex gap-4">
+          <PreviewColor
+            v-for="(color, index) in colorStops"
+            :key="index"
+            :title="`Color ${index + 1}`"
+            :model-value="color"
+            @update:model-value="value => updateColorStop(index, value)"
           />
         </div>
 
-        <Customize>
-          <div class="flex gap-4">
-            <PreviewColor
-              v-for="(color, index) in colorStops"
-              :key="index"
-              :title="`Color ${index + 1}`"
-              :model-value="color"
-              @update:model-value="value => updateColorStop(index, value)"
-            />
-          </div>
+        <PreviewSlider title="Pixelation" v-model="pixelation" :min="0" :max="2000" :step="10" />
 
-          <PreviewSlider title="Pixelation" v-model="pixelation" :min="0" :max="2000" :step="10" />
+        <PreviewSwitch title="Enable Mouse Interaction" v-model="mouseInteractionEnabled" />
 
-          <PreviewSwitch title="Enable Mouse Interaction" v-model="mouseInteractionEnabled" />
+        <PreviewSwitch title="Rotate" v-model="rotate" />
+      </Customize>
 
-          <PreviewSwitch title="Rotate" v-model="rotate" />
-        </Customize>
+      <PropTable :data="propData" />
+      <Dependencies :dependency-list="['ogl']" />
+    </template>
 
-        <PropTable :data="propData" />
-        <Dependencies :dependency-list="['ogl']" />
-      </template>
+    <template #code>
+      <CodeExample :code-object="balatro" />
+    </template>
 
-      <template #code>
-        <CodeExample :code-object="balatro" />
-      </template>
-
-      <template #cli>
-        <CliInstallation :command="balatro.cli" />
-      </template>
-    </TabbedLayout>
-  </div>
+    <template #cli>
+      <CliInstallation :command="balatro.cli" />
+    </template>
+  </TabbedLayout>
 </template>
 
 <script setup lang="ts">
@@ -157,5 +155,6 @@ const propData = [
   overflow: hidden;
   padding: 0;
   z-index: 1;
+  height: 500px;
 }
 </style>

@@ -6,9 +6,9 @@ export const balatro: CodeObject = {
   installation: `npm install ogl`,
   usage: `<template>
     <Balatro
-    isRotate={false}
-    mouseInteraction={true}
-    pixelFilter={700}
+    :is-rotate="false"
+    :mouse-interaction="true"
+    :pixel-filter="700"
     />
 </template>
 
