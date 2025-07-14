@@ -13,6 +13,7 @@ interface MetaBallsProps {
   cursorBallSize?: number;
   cursorBallColor?: string;
   enableTransparency?: boolean;
+  mixBlendMode?: string;
 }
 
 type BallParams = {
@@ -33,7 +34,8 @@ const props = withDefaults(defineProps<MetaBallsProps>(), {
   clumpFactor: 1,
   cursorBallSize: 3,
   cursorBallColor: '#27FF64',
-  enableTransparency: false
+  enableTransparency: false,
+  mixBlendMode: 'normal'
 });
 
 function parseHexColor(hex: string): [number, number, number] {
@@ -263,5 +265,5 @@ watch(
 </script>
 
 <template>
-  <div ref="containerRef" class="relative w-full h-full" />
+  <div ref="containerRef" class="relative w-full h-full" :style="`mix-blend-mode: ${props.mixBlendMode}`" />
 </template>

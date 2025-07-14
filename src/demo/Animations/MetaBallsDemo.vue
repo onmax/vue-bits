@@ -12,6 +12,7 @@
           :hoverSmoothness="hoverSmoothness"
           :clumpFactor="clumpFactor"
           :speed="speed"
+          mix-blend-mode="screen"
         />
       </div>
 
@@ -199,6 +200,18 @@ const propData = [
     type: 'string',
     default: '#27FF64',
     description: 'Color of the cursor ball.'
+  },
+  {
+    name: 'mixBlendMode',
+    type: 'string',
+    default: 'normal',
+    description: 'CSS mix-blend-mode value for how the metaballs blend with content behind them.'
   }
 ];
 </script>
+
+<style scoped>
+.demo-container {
+  padding: 0;
+}
+</style>
