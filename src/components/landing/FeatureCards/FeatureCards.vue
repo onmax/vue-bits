@@ -25,8 +25,8 @@
             <img src="/assets/components.gif" alt="Components animation" class="components-gif" />
           </div>
           <h2>
-            <template v-if="isMobile">40</template>
-            <CountUp v-else :to="40" />
+            <template v-if="isMobile">60</template>
+            <CountUp v-else :to="60" />
             +
           </h2>
           <h3>Curated Components</h3>
