@@ -13,6 +13,7 @@ const animations = {
   'splash-cursor': () => import('../demo/Animations/SplashCursorDemo.vue'),
   'noise': () => import('../demo/Animations/NoiseDemo.vue'),
   'blob-cursor': () => import('../demo/Animations/BlobCursorDemo.vue'),
+  'meta-balls': () => import('../demo/Animations/MetaBallsDemo.vue'),
   'image-trail': () => import('../demo/Animations/ImageTrailDemo.vue'),
 };
 
