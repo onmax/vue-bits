@@ -1,31 +1,29 @@
 <template>
-  <div class="decay-card-demo">
-    <TabbedLayout>
-      <template #preview>
-        <div class="demo-container" style="overflow: hidden">
-          <DecayCard>
-            <div class="text-[2rem]">
-              Decay
-              <br />
-              Card
-            </div>
-          </DecayCard>
-        </div>
+  <TabbedLayout>
+    <template #preview>
+      <div class="demo-container" style="overflow: hidden">
+        <DecayCard>
+          <div class="text-[2rem]">
+            Decay
+            <br />
+            Card
+          </div>
+        </DecayCard>
+      </div>
 
-        <PropTable :data="propData" />
+      <PropTable :data="propData" />
 
-        <Dependencies :dependency-list="['gsap']" />
-      </template>
+      <Dependencies :dependency-list="['gsap']" />
+    </template>
 
-      <template #code>
-        <CodeExample :code-object="decayCard" />
-      </template>
+    <template #code>
+      <CodeExample :code-object="decayCard" />
+    </template>
 
-      <template #cli>
-        <CliInstallation :command="decayCard.cli" />
-      </template>
-    </TabbedLayout>
-  </div>
+    <template #cli>
+      <CliInstallation :command="decayCard.cli" />
+    </template>
+  </TabbedLayout>
 </template>
 
 <script setup lang="ts">

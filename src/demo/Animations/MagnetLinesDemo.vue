@@ -1,23 +1,21 @@
 <template>
-  <div class="magnet-lines-demo">
-    <TabbedLayout>
-      <template #preview>
-        <div class="demo-container overflow-hidden flex justify-center pb-4 items-center">
-          <MagnetLines :rows="10" :columns="12" container-size="40vmin" line-width="2px" line-height="30px" />
-        </div>
+  <TabbedLayout>
+    <template #preview>
+      <div class="demo-container">
+        <MagnetLines :rows="10" :columns="12" container-size="40vmin" line-width="2px" line-height="30px" />
+      </div>
 
-        <PropTable :data="propData" />
-      </template>
+      <PropTable :data="propData" />
+    </template>
 
-      <template #code>
-        <CodeExample :code-object="magnetLines" />
-      </template>
+    <template #code>
+      <CodeExample :code-object="magnetLines" />
+    </template>
 
-      <template #cli>
-        <CliInstallation :command="magnetLines.cli" />
-      </template>
-    </TabbedLayout>
-  </div>
+    <template #cli>
+      <CliInstallation :command="magnetLines.cli" />
+    </template>
+  </TabbedLayout>
 </template>
 
 <script setup lang="ts">

@@ -1,131 +1,129 @@
 <template>
-  <div class="card-swap-demo">
-    <TabbedLayout>
-      <template #preview>
-        <div class="demo-container h-[500px] overflow-hidden flex flex-col lg:flex-row relative">
-          <div
-            class="w-full lg:w-1/2 h-auto lg:h-full flex flex-col justify-center items-center lg:items-start text-center lg:text-left pt-8 lg:pt-0 pb-4 lg:pb-0 px-4 lg:px-4"
-          >
-            <h2 class="text-2xl md:text-3xl lg:text-4xl mb-4 font-medium leading-tight pl-0 lg:pl-24">
-              Card stacks have never
-              <span class="inline lg:block">looked so good</span>
-            </h2>
+  <TabbedLayout>
+    <template #preview>
+      <div class="demo-container h-[500px] overflow-hidden flex flex-col lg:flex-row relative">
+        <div
+          class="w-full lg:w-1/2 h-auto lg:h-full flex flex-col justify-center items-center lg:items-start text-center lg:text-left pt-8 lg:pt-0 pb-4 lg:pb-0 px-4 lg:px-4"
+        >
+          <h2 class="text-2xl md:text-3xl lg:text-4xl mb-4 font-medium leading-tight pl-0 lg:pl-24">
+            Card stacks have never
+            <span class="inline lg:block">looked so good</span>
+          </h2>
 
-            <p class="text-lg lg:text-xl mb-4 font-normal leading-tight text-gray-400 pl-0 lg:pl-24">
-              Just look at it go!
-            </p>
-          </div>
-
-          <div class="w-full lg:w-1/2 h-full lg:h-full relative">
-            <CardSwap
-              :key="rerenderKey"
-              :width="500"
-              :height="400"
-              :card-distance="cardDistance"
-              :vertical-distance="verticalDistance"
-              :delay="delay"
-              :skew-amount="skewAmount"
-              :easing="easing"
-              :pause-on-hover="pauseOnHover"
-              @card-click="handleCardClick"
-            >
-              <template #card-0>
-                <div class="border-b border-white bg-gradient-to-t from-[#222] to-[#0b0b0b]">
-                  <div class="m-2 flex items-center">
-                    <i class="pi pi-circle-fill mr-2"></i>
-
-                    <span>Smooth</span>
-                  </div>
-                </div>
-
-                <div class="relative p-2">
-                  <video autoplay loop muted playsinline class="rounded-[15px] w-full h-full">
-                    <source
-                      src="https://cdn.dribbble.com/userupload/7053861/file/original-7956be57144058795db6bb24875bdab9.mp4"
-                      type="video/mp4"
-                    />
-                    Your browser does not support the video tag.
-                  </video>
-                </div>
-              </template>
-
-              <template #card-1>
-                <div class="border-b border-white bg-gradient-to-t from-[#222] to-[#0b0b0b]">
-                  <div class="m-2 flex items-center">
-                    <i class="pi pi-code mr-2"></i>
-
-                    <span>Reliable</span>
-                  </div>
-                </div>
-
-                <div class="relative p-2">
-                  <video autoplay loop muted playsinline class="rounded-[15px] w-full h-full">
-                    <source
-                      src="https://cdn.dribbble.com/userupload/7078020/file/original-b071e9063d9e3ba86a85a61b9d5a7c42.mp4"
-                      type="video/mp4"
-                    />
-                    Your browser does not support the video tag.
-                  </video>
-                </div>
-              </template>
-
-              <template #card-2>
-                <div class="border-b border-white bg-gradient-to-t from-[#222] to-[#0b0b0b]">
-                  <div class="m-2 flex items-center">
-                    <i class="pi pi-sliders-h mr-2"></i>
-
-                    <span>Customizable</span>
-                  </div>
-                </div>
-
-                <div class="relative p-2">
-                  <video autoplay loop muted playsinline class="rounded-[15px] w-full h-full">
-                    <source
-                      src="https://cdn.dribbble.com/userupload/7098541/file/original-0b063b12ca835421580e6034368ad95a.mp4"
-                      type="video/mp4"
-                    />
-                    Your browser does not support the video tag.
-                  </video>
-                </div>
-              </template>
-            </CardSwap>
-          </div>
+          <p class="text-lg lg:text-xl mb-4 font-normal leading-tight text-gray-400 pl-0 lg:pl-24">
+            Just look at it go!
+          </p>
         </div>
 
-        <Customize>
-          <PreviewSwitch title="Pause On Hover" v-model="pauseOnHover" @update:model-value="forceRerender" />
-
-          <PreviewSlider title="Card Distance" v-model="cardDistance" :min="30" :max="100" :step="5" />
-
-          <PreviewSlider title="Vertical Distance" v-model="verticalDistance" :min="40" :max="120" :step="5" />
-
-          <PreviewSlider title="Delay (ms)" v-model="delay" :min="3000" :max="8000" :step="500" />
-
-          <PreviewSlider title="Skew Amount" v-model="skewAmount" :min="0" :max="12" :step="1" />
-
-          <button
-            class="text-xs bg-[#111] rounded-[10px] border border-[#333] hover:bg-[#222] text-white h-8 px-3 transition-colors"
-            @click="toggleEasing"
+        <div class="w-full lg:w-1/2 h-full lg:h-full relative">
+          <CardSwap
+            :key="rerenderKey"
+            :width="500"
+            :height="400"
+            :card-distance="cardDistance"
+            :vertical-distance="verticalDistance"
+            :delay="delay"
+            :skew-amount="skewAmount"
+            :easing="easing"
+            :pause-on-hover="pauseOnHover"
+            @card-click="handleCardClick"
           >
-            Easing:
-            <span class="text-zinc-400">&nbsp;{{ easing }}</span>
-          </button>
-        </Customize>
+            <template #card-0>
+              <div class="border-b border-white bg-gradient-to-t from-[#222] to-[#0b0b0b]">
+                <div class="m-2 flex items-center">
+                  <i class="pi pi-circle-fill mr-2"></i>
 
-        <PropTable :data="propData" />
+                  <span>Smooth</span>
+                </div>
+              </div>
 
-        <Dependencies :dependency-list="['gsap']" />
-      </template>
+              <div class="relative p-2">
+                <video autoplay loop muted playsinline class="rounded-[15px] w-full h-full">
+                  <source
+                    src="https://cdn.dribbble.com/userupload/7053861/file/original-7956be57144058795db6bb24875bdab9.mp4"
+                    type="video/mp4"
+                  />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            </template>
 
-      <template #code>
-        <CodeExample :code-object="cardSwap" />
-      </template>
+            <template #card-1>
+              <div class="border-b border-white bg-gradient-to-t from-[#222] to-[#0b0b0b]">
+                <div class="m-2 flex items-center">
+                  <i class="pi pi-code mr-2"></i>
 
-      <template #cli>
-        <CliInstallation :command="cardSwap.cli" />
-      </template>
-    </TabbedLayout>
-  </div>
+                  <span>Reliable</span>
+                </div>
+              </div>
+
+              <div class="relative p-2">
+                <video autoplay loop muted playsinline class="rounded-[15px] w-full h-full">
+                  <source
+                    src="https://cdn.dribbble.com/userupload/7078020/file/original-b071e9063d9e3ba86a85a61b9d5a7c42.mp4"
+                    type="video/mp4"
+                  />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            </template>
+
+            <template #card-2>
+              <div class="border-b border-white bg-gradient-to-t from-[#222] to-[#0b0b0b]">
+                <div class="m-2 flex items-center">
+                  <i class="pi pi-sliders-h mr-2"></i>
+
+                  <span>Customizable</span>
+                </div>
+              </div>
+
+              <div class="relative p-2">
+                <video autoplay loop muted playsinline class="rounded-[15px] w-full h-full">
+                  <source
+                    src="https://cdn.dribbble.com/userupload/7098541/file/original-0b063b12ca835421580e6034368ad95a.mp4"
+                    type="video/mp4"
+                  />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            </template>
+          </CardSwap>
+        </div>
+      </div>
+
+      <Customize>
+        <PreviewSwitch title="Pause On Hover" v-model="pauseOnHover" @update:model-value="forceRerender" />
+
+        <PreviewSlider title="Card Distance" v-model="cardDistance" :min="30" :max="100" :step="5" />
+
+        <PreviewSlider title="Vertical Distance" v-model="verticalDistance" :min="40" :max="120" :step="5" />
+
+        <PreviewSlider title="Delay (ms)" v-model="delay" :min="3000" :max="8000" :step="500" />
+
+        <PreviewSlider title="Skew Amount" v-model="skewAmount" :min="0" :max="12" :step="1" />
+
+        <button
+          class="text-xs bg-[#111] rounded-[10px] border border-[#333] hover:bg-[#222] text-white h-8 px-3 transition-colors"
+          @click="toggleEasing"
+        >
+          Easing:
+          <span class="text-zinc-400">&nbsp;{{ easing }}</span>
+        </button>
+      </Customize>
+
+      <PropTable :data="propData" />
+
+      <Dependencies :dependency-list="['gsap']" />
+    </template>
+
+    <template #code>
+      <CodeExample :code-object="cardSwap" />
+    </template>
+
+    <template #cli>
+      <CliInstallation :command="cardSwap.cli" />
+    </template>
+  </TabbedLayout>
 </template>
 
 <script setup lang="ts">

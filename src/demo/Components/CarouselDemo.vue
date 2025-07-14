@@ -1,67 +1,65 @@
 <template>
-  <div class="carousel-demo">
-    <TabbedLayout>
-      <template #preview>
-        <div class="demo-container relative h-[500px] overflow-hidden flex items-center justify-center">
-          <Carousel
-            :key="rerenderKey"
-            :base-width="width"
-            :autoplay="autoplay"
-            :autoplay-delay="autoplayDelay"
-            :pause-on-hover="pauseOnHover"
-            :loop="loop"
-            :round="round"
-          />
-        </div>
+  <TabbedLayout>
+    <template #preview>
+      <div class="demo-container relative h-[500px] overflow-hidden flex items-center justify-center">
+        <Carousel
+          :key="rerenderKey"
+          :base-width="width"
+          :autoplay="autoplay"
+          :autoplay-delay="autoplayDelay"
+          :pause-on-hover="pauseOnHover"
+          :loop="loop"
+          :round="round"
+        />
+      </div>
 
-        <Customize>
-          <PreviewSlider
-            title="Width"
-            v-model="width"
-            :min="250"
-            :max="330"
-            :step="10"
-            @update:model-value="forceRerender"
-          />
+      <Customize>
+        <PreviewSlider
+          title="Width"
+          v-model="width"
+          :min="250"
+          :max="330"
+          :step="10"
+          @update:model-value="forceRerender"
+        />
 
-          <PreviewSwitch title="Round Variant" v-model="round" @update:model-value="forceRerender" />
+        <PreviewSwitch title="Round Variant" v-model="round" @update:model-value="forceRerender" />
 
-          <PreviewSwitch title="Loop" v-model="loop" @update:model-value="forceRerender" />
+        <PreviewSwitch title="Loop" v-model="loop" @update:model-value="forceRerender" />
 
-          <PreviewSwitch title="Autoplay" v-model="autoplay" @update:model-value="forceRerender" />
+        <PreviewSwitch title="Autoplay" v-model="autoplay" @update:model-value="forceRerender" />
 
-          <PreviewSlider
-            title="Delay"
-            v-model="autoplayDelay"
-            :min="1000"
-            :max="4000"
-            :step="1000"
-            :disabled="!autoplay"
-            @update:model-value="forceRerender"
-          />
+        <PreviewSlider
+          title="Delay"
+          v-model="autoplayDelay"
+          :min="1000"
+          :max="4000"
+          :step="1000"
+          :disabled="!autoplay"
+          @update:model-value="forceRerender"
+        />
 
-          <PreviewSwitch
-            title="Pause On Hover"
-            v-model="pauseOnHover"
-            :disabled="!autoplay"
-            @update:model-value="forceRerender"
-          />
-        </Customize>
+        <PreviewSwitch
+          title="Pause On Hover"
+          v-model="pauseOnHover"
+          :disabled="!autoplay"
+          @update:model-value="forceRerender"
+        />
+      </Customize>
 
-        <PropTable :data="propData" />
+      <PropTable :data="propData" />
 
-        <Dependencies :dependency-list="['motion-v']" />
-      </template>
+      <Dependencies :dependency-list="['motion-v']" />
+    </template>
 
-      <template #code>
-        <CodeExample :code-object="carousel" />
-      </template>
+    <template #code>
+      <CodeExample :code-object="carousel" />
+    </template>
 
-      <template #cli>
-        <CliInstallation :command="carousel.cli" />
-      </template>
-    </TabbedLayout>
-  </div>
+    <template #cli>
+      <CliInstallation :command="carousel.cli" />
+    </template>
+  </TabbedLayout>
 </template>
 
 <script setup lang="ts">

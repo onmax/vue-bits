@@ -1,88 +1,86 @@
 <template>
-  <div class="click-spark-demo">
-    <TabbedLayout>
-      <template #preview>
-        <div class="demo-container">
-          <ClickSpark
-            :key="rerenderKey"
-            :spark-color="sparkColor"
-            :spark-size="sparkSize"
-            :spark-radius="sparkRadius"
-            :spark-count="sparkCount"
-            :duration="duration"
-            :easing="easing"
-            :extra-scale="extraScale"
-            class="click-spark-demo-area"
-          ></ClickSpark>
+  <TabbedLayout>
+    <template #preview>
+      <div class="demo-container">
+        <ClickSpark
+          :key="rerenderKey"
+          :spark-color="sparkColor"
+          :spark-size="sparkSize"
+          :spark-radius="sparkRadius"
+          :spark-count="sparkCount"
+          :duration="duration"
+          :easing="easing"
+          :extra-scale="extraScale"
+          class="click-spark-demo-area"
+        ></ClickSpark>
 
-          <div
-            class="absolute inset-0 flex items-center justify-center pointer-events-none text-[4rem] font-[900] text-[#222] select-none"
-          >
-            Click Around!
-          </div>
+        <div
+          class="absolute inset-0 flex items-center justify-center pointer-events-none text-[4rem] font-[900] text-[#222] select-none"
+        >
+          Click Around!
         </div>
+      </div>
 
-        <Customize>
-          <PreviewColor title="Spark Color" v-model="sparkColor" @update:model-value="forceRerender" />
+      <Customize>
+        <PreviewColor title="Spark Color" v-model="sparkColor" @update:model-value="forceRerender" />
 
-          <PreviewSlider
-            title="Spark Size"
-            v-model="sparkSize"
-            :min="5"
-            :max="30"
-            :step="1"
-            @update:model-value="forceRerender"
-          />
+        <PreviewSlider
+          title="Spark Size"
+          v-model="sparkSize"
+          :min="5"
+          :max="30"
+          :step="1"
+          @update:model-value="forceRerender"
+        />
 
-          <PreviewSlider
-            title="Spark Radius"
-            v-model="sparkRadius"
-            :min="10"
-            :max="50"
-            :step="5"
-            @update:model-value="forceRerender"
-          />
+        <PreviewSlider
+          title="Spark Radius"
+          v-model="sparkRadius"
+          :min="10"
+          :max="50"
+          :step="5"
+          @update:model-value="forceRerender"
+        />
 
-          <PreviewSlider
-            title="Spark Count"
-            v-model="sparkCount"
-            :min="4"
-            :max="20"
-            :step="1"
-            @update:model-value="forceRerender"
-          />
+        <PreviewSlider
+          title="Spark Count"
+          v-model="sparkCount"
+          :min="4"
+          :max="20"
+          :step="1"
+          @update:model-value="forceRerender"
+        />
 
-          <PreviewSlider
-            title="Duration (ms)"
-            v-model="duration"
-            :min="200"
-            :max="1000"
-            :step="50"
-            @update:model-value="forceRerender"
-          />
+        <PreviewSlider
+          title="Duration (ms)"
+          v-model="duration"
+          :min="200"
+          :max="1000"
+          :step="50"
+          @update:model-value="forceRerender"
+        />
 
-          <PreviewSlider
-            title="Extra Scale"
-            v-model="extraScale"
-            :min="0.5"
-            :max="2"
-            :step="0.1"
-            @update:model-value="forceRerender"
-          />
-        </Customize>
+        <PreviewSlider
+          title="Extra Scale"
+          v-model="extraScale"
+          :min="0.5"
+          :max="2"
+          :step="0.1"
+          @update:model-value="forceRerender"
+        />
+      </Customize>
 
-        <PropTable :data="propData" />
-      </template>
+      <PropTable :data="propData" />
+    </template>
 
-      <template #code>
-        <CodeExample :code-object="clickSpark" />
-      </template>
+    <template #code>
+      <CodeExample :code-object="clickSpark" />
+    </template>
 
-      <template #cli>
-        <CliInstallation :command="clickSpark.cli" />
-      </template>
-    </TabbedLayout>
-  </div>
+    <template #cli>
+      <CliInstallation :command="clickSpark.cli" />
+    </template>
+  </TabbedLayout>
 </template>
 
 <script setup lang="ts">
@@ -124,36 +122,18 @@ const propData = [
 </script>
 
 <style scoped>
+.demo-container {
+  min-height: 400px;
+}
+
 .click-spark-demo-area {
   position: absolute;
   width: 100%;
-  height: 100%;
+  height: 300px;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
   cursor: pointer;
-}
-
-.demo-text {
-  text-align: center;
-  pointer-events: none;
-  user-select: none;
-}
-
-.demo-text h3 {
-  font-size: 1.2rem;
-  color: #fff;
-  margin-bottom: 0.5rem;
-}
-
-.demo-text p {
-  font-size: 0.9rem;
-  color: #999;
-  margin: 0;
-}
-
-.demo-content {
-  padding: 2rem;
 }
 </style>

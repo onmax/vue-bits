@@ -1,91 +1,82 @@
 <template>
-  <div class="metallic-paint-demo">
-    <TabbedLayout>
-      <template #preview>
-        <div class="demo-container relative h-[500px] overflow-hidden">
-          <MetallicPaint
-            v-if="imageData"
-            :key="rerenderKey"
-            :image-data="imageData"
-            :params="{
-              edge,
-              patternBlur,
-              patternScale,
-              refraction,
-              speed,
-              liquid
-            }"
-          />
-        </div>
+  <TabbedLayout>
+    <template #preview>
+      <div class="demo-container relative h-[500px] overflow-hidden">
+        <MetallicPaint
+          v-if="imageData"
+          :key="rerenderKey"
+          :image-data="imageData"
+          :params="{
+            edge,
+            patternBlur,
+            patternScale,
+            refraction,
+            speed,
+            liquid
+          }"
+        />
+      </div>
 
-        <Customize>
-          <PreviewSlider
-            title="Edge"
-            v-model="edge"
-            :min="0"
-            :max="1"
-            :step="0.1"
-            @update:model-value="forceRerender"
-          />
+      <Customize>
+        <PreviewSlider title="Edge" v-model="edge" :min="0" :max="1" :step="0.1" @update:model-value="forceRerender" />
 
-          <PreviewSlider
-            title="Pattern Scale"
-            v-model="patternScale"
-            :min="1"
-            :max="5"
-            :step="0.1"
-            @update:model-value="forceRerender"
-          />
+        <PreviewSlider
+          title="Pattern Scale"
+          v-model="patternScale"
+          :min="1"
+          :max="5"
+          :step="0.1"
+          @update:model-value="forceRerender"
+        />
 
-          <PreviewSlider
-            title="Pattern Blur"
-            v-model="patternBlur"
-            :min="0"
-            :max="0.1"
-            :step="0.001"
-            @update:model-value="forceRerender"
-          />
+        <PreviewSlider
+          title="Pattern Blur"
+          v-model="patternBlur"
+          :min="0"
+          :max="0.1"
+          :step="0.001"
+          @update:model-value="forceRerender"
+        />
 
-          <PreviewSlider
-            title="Refraction"
-            v-model="refraction"
-            :min="0"
-            :max="0.1"
-            :step="0.01"
-            @update:model-value="forceRerender"
-          />
+        <PreviewSlider
+          title="Refraction"
+          v-model="refraction"
+          :min="0"
+          :max="0.1"
+          :step="0.01"
+          @update:model-value="forceRerender"
+        />
 
-          <PreviewSlider
-            title="Liquid"
-            v-model="liquid"
-            :min="0"
-            :max="1"
-            :step="0.01"
-            @update:model-value="forceRerender"
-          />
+        <PreviewSlider
+          title="Liquid"
+          v-model="liquid"
+          :min="0"
+          :max="1"
+          :step="0.01"
+          @update:model-value="forceRerender"
+        />
 
-          <PreviewSlider
-            title="Speed"
-            v-model="speed"
-            :min="0"
-            :max="1"
-            :step="0.01"
-            @update:model-value="forceRerender"
-          />
-        </Customize>
+        <PreviewSlider
+          title="Speed"
+          v-model="speed"
+          :min="0"
+          :max="1"
+          :step="0.01"
+          @update:model-value="forceRerender"
+        />
+      </Customize>
 
-        <PropTable :data="propData" />
-      </template>
+      <PropTable :data="propData" />
+    </template>
 
-      <template #code>
-        <CodeExample :code-object="metallicPaint" />
-      </template>
+    <template #code>
+      <CodeExample :code-object="metallicPaint" />
+    </template>
 
-      <template #cli>
-        <CliInstallation :command="metallicPaint.cli" />
-      </template>
-    </TabbedLayout>
-  </div>
+    <template #cli>
+      <CliInstallation :command="metallicPaint.cli" />
+    </template>
+  </TabbedLayout>
 </template>
 
 <script setup lang="ts">

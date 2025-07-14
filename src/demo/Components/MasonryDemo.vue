@@ -1,88 +1,86 @@
 <template>
-  <div class="masonry-demo">
-    <TabbedLayout>
-      <template #preview>
-        <div class="demo-container" style="height: 900px; overflow: hidden">
-          <RefreshButton @refresh="forceRerender" />
+  <TabbedLayout>
+    <template #preview>
+      <div class="demo-container" style="height: 900px; overflow: hidden">
+        <RefreshButton @refresh="forceRerender" />
 
-          <Masonry
-            :key="rerenderKey"
-            :items="sampleItems"
-            :ease="ease"
-            :duration="duration"
-            :stagger="stagger"
-            :animate-from="animateFrom"
-            :scale-on-hover="scaleOnHover"
-            :hover-scale="hoverScale"
-            :blur-to-focus="blurToFocus"
-            :color-shift-on-hover="colorShiftOnHover"
-            class="masonry-demo-container"
-          />
-        </div>
+        <Masonry
+          :key="rerenderKey"
+          :items="sampleItems"
+          :ease="ease"
+          :duration="duration"
+          :stagger="stagger"
+          :animate-from="animateFrom"
+          :scale-on-hover="scaleOnHover"
+          :hover-scale="hoverScale"
+          :blur-to-focus="blurToFocus"
+          :color-shift-on-hover="colorShiftOnHover"
+          class="masonry-demo-container"
+        />
+      </div>
 
-        <Customize>
-          <PreviewSwitch title="Scale on Hover" v-model="scaleOnHover" @update:model-value="forceRerender" />
+      <Customize>
+        <PreviewSwitch title="Scale on Hover" v-model="scaleOnHover" @update:model-value="forceRerender" />
 
-          <PreviewSwitch title="Blur to Focus" v-model="blurToFocus" @update:model-value="forceRerender" />
+        <PreviewSwitch title="Blur to Focus" v-model="blurToFocus" @update:model-value="forceRerender" />
 
-          <PreviewSwitch title="Color Shift on Hover" v-model="colorShiftOnHover" @update:model-value="forceRerender" />
+        <PreviewSwitch title="Color Shift on Hover" v-model="colorShiftOnHover" @update:model-value="forceRerender" />
 
-          <PreviewSelect
-            title="Animation Direction"
-            v-model="animateFrom"
-            :options="[
-              { label: 'Bottom', value: 'bottom' },
-              { label: 'Top', value: 'top' },
-              { label: 'Left', value: 'left' },
-              { label: 'Right', value: 'right' },
-              { label: 'Center', value: 'center' },
-              { label: 'Random', value: 'random' }
-            ]"
-            @update:model-value="forceRerender"
-          />
+        <PreviewSelect
+          title="Animation Direction"
+          v-model="animateFrom"
+          :options="[
+            { label: 'Bottom', value: 'bottom' },
+            { label: 'Top', value: 'top' },
+            { label: 'Left', value: 'left' },
+            { label: 'Right', value: 'right' },
+            { label: 'Center', value: 'center' },
+            { label: 'Random', value: 'random' }
+          ]"
+          @update:model-value="forceRerender"
+        />
 
-          <PreviewSlider
-            title="Duration (s)"
-            v-model="duration"
-            :min="0.1"
-            :max="2"
-            :step="0.1"
-            @update:model-value="forceRerender"
-          />
+        <PreviewSlider
+          title="Duration (s)"
+          v-model="duration"
+          :min="0.1"
+          :max="2"
+          :step="0.1"
+          @update:model-value="forceRerender"
+        />
 
-          <PreviewSlider
-            title="Stagger Delay (s)"
-            v-model="stagger"
-            :min="0.01"
-            :max="0.2"
-            :step="0.01"
-            @update:model-value="forceRerender"
-          />
+        <PreviewSlider
+          title="Stagger Delay (s)"
+          v-model="stagger"
+          :min="0.01"
+          :max="0.2"
+          :step="0.01"
+          @update:model-value="forceRerender"
+        />
 
-          <PreviewSlider
-            title="Hover Scale"
-            v-model="hoverScale"
-            :min="0.8"
-            :max="1.2"
-            :step="0.05"
-            @update:model-value="forceRerender"
-          />
-        </Customize>
+        <PreviewSlider
+          title="Hover Scale"
+          v-model="hoverScale"
+          :min="0.8"
+          :max="1.2"
+          :step="0.05"
+          @update:model-value="forceRerender"
+        />
+      </Customize>
 
-        <PropTable :data="propData" />
+      <PropTable :data="propData" />
 
-        <Dependencies :dependency-list="['gsap']" />
-      </template>
+      <Dependencies :dependency-list="['gsap']" />
+    </template>
 
-      <template #code>
-        <CodeExample :code-object="masonry" />
-      </template>
+    <template #code>
+      <CodeExample :code-object="masonry" />
+    </template>
 
-      <template #cli>
-        <CliInstallation :command="masonry.cli" />
-      </template>
-    </TabbedLayout>
-  </div>
+    <template #cli>
+      <CliInstallation :command="masonry.cli" />
+    </template>
+  </TabbedLayout>
 </template>
 
 <script setup lang="ts">
@@ -167,10 +165,3 @@ const propData = [
   }
 ];
 </script>
-
-<style scoped>
-.masonry-demo-container {
-  width: 100%;
-  height: 100%;
-}
-</style>

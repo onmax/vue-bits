@@ -1,73 +1,71 @@
 <template>
-  <div class="curved-loop-demo">
-    <TabbedLayout>
-      <template #preview>
-        <div class="demo-container relative h-[500px] overflow-hidden p-0">
-          <CurvedLoop
-            :key="rerenderKey"
-            :marquee-text="marqueeText"
-            :speed="speed"
-            :curve-amount="curveAmount"
-            :interactive="interactive"
+  <TabbedLayout>
+    <template #preview>
+      <div class="demo-container relative h-[500px] overflow-hidden p-0">
+        <CurvedLoop
+          :key="rerenderKey"
+          :marquee-text="marqueeText"
+          :speed="speed"
+          :curve-amount="curveAmount"
+          :interactive="interactive"
+        />
+      </div>
+
+      <Customize>
+        <div class="mb-4">
+          <label class="block text-sm font-medium mb-2">Marquee Text</label>
+
+          <input
+            v-model="marqueeText"
+            type="text"
+            placeholder="Enter text..."
+            class="w-[300px] px-3 py-2 bg-[#0b0b0b] border border-[#333] rounded-md text-white focus:outline-none focus:border-[#666]"
+            @input="forceRerender"
           />
         </div>
 
-        <Customize>
-          <div class="mb-4">
-            <label class="block text-sm font-medium mb-2">Marquee Text</label>
+        <PreviewSlider
+          title="Speed"
+          v-model="speed"
+          :min="0"
+          :max="10"
+          :step="0.1"
+          @update:model-value="forceRerender"
+        />
 
-            <input
-              v-model="marqueeText"
-              type="text"
-              placeholder="Enter text..."
-              class="w-[300px] px-3 py-2 bg-[#0b0b0b] border border-[#333] rounded-md text-white focus:outline-none focus:border-[#666]"
-              @input="forceRerender"
-            />
-          </div>
+        <PreviewSlider
+          title="Curve Amount"
+          v-model="curveAmount"
+          :min="-400"
+          :max="400"
+          :step="10"
+          value-unit="px"
+          @update:model-value="forceRerender"
+        />
 
-          <PreviewSlider
-            title="Speed"
-            v-model="speed"
-            :min="0"
-            :max="10"
-            :step="0.1"
-            @update:model-value="forceRerender"
-          />
+        <PreviewSwitch
+          title="Draggable"
+          :model-value="interactive"
+          @update:model-value="
+            (val: boolean) => {
+              interactive = val;
+              forceRerender();
+            }
+          "
+        />
+      </Customize>
 
-          <PreviewSlider
-            title="Curve Amount"
-            v-model="curveAmount"
-            :min="-400"
-            :max="400"
-            :step="10"
-            value-unit="px"
-            @update:model-value="forceRerender"
-          />
+      <PropTable :data="propData" />
+    </template>
 
-          <PreviewSwitch
-            title="Draggable"
-            :model-value="interactive"
-            @update:model-value="
-              (val: boolean) => {
-                interactive = val;
-                forceRerender();
-              }
-            "
-          />
-        </Customize>
+    <template #code>
+      <CodeExample :code-object="curvedLoop" />
+    </template>
 
-        <PropTable :data="propData" />
-      </template>
-
-      <template #code>
-        <CodeExample :code-object="curvedLoop" />
-      </template>
-
-      <template #cli>
-        <CliInstallation :command="curvedLoop.cli" />
-      </template>
-    </TabbedLayout>
-  </div>
+    <template #cli>
+      <CliInstallation :command="curvedLoop.cli" />
+    </template>
+  </TabbedLayout>
 </template>
 
 <script setup lang="ts">

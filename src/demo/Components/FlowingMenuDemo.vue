@@ -1,25 +1,23 @@
 <template>
-  <div class="flowing-menu-demo">
-    <TabbedLayout>
-      <template #preview>
-        <div class="demo-container" style="height: 600px; overflow: hidden; padding: 100px 0">
-          <FlowingMenu :items="demoItems" />
-        </div>
+  <TabbedLayout>
+    <template #preview>
+      <div class="demo-container" style="height: 600px; overflow: hidden; padding: 100px 0">
+        <FlowingMenu :items="demoItems" />
+      </div>
 
-        <PropTable :data="propData" />
+      <PropTable :data="propData" />
 
-        <Dependencies :dependency-list="['gsap']" />
-      </template>
+      <Dependencies :dependency-list="['gsap']" />
+    </template>
 
-      <template #code>
-        <CodeExample :code-object="flowingMenu" />
-      </template>
+    <template #code>
+      <CodeExample :code-object="flowingMenu" />
+    </template>
 
-      <template #cli>
-        <CliInstallation :command="flowingMenu.cli" />
-      </template>
-    </TabbedLayout>
-  </div>
+    <template #cli>
+      <CliInstallation :command="flowingMenu.cli" />
+    </template>
+  </TabbedLayout>
 </template>
 
 <script setup lang="ts">

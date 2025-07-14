@@ -1,86 +1,82 @@
 <template>
-  <div class="dock-demo">
-    <TabbedLayout>
-      <template #preview>
-        <div class="demo-container" style="min-height: 400px; position: relative">
-          <div class="demo-content">
-            <Dock
-              :key="rerenderKey"
-              :items="items"
-              :panel-height="panelHeight"
-              :base-item-size="baseItemSize"
-              :magnification="magnification"
-              :distance="200"
-              :dock-height="256"
-              :spring="{ mass: 0.1, stiffness: 150, damping: 12 }"
-            />
-          </div>
+  <TabbedLayout>
+    <template #preview>
+      <div class="demo-container">
+        <Dock
+          :key="rerenderKey"
+          :items="items"
+          :panel-height="panelHeight"
+          :base-item-size="baseItemSize"
+          :magnification="magnification"
+          :distance="200"
+          :dock-height="256"
+          :spring="{ mass: 0.1, stiffness: 150, damping: 12 }"
+        />
 
-          <div
-            class="absolute inset-0 flex items-center justify-center pointer-events-none text-[4rem] font-[900] text-[#222] select-none"
-          >
-            Try It!
-          </div>
+        <div
+          class="absolute inset-0 flex items-center justify-center pointer-events-none text-[4rem] font-[900] text-[#222] select-none"
+        >
+          Try It!
         </div>
+      </div>
 
-        <Customize>
-          <PreviewSlider
-            title="Background Height"
-            :min="30"
-            :max="200"
-            :step="10"
-            :model-value="panelHeight"
-            @update:model-value="
-              (val: number) => {
-                panelHeight = val;
-                forceRerender();
-              }
-            "
-          />
+      <Customize>
+        <PreviewSlider
+          title="Background Height"
+          :min="30"
+          :max="200"
+          :step="10"
+          :model-value="panelHeight"
+          @update:model-value="
+            (val: number) => {
+              panelHeight = val;
+              forceRerender();
+            }
+          "
+        />
 
-          <PreviewSlider
-            title="Item Size"
-            :min="20"
-            :max="60"
-            :step="10"
-            :model-value="baseItemSize"
-            @update:model-value="
-              (val: number) => {
-                baseItemSize = val;
-                forceRerender();
-              }
-            "
-          />
+        <PreviewSlider
+          title="Item Size"
+          :min="20"
+          :max="60"
+          :step="10"
+          :model-value="baseItemSize"
+          @update:model-value="
+            (val: number) => {
+              baseItemSize = val;
+              forceRerender();
+            }
+          "
+        />
 
-          <PreviewSlider
-            title="Magnification"
-            :min="50"
-            :max="100"
-            :step="10"
-            :model-value="magnification"
-            @update:model-value="
-              (val: number) => {
-                magnification = val;
-                forceRerender();
-              }
-            "
-          />
-        </Customize>
+        <PreviewSlider
+          title="Magnification"
+          :min="50"
+          :max="100"
+          :step="10"
+          :model-value="magnification"
+          @update:model-value="
+            (val: number) => {
+              magnification = val;
+              forceRerender();
+            }
+          "
+        />
+      </Customize>
 
-        <PropTable :data="propData" />
+      <PropTable :data="propData" />
 
-        <Dependencies :dependency-list="['motion-v']" />
-      </template>
+      <Dependencies :dependency-list="['motion-v']" />
+    </template>
 
-      <template #code>
-        <CodeExample :code-object="dock" />
-      </template>
+    <template #code>
+      <CodeExample :code-object="dock" />
+    </template>
 
-      <template #cli>
-        <CliInstallation :command="dock.cli" />
-      </template>
-    </TabbedLayout>
-  </div>
+    <template #cli>
+      <CliInstallation :command="dock.cli" />
+    </template>
+  </TabbedLayout>
 </template>
 
 <script setup lang="ts">
@@ -179,29 +175,7 @@ const propData = [
 
 <style scoped>
 .demo-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
+  min-height: 400px;
   padding: 2rem;
-}
-
-.demo-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2rem;
-  width: 100%;
-  max-width: 800px;
-}
-
-.demo-title {
-  font-size: 2rem;
-  font-weight: 900;
-  color: #271e37;
-  margin: 0;
-  text-align: center;
 }
 </style>

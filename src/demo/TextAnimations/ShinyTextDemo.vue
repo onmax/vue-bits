@@ -1,48 +1,46 @@
 <template>
-  <div class="shiny-text-demo">
-    <TabbedLayout>
-      <template #preview>
-        <h2 class="demo-title-extra">Basic</h2>
+  <TabbedLayout>
+    <template #preview>
+      <h2 class="demo-title-extra">Basic</h2>
 
-        <div class="demo-container">
-          <ShinyText text="Just some shiny text!" :disabled="false" :speed="3" class-name="shiny-text-demo" />
+      <div class="demo-container">
+        <ShinyText text="Just some shiny text!" :disabled="false" :speed="3" class-name="shiny-text-demo" />
+      </div>
+
+      <h2 class="demo-title-extra">Button Text</h2>
+
+      <div class="demo-container">
+        <div class="shiny-button">
+          <ShinyText text="Shiny Button" :disabled="false" :speed="3" class-name="shiny-text-demo" />
         </div>
+      </div>
 
-        <h2 class="demo-title-extra">Button Text</h2>
+      <h2 class="demo-title-extra">Configurable Speed</h2>
 
-        <div class="demo-container">
-          <div class="shiny-button">
-            <ShinyText text="Shiny Button" :disabled="false" :speed="3" class-name="shiny-text-demo" />
-          </div>
-        </div>
+      <div class="demo-container relative min-h-[150px] text-2xl flex items-center justify-center">
+        <ShinyText
+          :text="speed < 2.5 ? '🐎 This is fast!' : '🐌 This is slow!'"
+          :disabled="false"
+          :speed="speed"
+          class-name="shiny-text-demo"
+        />
+      </div>
 
-        <h2 class="demo-title-extra">Configurable Speed</h2>
+      <Customize>
+        <PreviewSlider title="Animation Duration" v-model="speed" :min="1" :max="5" :step="0.1" value-unit="s" />
+      </Customize>
 
-        <div class="demo-container relative min-h-[150px] text-2xl flex items-center justify-center">
-          <ShinyText
-            :text="speed < 2.5 ? '🐎 This is fast!' : '🐌 This is slow!'"
-            :disabled="false"
-            :speed="speed"
-            class-name="shiny-text-demo"
-          />
-        </div>
+      <PropTable :data="propData" />
+    </template>
 
-        <Customize>
-          <PreviewSlider title="Animation Duration" v-model="speed" :min="1" :max="5" :step="0.1" value-unit="s" />
-        </Customize>
+    <template #code>
+      <CodeExample :code-object="shinyText" />
+    </template>
 
-        <PropTable :data="propData" />
-      </template>
-
-      <template #code>
-        <CodeExample :code-object="shinyText" />
-      </template>
-
-      <template #cli>
-        <CliInstallation :command="shinyText.cli" />
-      </template>
-    </TabbedLayout>
-  </div>
+    <template #cli>
+      <CliInstallation :command="shinyText.cli" />
+    </template>
+  </TabbedLayout>
 </template>
 
 <script setup lang="ts">

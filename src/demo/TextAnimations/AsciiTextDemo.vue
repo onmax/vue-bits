@@ -1,77 +1,75 @@
 <template>
-  <div class="ascii-text-demo">
-    <TabbedLayout>
-      <template #preview>
-        <div class="demo-container">
-          <AsciiText
-            :key="rerenderKey"
-            :text="text"
-            :ascii-font-size="asciiFontSize"
-            :text-font-size="textFontSize"
-            :text-color="textColor"
-            :plane-base-height="planeBaseHeight"
-            :enable-waves="enableWaves"
-          />
+  <TabbedLayout>
+    <template #preview>
+      <div class="demo-container">
+        <AsciiText
+          :key="rerenderKey"
+          :text="text"
+          :ascii-font-size="asciiFontSize"
+          :text-font-size="textFontSize"
+          :text-color="textColor"
+          :plane-base-height="planeBaseHeight"
+          :enable-waves="enableWaves"
+        />
+      </div>
+
+      <Customize>
+        <PreviewText title="Text" v-model="text" @update:model-value="forceRerender" />
+
+        <PreviewSlider
+          title="ASCII Font Size"
+          v-model="asciiFontSize"
+          :min="2"
+          :max="20"
+          :step="1"
+          @update:model-value="forceRerender"
+        />
+
+        <PreviewSlider
+          title="Text Font Size"
+          v-model="textFontSize"
+          :min="100"
+          :max="400"
+          :step="25"
+          @update:model-value="forceRerender"
+        />
+
+        <PreviewSlider
+          title="Base Height"
+          v-model="planeBaseHeight"
+          :min="4"
+          :max="16"
+          :step="1"
+          @update:model-value="forceRerender"
+        />
+
+        <PreviewSwitch title="Enable Waves" v-model="enableWaves" @update:model-value="forceRerender" />
+
+        <div class="flex gap-2 flex-wrap">
+          <button
+            v-for="color in colorOptions"
+            :key="color.name"
+            class="text-xs cursor-pointer bg-[#0b0b0b] rounded-[10px] border border-[#333] hover:bg-[#333] text-white h-8 px-3 transition-colors"
+            :class="{ 'bg-[#333]': textColor === color.value }"
+            @click="changeColor(color.value)"
+          >
+            {{ color.name }}
+          </button>
         </div>
+      </Customize>
 
-        <Customize>
-          <PreviewText title="Text" v-model="text" @update:model-value="forceRerender" />
+      <PropTable :data="propData" />
+      <Dependencies :dependency-list="['three', '@types/three']" />
+    </template>
 
-          <PreviewSlider
-            title="ASCII Font Size"
-            v-model="asciiFontSize"
-            :min="2"
-            :max="20"
-            :step="1"
-            @update:model-value="forceRerender"
-          />
+    <template #code>
+      <CodeExample :code-object="asciiText" />
+    </template>
 
-          <PreviewSlider
-            title="Text Font Size"
-            v-model="textFontSize"
-            :min="100"
-            :max="400"
-            :step="25"
-            @update:model-value="forceRerender"
-          />
-
-          <PreviewSlider
-            title="Base Height"
-            v-model="planeBaseHeight"
-            :min="4"
-            :max="16"
-            :step="1"
-            @update:model-value="forceRerender"
-          />
-
-          <PreviewSwitch title="Enable Waves" v-model="enableWaves" @update:model-value="forceRerender" />
-
-          <div class="flex gap-2 flex-wrap">
-            <button
-              v-for="color in colorOptions"
-              :key="color.name"
-              class="text-xs cursor-pointer bg-[#0b0b0b] rounded-[10px] border border-[#333] hover:bg-[#333] text-white h-8 px-3 transition-colors"
-              :class="{ 'bg-[#333]': textColor === color.value }"
-              @click="changeColor(color.value)"
-            >
-              {{ color.name }}
-            </button>
-          </div>
-        </Customize>
-
-        <PropTable :data="propData" />
-        <Dependencies :dependency-list="['three', '@types/three']" />
-      </template>
-
-      <template #code>
-        <CodeExample :code-object="asciiText" />
-      </template>
-
-      <template #cli>
-        <CliInstallation :command="asciiText.cli" />
-      </template>
-    </TabbedLayout>
-  </div>
+    <template #cli>
+      <CliInstallation :command="asciiText.cli" />
+    </template>
+  </TabbedLayout>
 </template>
 
 <script setup lang="ts">

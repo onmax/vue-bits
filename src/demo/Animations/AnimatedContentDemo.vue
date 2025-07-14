@@ -1,133 +1,128 @@
 <template>
-  <div class="animated-content-demo">
-    <TabbedLayout>
-      <template #preview>
-        <div class="demo-container relative py-6 overflow-hidden">
-          <RefreshButton @click="forceRerender" />
-
-          <div :key="key" class="flex justify-center items-center">
-            <AnimatedContent
-              :direction="direction"
-              :delay="delay"
-              :distance="distance"
-              :reverse="reverse"
-              :duration="duration"
-              :ease="ease"
-              :initial-opacity="initialOpacity"
-              :animate-opacity="animateOpacity"
-              :scale="scale"
-              :threshold="threshold"
-              @complete="() => console.log('✅ Animation Complete!')"
-            >
-              <div class="demo-content">
-                <h4>Animated Content</h4>
-
-                <p>It will animate in when it enters the viewport.</p>
-              </div>
-            </AnimatedContent>
+  <TabbedLayout>
+    <template #preview>
+      <div class="demo-container">
+        <RefreshButton @click="forceRerender" />
+        <AnimatedContent
+          :direction="direction"
+          :delay="delay"
+          :distance="distance"
+          :reverse="reverse"
+          :duration="duration"
+          :ease="ease"
+          :initial-opacity="initialOpacity"
+          :animate-opacity="animateOpacity"
+          :scale="scale"
+          :threshold="threshold"
+          :key="key"
+          @complete="() => console.log('✅ Animation Complete!')"
+        >
+          <div class="demo-content">
+            <h4>Animated Content</h4>
+            <p>It will animate in when it enters the viewport.</p>
           </div>
-        </div>
+        </AnimatedContent>
+      </div>
 
-        <Customize>
-          <PreviewSelect
-            title="Animation Direction"
-            v-model="direction"
-            :options="directionOptions"
-            @update:model-value="
-              val => {
-                direction = val as 'vertical' | 'horizontal';
-                forceRerender();
-              }
-            "
-          />
+      <Customize>
+        <PreviewSelect
+          title="Animation Direction"
+          v-model="direction"
+          :options="directionOptions"
+          @update:model-value="
+            val => {
+              direction = val as 'vertical' | 'horizontal';
+              forceRerender();
+            }
+          "
+        />
 
-          <PreviewSelect
-            title="Easing Function"
-            v-model="ease"
-            :options="easeOptions"
-            @update:model-value="
-              val => {
-                ease = val as string;
-                forceRerender();
-              }
-            "
-          />
+        <PreviewSelect
+          title="Easing Function"
+          v-model="ease"
+          :options="easeOptions"
+          @update:model-value="
+            val => {
+              ease = val as string;
+              forceRerender();
+            }
+          "
+        />
 
-          <PreviewSlider
-            title="Distance"
-            v-model="distance"
-            :min="50"
-            :max="300"
-            :step="10"
-            @update:model-value="forceRerender"
-          />
+        <PreviewSlider
+          title="Distance"
+          v-model="distance"
+          :min="50"
+          :max="300"
+          :step="10"
+          @update:model-value="forceRerender"
+        />
 
-          <PreviewSlider
-            title="Duration"
-            v-model="duration"
-            :min="0.1"
-            :max="3"
-            :step="0.1"
-            value-unit="s"
-            @update:model-value="forceRerender"
-          />
+        <PreviewSlider
+          title="Duration"
+          v-model="duration"
+          :min="0.1"
+          :max="3"
+          :step="0.1"
+          value-unit="s"
+          @update:model-value="forceRerender"
+        />
 
-          <PreviewSlider
-            title="Delay"
-            v-model="delay"
-            :min="0"
-            :max="2"
-            :step="0.1"
-            value-unit="s"
-            @update:model-value="forceRerender"
-          />
+        <PreviewSlider
+          title="Delay"
+          v-model="delay"
+          :min="0"
+          :max="2"
+          :step="0.1"
+          value-unit="s"
+          @update:model-value="forceRerender"
+        />
 
-          <PreviewSlider
-            title="Initial Opacity"
-            v-model="initialOpacity"
-            :min="0"
-            :max="1"
-            :step="0.1"
-            @update:model-value="forceRerender"
-          />
+        <PreviewSlider
+          title="Initial Opacity"
+          v-model="initialOpacity"
+          :min="0"
+          :max="1"
+          :step="0.1"
+          @update:model-value="forceRerender"
+        />
 
-          <PreviewSlider
-            title="Initial Scale"
-            v-model="scale"
-            :min="0.1"
-            :max="2"
-            :step="0.1"
-            @update:model-value="forceRerender"
-          />
+        <PreviewSlider
+          title="Initial Scale"
+          v-model="scale"
+          :min="0.1"
+          :max="2"
+          :step="0.1"
+          @update:model-value="forceRerender"
+        />
 
-          <PreviewSlider
-            title="Threshold"
-            v-model="threshold"
-            :min="0.1"
-            :max="1"
-            :step="0.1"
-            @update:model-value="forceRerender"
-          />
+        <PreviewSlider
+          title="Threshold"
+          v-model="threshold"
+          :min="0.1"
+          :max="1"
+          :step="0.1"
+          @update:model-value="forceRerender"
+        />
 
-          <PreviewSwitch title="Reverse Direction" v-model="reverse" @update:model-value="forceRerender" />
+        <PreviewSwitch title="Reverse Direction" v-model="reverse" @update:model-value="forceRerender" />
 
-          <PreviewSwitch title="Animate Opacity" v-model="animateOpacity" @update:model-value="forceRerender" />
-        </Customize>
+        <PreviewSwitch title="Animate Opacity" v-model="animateOpacity" @update:model-value="forceRerender" />
+      </Customize>
 
-        <PropTable :data="propData" />
+      <PropTable :data="propData" />
 
-        <Dependencies :dependency-list="['gsap']" />
-      </template>
+      <Dependencies :dependency-list="['gsap']" />
+    </template>
 
-      <template #code>
-        <CodeExample :code-object="animatedContent" />
-      </template>
+    <template #code>
+      <CodeExample :code-object="animatedContent" />
+    </template>
 
-      <template #cli>
-        <CliInstallation :command="animatedContent.cli" />
-      </template>
-    </TabbedLayout>
-  </div>
+    <template #cli>
+      <CliInstallation :command="animatedContent.cli" />
+    </template>
+  </TabbedLayout>
 </template>
 
 <script setup lang="ts">

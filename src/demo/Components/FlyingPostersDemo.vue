@@ -1,97 +1,95 @@
 <template>
-  <div class="flying-posters-demo">
-    <TabbedLayout>
-      <template #preview>
-        <div class="demo-container relative h-[600px] overflow-hidden flex items-center justify-center">
-          <FlyingPosters
-            :key="rerenderKey"
-            :items="items"
-            :plane-width="planeWidth"
-            :plane-height="planeHeight"
-            :distortion="distortion"
-            :scroll-ease="scrollEase"
-            :camera-fov="cameraFov"
-            :camera-z="cameraZ"
-            class="h-full w-full"
-          />
+  <TabbedLayout>
+    <template #preview>
+      <div class="demo-container relative h-[600px] overflow-hidden flex items-center justify-center">
+        <FlyingPosters
+          :key="rerenderKey"
+          :items="items"
+          :plane-width="planeWidth"
+          :plane-height="planeHeight"
+          :distortion="distortion"
+          :scroll-ease="scrollEase"
+          :camera-fov="cameraFov"
+          :camera-z="cameraZ"
+          class="h-full w-full"
+        />
 
-          <div
-            class="absolute inset-0 flex items-center justify-center pointer-events-none text-[4rem] font-[900] text-[#222] select-none"
-          >
-            Scroll.
-          </div>
+        <div
+          class="absolute inset-0 flex items-center justify-center pointer-events-none text-[4rem] font-[900] text-[#222] select-none"
+        >
+          Scroll.
         </div>
+      </div>
 
-        <Customize>
-          <PreviewSlider
-            title="Plane Width"
-            v-model="planeWidth"
-            :min="200"
-            :max="400"
-            :step="20"
-            @update:model-value="forceRerender"
-          />
+      <Customize>
+        <PreviewSlider
+          title="Plane Width"
+          v-model="planeWidth"
+          :min="200"
+          :max="400"
+          :step="20"
+          @update:model-value="forceRerender"
+        />
 
-          <PreviewSlider
-            title="Plane Height"
-            v-model="planeHeight"
-            :min="200"
-            :max="400"
-            :step="20"
-            @update:model-value="forceRerender"
-          />
+        <PreviewSlider
+          title="Plane Height"
+          v-model="planeHeight"
+          :min="200"
+          :max="400"
+          :step="20"
+          @update:model-value="forceRerender"
+        />
 
-          <PreviewSlider
-            title="Distortion"
-            v-model="distortion"
-            :min="0"
-            :max="10"
-            :step="0.5"
-            @update:model-value="forceRerender"
-          />
+        <PreviewSlider
+          title="Distortion"
+          v-model="distortion"
+          :min="0"
+          :max="10"
+          :step="0.5"
+          @update:model-value="forceRerender"
+        />
 
-          <PreviewSlider
-            title="Scroll Ease"
-            v-model="scrollEase"
-            :min="0.005"
-            :max="0.05"
-            :step="0.005"
-            @update:model-value="forceRerender"
-          />
+        <PreviewSlider
+          title="Scroll Ease"
+          v-model="scrollEase"
+          :min="0.005"
+          :max="0.05"
+          :step="0.005"
+          @update:model-value="forceRerender"
+        />
 
-          <PreviewSlider
-            title="Camera FOV"
-            v-model="cameraFov"
-            :min="30"
-            :max="90"
-            :step="5"
-            @update:model-value="forceRerender"
-          />
+        <PreviewSlider
+          title="Camera FOV"
+          v-model="cameraFov"
+          :min="30"
+          :max="90"
+          :step="5"
+          @update:model-value="forceRerender"
+        />
 
-          <PreviewSlider
-            title="Camera Z"
-            v-model="cameraZ"
-            :min="10"
-            :max="40"
-            :step="2"
-            @update:model-value="forceRerender"
-          />
-        </Customize>
+        <PreviewSlider
+          title="Camera Z"
+          v-model="cameraZ"
+          :min="10"
+          :max="40"
+          :step="2"
+          @update:model-value="forceRerender"
+        />
+      </Customize>
 
-        <PropTable :data="propData" />
+      <PropTable :data="propData" />
 
-        <Dependencies :dependency-list="['ogl']" />
-      </template>
+      <Dependencies :dependency-list="['ogl']" />
+    </template>
 
-      <template #code>
-        <CodeExample :code-object="flyingPosters" />
-      </template>
+    <template #code>
+      <CodeExample :code-object="flyingPosters" />
+    </template>
 
-      <template #cli>
-        <CliInstallation :command="flyingPosters.cli" />
-      </template>
-    </TabbedLayout>
-  </div>
+    <template #cli>
+      <CliInstallation :command="flyingPosters.cli" />
+    </template>
+  </TabbedLayout>
 </template>
 
 <script setup lang="ts">

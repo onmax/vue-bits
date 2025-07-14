@@ -1,64 +1,62 @@
 <template>
-  <div class="falling-text-demo">
-    <TabbedLayout>
-      <template #preview>
-        <div class="demo-container relative h-[400px] overflow-hidden p-0 flex justify-center items-center">
-          <FallingText
-            :key="key"
-            text="Vue Bits is a library of animated and interactive Vue components designed to streamline UI development and simplify your workflow."
-            :highlight-words="['Vue', 'Bits', 'animated', 'components', 'simplify']"
-            :trigger="trigger"
-            :gravity="gravity"
-            font-size="2rem"
-            :mouse-constraint-stiffness="mouseConstraintStiffness"
-          />
+  <TabbedLayout>
+    <template #preview>
+      <div class="demo-container relative h-[400px] overflow-hidden p-0 flex justify-center items-center">
+        <FallingText
+          :key="key"
+          text="Vue Bits is a library of animated and interactive Vue components designed to streamline UI development and simplify your workflow."
+          :highlight-words="['Vue', 'Bits', 'animated', 'components', 'simplify']"
+          :trigger="trigger"
+          :gravity="gravity"
+          font-size="2rem"
+          :mouse-constraint-stiffness="mouseConstraintStiffness"
+        />
 
-          <div class="absolute z-0 text-[4rem] font-[900] text-[#222] select-none" v-if="!effectStarted">
-            {{ trigger === 'hover' ? 'Hover Me' : trigger === 'click' ? 'Click Me' : 'Auto Start' }}
-          </div>
+        <div class="absolute z-0 text-[4rem] font-[900] text-[#222] select-none" v-if="!effectStarted">
+          {{ trigger === 'hover' ? 'Hover Me' : trigger === 'click' ? 'Click Me' : 'Auto Start' }}
         </div>
+      </div>
 
-        <Customize>
-          <PreviewSelect
-            title="Animation Trigger"
-            v-model="trigger"
-            :options="triggerOptions"
-            @update:model-value="forceRerender"
-          />
+      <Customize>
+        <PreviewSelect
+          title="Animation Trigger"
+          v-model="trigger"
+          :options="triggerOptions"
+          @update:model-value="forceRerender"
+        />
 
-          <PreviewSlider
-            title="Gravity"
-            v-model="gravity"
-            :min="0.1"
-            :max="2"
-            :step="0.01"
-            @update:model-value="forceRerender"
-          />
+        <PreviewSlider
+          title="Gravity"
+          v-model="gravity"
+          :min="0.1"
+          :max="2"
+          :step="0.01"
+          @update:model-value="forceRerender"
+        />
 
-          <PreviewSlider
-            title="Mouse Constraint Stiffness"
-            v-model="mouseConstraintStiffness"
-            :min="0.1"
-            :max="2"
-            :step="0.1"
-            @update:model-value="forceRerender"
-          />
-        </Customize>
+        <PreviewSlider
+          title="Mouse Constraint Stiffness"
+          v-model="mouseConstraintStiffness"
+          :min="0.1"
+          :max="2"
+          :step="0.1"
+          @update:model-value="forceRerender"
+        />
+      </Customize>
 
-        <PropTable :data="propData" />
+      <PropTable :data="propData" />
 
-        <Dependencies :dependency-list="['matter-js']" />
-      </template>
+      <Dependencies :dependency-list="['matter-js']" />
+    </template>
 
-      <template #code>
-        <CodeExample :code-object="fallingText" />
-      </template>
+    <template #code>
+      <CodeExample :code-object="fallingText" />
+    </template>
 
-      <template #cli>
-        <CliInstallation :command="fallingText.cli" />
-      </template>
-    </TabbedLayout>
-  </div>
+    <template #cli>
+      <CliInstallation :command="fallingText.cli" />
+    </template>
+  </TabbedLayout>
 </template>
 
 <script setup lang="ts">
@@ -141,5 +139,3 @@ const propData = [
   }
 ];
 </script>
-
-<style scoped></style>

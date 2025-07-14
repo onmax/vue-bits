@@ -1,38 +1,34 @@
 <template>
-  <div class="pixel-card-demo">
-    <TabbedLayout>
-      <template #preview>
-        <div
-          class="demo-container relative min-h-[500px] max-h-[500px] overflow-hidden flex items-center justify-center"
-        >
-          <PixelCard :key="rerenderKey" :variant="selectedVariant">
-            <div class="absolute mix-blend-screen z-10 inset-0 flex items-center justify-center w-full h-full">
-              <h2 class="text-5xl font-black select-none text-[#222]">Hover Me.</h2>
-            </div>
-          </PixelCard>
-        </div>
+  <TabbedLayout>
+    <template #preview>
+      <div class="demo-container relative min-h-[500px] max-h-[500px] overflow-hidden flex items-center justify-center">
+        <PixelCard :key="rerenderKey" :variant="selectedVariant">
+          <div class="absolute mix-blend-screen z-10 inset-0 flex items-center justify-center w-full h-full">
+            <h2 class="text-5xl font-black select-none text-[#222]">Hover Me.</h2>
+          </div>
+        </PixelCard>
+      </div>
 
-        <Customize>
-          <PreviewSelect
-            title="Animation Variant"
-            :options="variantOptions"
-            v-model="selectedVariant"
-            @update:model-value="forceRerender"
-          />
-        </Customize>
+      <Customize>
+        <PreviewSelect
+          title="Animation Variant"
+          :options="variantOptions"
+          v-model="selectedVariant"
+          @update:model-value="forceRerender"
+        />
+      </Customize>
 
-        <PropTable :data="propData" />
-      </template>
+      <PropTable :data="propData" />
+    </template>
 
-      <template #code>
-        <CodeExample :code-object="pixelCard" />
-      </template>
+    <template #code>
+      <CodeExample :code-object="pixelCard" />
+    </template>
 
-      <template #cli>
-        <CliInstallation :command="pixelCard.cli" />
-      </template>
-    </TabbedLayout>
-  </div>
+    <template #cli>
+      <CliInstallation :command="pixelCard.cli" />
+    </template>
+  </TabbedLayout>
 </template>
 
 <script setup lang="ts">

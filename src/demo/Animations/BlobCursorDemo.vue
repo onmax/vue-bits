@@ -1,7 +1,7 @@
 <template>
   <TabbedLayout>
     <template #preview>
-      <div class="relative h-[400px] overflow-hidden demo-container">
+      <div class="demo-container h-[400px]">
         <BlobCursor
           :blobType="blobType"
           :fillColor="fillColor"

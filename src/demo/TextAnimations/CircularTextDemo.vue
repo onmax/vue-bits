@@ -1,52 +1,50 @@
 <template>
-  <div class="circular-text-demo">
-    <TabbedLayout>
-      <template #preview>
-        <div class="demo-container relative min-h-[400px] overflow-hidden flex items-center justify-center">
-          <CircularText
-            :key="rerenderKey"
-            text="VUE * BITS * IS * AWESOME * "
-            :spin-duration="spinDuration"
-            :on-hover="onHover"
-            class-name="text-blue-500"
-          />
+  <TabbedLayout>
+    <template #preview>
+      <div class="demo-container relative min-h-[400px] overflow-hidden flex items-center justify-center">
+        <CircularText
+          :key="rerenderKey"
+          text="VUE * BITS * IS * AWESOME * "
+          :spin-duration="spinDuration"
+          :on-hover="onHover"
+          class-name="text-blue-500"
+        />
+      </div>
+
+      <Customize>
+        <div class="flex gap-4 flex-wrap">
+          <button
+            class="text-xs bg-[#0b0b0b] rounded-[10px] border border-[#1e3721] hover:bg-[#1e3721] text-white h-8 px-3 transition-colors"
+            @click="toggleOnHover"
+          >
+            On Hover:
+            <span class="text-[#a1a1aa]">&nbsp;{{ onHover }}</span>
+          </button>
         </div>
 
-        <Customize>
-          <div class="flex gap-4 flex-wrap">
-            <button
-              class="text-xs bg-[#0b0b0b] rounded-[10px] border border-[#1e3721] hover:bg-[#1e3721] text-white h-8 px-3 transition-colors"
-              @click="toggleOnHover"
-            >
-              On Hover:
-              <span class="text-[#a1a1aa]">&nbsp;{{ onHover }}</span>
-            </button>
-          </div>
+        <PreviewSlider
+          title="Spin Duration (s)"
+          v-model="spinDuration"
+          :min="1"
+          :max="50"
+          :step="1"
+          @update:model-value="forceRerender"
+        />
+      </Customize>
 
-          <PreviewSlider
-            title="Spin Duration (s)"
-            v-model="spinDuration"
-            :min="1"
-            :max="50"
-            :step="1"
-            @update:model-value="forceRerender"
-          />
-        </Customize>
+      <PropTable :data="propData" />
 
-        <PropTable :data="propData" />
+      <Dependencies :dependency-list="['motion-v']" />
+    </template>
 
-        <Dependencies :dependency-list="['motion-v']" />
-      </template>
+    <template #code>
+      <CodeExample :code-object="circularText" />
+    </template>
 
-      <template #code>
-        <CodeExample :code-object="circularText" />
-      </template>
-
-      <template #cli>
-        <CliInstallation :command="circularText.cli" />
-      </template>
-    </TabbedLayout>
-  </div>
+    <template #cli>
+      <CliInstallation :command="circularText.cli" />
+    </template>
+  </TabbedLayout>
 </template>
 
 <script setup lang="ts">

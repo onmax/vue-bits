@@ -181,8 +181,7 @@ const propData = [
 }
 
 .scroll-content {
-  padding-top: 150vh !important;
-  padding-bottom: 50vh;
+  padding: 150vh 2em 50vh 2em;
 }
 
 .scroll-instruction {

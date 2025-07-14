@@ -1,38 +1,36 @@
 <template>
-  <div class="splash-cursor-demo">
-    <TabbedLayout>
-      <template #preview>
-        <div class="demo-container">
-          <span class="text-6xl text-center text-[#222] font-black select-none">Move Your Cursor</span>
-        </div>
+  <TabbedLayout>
+    <template #preview>
+      <div class="demo-container">
+        <span class="text-6xl text-center text-[#333] font-black select-none">Move Your Cursor</span>
+      </div>
 
-        <Customize>
-          <PreviewSlider title="Simulation Resolution" v-model="simResolution" :min="64" :max="512" :step="32" />
+      <Customize>
+        <PreviewSlider title="Simulation Resolution" v-model="simResolution" :min="64" :max="512" :step="32" />
 
-          <PreviewSlider title="Density Dissipation" v-model="densityDissipation" :min="1" :max="10" :step="0.5" />
+        <PreviewSlider title="Density Dissipation" v-model="densityDissipation" :min="1" :max="10" :step="0.5" />
 
-          <PreviewSlider title="Splat Force" v-model="splatForce" :min="1000" :max="15000" :step="1000" />
-        </Customize>
+        <PreviewSlider title="Splat Force" v-model="splatForce" :min="1000" :max="15000" :step="1000" />
+      </Customize>
 
-        <PropTable :data="propData" />
-      </template>
+      <PropTable :data="propData" />
+    </template>
 
-      <template #code>
-        <CodeExample :code-object="splashCursor" />
-      </template>
+    <template #code>
+      <CodeExample :code-object="splashCursor" />
+    </template>
 
-      <template #cli>
-        <CliInstallation :command="splashCursor.cli" />
-      </template>
-    </TabbedLayout>
+    <template #cli>
+      <CliInstallation :command="splashCursor.cli" />
+    </template>
+  </TabbedLayout>
 
-    <SplashCursor
-      :key="rerenderKey"
-      :SIM_RESOLUTION="simResolution"
-      :DENSITY_DISSIPATION="densityDissipation"
-      :SPLAT_FORCE="splatForce"
-    />
-  </div>
+  <SplashCursor
+    :key="rerenderKey"
+    :SIM_RESOLUTION="simResolution"
+    :DENSITY_DISSIPATION="densityDissipation"
+    :SPLAT_FORCE="splatForce"
+  />
 </template>
 
 <script setup lang="ts">

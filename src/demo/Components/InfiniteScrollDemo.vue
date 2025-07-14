@@ -1,52 +1,50 @@
 <template>
-  <div class="infinite-scroll-demo">
-    <TabbedLayout>
-      <template #preview>
-        <div
-          class="demo-container"
-          style="height: 500px; overflow: hidden; display: flex; justify-content: center; align-items: center"
-        >
-          <InfiniteScroll
-            :items="items"
-            :is-tilted="isTilted"
-            :tilt-direction="tiltDirection"
-            :autoplay="autoplay"
-            :autoplay-speed="1"
-            :autoplay-direction="autoplayDirection"
-            :pause-on-hover="pauseOnHover"
-          />
-        </div>
+  <TabbedLayout>
+    <template #preview>
+      <div
+        class="demo-container"
+        style="height: 500px; overflow: hidden; display: flex; justify-content: center; align-items: center"
+      >
+        <InfiniteScroll
+          :items="items"
+          :is-tilted="isTilted"
+          :tilt-direction="tiltDirection"
+          :autoplay="autoplay"
+          :autoplay-speed="1"
+          :autoplay-direction="autoplayDirection"
+          :pause-on-hover="pauseOnHover"
+        />
+      </div>
 
-        <Customize>
-          <PreviewSwitch title="Tilt" v-model="isTilted" />
+      <Customize>
+        <PreviewSwitch title="Tilt" v-model="isTilted" />
 
-          <PreviewSelect v-if="isTilted" title="Tilt Direction" :options="tiltOptions" v-model="tiltDirection" />
+        <PreviewSelect v-if="isTilted" title="Tilt Direction" :options="tiltOptions" v-model="tiltDirection" />
 
-          <hr style="margin: 1rem 0; border-color: #222" />
+        <hr style="margin: 1rem 0; border-color: #222" />
 
-          <PreviewSwitch title="Autoplay" v-model="autoplay" />
+        <PreviewSwitch title="Autoplay" v-model="autoplay" />
 
-          <template v-if="autoplay">
-            <PreviewSelect title="Autoplay Direction" :options="autoplayOptions" v-model="autoplayDirection" />
+        <template v-if="autoplay">
+          <PreviewSelect title="Autoplay Direction" :options="autoplayOptions" v-model="autoplayDirection" />
 
-            <PreviewSwitch title="Pause on Hover" v-model="pauseOnHover" />
-          </template>
-        </Customize>
+          <PreviewSwitch title="Pause on Hover" v-model="pauseOnHover" />
+        </template>
+      </Customize>
 
-        <PropTable :data="propData" />
+      <PropTable :data="propData" />
 
-        <Dependencies :dependency-list="['gsap']" />
-      </template>
+      <Dependencies :dependency-list="['gsap']" />
+    </template>
 
-      <template #code>
-        <CodeExample :code-object="infiniteScroll" />
-      </template>
+    <template #code>
+      <CodeExample :code-object="infiniteScroll" />
+    </template>
 
-      <template #cli>
-        <CliInstallation :command="infiniteScroll.cli" />
-      </template>
-    </TabbedLayout>
-  </div>
+    <template #cli>
+      <CliInstallation :command="infiniteScroll.cli" />
+    </template>
+  </TabbedLayout>
 </template>
 
 <script setup lang="ts">

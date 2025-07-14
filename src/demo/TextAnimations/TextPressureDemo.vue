@@ -1,127 +1,123 @@
 <template>
-  <div class="text-pressure-demo">
-    <TabbedLayout>
-      <template #preview>
-        <div class="demo-container relative bg-[#060010] min-h-[400px] max-h-[450px] overflow-hidden mb-6">
-          <div class="w-full h-full">
-            <TextPressure
-              :key="rerenderKey"
-              :text="text"
-              :flex="flex"
-              :alpha="alpha"
-              :stroke="stroke"
-              :width="width"
-              :weight="weight"
-              :italic="italic"
-              :text-color="textColor"
-              :stroke-color="strokeColor"
-              :min-font-size="36"
-            />
-          </div>
+  <TabbedLayout>
+    <template #preview>
+      <div class="demo-container min-h-[400px]">
+        <TextPressure
+          :key="rerenderKey"
+          :text="text"
+          :flex="flex"
+          :alpha="alpha"
+          :stroke="stroke"
+          :width="width"
+          :weight="weight"
+          :italic="italic"
+          :text-color="textColor"
+          :stroke-color="strokeColor"
+          :min-font-size="36"
+        />
+      </div>
+
+      <Customize>
+        <div class="mb-4">
+          <label class="block text-sm font-medium mb-2">Text</label>
+
+          <input
+            v-model="text"
+            type="text"
+            placeholder="Your text here..."
+            maxlength="10"
+            class="w-[200px] px-3 py-2 bg-[#0b0b0b] border border-[#333] rounded-md text-white focus:outline-none focus:border-[#666]"
+          />
         </div>
 
-        <Customize>
-          <div class="mb-4">
-            <label class="block text-sm font-medium mb-2">Text</label>
+        <div class="color-controls">
+          <PreviewColor title="Text Color" v-model="textColor" @update:model-value="forceRerender" />
 
-            <input
-              v-model="text"
-              type="text"
-              placeholder="Your text here..."
-              maxlength="10"
-              class="w-[200px] px-3 py-2 bg-[#0b0b0b] border border-[#333] rounded-md text-white focus:outline-none focus:border-[#666]"
-            />
-          </div>
+          <PreviewColor title="Stroke Color" v-model="strokeColor" @update:model-value="forceRerender" />
+        </div>
 
-          <div class="color-controls">
-            <PreviewColor title="Text Color" v-model="textColor" @update:model-value="forceRerender" />
+        <p class="mt-6 text-[#999] text-sm">Animation Settings</p>
 
-            <PreviewColor title="Stroke Color" v-model="strokeColor" @update:model-value="forceRerender" />
-          </div>
+        <div class="flex gap-4 flex-wrap">
+          <PreviewSwitch
+            title="Flex"
+            :model-value="flex"
+            @update:model-value="
+              (val: boolean) => {
+                flex = val;
+                forceRerender();
+              }
+            "
+          />
 
-          <p class="mt-6 text-[#999] text-sm">Animation Settings</p>
+          <PreviewSwitch
+            title="Alpha"
+            :model-value="alpha"
+            @update:model-value="
+              (val: boolean) => {
+                alpha = val;
+                forceRerender();
+              }
+            "
+          />
 
-          <div class="flex gap-4 flex-wrap">
-            <PreviewSwitch
-              title="Flex"
-              :model-value="flex"
-              @update:model-value="
-                (val: boolean) => {
-                  flex = val;
-                  forceRerender();
-                }
-              "
-            />
+          <PreviewSwitch
+            title="Stroke"
+            :model-value="stroke"
+            @update:model-value="
+              (val: boolean) => {
+                stroke = val;
+                forceRerender();
+              }
+            "
+          />
 
-            <PreviewSwitch
-              title="Alpha"
-              :model-value="alpha"
-              @update:model-value="
-                (val: boolean) => {
-                  alpha = val;
-                  forceRerender();
-                }
-              "
-            />
+          <PreviewSwitch
+            title="Width"
+            :model-value="width"
+            @update:model-value="
+              (val: boolean) => {
+                width = val;
+                forceRerender();
+              }
+            "
+          />
 
-            <PreviewSwitch
-              title="Stroke"
-              :model-value="stroke"
-              @update:model-value="
-                (val: boolean) => {
-                  stroke = val;
-                  forceRerender();
-                }
-              "
-            />
+          <PreviewSwitch
+            title="Weight"
+            :model-value="weight"
+            @update:model-value="
+              (val: boolean) => {
+                weight = val;
+                forceRerender();
+              }
+            "
+          />
 
-            <PreviewSwitch
-              title="Width"
-              :model-value="width"
-              @update:model-value="
-                (val: boolean) => {
-                  width = val;
-                  forceRerender();
-                }
-              "
-            />
+          <PreviewSwitch
+            title="Italic"
+            :model-value="italic"
+            @update:model-value="
+              (val: boolean) => {
+                italic = val;
+                forceRerender();
+              }
+            "
+          />
+        </div>
+      </Customize>
 
-            <PreviewSwitch
-              title="Weight"
-              :model-value="weight"
-              @update:model-value="
-                (val: boolean) => {
-                  weight = val;
-                  forceRerender();
-                }
-              "
-            />
+      <PropTable :data="propData" />
+    </template>
 
-            <PreviewSwitch
-              title="Italic"
-              :model-value="italic"
-              @update:model-value="
-                (val: boolean) => {
-                  italic = val;
-                  forceRerender();
-                }
-              "
-            />
-          </div>
-        </Customize>
+    <template #code>
+      <CodeExample :code-object="textPressure" />
+    </template>
 
-        <PropTable :data="propData" />
-      </template>
-
-      <template #code>
-        <CodeExample :code-object="textPressure" />
-      </template>
-
-      <template #cli>
-        <CliInstallation :command="textPressure.cli" />
-      </template>
-    </TabbedLayout>
-  </div>
+    <template #cli>
+      <CliInstallation :command="textPressure.cli" />
+    </template>
+  </TabbedLayout>
 </template>
 
 <script setup lang="ts">

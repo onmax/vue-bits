@@ -1,39 +1,37 @@
 <template>
   <TabbedLayout>
     <template #preview>
-      <div class="space-y-8">
-        <div class="demo-section">
-          <div class="demo-container relative min-h-[200px] flex items-center justify-center">
-            <ElasticSlider />
-          </div>
+      <div class="demo-section">
+        <div class="demo-container relative min-h-[200px] flex items-center justify-center">
+          <ElasticSlider />
         </div>
-
-        <div class="demo-section">
-          <h2 class="demo-title-extra">Using Steps</h2>
-
-          <div class="demo-container relative min-h-[200px] flex items-center justify-center">
-            <ElasticSlider :is-stepped="true" :step-size="10" />
-          </div>
-        </div>
-
-        <div class="demo-section">
-          <h2 class="demo-title-extra">Custom Range & Icons</h2>
-
-          <div class="demo-container relative min-h-[200px] flex items-center justify-center">
-            <ElasticSlider :starting-value="500" :default-value="750" :max-value="1000">
-              <template #left-icon>
-                <i class="pi pi-thumbs-down text-xl"></i>
-              </template>
-
-              <template #right-icon>
-                <i class="pi pi-thumbs-up text-xl"></i>
-              </template>
-            </ElasticSlider>
-          </div>
-        </div>
-
-        <PropTable :data="propData" />
       </div>
+
+      <div class="demo-section">
+        <h2 class="demo-title-extra">Using Steps</h2>
+
+        <div class="demo-container relative min-h-[200px] flex items-center justify-center">
+          <ElasticSlider :is-stepped="true" :step-size="10" />
+        </div>
+      </div>
+
+      <div class="demo-section">
+        <h2 class="demo-title-extra">Custom Range & Icons</h2>
+
+        <div class="demo-container relative min-h-[200px] flex items-center justify-center">
+          <ElasticSlider :starting-value="500" :default-value="750" :max-value="1000">
+            <template #left-icon>
+              <i class="pi pi-thumbs-down text-xl"></i>
+            </template>
+
+            <template #right-icon>
+              <i class="pi pi-thumbs-up text-xl"></i>
+            </template>
+          </ElasticSlider>
+        </div>
+      </div>
+
+      <PropTable :data="propData" />
     </template>
 
     <template #code>
@@ -111,12 +109,5 @@ const propData = [
   height: 300px;
   min-height: 300px;
   overflow: hidden;
-}
-
-.demo-title-extra {
-  font-size: 1.25rem;
-  font-weight: 500;
-  color: #fff;
-  margin-bottom: 0.5rem;
 }
 </style>

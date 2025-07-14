@@ -1,48 +1,46 @@
 <template>
-  <div class="profile-card-demo">
-    <TabbedLayout>
-      <template #preview>
-        <div class="demo-container" style="height: 700px; overflow: hidden; position: relative">
-          <ProfileCard
-            :key="rerenderKey"
-            name="Javi A. Torres"
-            title="Software Engineer"
-            handle="javicodes"
-            status="Online"
-            contact-text="Contact Me"
-            avatar-url="/assets/person.png"
-            :icon-url="showIcon ? '/assets/iconpattern.png' : ''"
-            :show-user-info="showUserInfo"
-            :show-behind-gradient="showBehindGradient"
-            grain-url="/assets/grain.webp"
-            :behind-gradient="customBehindGradient"
-            :inner-gradient="customInnerGradient"
-            @contact-click="handleContactClick"
-          />
-        </div>
+  <TabbedLayout>
+    <template #preview>
+      <div class="demo-container" style="height: 700px; overflow: hidden; position: relative">
+        <ProfileCard
+          :key="rerenderKey"
+          name="Javi A. Torres"
+          title="Software Engineer"
+          handle="javicodes"
+          status="Online"
+          contact-text="Contact Me"
+          avatar-url="/assets/person.png"
+          :icon-url="showIcon ? '/assets/iconpattern.png' : ''"
+          :show-user-info="showUserInfo"
+          :show-behind-gradient="showBehindGradient"
+          grain-url="/assets/grain.webp"
+          :behind-gradient="customBehindGradient"
+          :inner-gradient="customInnerGradient"
+          @contact-click="handleContactClick"
+        />
+      </div>
 
-        <Customize>
-          <button @click="generateRandomGradients" class="randomize-btn">Randomize Colors</button>
+      <Customize>
+        <button @click="generateRandomGradients" class="randomize-btn">Randomize Colors</button>
 
-          <PreviewSwitch title="Show Icon Pattern" v-model="showIcon" @update:model-value="forceRerender" />
+        <PreviewSwitch title="Show Icon Pattern" v-model="showIcon" @update:model-value="forceRerender" />
 
-          <PreviewSwitch title="Show User Info" v-model="showUserInfo" @update:model-value="forceRerender" />
+        <PreviewSwitch title="Show User Info" v-model="showUserInfo" @update:model-value="forceRerender" />
 
-          <PreviewSwitch title="Show BG Gradient" v-model="showBehindGradient" @update:model-value="forceRerender" />
-        </Customize>
+        <PreviewSwitch title="Show BG Gradient" v-model="showBehindGradient" @update:model-value="forceRerender" />
+      </Customize>
 
-        <PropTable :data="propData" />
-      </template>
+      <PropTable :data="propData" />
+    </template>
 
-      <template #code>
-        <CodeExample :code-object="profileCard" />
-      </template>
+    <template #code>
+      <CodeExample :code-object="profileCard" />
+    </template>
 
-      <template #cli>
-        <CliInstallation :command="profileCard.cli" />
-      </template>
-    </TabbedLayout>
-  </div>
+    <template #cli>
+      <CliInstallation :command="profileCard.cli" />
+    </template>
+  </TabbedLayout>
 </template>
 
 <script setup lang="ts">
@@ -207,13 +205,5 @@ const propData = [
 
 .randomize-btn:hover {
   background: #222;
-}
-
-.demo-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
 }
 </style>

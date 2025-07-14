@@ -1,57 +1,53 @@
 <template>
-  <div class="glare-hover-demo">
-    <TabbedLayout>
-      <template #preview>
-        <div class="demo-container relative h-[600px] overflow-hidden">
-          <div class="flex justify-center items-center h-full">
-            <GlareHover
-              background="#111"
-              border-color="#222"
-              border-radius="20px"
-              width="400px"
-              height="300px"
-              :glare-color="glareColor"
-              :glare-opacity="glareOpacity"
-              :glare-size="glareSize"
-              :transition-duration="transitionDuration"
-              :play-once="playOnce"
-            >
-              <div class="text-center text-5xl font-black text-[#222] m-0">Hover Me</div>
-            </GlareHover>
-          </div>
-        </div>
+  <TabbedLayout>
+    <template #preview>
+      <div class="demo-container min-h-[400px]">
+        <GlareHover
+          background="#111"
+          border-color="#222"
+          border-radius="20px"
+          width="400px"
+          height="300px"
+          :glare-color="glareColor"
+          :glare-opacity="glareOpacity"
+          :glare-size="glareSize"
+          :transition-duration="transitionDuration"
+          :play-once="playOnce"
+        >
+          <div class="text-center text-5xl font-black text-[#222] m-0">Hover Me</div>
+        </GlareHover>
+      </div>
 
-        <Customize>
-          <PreviewColor title="Glare Color" v-model="glareColor" />
+      <Customize>
+        <PreviewColor title="Glare Color" v-model="glareColor" />
 
-          <PreviewSlider title="Glare Opacity" v-model="glareOpacity" :min="0" :max="1" :step="0.1" />
+        <PreviewSlider title="Glare Opacity" v-model="glareOpacity" :min="0" :max="1" :step="0.1" />
 
-          <PreviewSlider title="Glare Size" v-model="glareSize" :min="100" :max="500" :step="25" value-unit="%" />
+        <PreviewSlider title="Glare Size" v-model="glareSize" :min="100" :max="500" :step="25" value-unit="%" />
 
-          <PreviewSlider
-            title="Transition Duration"
-            v-model="transitionDuration"
-            :min="200"
-            :max="2000"
-            :step="50"
-            value-unit="ms"
-          />
+        <PreviewSlider
+          title="Transition Duration"
+          v-model="transitionDuration"
+          :min="200"
+          :max="2000"
+          :step="50"
+          value-unit="ms"
+        />
 
-          <PreviewSwitch title="Play Once" v-model="playOnce" />
-        </Customize>
+        <PreviewSwitch title="Play Once" v-model="playOnce" />
+      </Customize>
 
-        <PropTable :data="propData" />
-      </template>
+      <PropTable :data="propData" />
+    </template>
 
-      <template #code>
-        <CodeExample :code-object="glareHover" />
-      </template>
+    <template #code>
+      <CodeExample :code-object="glareHover" />
+    </template>
 
-      <template #cli>
-        <CliInstallation :command="glareHover.cli" />
-      </template>
-    </TabbedLayout>
-  </div>
+    <template #cli>
+      <CliInstallation :command="glareHover.cli" />
+    </template>
+  </TabbedLayout>
 </template>
 
 <script setup lang="ts">

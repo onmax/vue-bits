@@ -1,57 +1,55 @@
 <template>
-  <div class="count-up-demo">
-    <TabbedLayout>
-      <template #preview>
-        <h2 class="demo-title-extra">Default</h2>
+  <TabbedLayout>
+    <template #preview>
+      <h2 class="demo-title-extra">Default</h2>
 
-        <div class="demo-container relative">
-          <CountUp
-            :key="keyDefault"
-            :from="0"
-            :to="100"
-            separator=","
-            direction="up"
-            :duration="1"
-            class-name="count-up-text"
-          />
+      <div class="demo-container relative">
+        <CountUp
+          :key="keyDefault"
+          :from="0"
+          :to="100"
+          separator=","
+          direction="up"
+          :duration="1"
+          class-name="count-up-text"
+        />
 
-          <RefreshButton @click="forceRerenderDefault" />
-        </div>
+        <RefreshButton @click="forceRerenderDefault" />
+      </div>
 
-        <h2 class="demo-title-extra">Start Programatically</h2>
+      <h2 class="demo-title-extra">Start Programatically</h2>
 
-        <div class="demo-container flex flex-col justify-center items-center relative min-h-[200px]">
-          <button
-            class="bg-[#0b0b0b] cursor-pointer rounded-[10px] border border-[#222] text-white px-4 py-2 mb-4"
-            @click="setStartCounting(true)"
-          >
-            Count to 500!
-          </button>
+      <div class="demo-container flex flex-col justify-center items-center relative min-h-[200px]">
+        <button
+          class="bg-[#0b0b0b] cursor-pointer rounded-[10px] border border-[#222] text-white px-4 py-2 mb-4"
+          @click="setStartCounting(true)"
+        >
+          Count to 500!
+        </button>
 
-          <CountUp
-            :key="keyProgramatically"
-            :from="100"
-            :to="500"
-            :start-when="startCounting"
-            :duration="5"
-            class-name="count-up-text"
-          />
+        <CountUp
+          :key="keyProgramatically"
+          :from="100"
+          :to="500"
+          :start-when="startCounting"
+          :duration="5"
+          class-name="count-up-text"
+        />
 
-          <RefreshButton v-if="startCounting" @click="forceRerenderProgramatically" />
-        </div>
+        <RefreshButton v-if="startCounting" @click="forceRerenderProgramatically" />
+      </div>
 
-        <PropTable :data="propData" />
-      </template>
+      <PropTable :data="propData" />
+    </template>
 
-      <template #code>
-        <CodeExample :code-object="countup" />
-      </template>
+    <template #code>
+      <CodeExample :code-object="countup" />
+    </template>
 
-      <template #cli>
-        <CliInstallation :command="countup.cli" />
-      </template>
-    </TabbedLayout>
-  </div>
+    <template #cli>
+      <CliInstallation :command="countup.cli" />
+    </template>
+  </TabbedLayout>
 </template>
 
 <script setup lang="ts">

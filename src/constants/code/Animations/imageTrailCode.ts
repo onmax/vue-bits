@@ -7,7 +7,6 @@ export const imageTrail: CodeObject = {
   usage: `<template>
   <div :style="{ height: '500px', position: 'relative', overflow: 'hidden'}">
     <ImageTrail
-        :key="key"
         :items="[
             'https://picsum.photos/id/287/300/300',
             'https://picsum.photos/id/1001/300/300',

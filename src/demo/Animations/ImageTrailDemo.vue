@@ -1,11 +1,11 @@
 <template>
   <TabbedLayout>
     <template #preview>
-      <div class="relative p-0 h-[500px] overflow-hidden demo-container">
+      <div class="demo-container h-[500px] overflow-hidden">
         <ImageTrail :key="key" :items="items" :variant="variant" />
 
         <div class="absolute flex flex-col justify-center items-center">
-          <p class="mb-0 font-black text-[#271E37] text-[clamp(2rem,6vw,6rem)]">Hover Me.</p>
+          <p class="mb-0 font-black text-[#333] text-[clamp(2rem,6vw,6rem)]">Hover Me.</p>
           <p class="mt-0 font-black text-[#a6a6a6] text-[18px]">Variant {{ variant }}</p>
         </div>
       </div>
@@ -13,7 +13,7 @@
       <Customize>
         <div class="inline-flex gap-2" role="group">
           <button
-            class="bg-[#271E37] px-3 border border-[#271E37] h-8 font-bold text-white text-xs cursor-not-allowed"
+            class="bg-[#0b0b0b] rounded px-3 border border-[#333] h-8 font-bold text-white text-xs cursor-not-allowed"
             disabled
           >
             Variant
@@ -23,8 +23,8 @@
             v-for="num in 8"
             :key="num"
             :class="[
-              'text-xs h-8 px-3 border border-[#271E37] font-bold',
-              variant === num ? 'bg-[#27FF64] text-black' : 'bg-[#0D0716]'
+              'text-xs h-8 px-3 border border-[#333] font-bold rounded cursor-pointer hover:bg-[#222] transition-colors',
+              variant === num ? 'bg-[#27FF64] text-black' : 'bg-[#0b0b0b]'
             ]"
             @click="
               () => {

@@ -1,73 +1,71 @@
 <template>
-  <div class="text-trail-demo">
-    <TabbedLayout>
-      <template #preview>
-        <div class="demo-container relative h-[500px] overflow-hidden p-0">
-          <TextTrail
-            :key="`${key}-${animateColor}`"
-            :noise-factor="noiseFactor"
-            :noise-scale="noiseScale / 10000"
-            :font-weight="fontWeight"
-            :alpha-persist-factor="alphaPersistFactor"
-            :animate-color="animateColor"
-            :text-color="animateColor ? undefined : '#ffffff'"
-          />
-        </div>
+  <TabbedLayout>
+    <template #preview>
+      <div class="demo-container h-[500px]">
+        <TextTrail
+          :key="`${key}-${animateColor}`"
+          :noise-factor="noiseFactor"
+          :noise-scale="noiseScale / 10000"
+          :font-weight="fontWeight"
+          :alpha-persist-factor="alphaPersistFactor"
+          :animate-color="animateColor"
+          :text-color="animateColor ? undefined : '#ffffff'"
+        />
+      </div>
 
-        <Customize>
-          <PreviewSlider
-            title="Noise Factor"
-            v-model="noiseFactor"
-            :min="1"
-            :max="25"
-            :step="1"
-            @update:model-value="forceRerender"
-          />
+      <Customize>
+        <PreviewSlider
+          title="Noise Factor"
+          v-model="noiseFactor"
+          :min="1"
+          :max="25"
+          :step="1"
+          @update:model-value="forceRerender"
+        />
 
-          <PreviewSlider
-            title="Noise Scale"
-            v-model="noiseScale"
-            :min="0"
-            :max="100"
-            :step="1"
-            @update:model-value="forceRerender"
-          />
+        <PreviewSlider
+          title="Noise Scale"
+          v-model="noiseScale"
+          :min="0"
+          :max="100"
+          :step="1"
+          @update:model-value="forceRerender"
+        />
 
-          <PreviewSlider
-            title="Font Weight"
-            v-model="fontWeight"
-            :min="100"
-            :max="900"
-            :step="100"
-            @update:model-value="forceRerender"
-          />
+        <PreviewSlider
+          title="Font Weight"
+          v-model="fontWeight"
+          :min="100"
+          :max="900"
+          :step="100"
+          @update:model-value="forceRerender"
+        />
 
-          <PreviewSlider
-            title="Alpha Persist Factor"
-            v-model="alphaPersistFactor"
-            :min="0.5"
-            :max="0.95"
-            :step="0.01"
-            @update:model-value="forceRerender"
-          />
+        <PreviewSlider
+          title="Alpha Persist Factor"
+          v-model="alphaPersistFactor"
+          :min="0.5"
+          :max="0.95"
+          :step="0.01"
+          @update:model-value="forceRerender"
+        />
 
-          <PreviewSwitch title="Animate Color" v-model="animateColor" @update:model-value="forceRerender" />
-        </Customize>
+        <PreviewSwitch title="Animate Color" v-model="animateColor" @update:model-value="forceRerender" />
+      </Customize>
 
-        <PropTable :data="propData" />
+      <PropTable :data="propData" />
 
-        <Dependencies :dependency-list="['three']" />
-      </template>
+      <Dependencies :dependency-list="['three']" />
+    </template>
 
-      <template #code>
-        <CodeExample :code-object="textTrail" />
-      </template>
+    <template #code>
+      <CodeExample :code-object="textTrail" />
+    </template>
 
-      <template #cli>
-        <CliInstallation :command="textTrail.cli" />
-      </template>
-    </TabbedLayout>
-  </div>
+    <template #cli>
+      <CliInstallation :command="textTrail.cli" />
+    </template>
+  </TabbedLayout>
 </template>
 
 <script setup lang="ts">

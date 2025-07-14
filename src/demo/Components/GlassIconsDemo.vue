@@ -1,27 +1,25 @@
 <template>
-  <div class="glass-icons-demo">
-    <TabbedLayout>
-      <template #preview>
-        <div class="demo-container" style="height: 500px; overflow: hidden">
-          <GlassIcons :items="items" class="my-glass-icons" />
-        </div>
+  <TabbedLayout>
+    <template #preview>
+      <div class="demo-container" style="height: 500px; overflow: hidden">
+        <GlassIcons :items="items" class="my-glass-icons" />
+      </div>
 
-        <Customize>
-          <PreviewSwitch title="Colorful" v-model="colorful" />
-        </Customize>
+      <Customize>
+        <PreviewSwitch title="Colorful" v-model="colorful" />
+      </Customize>
 
-        <PropTable :data="propData" />
-      </template>
+      <PropTable :data="propData" />
+    </template>
 
-      <template #code>
-        <CodeExample :code-object="glassIcons" />
-      </template>
+    <template #code>
+      <CodeExample :code-object="glassIcons" />
+    </template>
 
-      <template #cli>
-        <CliInstallation :command="glassIcons.cli" />
-      </template>
-    </TabbedLayout>
-  </div>
+    <template #cli>
+      <CliInstallation :command="glassIcons.cli" />
+    </template>
+  </TabbedLayout>
 </template>
 
 <script setup lang="ts">

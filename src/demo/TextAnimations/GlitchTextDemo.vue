@@ -1,41 +1,39 @@
 <template>
-  <div class="glitchtext-demo">
-    <TabbedLayout>
-      <template #preview>
-        <div class="demo-container relative h-[500px] overflow-hidden">
-          <GlitchText
-            :children="text"
-            :speed="speed"
-            :enable-shadows="enableShadows"
-            :enable-on-hover="enableOnHover"
-            class-name="demo-glitch-text"
-          />
+  <TabbedLayout>
+    <template #preview>
+      <div class="demo-container relative h-[500px] overflow-hidden">
+        <GlitchText
+          :children="text"
+          :speed="speed"
+          :enable-shadows="enableShadows"
+          :enable-on-hover="enableOnHover"
+          class-name="demo-glitch-text"
+        />
+      </div>
+
+      <Customize>
+        <div class="mb-4">
+          <PreviewText title="Text" v-model="text" />
+
+          <PreviewSlider title="Refresh Delay" v-model="speed" :min="0.1" :max="5" :step="0.1" />
+
+          <PreviewSwitch title="Glitch Colors" v-model="enableShadows" />
+
+          <PreviewSwitch title="Glitch On Hover" v-model="enableOnHover" />
         </div>
+      </Customize>
 
-        <Customize>
-          <div class="mb-4">
-            <PreviewText title="Text" v-model="text" />
+      <PropTable :data="propData" />
+    </template>
 
-            <PreviewSlider title="Refresh Delay" v-model="speed" :min="0.1" :max="5" :step="0.1" />
+    <template #code>
+      <CodeExample :code-object="glitchText" />
+    </template>
 
-            <PreviewSwitch title="Glitch Colors" v-model="enableShadows" />
-
-            <PreviewSwitch title="Glitch On Hover" v-model="enableOnHover" />
-          </div>
-        </Customize>
-
-        <PropTable :data="propData" />
-      </template>
-
-      <template #code>
-        <CodeExample :code-object="glitchText" />
-      </template>
-
-      <template #cli>
-        <CliInstallation :command="glitchText.cli" />
-      </template>
-    </TabbedLayout>
-  </div>
+    <template #cli>
+      <CliInstallation :command="glitchText.cli" />
+    </template>
+  </TabbedLayout>
 </template>
 
 <script setup lang="ts">

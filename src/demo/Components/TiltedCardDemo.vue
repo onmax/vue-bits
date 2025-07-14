@@ -1,53 +1,51 @@
 <template>
-  <div class="tilted-card-demo">
-    <TabbedLayout>
-      <template #preview>
-        <div class="demo-container" style="min-height: 500px; position: relative; overflow: hidden">
-          <TiltedCard
-            image-src="https://i.scdn.co/image/ab67616d0000b273d9985092cd88bffd97653b58"
-            alt-text="Kendrick Lamar - GNX Album Cover"
-            caption-text="Kendrick Lamar - GNX"
-            container-height="300px"
-            container-width="300px"
-            image-height="300px"
-            image-width="300px"
-            :rotate-amplitude="rotateAmplitude"
-            :scale-on-hover="scaleOnHover"
-            :show-mobile-warning="false"
-            :show-tooltip="showTooltip"
-            :display-overlay-content="displayOverlayContent"
-            :overlay-content="displayOverlayContent"
-          >
-            <template #overlay>
-              <p class="tilted-card-demo-text">Kendrick Lamar - GNX</p>
-            </template>
-          </TiltedCard>
-        </div>
+  <TabbedLayout>
+    <template #preview>
+      <div class="demo-container" style="min-height: 500px; position: relative; overflow: hidden">
+        <TiltedCard
+          image-src="https://i.scdn.co/image/ab67616d0000b273d9985092cd88bffd97653b58"
+          alt-text="Kendrick Lamar - GNX Album Cover"
+          caption-text="Kendrick Lamar - GNX"
+          container-height="300px"
+          container-width="300px"
+          image-height="300px"
+          image-width="300px"
+          :rotate-amplitude="rotateAmplitude"
+          :scale-on-hover="scaleOnHover"
+          :show-mobile-warning="false"
+          :show-tooltip="showTooltip"
+          :display-overlay-content="displayOverlayContent"
+          :overlay-content="displayOverlayContent"
+        >
+          <template #overlay>
+            <p class="tilted-card-demo-text">Kendrick Lamar - GNX</p>
+          </template>
+        </TiltedCard>
+      </div>
 
-        <Customize>
-          <PreviewSlider title="Rotate Amplitude" v-model="rotateAmplitude" :min="0" :max="30" :step="1" />
+      <Customize>
+        <PreviewSlider title="Rotate Amplitude" v-model="rotateAmplitude" :min="0" :max="30" :step="1" />
 
-          <PreviewSlider title="Scale on Hover" v-model="scaleOnHover" :min="1" :max="1.5" :step="0.05" />
+        <PreviewSlider title="Scale on Hover" v-model="scaleOnHover" :min="1" :max="1.5" :step="0.05" />
 
-          <PreviewSwitch title="Show Tooltip" v-model="showTooltip" />
+        <PreviewSwitch title="Show Tooltip" v-model="showTooltip" />
 
-          <PreviewSwitch title="Show Overlay Content" v-model="displayOverlayContent" />
-        </Customize>
+        <PreviewSwitch title="Show Overlay Content" v-model="displayOverlayContent" />
+      </Customize>
 
-        <PropTable :data="propData" />
+      <PropTable :data="propData" />
 
-        <Dependencies :dependency-list="['motion-v']" />
-      </template>
+      <Dependencies :dependency-list="['motion-v']" />
+    </template>
 
-      <template #code>
-        <CodeExample :code-object="tiltedCard" />
-      </template>
+    <template #code>
+      <CodeExample :code-object="tiltedCard" />
+    </template>
 
-      <template #cli>
-        <CliInstallation :command="tiltedCard.cli" />
-      </template>
-    </TabbedLayout>
-  </div>
+    <template #cli>
+      <CliInstallation :command="tiltedCard.cli" />
+    </template>
+  </TabbedLayout>
 </template>
 
 <script setup lang="ts">

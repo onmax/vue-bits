@@ -1,72 +1,70 @@
 <template>
-  <div class="split-text-demo">
-    <TabbedLayout>
-      <template #preview>
-        <div class="demo-container">
-          <RefreshButton @refresh="forceRerender" />
+  <TabbedLayout>
+    <template #preview>
+      <div class="demo-container">
+        <RefreshButton @refresh="forceRerender" />
 
-          <SplitText
-            :key="rerenderKey"
-            text="Hello, Vue!"
-            :delay="delay"
-            :duration="duration"
-            :ease="ease"
-            :split-type="splitType"
-            :threshold="threshold"
-            class="split-text-demo-text"
-            @animation-complete="
-              () => {
-                showCallback && showToast();
-              }
-            "
-          />
-        </div>
+        <SplitText
+          :key="rerenderKey"
+          text="Hello, Vue!"
+          :delay="delay"
+          :duration="duration"
+          :ease="ease"
+          :split-type="splitType"
+          :threshold="threshold"
+          class="split-text-demo"
+          @animation-complete="
+            () => {
+              showCallback && showToast();
+            }
+          "
+        />
+      </div>
 
-        <Customize>
-          <PreviewSwitch title="Show Completion Toast" v-model="showCallback" @update:model-value="forceRerender" />
+      <Customize>
+        <PreviewSwitch title="Show Completion Toast" v-model="showCallback" @update:model-value="forceRerender" />
 
-          <PreviewSlider
-            title="Stagger Delay (ms)"
-            v-model="delay"
-            :min="10"
-            :max="500"
-            :step="10"
-            @update:model-value="forceRerender"
-          />
+        <PreviewSlider
+          title="Stagger Delay (ms)"
+          v-model="delay"
+          :min="10"
+          :max="500"
+          :step="10"
+          @update:model-value="forceRerender"
+        />
 
-          <PreviewSlider
-            title="Duration (s)"
-            v-model="duration"
-            :min="0.1"
-            :max="2"
-            :step="0.1"
-            @update:model-value="forceRerender"
-          />
+        <PreviewSlider
+          title="Duration (s)"
+          v-model="duration"
+          :min="0.1"
+          :max="3"
+          :step="0.1"
+          @update:model-value="forceRerender"
+        />
 
-          <PreviewSlider
-            title="Threshold"
-            v-model="threshold"
-            :min="0.1"
-            :max="1"
-            :step="0.1"
-            @update:model-value="forceRerender"
-          />
-        </Customize>
+        <PreviewSlider
+          title="Threshold"
+          v-model="threshold"
+          :min="0.1"
+          :max="1"
+          :step="0.1"
+          @update:model-value="forceRerender"
+        />
+      </Customize>
 
-        <PropTable :data="propData" />
+      <PropTable :data="propData" />
 
-        <Dependencies :dependency-list="['gsap']" />
-      </template>
+      <Dependencies :dependency-list="['gsap']" />
+    </template>
 
-      <template #code>
-        <CodeExample :code-object="splitText" />
-      </template>
+    <template #code>
+      <CodeExample :code-object="splitText" />
+    </template>
 
-      <template #cli>
-        <CliInstallation :command="splitText.cli" />
-      </template>
-    </TabbedLayout>
-  </div>
+    <template #cli>
+      <CliInstallation :command="splitText.cli" />
+    </template>
+  </TabbedLayout>
 </template>
 
 <script setup lang="ts">
@@ -86,7 +84,7 @@ import { useToast } from 'primevue/usetoast';
 import { useForceRerender } from '@/composables/useForceRerender';
 
 const delay = ref(10);
-const duration = ref(2);
+const duration = ref(3);
 const ease = ref('elastic.out(1, 0.3)');
 const splitType = ref<'chars' | 'words' | 'lines' | 'words, chars'>('chars');
 const threshold = ref(0.1);

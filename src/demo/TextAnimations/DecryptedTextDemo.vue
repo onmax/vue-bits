@@ -1,119 +1,117 @@
 <template>
-  <div class="decrypted-text-demo">
-    <TabbedLayout>
-      <template #preview>
-        <div class="demo-container relative py-6 overflow-hidden">
-          <RefreshButton @click="forceRerender" />
+  <TabbedLayout>
+    <template #preview>
+      <div class="demo-container relative py-6 overflow-hidden">
+        <RefreshButton @click="forceRerender" />
 
-          <div :key="key" class="pl-6 m-8 w-full flex flex-col justify-start items-start">
-            <DecryptedText
-              :speed="speed"
-              text="Ahoy, matey!"
-              :max-iterations="maxIterations"
-              :sequential="sequential"
-              :reveal-direction="revealDirection"
-              parent-class-name="decrypted-text"
-              :use-original-chars-only="useOriginalCharsOnly"
-              :animate-on="animateOn"
-            />
+        <div :key="key" class="pl-6 m-8 w-full flex flex-col justify-start items-start">
+          <DecryptedText
+            :speed="speed"
+            text="Ahoy, matey!"
+            :max-iterations="maxIterations"
+            :sequential="sequential"
+            :reveal-direction="revealDirection"
+            parent-class-name="decrypted-text"
+            :use-original-chars-only="useOriginalCharsOnly"
+            :animate-on="animateOn"
+          />
 
-            <DecryptedText
-              :speed="speed"
-              text="Set yer eyes on this"
-              :max-iterations="maxIterations"
-              :sequential="sequential"
-              :reveal-direction="revealDirection"
-              parent-class-name="decrypted-text"
-              :use-original-chars-only="useOriginalCharsOnly"
-              :animate-on="animateOn"
-            />
+          <DecryptedText
+            :speed="speed"
+            text="Set yer eyes on this"
+            :max-iterations="maxIterations"
+            :sequential="sequential"
+            :reveal-direction="revealDirection"
+            parent-class-name="decrypted-text"
+            :use-original-chars-only="useOriginalCharsOnly"
+            :animate-on="animateOn"
+          />
 
-            <DecryptedText
-              :speed="speed"
-              text="And try tinkerin' round'"
-              :max-iterations="maxIterations"
-              :sequential="sequential"
-              :reveal-direction="revealDirection"
-              parent-class-name="decrypted-text"
-              :use-original-chars-only="useOriginalCharsOnly"
-              :animate-on="animateOn"
-            />
+          <DecryptedText
+            :speed="speed"
+            text="And try tinkerin' round'"
+            :max-iterations="maxIterations"
+            :sequential="sequential"
+            :reveal-direction="revealDirection"
+            parent-class-name="decrypted-text"
+            :use-original-chars-only="useOriginalCharsOnly"
+            :animate-on="animateOn"
+          />
 
-            <DecryptedText
-              :speed="speed"
-              text="with these here props, arr!"
-              :max-iterations="maxIterations"
-              :sequential="sequential"
-              :reveal-direction="revealDirection"
-              parent-class-name="decrypted-text"
-              :use-original-chars-only="useOriginalCharsOnly"
-              :animate-on="animateOn"
-              @animation-complete="() => console.log('✅ Animation Finished!')"
-            />
-          </div>
+          <DecryptedText
+            :speed="speed"
+            text="with these here props, arr!"
+            :max-iterations="maxIterations"
+            :sequential="sequential"
+            :reveal-direction="revealDirection"
+            parent-class-name="decrypted-text"
+            :use-original-chars-only="useOriginalCharsOnly"
+            :animate-on="animateOn"
+            @animation-complete="() => console.log('✅ Animation Finished!')"
+          />
         </div>
+      </div>
 
-        <Customize>
-          <PreviewSwitch title="Sequential" v-model="sequential" @update:model-value="forceRerender" />
+      <Customize>
+        <PreviewSwitch title="Sequential" v-model="sequential" @update:model-value="forceRerender" />
 
-          <PreviewSwitch title="Original Chars" v-model="useOriginalCharsOnly" @update:model-value="forceRerender" />
+        <PreviewSwitch title="Original Chars" v-model="useOriginalCharsOnly" @update:model-value="forceRerender" />
 
-          <PreviewSlider
-            title="Speed"
-            v-model="speed"
-            :min="10"
-            :max="200"
-            :step="10"
-            value-unit="ms"
-            @update:model-value="forceRerender"
-          />
+        <PreviewSlider
+          title="Speed"
+          v-model="speed"
+          :min="10"
+          :max="200"
+          :step="10"
+          value-unit="ms"
+          @update:model-value="forceRerender"
+        />
 
-          <PreviewSlider
-            title="Iterations"
-            v-model="maxIterations"
-            :min="1"
-            :max="50"
-            :step="1"
-            @update:model-value="forceRerender"
-          />
+        <PreviewSlider
+          title="Iterations"
+          v-model="maxIterations"
+          :min="1"
+          :max="50"
+          :step="1"
+          @update:model-value="forceRerender"
+        />
 
-          <PreviewSelect
-            title="Animation Trigger"
-            v-model="animateOn"
-            :options="animateOptions"
-            @update:model-value="
-              val => {
-                animateOn = val as 'view' | 'hover';
-                forceRerender();
-              }
-            "
-          />
+        <PreviewSelect
+          title="Animation Trigger"
+          v-model="animateOn"
+          :options="animateOptions"
+          @update:model-value="
+            val => {
+              animateOn = val as 'view' | 'hover';
+              forceRerender();
+            }
+          "
+        />
 
-          <PreviewSelect
-            title="Animation Direction"
-            v-model="revealDirection"
-            :options="directionOptions"
-            @update:model-value="
-              val => {
-                revealDirection = val as 'start' | 'end' | 'center';
-                forceRerender();
-              }
-            "
-          />
-        </Customize>
+        <PreviewSelect
+          title="Animation Direction"
+          v-model="revealDirection"
+          :options="directionOptions"
+          @update:model-value="
+            val => {
+              revealDirection = val as 'start' | 'end' | 'center';
+              forceRerender();
+            }
+          "
+        />
+      </Customize>
 
-        <PropTable :data="propData" />
-      </template>
+      <PropTable :data="propData" />
+    </template>
 
-      <template #code>
-        <CodeExample :code-object="decryptedText" />
-      </template>
+    <template #code>
+      <CodeExample :code-object="decryptedText" />
+    </template>
 
-      <template #cli>
-        <CliInstallation :command="decryptedText.cli" />
-      </template>
-    </TabbedLayout>
-  </div>
+    <template #cli>
+      <CliInstallation :command="decryptedText.cli" />
+    </template>
+  </TabbedLayout>
 </template>
 
 <script setup lang="ts">

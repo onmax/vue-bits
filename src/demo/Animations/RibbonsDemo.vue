@@ -1,61 +1,59 @@
 <template>
-  <div class="ribbons-demo">
-    <TabbedLayout>
-      <template #preview>
-        <div class="demo-container" style="height: 500px; position: relative">
-          <div class="hover-text">Hover Me.</div>
-          <Ribbons
-            :base-thickness="baseThickness"
-            :colors="colors"
-            :speed-multiplier="speedMultiplier"
-            :max-age="maxAge"
-            :enable-fade="enableFade"
-            :enable-shader-effect="enableWaves"
-          />
+  <TabbedLayout>
+    <template #preview>
+      <div class="demo-container">
+        <div class="hover-text">Hover Me.</div>
+        <Ribbons
+          :base-thickness="baseThickness"
+          :colors="colors"
+          :speed-multiplier="speedMultiplier"
+          :max-age="maxAge"
+          :enable-fade="enableFade"
+          :enable-shader-effect="enableWaves"
+        />
+      </div>
+
+      <Customize>
+        <div class="count-controls">
+          <span class="count-label">Count</span>
+          <button @click="removeColor" :disabled="colors.length <= 1" class="count-button">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+          </button>
+          <span class="count-value">{{ colors.length }}</span>
+          <button @click="addColor" :disabled="colors.length >= 10" class="count-button">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+          </button>
         </div>
 
-        <Customize>
-          <div class="count-controls">
-            <span class="count-label">Count</span>
-            <button @click="removeColor" :disabled="colors.length <= 1" class="count-button">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-              </svg>
-            </button>
-            <span class="count-value">{{ colors.length }}</span>
-            <button @click="addColor" :disabled="colors.length >= 10" class="count-button">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <line x1="12" y1="5" x2="12" y2="19"></line>
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-              </svg>
-            </button>
-          </div>
+        <PreviewSlider title="Thickness" v-model="baseThickness" :min="1" :max="60" :step="1" />
 
-          <PreviewSlider title="Thickness" v-model="baseThickness" :min="1" :max="60" :step="1" />
+        <PreviewSlider title="Speed" v-model="speedMultiplier" :min="0.3" :max="0.7" :step="0.01" />
 
-          <PreviewSlider title="Speed" v-model="speedMultiplier" :min="0.3" :max="0.7" :step="0.01" />
+        <PreviewSlider title="Max Age" v-model="maxAge" :min="300" :max="1000" :step="100" />
 
-          <PreviewSlider title="Max Age" v-model="maxAge" :min="300" :max="1000" :step="100" />
+        <PreviewSwitch title="Enable Fade" v-model="enableFade" />
 
-          <PreviewSwitch title="Enable Fade" v-model="enableFade" />
+        <PreviewSwitch title="Enable Waves" v-model="enableWaves" />
+      </Customize>
 
-          <PreviewSwitch title="Enable Waves" v-model="enableWaves" />
-        </Customize>
+      <PropTable :data="propData" />
 
-        <PropTable :data="propData" />
+      <Dependencies :dependency-list="['ogl']" />
+    </template>
 
-        <Dependencies :dependency-list="['ogl']" />
-      </template>
+    <template #code>
+      <CodeExample :code-object="ribbons" />
+    </template>
 
-      <template #code>
-        <CodeExample :code-object="ribbons" />
-      </template>
-
-      <template #cli>
-        <CliInstallation :command="ribbons.cli" />
-      </template>
-    </TabbedLayout>
-  </div>
+    <template #cli>
+      <CliInstallation :command="ribbons.cli" />
+    </template>
+  </TabbedLayout>
 </template>
 
 <script setup lang="ts">
@@ -180,6 +178,8 @@ const propData = [
 }
 
 .demo-container {
+  position: relative;
+  height: 500px;
   padding: 0;
   overflow: hidden;
 }

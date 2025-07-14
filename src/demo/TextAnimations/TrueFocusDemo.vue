@@ -1,65 +1,63 @@
 <template>
-  <div class="truefocus-demo">
-    <TabbedLayout>
-      <template #preview>
-        <div class="relative py-6 overflow-hidden demo-container" style="min-height: 200px">
-          <div :key="key" class="flex flex-col justify-center items-center m-8 pl-6 w-full">
-            <TrueFocus v-bind="config" />
-          </div>
+  <TabbedLayout>
+    <template #preview>
+      <div class="demo-container">
+        <div :key="key" class="flex flex-col justify-center items-center m-8 pl-6 w-full">
+          <TrueFocus :key="key" v-bind="config" />
         </div>
+      </div>
 
-        <Customize>
-          <PreviewColor title="Corners Color" v-model="borderColor" @update:model-value="forceRerender" />
+      <Customize>
+        <PreviewColor title="Corners Color" v-model="borderColor" @update:model-value="forceRerender" />
 
-          <PreviewSwitch title="Hover Mode" v-model="manualMode" @update:model-value="forceRerender" />
+        <PreviewSwitch title="Hover Mode" v-model="manualMode" @update:model-value="forceRerender" />
 
-          <PreviewSlider
-            title="Blur Amount"
-            v-model="blurAmount"
-            :min="0"
-            :max="15"
-            :step="0.5"
-            value-unit="px"
-            @update:model-value="forceRerender"
-          />
+        <PreviewSlider
+          title="Blur Amount"
+          v-model="blurAmount"
+          :min="0"
+          :max="15"
+          :step="0.5"
+          value-unit="px"
+          @update:model-value="forceRerender"
+        />
 
-          <PreviewSlider
-            title="Animation Duration"
-            v-model="animationDuration"
-            :min="0.1"
-            :max="3"
-            :step="0.1"
-            value-unit="s"
-            :disabled="!manualMode"
-            @update:model-value="forceRerender"
-          />
+        <PreviewSlider
+          title="Animation Duration"
+          v-model="animationDuration"
+          :min="0.1"
+          :max="3"
+          :step="0.1"
+          value-unit="s"
+          :disabled="!manualMode"
+          @update:model-value="forceRerender"
+        />
 
-          <PreviewSlider
-            title="Pause Between Animations"
-            v-model="pauseBetweenAnimations"
-            :min="0"
-            :max="5"
-            :step="0.5"
-            value-unit="s"
-            :disabled="manualMode"
-            @update:model-value="forceRerender"
-          />
-        </Customize>
+        <PreviewSlider
+          title="Pause Between Animations"
+          v-model="pauseBetweenAnimations"
+          :min="0"
+          :max="5"
+          :step="0.5"
+          value-unit="s"
+          :disabled="manualMode"
+          @update:model-value="forceRerender"
+        />
+      </Customize>
 
-        <PropTable :data="propData" />
+      <PropTable :data="propData" />
 
-        <Dependencies :dependency-list="['motion-v']" />
-      </template>
+      <Dependencies :dependency-list="['motion-v']" />
+    </template>
 
-      <template #code>
-        <CodeExample :code-object="trueFocus" />
-      </template>
+    <template #code>
+      <CodeExample :code-object="trueFocus" />
+    </template>
 
-      <template #cli>
-        <CliInstallation :command="trueFocus.cli" />
-      </template>
-    </TabbedLayout>
-  </div>
+    <template #cli>
+      <CliInstallation :command="trueFocus.cli" />
+    </template>
+  </TabbedLayout>
 </template>
 
 <script setup lang="ts">

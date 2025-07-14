@@ -1,75 +1,73 @@
 <template>
-  <div class="fuzzy-text-demo">
-    <TabbedLayout>
-      <template #preview>
-        <div class="demo-container relative h-[500px] overflow-hidden">
-          <div class="flex flex-col items-center justify-center h-full">
-            <FuzzyText
-              :key="`main-${rerenderKey}`"
-              text="404"
-              :base-intensity="baseIntensity"
-              :hover-intensity="hoverIntensity"
-              :enable-hover="enableHover"
-              :font-size="140"
-            />
+  <TabbedLayout>
+    <template #preview>
+      <div class="demo-container relative h-[500px] overflow-hidden">
+        <div class="flex flex-col items-center justify-center h-full">
+          <FuzzyText
+            :key="`main-${rerenderKey}`"
+            text="404"
+            :base-intensity="baseIntensity"
+            :hover-intensity="hoverIntensity"
+            :enable-hover="enableHover"
+            :font-size="140"
+          />
 
-            <div class="my-1" />
+          <div class="my-1" />
 
-            <FuzzyText
-              :key="`sub-${rerenderKey}`"
-              text="not found"
-              :base-intensity="baseIntensity"
-              :hover-intensity="hoverIntensity"
-              :enable-hover="enableHover"
-              :font-size="70"
-              font-family="Gochi Hand"
-            />
-          </div>
+          <FuzzyText
+            :key="`sub-${rerenderKey}`"
+            text="not found"
+            :base-intensity="baseIntensity"
+            :hover-intensity="hoverIntensity"
+            :enable-hover="enableHover"
+            :font-size="70"
+            font-family="Gochi Hand"
+          />
         </div>
+      </div>
 
-        <Customize>
-          <PreviewSlider
-            title="Base Intensity"
-            v-model="baseIntensity"
-            :min="0"
-            :max="1"
-            :step="0.01"
-            @update:model-value="forceRerender"
-          />
+      <Customize>
+        <PreviewSlider
+          title="Base Intensity"
+          v-model="baseIntensity"
+          :min="0"
+          :max="1"
+          :step="0.01"
+          @update:model-value="forceRerender"
+        />
 
-          <PreviewSlider
-            title="Hover Intensity"
-            v-model="hoverIntensity"
-            :min="0"
-            :max="2"
-            :step="0.01"
-            @update:model-value="forceRerender"
-          />
+        <PreviewSlider
+          title="Hover Intensity"
+          v-model="hoverIntensity"
+          :min="0"
+          :max="2"
+          :step="0.01"
+          @update:model-value="forceRerender"
+        />
 
-          <PreviewSwitch
-            title="Enable Hover"
-            :model-value="enableHover"
-            @update:model-value="
-              (val: boolean) => {
-                enableHover = val;
-                forceRerender();
-              }
-            "
-          />
-        </Customize>
+        <PreviewSwitch
+          title="Enable Hover"
+          :model-value="enableHover"
+          @update:model-value="
+            (val: boolean) => {
+              enableHover = val;
+              forceRerender();
+            }
+          "
+        />
+      </Customize>
 
-        <PropTable :data="propData" />
-      </template>
+      <PropTable :data="propData" />
+    </template>
 
-      <template #code>
-        <CodeExample :code-object="fuzzyText" />
-      </template>
+    <template #code>
+      <CodeExample :code-object="fuzzyText" />
+    </template>
 
-      <template #cli>
-        <CliInstallation :command="fuzzyText.cli" />
-      </template>
-    </TabbedLayout>
-  </div>
+    <template #cli>
+      <CliInstallation :command="fuzzyText.cli" />
+    </template>
+  </TabbedLayout>
 </template>
 
 <script setup lang="ts">

@@ -1,67 +1,65 @@
 <template>
-  <div class="magnet-demo">
-    <TabbedLayout>
-      <template #preview>
-        <h2 class="demo-title-extra">Container</h2>
+  <TabbedLayout>
+    <template #preview>
+      <h2 class="demo-title-extra">Container</h2>
 
-        <div class="demo-container">
-          <Magnet :key="rerenderKey" :padding="padding" :disabled="disabled" :magnetStrength="magnetStrength">
-            <div class="magnet-container">Hover Me!</div>
-          </Magnet>
-        </div>
+      <div class="demo-container">
+        <Magnet :key="rerenderKey" :padding="padding" :disabled="disabled" :magnetStrength="magnetStrength">
+          <div class="magnet-container">Hover Me!</div>
+        </Magnet>
+      </div>
 
-        <h2 class="demo-title-extra">Link</h2>
+      <h2 class="demo-title-extra">Link</h2>
 
-        <div class="demo-container">
-          <Magnet
-            :key="rerenderKey + 1"
-            :padding="Math.floor(padding / 2)"
-            :disabled="disabled"
-            :magnetStrength="magnetStrength"
-          >
-            <a href="https://github.com/DavidHDev/vue-bits" target="_blank" rel="noreferrer" class="magnet-link">
-              Star
-              <span class="accent">Vue Bits</span>
-              on GitHub!
-            </a>
-          </Magnet>
-        </div>
+      <div class="demo-container">
+        <Magnet
+          :key="rerenderKey + 1"
+          :padding="Math.floor(padding / 2)"
+          :disabled="disabled"
+          :magnetStrength="magnetStrength"
+        >
+          <a href="https://github.com/DavidHDev/vue-bits" target="_blank" rel="noreferrer" class="magnet-link">
+            Star
+            <span class="accent">Vue Bits</span>
+            on GitHub!
+          </a>
+        </Magnet>
+      </div>
 
-        <Customize>
-          <PreviewSwitch title="Disabled" v-model="disabled" @update:model-value="forceRerender" />
+      <Customize>
+        <PreviewSwitch title="Disabled" v-model="disabled" @update:model-value="forceRerender" />
 
-          <PreviewSlider
-            title="Padding"
-            v-model="padding"
-            :min="0"
-            :max="300"
-            :step="10"
-            value-unit="px"
-            @update:model-value="forceRerender"
-          />
+        <PreviewSlider
+          title="Padding"
+          v-model="padding"
+          :min="0"
+          :max="300"
+          :step="10"
+          value-unit="px"
+          @update:model-value="forceRerender"
+        />
 
-          <PreviewSlider
-            title="Strength"
-            v-model="magnetStrength"
-            :min="1"
-            :max="10"
-            :step="1"
-            @update:model-value="forceRerender"
-          />
-        </Customize>
+        <PreviewSlider
+          title="Strength"
+          v-model="magnetStrength"
+          :min="1"
+          :max="10"
+          :step="1"
+          @update:model-value="forceRerender"
+        />
+      </Customize>
 
-        <PropTable :data="propData" />
-      </template>
+      <PropTable :data="propData" />
+    </template>
 
-      <template #code>
-        <CodeExample :code-object="magnet" />
-      </template>
+    <template #code>
+      <CodeExample :code-object="magnet" />
+    </template>
 
-      <template #cli>
-        <CliInstallation :command="magnet.cli" />
-      </template>
-    </TabbedLayout>
-  </div>
+    <template #cli>
+      <CliInstallation :command="magnet.cli" />
+    </template>
+  </TabbedLayout>
 </template>
 
 <script setup lang="ts">

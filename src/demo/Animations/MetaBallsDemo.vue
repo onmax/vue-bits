@@ -1,7 +1,7 @@
 <template>
   <TabbedLayout>
     <template #preview>
-      <div class="relative h-[500px] overflow-hidden demo-container">
+      <div class="demo-container h-[500px]">
         <MetaBalls
           :color="color"
           :cursorBallColor="color"

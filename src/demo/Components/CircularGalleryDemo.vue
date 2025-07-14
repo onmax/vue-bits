@@ -1,75 +1,73 @@
 <template>
-  <div class="circular-gallery-demo">
-    <TabbedLayout>
-      <template #preview>
-        <div class="demo-container h-[500px] p-0 overflow-hidden">
-          <CircularGallery
-            :key="rerenderKey"
-            :bend="bend"
-            :border-radius="borderRadius"
-            :scroll-speed="scrollSpeed"
-            :scroll-ease="scrollEase"
-            :text-color="textColor"
-            :font="font"
-          />
-        </div>
+  <TabbedLayout>
+    <template #preview>
+      <div class="demo-container h-[500px]">
+        <CircularGallery
+          :key="rerenderKey"
+          :bend="bend"
+          :border-radius="borderRadius"
+          :scroll-speed="scrollSpeed"
+          :scroll-ease="scrollEase"
+          :text-color="textColor"
+          :font="font"
+        />
+      </div>
 
-        <Customize>
-          <PreviewSlider
-            title="Bend Level"
-            v-model="bend"
-            :min="-10"
-            :max="10"
-            :step="1"
-            @update:model-value="forceRerender"
-          />
+      <Customize>
+        <PreviewSlider
+          title="Bend Level"
+          v-model="bend"
+          :min="-10"
+          :max="10"
+          :step="1"
+          @update:model-value="forceRerender"
+        />
 
-          <PreviewSlider
-            title="Border Radius"
-            v-model="borderRadius"
-            :min="0"
-            :max="0.5"
-            :step="0.01"
-            @update:model-value="forceRerender"
-          />
+        <PreviewSlider
+          title="Border Radius"
+          v-model="borderRadius"
+          :min="0"
+          :max="0.5"
+          :step="0.01"
+          @update:model-value="forceRerender"
+        />
 
-          <PreviewSlider
-            title="Scroll Speed"
-            v-model="scrollSpeed"
-            :min="0.5"
-            :max="5"
-            :step="0.1"
-            @update:model-value="forceRerender"
-          />
+        <PreviewSlider
+          title="Scroll Speed"
+          v-model="scrollSpeed"
+          :min="0.5"
+          :max="5"
+          :step="0.1"
+          @update:model-value="forceRerender"
+        />
 
-          <PreviewSlider
-            title="Scroll Ease"
-            v-model="scrollEase"
-            :min="0.01"
-            :max="0.15"
-            :step="0.01"
-            @update:model-value="forceRerender"
-          />
+        <PreviewSlider
+          title="Scroll Ease"
+          v-model="scrollEase"
+          :min="0.01"
+          :max="0.15"
+          :step="0.01"
+          @update:model-value="forceRerender"
+        />
 
-          <PreviewColor title="Text Color" v-model="textColor" @update:model-value="forceRerender" />
+        <PreviewColor title="Text Color" v-model="textColor" @update:model-value="forceRerender" />
 
-          <PreviewSelect title="Font" v-model="font" :options="fontOptions" @update:model-value="forceRerender" />
-        </Customize>
+        <PreviewSelect title="Font" v-model="font" :options="fontOptions" @update:model-value="forceRerender" />
+      </Customize>
 
-        <PropTable :data="propData" />
+      <PropTable :data="propData" />
 
-        <Dependencies :dependency-list="['ogl']" />
-      </template>
+      <Dependencies :dependency-list="['ogl']" />
+    </template>
 
-      <template #code>
-        <CodeExample :code-object="circularGallery" />
-      </template>
+    <template #code>
+      <CodeExample :code-object="circularGallery" />
+    </template>
 
-      <template #cli>
-        <CliInstallation :command="circularGallery.cli" />
-      </template>
-    </TabbedLayout>
-  </div>
+    <template #cli>
+      <CliInstallation :command="circularGallery.cli" />
+    </template>
+  </TabbedLayout>
 </template>
 
 <script setup lang="ts">

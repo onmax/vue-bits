@@ -1,29 +1,27 @@
 <template>
-  <div>
-    <TabbedLayout>
-      <template #preview>
-        <div class="demo-container h-[400px] overflow-hidden">
-          <div class="text-[#27FF64] text-[6rem] font-extrabold text-center opacity-50">Ooh, edgy!</div>
-          <Noise :pattern-alpha="patternAlpha" :mix-blend-mode="mixBlendMode" />
-        </div>
+  <TabbedLayout>
+    <template #preview>
+      <div class="demo-container overflow-hidden h-[400px]">
+        <div class="text-[#27FF64] text-[6rem] font-extrabold text-center opacity-50">Ooh, edgy!</div>
+        <Noise :pattern-alpha="patternAlpha" :mix-blend-mode="mixBlendMode" />
+      </div>
 
-        <Customize>
-          <PreviewSlider title="Noise Alpha" v-model="patternAlpha" :min="0" :max="100" :step="5" />
-          <PreviewSelect title="Mix Blend Mode" v-model="mixBlendMode" :options="blendModeOptions" />
-        </Customize>
+      <Customize>
+        <PreviewSlider title="Noise Alpha" v-model="patternAlpha" :min="0" :max="100" :step="5" />
+        <PreviewSelect title="Mix Blend Mode" v-model="mixBlendMode" :options="blendModeOptions" />
+      </Customize>
 
-        <PropTable :data="propData" />
-      </template>
+      <PropTable :data="propData" />
+    </template>
 
-      <template #code>
-        <CodeExample :code-object="noise" />
-      </template>
+    <template #code>
+      <CodeExample :code-object="noise" />
+    </template>
 
-      <template #cli>
-        <CliInstallation :command="noise.cli" />
-      </template>
-    </TabbedLayout>
-  </div>
+    <template #cli>
+      <CliInstallation :command="noise.cli" />
+    </template>
+  </TabbedLayout>
 </template>
 
 <script setup lang="ts">

@@ -1,80 +1,78 @@
 <template>
-  <div class="fade-content-demo">
-    <TabbedLayout>
-      <template #preview>
-        <div class="demo-container">
-          <RefreshButton @refresh="forceRerender" />
+  <TabbedLayout>
+    <template #preview>
+      <div class="demo-container">
+        <RefreshButton @refresh="forceRerender" />
 
-          <FadeContent
-            :key="rerenderKey"
-            :blur="blur"
-            :duration="duration"
-            :delay="delay"
-            :threshold="threshold"
-            :initial-opacity="initialOpacity"
-            :easing="easing"
-            class="fade-content-demo-content"
-          >
-            <div class="demo-content">
-              <h4>Fade Content</h4>
+        <FadeContent
+          :key="rerenderKey"
+          :blur="blur"
+          :duration="duration"
+          :delay="delay"
+          :threshold="threshold"
+          :initial-opacity="initialOpacity"
+          :easing="easing"
+          class="fade-content-demo-content"
+        >
+          <div class="demo-content">
+            <h4>Fade Content</h4>
 
-              <p>It will fade in when it enters the viewport.</p>
-            </div>
-          </FadeContent>
-        </div>
+            <p>It will fade in when it enters the viewport.</p>
+          </div>
+        </FadeContent>
+      </div>
 
-        <Customize>
-          <PreviewSwitch title="Enable Blur Effect" v-model="blur" @update:model-value="forceRerender" />
+      <Customize>
+        <PreviewSwitch title="Enable Blur Effect" v-model="blur" @update:model-value="forceRerender" />
 
-          <PreviewSlider
-            title="Duration (ms)"
-            v-model="duration"
-            :min="100"
-            :max="3000"
-            :step="100"
-            @update:model-value="forceRerender"
-          />
+        <PreviewSlider
+          title="Duration (ms)"
+          v-model="duration"
+          :min="100"
+          :max="3000"
+          :step="100"
+          @update:model-value="forceRerender"
+        />
 
-          <PreviewSlider
-            title="Delay (ms)"
-            v-model="delay"
-            :min="0"
-            :max="1000"
-            :step="50"
-            @update:model-value="forceRerender"
-          />
+        <PreviewSlider
+          title="Delay (ms)"
+          v-model="delay"
+          :min="0"
+          :max="1000"
+          :step="50"
+          @update:model-value="forceRerender"
+        />
 
-          <PreviewSlider
-            title="Threshold"
-            v-model="threshold"
-            :min="0.1"
-            :max="1"
-            :step="0.1"
-            @update:model-value="forceRerender"
-          />
+        <PreviewSlider
+          title="Threshold"
+          v-model="threshold"
+          :min="0.1"
+          :max="1"
+          :step="0.1"
+          @update:model-value="forceRerender"
+        />
 
-          <PreviewSlider
-            title="Initial Opacity"
-            v-model="initialOpacity"
-            :min="0"
-            :max="1"
-            :step="0.1"
-            @update:model-value="forceRerender"
-          />
-        </Customize>
+        <PreviewSlider
+          title="Initial Opacity"
+          v-model="initialOpacity"
+          :min="0"
+          :max="1"
+          :step="0.1"
+          @update:model-value="forceRerender"
+        />
+      </Customize>
 
-        <PropTable :data="propData" />
-      </template>
+      <PropTable :data="propData" />
+    </template>
 
-      <template #code>
-        <CodeExample :code-object="fadeContent" />
-      </template>
+    <template #code>
+      <CodeExample :code-object="fadeContent" />
+    </template>
 
-      <template #cli>
-        <CliInstallation :command="fadeContent.cli" />
-      </template>
-    </TabbedLayout>
-  </div>
+    <template #cli>
+      <CliInstallation :command="fadeContent.cli" />
+    </template>
+  </TabbedLayout>
 </template>
 
 <script setup lang="ts">

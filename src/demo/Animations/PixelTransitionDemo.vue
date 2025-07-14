@@ -1,74 +1,70 @@
 <template>
-  <div class="pixel-transition-demo">
-    <TabbedLayout>
-      <template #preview>
-        <div
-          class="demo-container flex flex-col items-center justify-center min-h-[400px] max-h-[400px] relative overflow-hidden"
+  <TabbedLayout>
+    <template #preview>
+      <div class="demo-container min-h-[400px]">
+        <PixelTransition
+          :key="key"
+          :grid-size="gridSize"
+          :pixel-color="pixelColor"
+          :animation-step-duration="animationStepDuration"
+          class-name="custom-pixel-card"
         >
-          <PixelTransition
-            :key="key"
-            :grid-size="gridSize"
-            :pixel-color="pixelColor"
-            :animation-step-duration="animationStepDuration"
-            class-name="custom-pixel-card"
-          >
-            <template #firstContent>
-              <img
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg"
-                alt="Default"
-                style="width: 100%; height: 100%; object-fit: cover"
-              />
-            </template>
+          <template #firstContent>
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg"
+              alt="Default"
+              style="width: 100%; height: 100%; object-fit: cover"
+            />
+          </template>
 
-            <template #secondContent>
-              <div style="width: 100%; height: 100%; display: grid; place-items: center; background-color: #111">
-                <p style="font-weight: 900; font-size: 3rem; color: #fff">Meow!</p>
-              </div>
-            </template>
-          </PixelTransition>
+          <template #secondContent>
+            <div style="width: 100%; height: 100%; display: grid; place-items: center; background-color: #111">
+              <p style="font-weight: 900; font-size: 3rem; color: #fff">Meow!</p>
+            </div>
+          </template>
+        </PixelTransition>
 
-          <div class="mt-2 text-[#a6a6a6]">Psst, hover the card!</div>
-        </div>
+        <div class="mt-2 absolute bottom-[2em] text-[#a6a6a6]">Psst, hover the image!</div>
+      </div>
 
-        <Customize>
-          <PreviewSlider
-            title="Grid Size"
-            v-model="gridSize"
-            :min="2"
-            :max="50"
-            :step="1"
-            @update:model-value="forceRerender"
-            width="200"
-          />
+      <Customize>
+        <PreviewSlider
+          title="Grid Size"
+          v-model="gridSize"
+          :min="2"
+          :max="50"
+          :step="1"
+          @update:model-value="forceRerender"
+          width="200"
+        />
 
-          <PreviewSlider
-            title="Animation Duration"
-            v-model="animationStepDuration"
-            :min="0.1"
-            :max="2"
-            :step="0.1"
-            value-unit="s"
-            @update:model-value="forceRerender"
-            width="200"
-          />
+        <PreviewSlider
+          title="Animation Duration"
+          v-model="animationStepDuration"
+          :min="0.1"
+          :max="2"
+          :step="0.1"
+          value-unit="s"
+          @update:model-value="forceRerender"
+          width="200"
+        />
 
-          <PreviewColor title="Pixel Color" v-model="pixelColor" @update:model-value="forceRerender" />
-        </Customize>
+        <PreviewColor title="Pixel Color" v-model="pixelColor" @update:model-value="forceRerender" />
+      </Customize>
 
-        <PropTable :data="propData" />
+      <PropTable :data="propData" />
 
-        <Dependencies :dependency-list="['gsap']" />
-      </template>
+      <Dependencies :dependency-list="['gsap']" />
+    </template>
 
-      <template #code>
-        <CodeExample :code-object="pixelTransition" />
-      </template>
+    <template #code>
+      <CodeExample :code-object="pixelTransition" />
+    </template>
 
-      <template #cli>
-        <CliInstallation :command="pixelTransition.cli" />
-      </template>
-    </TabbedLayout>
-  </div>
+    <template #cli>
+      <CliInstallation :command="pixelTransition.cli" />
+    </template>
+  </TabbedLayout>
 </template>
 
 <script setup lang="ts">

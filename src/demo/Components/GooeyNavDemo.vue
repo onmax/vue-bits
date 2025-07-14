@@ -1,64 +1,62 @@
 <template>
-  <div class="gooey-nav-demo">
-    <TabbedLayout>
-      <template #preview>
-        <div
-          class="demo-container relative h-[500px] overflow-hidden bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 flex items-center justify-center"
-        >
-          <GooeyNav
-            :key="rerenderKey"
-            :items="navItems"
-            :animation-time="500"
-            :particle-count="particleCount"
-            :particle-distances="[90, 0]"
-            :particle-r="particleR"
-            :time-variance="timeVariance"
-            :initial-active-index="0"
-            :colors="[1, 2, 3, 1, 2, 3, 1, 4]"
-          />
-        </div>
+  <TabbedLayout>
+    <template #preview>
+      <div
+        class="demo-container relative h-[500px] overflow-hidden bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 flex items-center justify-center"
+      >
+        <GooeyNav
+          :key="rerenderKey"
+          :items="navItems"
+          :animation-time="500"
+          :particle-count="particleCount"
+          :particle-distances="[90, 0]"
+          :particle-r="particleR"
+          :time-variance="timeVariance"
+          :initial-active-index="0"
+          :colors="[1, 2, 3, 1, 2, 3, 1, 4]"
+        />
+      </div>
 
-        <Customize>
-          <PreviewSlider
-            title="Particle Count"
-            v-model="particleCount"
-            :min="1"
-            :max="50"
-            :step="1"
-            @update:model-value="forceRerender"
-          />
+      <Customize>
+        <PreviewSlider
+          title="Particle Count"
+          v-model="particleCount"
+          :min="1"
+          :max="50"
+          :step="1"
+          @update:model-value="forceRerender"
+        />
 
-          <PreviewSlider
-            title="Animation Variance"
-            v-model="timeVariance"
-            :min="0"
-            :max="2000"
-            :step="100"
-            @update:model-value="forceRerender"
-          />
+        <PreviewSlider
+          title="Animation Variance"
+          v-model="timeVariance"
+          :min="0"
+          :max="2000"
+          :step="100"
+          @update:model-value="forceRerender"
+        />
 
-          <PreviewSlider
-            title="Radius Factor"
-            v-model="particleR"
-            :min="0"
-            :max="1000"
-            :step="100"
-            @update:model-value="forceRerender"
-          />
-        </Customize>
+        <PreviewSlider
+          title="Radius Factor"
+          v-model="particleR"
+          :min="0"
+          :max="1000"
+          :step="100"
+          @update:model-value="forceRerender"
+        />
+      </Customize>
 
-        <PropTable :data="propData" />
-      </template>
+      <PropTable :data="propData" />
+    </template>
 
-      <template #code>
-        <CodeExample :code-object="gooeyNav" />
-      </template>
+    <template #code>
+      <CodeExample :code-object="gooeyNav" />
+    </template>
 
-      <template #cli>
-        <CliInstallation :command="gooeyNav.cli" />
-      </template>
-    </TabbedLayout>
-  </div>
+    <template #cli>
+      <CliInstallation :command="gooeyNav.cli" />
+    </template>
+  </TabbedLayout>
 </template>
 
 <script setup lang="ts">

@@ -1,91 +1,89 @@
 <template>
-  <div class="blur-text-demo">
-    <TabbedLayout>
-      <template #preview>
-        <div class="demo-container relative min-h-[400px] overflow-hidden">
-          <RefreshButton @refresh="forceRerender" />
+  <TabbedLayout>
+    <template #preview>
+      <div class="demo-container relative min-h-[400px] overflow-hidden">
+        <RefreshButton @refresh="forceRerender" />
 
-          <BlurText
-            :key="rerenderKey"
-            text="Isn't this so cool?!"
-            :delay="delay"
-            class-name="text-3xl md:text-6xl font-bold text-center"
-            :animate-by="animateBy"
-            :direction="direction"
-            :threshold="threshold"
-            :root-margin="rootMargin"
-            :step-duration="stepDuration"
-            @animation-complete="
-              () => {
-                showCallback && showToast();
-              }
-            "
-          />
+        <BlurText
+          :key="rerenderKey"
+          text="Isn't this so cool?!"
+          :delay="delay"
+          class-name="blur-text-demo"
+          :animate-by="animateBy"
+          :direction="direction"
+          :threshold="threshold"
+          :root-margin="rootMargin"
+          :step-duration="stepDuration"
+          @animation-complete="
+            () => {
+              showCallback && showToast();
+            }
+          "
+        />
+      </div>
+
+      <Customize>
+        <PreviewSwitch title="Show Completion Toast" v-model="showCallback" @update:model-value="forceRerender" />
+
+        <div class="flex gap-4 flex-wrap">
+          <button
+            class="text-xs bg-[#0b0b0b] rounded-[10px] border border-[#1e3721] hover:bg-[#1e3721] text-white h-8 px-3 transition-colors"
+            @click="toggleAnimateBy"
+          >
+            Animate By:
+            <span class="text-[#a1a1aa]">&nbsp;{{ animateBy }}</span>
+          </button>
+
+          <button
+            class="text-xs bg-[#0b0b0b] rounded-[10px] border border-[#1e3721] hover:bg-[#1e3721] text-white h-8 px-3 transition-colors"
+            @click="toggleDirection"
+          >
+            Direction:
+            <span class="text-[#a1a1aa]">&nbsp;{{ direction }}</span>
+          </button>
         </div>
 
-        <Customize>
-          <PreviewSwitch title="Show Completion Toast" v-model="showCallback" @update:model-value="forceRerender" />
+        <PreviewSlider
+          title="Delay (ms)"
+          v-model="delay"
+          :min="50"
+          :max="500"
+          :step="10"
+          @update:model-value="forceRerender"
+        />
 
-          <div class="flex gap-4 flex-wrap">
-            <button
-              class="text-xs bg-[#0b0b0b] rounded-[10px] border border-[#1e3721] hover:bg-[#1e3721] text-white h-8 px-3 transition-colors"
-              @click="toggleAnimateBy"
-            >
-              Animate By:
-              <span class="text-[#a1a1aa]">&nbsp;{{ animateBy }}</span>
-            </button>
+        <PreviewSlider
+          title="Step Duration (s)"
+          v-model="stepDuration"
+          :min="0.1"
+          :max="1"
+          :step="0.05"
+          @update:model-value="forceRerender"
+        />
 
-            <button
-              class="text-xs bg-[#0b0b0b] rounded-[10px] border border-[#1e3721] hover:bg-[#1e3721] text-white h-8 px-3 transition-colors"
-              @click="toggleDirection"
-            >
-              Direction:
-              <span class="text-[#a1a1aa]">&nbsp;{{ direction }}</span>
-            </button>
-          </div>
+        <PreviewSlider
+          title="Threshold"
+          v-model="threshold"
+          :min="0.1"
+          :max="1"
+          :step="0.1"
+          @update:model-value="forceRerender"
+        />
+      </Customize>
 
-          <PreviewSlider
-            title="Delay (ms)"
-            v-model="delay"
-            :min="50"
-            :max="500"
-            :step="10"
-            @update:model-value="forceRerender"
-          />
+      <PropTable :data="propData" />
 
-          <PreviewSlider
-            title="Step Duration (s)"
-            v-model="stepDuration"
-            :min="0.1"
-            :max="1"
-            :step="0.05"
-            @update:model-value="forceRerender"
-          />
+      <Dependencies :dependency-list="['motion-v']" />
+    </template>
 
-          <PreviewSlider
-            title="Threshold"
-            v-model="threshold"
-            :min="0.1"
-            :max="1"
-            :step="0.1"
-            @update:model-value="forceRerender"
-          />
-        </Customize>
+    <template #code>
+      <CodeExample :code-object="blurText" />
+    </template>
 
-        <PropTable :data="propData" />
-
-        <Dependencies :dependency-list="['motion-v']" />
-      </template>
-
-      <template #code>
-        <CodeExample :code-object="blurText" />
-      </template>
-
-      <template #cli>
-        <CliInstallation :command="blurText.cli" />
-      </template>
-    </TabbedLayout>
-  </div>
+    <template #cli>
+      <CliInstallation :command="blurText.cli" />
+    </template>
+  </TabbedLayout>
 </template>
 
 <script setup lang="ts">

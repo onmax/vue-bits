@@ -1,49 +1,47 @@
 <template>
-  <div class="spotlight-card-demo">
-    <TabbedLayout>
-      <template #preview>
-        <div class="demo-container relative py-10">
-          <SpotlightCard class-name="custom-spotlight-card">
-            <div class="flex h-full flex-col items-start justify-center">
-              <i class="pi pi-star-fill text-4xl mb-3 text-white"></i>
+  <TabbedLayout>
+    <template #preview>
+      <div class="demo-container relative py-10">
+        <SpotlightCard class-name="custom-spotlight-card">
+          <div class="flex h-full flex-col items-start justify-center">
+            <i class="pi pi-star-fill text-4xl mb-3 text-white"></i>
 
-              <h3 class="text-2xl font-semibold tracking-tight mb-1 text-white">Boost Your Experience</h3>
+            <h3 class="text-2xl font-semibold tracking-tight mb-1 text-white">Boost Your Experience</h3>
 
-              <p class="text-sm text-zinc-400">
-                Get exclusive benefits, features & 24/7 support as a permanent club member.
-              </p>
-            </div>
-          </SpotlightCard>
-        </div>
+            <p class="text-sm text-zinc-400">
+              Get exclusive benefits, features & 24/7 support as a permanent club member.
+            </p>
+          </div>
+        </SpotlightCard>
+      </div>
 
-        <h2 class="text-xl font-semibold text-white mb-4 mt-8">Custom Color</h2>
+      <h2 class="text-xl font-semibold text-white mb-4 mt-8">Custom Color</h2>
 
-        <div class="demo-container relative py-10">
-          <SpotlightCard class-name="custom-spotlight-card" spotlight-color="rgba(39, 255, 100, 0.326)">
-            <div class="flex h-full flex-col items-start justify-center">
-              <i class="pi pi-lock text-3xl mb-3 text-white"></i>
+      <div class="demo-container relative py-10">
+        <SpotlightCard class-name="custom-spotlight-card" spotlight-color="rgba(39, 255, 100, 0.326)">
+          <div class="flex h-full flex-col items-start justify-center">
+            <i class="pi pi-lock text-3xl mb-3 text-white"></i>
 
-              <h3 class="text-2xl font-semibold tracking-tight mb-1 text-white">Enhanced Security</h3>
+            <h3 class="text-2xl font-semibold tracking-tight mb-1 text-white">Enhanced Security</h3>
 
-              <p class="text-sm text-zinc-400">
-                Our state of the art software offers peace of mind through strict security measures.
-              </p>
-            </div>
-          </SpotlightCard>
-        </div>
+            <p class="text-sm text-zinc-400">
+              Our state of the art software offers peace of mind through strict security measures.
+            </p>
+          </div>
+        </SpotlightCard>
+      </div>
 
-        <PropTable :data="propData" />
-      </template>
+      <PropTable :data="propData" />
+    </template>
 
-      <template #code>
-        <CodeExample :code-object="spotlightCard" />
-      </template>
+    <template #code>
+      <CodeExample :code-object="spotlightCard" />
+    </template>
 
-      <template #cli>
-        <CliInstallation :command="spotlightCard.cli" />
-      </template>
-    </TabbedLayout>
-  </div>
+    <template #cli>
+      <CliInstallation :command="spotlightCard.cli" />
+    </template>
+  </TabbedLayout>
 </template>
 
 <script setup lang="ts">

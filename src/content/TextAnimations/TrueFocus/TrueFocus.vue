@@ -120,7 +120,7 @@ onUnmounted(() => {
       v-for="(word, index) in words"
       :key="index"
       :ref="el => setWordRef(el as HTMLSpanElement, index)"
-      class="relative font-black text-5xl transition-[filter,color] duration-300 ease-in-out cursor-pointer"
+      class="relative font-black text-7xl transition-[filter,color] duration-300 ease-in-out cursor-pointer"
       :style="{
         filter: index === currentIndex ? 'blur(0px)' : `blur(${blurAmount}px)`,
         '--border-color': borderColor,

@@ -1,3 +1,52 @@
+<template>
+  <TabbedLayout>
+    <template #preview>
+      <div class="demo-container h-[500px]">
+        <ScrambleText
+          :className="'m-[6vw] max-w-[680px] font-mono font-medium text-[clamp(14px,4vw,28px)] text-white'"
+          :radius="radius"
+          :duration="duration"
+          :speed="speed"
+          :scrambleChars="scrambleChars"
+        >
+          Once you hover over me, you will see the effect in action! You can customize the radius, duration, and speed
+          of the scramble effect.
+        </ScrambleText>
+      </div>
+
+      <Customize>
+        <div class="mb-4">
+          <label class="block text-sm font-medium mb-2">Scramble Characters</label>
+          <input
+            v-model="scrambleChars"
+            type="text"
+            placeholder="Enter text..."
+            maxlength="5"
+            class="w-[160px] px-3 py-2 bg-[#0b0b0b] border border-[#333] rounded-md text-white focus:outline-none focus:border-[#666]"
+          />
+        </div>
+
+        <PreviewSlider title="Radius" v-model="radius" :min="10" :max="300" :step="10" />
+
+        <PreviewSlider title="Duration" v-model="duration" :min="0.1" :max="5" :step="0.1" />
+
+        <PreviewSlider title="Speed" v-model="speed" :min="0.1" :max="2" :step="0.1" />
+      </Customize>
+
+      <PropTable :data="propData" />
+      <Dependencies :dependency-list="['gsap']" />
+    </template>
+
+    <template #code>
+      <CodeExample :code-object="scrambleTextCode" />
+    </template>
+
+    <template #cli>
+      <CliInstallation :command="scrambleTextCode.cli" />
+    </template>
+  </TabbedLayout>
+</template>
+
 <script setup lang="ts">
 import { ref } from 'vue';
 import TabbedLayout from '../../components/common/TabbedLayout.vue';
@@ -54,54 +103,3 @@ const propData = [
   }
 ];
 </script>
-
-<template>
-  <div class="scramble-text-demo">
-    <TabbedLayout>
-      <template #preview>
-        <div class="demo-container relative h-[500px] overflow-hidden">
-          <ScrambleText
-            :className="'m-[7vw] max-w-[800px] font-mono font-medium text-[clamp(14px,4vw,32px)] text-white'"
-            :radius="radius"
-            :duration="duration"
-            :speed="speed"
-            :scrambleChars="scrambleChars"
-          >
-            Once you hover over me, you will see the effect in action! You can customize the radius, duration, and speed
-            of the scramble effect.
-          </ScrambleText>
-        </div>
-
-        <Customize>
-          <div class="mb-4">
-            <label class="block text-sm font-medium mb-2">Scramble Characters</label>
-            <input
-              v-model="scrambleChars"
-              type="text"
-              placeholder="Enter text..."
-              maxlength="5"
-              class="w-[160px] px-3 py-2 bg-[#0b0b0b] border border-[#333] rounded-md text-white focus:outline-none focus:border-[#666]"
-            />
-          </div>
-
-          <PreviewSlider title="Radius" v-model="radius" :min="10" :max="300" :step="10" />
-
-          <PreviewSlider title="Duration" v-model="duration" :min="0.1" :max="5" :step="0.1" />
-
-          <PreviewSlider title="Speed" v-model="speed" :min="0.1" :max="2" :step="0.1" />
-        </Customize>
-
-        <PropTable :data="propData" />
-        <Dependencies :dependency-list="['gsap']" />
-      </template>
-
-      <template #code>
-        <CodeExample :code-object="scrambleTextCode" />
-      </template>
-
-      <template #cli>
-        <CliInstallation :command="scrambleTextCode.cli" />
-      </template>
-    </TabbedLayout>
-  </div>
-</template>

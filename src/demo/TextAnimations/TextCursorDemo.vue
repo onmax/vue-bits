@@ -1,58 +1,56 @@
 <template>
-  <div class="text-cursor-demo">
-    <TabbedLayout>
-      <template #preview>
-        <div class="demo-container relative h-[500px] overflow-hidden">
-          <TextCursor
-            :key="key"
-            :text="text"
-            :follow-mouse-direction="followMouseDirection"
-            :random-float="randomFloat"
-          />
+  <TabbedLayout>
+    <template #preview>
+      <div class="demo-container h-[500px]">
+        <TextCursor
+          :key="key"
+          :text="text"
+          :follow-mouse-direction="followMouseDirection"
+          :random-float="randomFloat"
+        />
 
-          <div
-            class="absolute inset-0 flex items-center justify-center pointer-events-none text-[4rem] font-[900] text-[#222] select-none"
-          >
-            Hover Around!
-          </div>
+        <div
+          class="absolute inset-0 flex items-center justify-center pointer-events-none text-[4rem] font-[900] text-[#222] select-none"
+        >
+          Hover Around!
+        </div>
+      </div>
+
+      <Customize>
+        <div class="mb-4">
+          <label class="block text-sm font-medium mb-2">Text</label>
+
+          <input
+            v-model="text"
+            type="text"
+            placeholder="Enter text..."
+            maxlength="10"
+            class="w-[160px] px-3 py-2 bg-[#0b0b0b] border border-[#333] rounded-md text-white focus:outline-none focus:border-[#666]"
+          />
         </div>
 
-        <Customize>
-          <div class="mb-4">
-            <label class="block text-sm font-medium mb-2">Text</label>
+        <PreviewSwitch
+          title="Follow Mouse Direction"
+          v-model="followMouseDirection"
+          @update:model-value="forceRerender"
+        />
 
-            <input
-              v-model="text"
-              type="text"
-              placeholder="Enter text..."
-              maxlength="10"
-              class="w-[160px] px-3 py-2 bg-[#0b0b0b] border border-[#333] rounded-md text-white focus:outline-none focus:border-[#666]"
-            />
-          </div>
+        <PreviewSwitch title="Enable Random Floating" v-model="randomFloat" @update:model-value="forceRerender" />
+      </Customize>
 
-          <PreviewSwitch
-            title="Follow Mouse Direction"
-            v-model="followMouseDirection"
-            @update:model-value="forceRerender"
-          />
+      <PropTable :data="propData" />
 
-          <PreviewSwitch title="Enable Random Floating" v-model="randomFloat" @update:model-value="forceRerender" />
-        </Customize>
+      <Dependencies :dependency-list="['motion-v']" />
+    </template>
 
-        <PropTable :data="propData" />
+    <template #code>
+      <CodeExample :code-object="textCursor" />
+    </template>
 
-        <Dependencies :dependency-list="['motion-v']" />
-      </template>
-
-      <template #code>
-        <CodeExample :code-object="textCursor" />
-      </template>
-
-      <template #cli>
-        <CliInstallation :command="textCursor.cli" />
-      </template>
-    </TabbedLayout>
-  </div>
+    <template #cli>
+      <CliInstallation :command="textCursor.cli" />
+    </template>
+  </TabbedLayout>
 </template>
 
 <script setup lang="ts">

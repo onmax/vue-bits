@@ -133,16 +133,4 @@ const propData = [
 .demo-container {
   min-height: 200px;
 }
-
-.demo-title-extra {
-  font-size: 1.125rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
-  color: #e5e7eb;
-}
-
-.demo-extra-info {
-  color: #a1a1aa;
-  font-size: 0.875rem;
-}
 </style>
