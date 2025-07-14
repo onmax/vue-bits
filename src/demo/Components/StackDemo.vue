@@ -1,8 +1,8 @@
 <template>
-  <div class="spotlight-card-demo">
+  <div>
     <TabbedLayout>
       <template #preview>
-        <div class="demo-container relative py-10">
+        <div class="demo-container">
           <Stack
             :key="rerenderKey"
             :randomRotation="randomRotation"
@@ -121,10 +121,3 @@ const propData = [
   }
 ];
 </script>
-
-<style>
-.custom-spotlight-card {
-  min-height: 200px;
-  max-width: 400px;
-}
-</style>
