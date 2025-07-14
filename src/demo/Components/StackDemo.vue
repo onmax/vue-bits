@@ -1,57 +1,55 @@
 <template>
-  <div>
-    <TabbedLayout>
-      <template #preview>
-        <div class="demo-container">
-          <Stack
-            :key="rerenderKey"
-            :randomRotation="randomRotation"
-            :sensitivity="sensitivity"
-            :sendToBackOnClick="false"
-            :cardDimensions="cardDimensions"
-            :cardsData="images"
-          ></Stack>
-        </div>
+  <TabbedLayout>
+    <template #preview>
+      <div class="demo-container">
+        <Stack
+          :key="rerenderKey"
+          :randomRotation="randomRotation"
+          :sensitivity="sensitivity"
+          :sendToBackOnClick="false"
+          :cardDimensions="cardDimensions"
+          :cardsData="images"
+        ></Stack>
+      </div>
 
-        <Customize>
-          <PreviewSwitch title="Random Rotation" v-model="randomRotation" @update:model-value="forceRerender" />
-          <PreviewSlider
-            title="Sensitivity"
-            v-model="sensitivity"
-            :min="10"
-            :max="300"
-            :step="10"
-            @update:model-value="forceRerender"
-          />
-          <PreviewSlider
-            title="Card Width"
-            v-model="cardDimensions.width"
-            :min="10"
-            :max="300"
-            :step="10"
-            @update:model-value="forceRerender"
-          />
-          <PreviewSlider
-            title="Card Height"
-            v-model="cardDimensions.height"
-            :min="10"
-            :max="300"
-            :step="10"
-            @update:model-value="forceRerender"
-          />
-        </Customize>
-        <PropTable :data="propData" />
-      </template>
+      <Customize>
+        <PreviewSwitch title="Random Rotation" v-model="randomRotation" @update:model-value="forceRerender" />
+        <PreviewSlider
+          title="Sensitivity"
+          v-model="sensitivity"
+          :min="10"
+          :max="300"
+          :step="10"
+          @update:model-value="forceRerender"
+        />
+        <PreviewSlider
+          title="Card Width"
+          v-model="cardDimensions.width"
+          :min="10"
+          :max="300"
+          :step="10"
+          @update:model-value="forceRerender"
+        />
+        <PreviewSlider
+          title="Card Height"
+          v-model="cardDimensions.height"
+          :min="10"
+          :max="300"
+          :step="10"
+          @update:model-value="forceRerender"
+        />
+      </Customize>
+      <PropTable :data="propData" />
+    </template>
 
-      <template #code>
-        <CodeExample :code-object="stack" />
-      </template>
+    <template #code>
+      <CodeExample :code-object="stack" />
+    </template>
 
-      <template #cli>
-        <CliInstallation :command="stack.cli" />
-      </template>
-    </TabbedLayout>
-  </div>
+    <template #cli>
+      <CliInstallation :command="stack.cli" />
+    </template>
+  </TabbedLayout>
 </template>
 
 <script setup lang="ts">
