@@ -80,6 +80,7 @@ export const CATEGORIES = [
       'Hyperspeed',
       'Silk',
       'Lightning',
+      'Balatro',
       'Letter Glitch',
       'Particles',
       'Shape Blur',
