@@ -67,7 +67,8 @@ export const CATEGORIES = [
       'Glass Icons',
       'Decay Card',
       'Flowing Menu',
-      'Elastic Slider'
+      'Elastic Slider',
+      'Stack'
     ]
   },
   {
