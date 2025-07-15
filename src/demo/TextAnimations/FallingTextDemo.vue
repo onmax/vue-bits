@@ -18,12 +18,7 @@
       </div>
 
       <Customize>
-        <PreviewSelect
-          title="Animation Trigger"
-          v-model="trigger"
-          :options="triggerOptions"
-          @update:model-value="forceRerender"
-        />
+        <PreviewSelect title="Animation Trigger" v-model="trigger" :options="triggerOptions" />
 
         <PreviewSlider
           title="Gravity"

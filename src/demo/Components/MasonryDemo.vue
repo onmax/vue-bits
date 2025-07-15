@@ -37,7 +37,6 @@
             { label: 'Center', value: 'center' },
             { label: 'Random', value: 'random' }
           ]"
-          @update:model-value="forceRerender"
         />
 
         <PreviewSlider

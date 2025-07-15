@@ -76,29 +76,9 @@
           @update:model-value="forceRerender"
         />
 
-        <PreviewSelect
-          title="Animation Trigger"
-          v-model="animateOn"
-          :options="animateOptions"
-          @update:model-value="
-            val => {
-              animateOn = val as 'view' | 'hover';
-              forceRerender();
-            }
-          "
-        />
+        <PreviewSelect title="Animation Trigger" v-model="animateOn" :options="animateOptions" />
 
-        <PreviewSelect
-          title="Animation Direction"
-          v-model="revealDirection"
-          :options="directionOptions"
-          @update:model-value="
-            val => {
-              revealDirection = val as 'start' | 'end' | 'center';
-              forceRerender();
-            }
-          "
-        />
+        <PreviewSelect title="Animation Direction" v-model="revealDirection" :options="directionOptions" />
       </Customize>
 
       <PropTable :data="propData" />
