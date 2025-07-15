@@ -399,11 +399,11 @@ div:has(> .props-table) {
   background-color: #0b0b0b;
   border: 1px solid #333;
   white-space: nowrap;
-  color: #27FF64;
+  color: #27ff64;
   border-radius: 50px;
   font-size: 0.8rem;
   font-weight: 400;
-  padding: .6em 1.2em;
+  padding: 0.6em 1.2em;
   transition: 0.3s ease;
   user-select: none;
 }
