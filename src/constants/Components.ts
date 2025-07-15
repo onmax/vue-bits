@@ -74,7 +74,8 @@ const backgrounds = {
   'grid-motion': () => import('../demo/Backgrounds/GridMotionDemo.vue'),
   'hyperspeed': () => import('../demo/Backgrounds/HyperspeedDemo.vue'),
   'shape-blur': () => import('../demo/Backgrounds/ShapeBlurDemo.vue'),
-  'balatro': () => import('../demo/Backgrounds/BalatroDemo.vue')
+  'balatro': () => import('../demo/Backgrounds/BalatroDemo.vue'),
+  'orb': () => import('../demo/Backgrounds/OrbDemo.vue')
 };
 
 export const componentMap = {
