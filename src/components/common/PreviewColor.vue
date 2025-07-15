@@ -7,7 +7,7 @@
 
 <script setup lang="ts">
 defineProps<{
-  title: string;
+  title?: string;
   modelValue: string;
   disabled?: boolean;
 }>();
@@ -27,7 +27,6 @@ const handleColorChange = (event: Event) => {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  margin-bottom: 1.5rem;
 }
 
 .color-label {
