@@ -39,32 +39,11 @@
           ]"
         />
 
-        <PreviewSlider
-          title="Duration (s)"
-          v-model="duration"
-          :min="0.1"
-          :max="2"
-          :step="0.1"
-          @update:model-value="forceRerender"
-        />
+        <PreviewSlider title="Duration (s)" v-model="duration" :min="0.1" :max="2" :step="0.1" />
 
-        <PreviewSlider
-          title="Stagger Delay (s)"
-          v-model="stagger"
-          :min="0.01"
-          :max="0.2"
-          :step="0.01"
-          @update:model-value="forceRerender"
-        />
+        <PreviewSlider title="Stagger Delay (s)" v-model="stagger" :min="0.01" :max="0.2" :step="0.01" />
 
-        <PreviewSlider
-          title="Hover Scale"
-          v-model="hoverScale"
-          :min="0.8"
-          :max="1.2"
-          :step="0.05"
-          @update:model-value="forceRerender"
-        />
+        <PreviewSlider title="Hover Scale" v-model="hoverScale" :min="0.8" :max="1.2" :step="0.05" />
       </Customize>
 
       <PropTable :data="propData" />

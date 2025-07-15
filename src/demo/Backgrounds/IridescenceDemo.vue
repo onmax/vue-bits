@@ -12,7 +12,7 @@
 
         <PreviewSlider :min="0" :max="1" :step="0.1" v-model="colors[2]" title="Blue" />
 
-        <PreviewSlider :min="0" :max="2" :step="0.1" v-model="speed" title="Speed" @update:modelValue="forceRerender" />
+        <PreviewSlider :min="0" :max="2" :step="0.1" v-model="speed" title="Speed"  />
 
         <PreviewSlider
           :min="0"
@@ -20,7 +20,6 @@
           :step="0.01"
           v-model="amplitude"
           title="Amplitude"
-          @update:modelValue="forceRerender"
         />
 
         <PreviewSwitch v-model="mouseInteraction" title="Enable Mouse Interaction" @update:modelValue="forceRerender" />

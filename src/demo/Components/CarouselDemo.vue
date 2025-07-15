@@ -14,14 +14,7 @@
       </div>
 
       <Customize>
-        <PreviewSlider
-          title="Width"
-          v-model="width"
-          :min="250"
-          :max="330"
-          :step="10"
-          @update:model-value="forceRerender"
-        />
+        <PreviewSlider title="Width" v-model="width" :min="250" :max="330" :step="10" />
 
         <PreviewSwitch title="Round Variant" v-model="round" @update:model-value="forceRerender" />
 
@@ -36,7 +29,6 @@
           :max="4000"
           :step="1000"
           :disabled="!autoplay"
-          @update:model-value="forceRerender"
         />
 
         <PreviewSwitch

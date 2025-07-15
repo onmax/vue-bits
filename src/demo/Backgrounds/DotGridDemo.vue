@@ -27,79 +27,23 @@
             <PreviewColor title="Active Color" v-model="activeColor" />
           </div>
 
-          <PreviewSlider
-            title="Dot Size"
-            v-model="dotSize"
-            :min="2"
-            :max="50"
-            :step="1"
-            @update:model-value="forceRerender"
-          />
+          <PreviewSlider title="Dot Size" v-model="dotSize" :min="2" :max="50" :step="1" />
 
-          <PreviewSlider title="Gap" v-model="gap" :min="5" :max="100" :step="1" @update:model-value="forceRerender" />
+          <PreviewSlider title="Gap" v-model="gap" :min="5" :max="100" :step="1" />
 
-          <PreviewSlider
-            title="Proximity"
-            v-model="proximity"
-            :min="50"
-            :max="500"
-            :step="10"
-            @update:model-value="forceRerender"
-          />
+          <PreviewSlider title="Proximity" v-model="proximity" :min="50" :max="500" :step="10" />
 
-          <PreviewSlider
-            title="Speed Trigger"
-            v-model="speedTrigger"
-            :min="50"
-            :max="500"
-            :step="10"
-            @update:model-value="forceRerender"
-          />
+          <PreviewSlider title="Speed Trigger" v-model="speedTrigger" :min="50" :max="500" :step="10" />
 
-          <PreviewSlider
-            title="Shock Radius"
-            v-model="shockRadius"
-            :min="50"
-            :max="500"
-            :step="10"
-            @update:model-value="forceRerender"
-          />
+          <PreviewSlider title="Shock Radius" v-model="shockRadius" :min="50" :max="500" :step="10" />
 
-          <PreviewSlider
-            title="Shock Strength"
-            v-model="shockStrength"
-            :min="1"
-            :max="20"
-            :step="1"
-            @update:model-value="forceRerender"
-          />
+          <PreviewSlider title="Shock Strength" v-model="shockStrength" :min="1" :max="20" :step="1" />
 
-          <PreviewSlider
-            title="Max Speed"
-            v-model="maxSpeed"
-            :min="1000"
-            :max="10000"
-            :step="100"
-            @update:model-value="forceRerender"
-          />
+          <PreviewSlider title="Max Speed" v-model="maxSpeed" :min="1000" :max="10000" :step="100" />
 
-          <PreviewSlider
-            title="Resistance (Inertia)"
-            v-model="resistance"
-            :min="100"
-            :max="2000"
-            :step="50"
-            @update:model-value="forceRerender"
-          />
+          <PreviewSlider title="Resistance (Inertia)" v-model="resistance" :min="100" :max="2000" :step="50" />
 
-          <PreviewSlider
-            title="Return Duration (Inertia)"
-            v-model="returnDuration"
-            :min="0.1"
-            :max="5"
-            :step="0.1"
-            @update:model-value="forceRerender"
-          />
+          <PreviewSlider title="Return Duration (Inertia)" v-model="returnDuration" :min="0.1" :max="5" :step="0.1" />
         </Customize>
 
         <PropTable :data="propData" />
@@ -143,7 +87,7 @@ const shockStrength = ref(5);
 const maxSpeed = ref(5000);
 const resistance = ref(750);
 const returnDuration = ref(1.5);
-const { rerenderKey, forceRerender } = useForceRerender();
+const { rerenderKey } = useForceRerender();
 
 const propData = [
   { name: 'dotSize', type: 'number', default: '16', description: 'Size of each dot in pixels.' },

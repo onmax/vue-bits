@@ -27,41 +27,13 @@
             </div>
           </div>
 
-          <PreviewSlider
-            title="Amplitude"
-            :model-value="amplitude"
-            @update:model-value="amplitude = $event"
-            :min="0"
-            :max="2"
-            :step="0.1"
-          />
+          <PreviewSlider title="Amplitude" v-model="amplitude" :min="0" :max="2" :step="0.1" />
 
-          <PreviewSlider
-            title="Blend"
-            :model-value="blend"
-            @update:model-value="blend = $event"
-            :min="0"
-            :max="1"
-            :step="0.1"
-          />
+          <PreviewSlider title="Blend" v-model="blend" :min="0" :max="1" :step="0.1" />
 
-          <PreviewSlider
-            title="Speed"
-            :model-value="speed"
-            @update:model-value="speed = $event"
-            :min="0"
-            :max="3"
-            :step="0.1"
-          />
+          <PreviewSlider title="Speed" v-model="speed" :min="0" :max="3" :step="0.1" />
 
-          <PreviewSlider
-            title="Intensity"
-            :model-value="intensity"
-            @update:model-value="intensity = $event"
-            :min="0"
-            :max="2"
-            :step="0.1"
-          />
+          <PreviewSlider title="Intensity" v-model="intensity" :min="0" :max="2" :step="0.1" />
         </Customize>
 
         <PropTable :data="propData" />

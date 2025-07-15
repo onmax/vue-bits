@@ -22,7 +22,6 @@
           :min="2"
           :max="20"
           :step="1"
-          @update:model-value="forceRerender"
         />
 
         <PreviewSlider
@@ -31,7 +30,6 @@
           :min="100"
           :max="400"
           :step="25"
-          @update:model-value="forceRerender"
         />
 
         <PreviewSlider
@@ -40,10 +38,9 @@
           :min="4"
           :max="16"
           :step="1"
-          @update:model-value="forceRerender"
         />
 
-        <PreviewSwitch title="Enable Waves" v-model="enableWaves" @update:model-value="forceRerender" />
+        <PreviewSwitch title="Enable Waves" v-model="enableWaves" />
 
         <div class="flex gap-2 flex-wrap">
           <button

@@ -9,8 +9,7 @@
         <Customize>
           <PreviewSlider
             title="Wave Speed X"
-            :model-value="waveSpeedX"
-            @update:model-value="waveSpeedX = $event"
+            v-model="waveSpeedX"
             :min="0"
             :max="0.1"
             :step="0.01"

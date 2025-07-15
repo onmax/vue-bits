@@ -14,43 +14,15 @@
       </div>
 
       <Customize>
-        <PreviewSlider
-          title="Noise Factor"
-          v-model="noiseFactor"
-          :min="1"
-          :max="25"
-          :step="1"
-          @update:model-value="forceRerender"
-        />
+        <PreviewSlider title="Noise Factor" v-model="noiseFactor" :min="1" :max="25" :step="1" />
 
-        <PreviewSlider
-          title="Noise Scale"
-          v-model="noiseScale"
-          :min="0"
-          :max="100"
-          :step="1"
-          @update:model-value="forceRerender"
-        />
+        <PreviewSlider title="Noise Scale" v-model="noiseScale" :min="0" :max="100" :step="1" />
 
-        <PreviewSlider
-          title="Font Weight"
-          v-model="fontWeight"
-          :min="100"
-          :max="900"
-          :step="100"
-          @update:model-value="forceRerender"
-        />
+        <PreviewSlider title="Font Weight" v-model="fontWeight" :min="100" :max="900" :step="100" />
 
-        <PreviewSlider
-          title="Alpha Persist Factor"
-          v-model="alphaPersistFactor"
-          :min="0.5"
-          :max="0.95"
-          :step="0.01"
-          @update:model-value="forceRerender"
-        />
+        <PreviewSlider title="Alpha Persist Factor" v-model="alphaPersistFactor" :min="0.5" :max="0.95" :step="0.01" />
 
-        <PreviewSwitch title="Animate Color" v-model="animateColor" @update:model-value="forceRerender" />
+        <PreviewSwitch title="Animate Color" v-model="animateColor" />
       </Customize>
 
       <PropTable :data="propData" />
@@ -82,7 +54,7 @@ import TextTrail from '../../content/TextAnimations/TextTrail/TextTrail.vue';
 import { textTrail } from '@/constants/code/TextAnimations/textTrailCode';
 import { useForceRerender } from '@/composables/useForceRerender';
 
-const { rerenderKey: key, forceRerender } = useForceRerender();
+const { rerenderKey: key } = useForceRerender();
 
 const noiseFactor = ref(1);
 const noiseScale = ref(5);

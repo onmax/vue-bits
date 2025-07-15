@@ -25,11 +25,6 @@
           :max="30"
           :step="1"
           v-model="ballCount"
-          @onChange="
-            (val: number) => {
-              ballCount = val;
-            }
-          "
         />
 
         <PreviewSlider
@@ -38,11 +33,6 @@
           :max="1"
           :step="0.1"
           v-model="speed"
-          @onChange="
-            (val: number) => {
-              speed = val;
-            }
-          "
         />
 
         <PreviewSlider
@@ -51,11 +41,6 @@
           :max="50"
           :step="1"
           v-model="animationSize"
-          @onChange="
-            (val: number) => {
-              animationSize = val;
-            }
-          "
         />
 
         <PreviewSlider
@@ -64,11 +49,6 @@
           :max="2"
           :step="0.1"
           v-model="clumpFactor"
-          @onChange="
-            (val: number) => {
-              clumpFactor = val;
-            }
-          "
         />
 
         <PreviewSwitch title="Follow Cursor" v-model="enableMouseInteraction" @update:model-value="forceRerender" />
@@ -79,11 +59,6 @@
           :max="0.25"
           :step="0.001"
           v-model="hoverSmoothness"
-          @onChange="
-            (val: number) => {
-              hoverSmoothness = val;
-            }
-          "
         />
 
         <PreviewSlider
@@ -92,11 +67,6 @@
           :max="5"
           :step="1"
           v-model="cursorBallSize"
-          @onChange="
-            (val: number) => {
-              cursorBallSize = val;
-            }
-          "
         />
       </Customize>
 

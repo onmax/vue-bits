@@ -31,7 +31,6 @@
           :min="100"
           :max="3000"
           :step="100"
-          @update:model-value="forceRerender"
         />
 
         <PreviewSlider
@@ -40,7 +39,6 @@
           :min="0"
           :max="1000"
           :step="50"
-          @update:model-value="forceRerender"
         />
 
         <PreviewSlider
@@ -49,7 +47,6 @@
           :min="0.1"
           :max="1"
           :step="0.1"
-          @update:model-value="forceRerender"
         />
 
         <PreviewSlider
@@ -58,7 +55,6 @@
           :min="0"
           :max="1"
           :step="0.1"
-          @update:model-value="forceRerender"
         />
       </Customize>
 

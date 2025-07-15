@@ -35,7 +35,6 @@
           :min="50"
           :max="300"
           :step="10"
-          @update:model-value="forceRerender"
         />
 
         <PreviewSlider
@@ -45,7 +44,6 @@
           :max="3"
           :step="0.1"
           value-unit="s"
-          @update:model-value="forceRerender"
         />
 
         <PreviewSlider
@@ -55,7 +53,6 @@
           :max="2"
           :step="0.1"
           value-unit="s"
-          @update:model-value="forceRerender"
         />
 
         <PreviewSlider
@@ -64,7 +61,6 @@
           :min="0"
           :max="1"
           :step="0.1"
-          @update:model-value="forceRerender"
         />
 
         <PreviewSlider
@@ -73,7 +69,6 @@
           :min="0.1"
           :max="2"
           :step="0.1"
-          @update:model-value="forceRerender"
         />
 
         <PreviewSlider
@@ -82,7 +77,6 @@
           :min="0.1"
           :max="1"
           :step="0.1"
-          @update:model-value="forceRerender"
         />
 
         <PreviewSwitch title="Reverse Direction" v-model="reverse" @update:model-value="forceRerender" />

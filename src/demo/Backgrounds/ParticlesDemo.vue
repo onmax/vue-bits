@@ -22,41 +22,13 @@
             <PreviewColor title="Color" v-model="color" />
           </div>
 
-          <PreviewSlider
-            title="Count"
-            :model-value="particleCount"
-            @update:model-value="particleCount = $event"
-            :min="100"
-            :max="1000"
-            :step="100"
-          />
+          <PreviewSlider title="Count" v-model="particleCount" :min="100" :max="1000" :step="100" />
 
-          <PreviewSlider
-            title="Spread"
-            :model-value="particleSpread"
-            @update:model-value="particleSpread = $event"
-            :min="10"
-            :max="100"
-            :step="10"
-          />
+          <PreviewSlider title="Spread" v-model="particleSpread" :min="10" :max="100" :step="10" />
 
-          <PreviewSlider
-            title="Speed"
-            :model-value="speed"
-            @update:model-value="speed = $event"
-            :min="0"
-            :max="2"
-            :step="0.1"
-          />
+          <PreviewSlider title="Speed" v-model="speed" :min="0" :max="2" :step="0.1" />
 
-          <PreviewSlider
-            title="Base Size"
-            :model-value="baseSize"
-            @update:model-value="baseSize = $event"
-            :min="100"
-            :max="1000"
-            :step="100"
-          />
+          <PreviewSlider title="Base Size" v-model="baseSize" :min="100" :max="1000" :step="100" />
 
           <PreviewSwitch
             title="Mouse Interaction"

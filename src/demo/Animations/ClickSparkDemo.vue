@@ -24,50 +24,15 @@
       <Customize>
         <PreviewColor title="Spark Color" v-model="sparkColor" />
 
-        <PreviewSlider
-          title="Spark Size"
-          v-model="sparkSize"
-          :min="5"
-          :max="30"
-          :step="1"
-          @update:model-value="forceRerender"
-        />
+        <PreviewSlider title="Spark Size" v-model="sparkSize" :min="5" :max="30" :step="1" />
 
-        <PreviewSlider
-          title="Spark Radius"
-          v-model="sparkRadius"
-          :min="10"
-          :max="50"
-          :step="5"
-          @update:model-value="forceRerender"
-        />
+        <PreviewSlider title="Spark Radius" v-model="sparkRadius" :min="10" :max="50" :step="5" />
 
-        <PreviewSlider
-          title="Spark Count"
-          v-model="sparkCount"
-          :min="4"
-          :max="20"
-          :step="1"
-          @update:model-value="forceRerender"
-        />
+        <PreviewSlider title="Spark Count" v-model="sparkCount" :min="4" :max="20" :step="1" />
 
-        <PreviewSlider
-          title="Duration (ms)"
-          v-model="duration"
-          :min="200"
-          :max="1000"
-          :step="50"
-          @update:model-value="forceRerender"
-        />
+        <PreviewSlider title="Duration (ms)" v-model="duration" :min="200" :max="1000" :step="50" />
 
-        <PreviewSlider
-          title="Extra Scale"
-          v-model="extraScale"
-          :min="0.5"
-          :max="2"
-          :step="0.1"
-          @update:model-value="forceRerender"
-        />
+        <PreviewSlider title="Extra Scale" v-model="extraScale" :min="0.5" :max="2" :step="0.1" />
       </Customize>
 
       <PropTable :data="propData" />
@@ -103,7 +68,7 @@ const sparkCount = ref(8);
 const duration = ref(400);
 const easing = ref<'linear' | 'ease-in' | 'ease-out' | 'ease-in-out'>('ease-out');
 const extraScale = ref(1);
-const { rerenderKey, forceRerender } = useForceRerender();
+const { rerenderKey } = useForceRerender();
 
 const propData = [
   { name: 'sparkColor', type: 'string', default: "'#fff'", description: 'Color of the spark lines.' },

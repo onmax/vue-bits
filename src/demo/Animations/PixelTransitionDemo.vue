@@ -28,15 +28,7 @@
       </div>
 
       <Customize>
-        <PreviewSlider
-          title="Grid Size"
-          v-model="gridSize"
-          :min="2"
-          :max="50"
-          :step="1"
-          @update:model-value="forceRerender"
-          width="200"
-        />
+        <PreviewSlider title="Grid Size" v-model="gridSize" :min="2" :max="50" :step="1" width="200" />
 
         <PreviewSlider
           title="Animation Duration"
@@ -45,7 +37,6 @@
           :max="2"
           :step="0.1"
           value-unit="s"
-          @update:model-value="forceRerender"
           width="200"
         />
 
@@ -81,7 +72,7 @@ import { pixelTransition } from '@/constants/code/Animations/pixelTransitionCode
 import { useForceRerender } from '@/composables/useForceRerender';
 import PreviewColor from '../../components/common/PreviewColor.vue';
 
-const { rerenderKey: key, forceRerender } = useForceRerender();
+const { rerenderKey: key } = useForceRerender();
 const gridSize = ref(8);
 const pixelColor = ref('#ffffff');
 const animationStepDuration = ref(0.4);

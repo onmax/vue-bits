@@ -16,8 +16,7 @@
         <Customize>
           <PreviewSlider
             title="Speed"
-            :model-value="speed"
-            @update:model-value="speed = $event"
+            v-model="speed"
             :min="0"
             :max="10"
             :step="0.1"
@@ -25,8 +24,7 @@
 
           <PreviewSlider
             title="Scale"
-            :model-value="scale"
-            @update:model-value="scale = $event"
+            v-model="scale"
             :min="0.1"
             :max="3"
             :step="0.1"
@@ -34,8 +32,7 @@
 
           <PreviewSlider
             title="Noise Intensity"
-            :model-value="noiseIntensity"
-            @update:model-value="noiseIntensity = $event"
+            v-model="noiseIntensity"
             :min="0"
             :max="3"
             :step="0.1"
@@ -43,8 +40,7 @@
 
           <PreviewSlider
             title="Rotation"
-            :model-value="rotation"
-            @update:model-value="rotation = $event"
+            v-model="rotation"
             :min="0"
             :max="6.28"
             :step="0.1"

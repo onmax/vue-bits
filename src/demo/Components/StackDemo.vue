@@ -20,7 +20,6 @@
           :min="10"
           :max="300"
           :step="10"
-          @update:model-value="forceRerender"
         />
         <PreviewSlider
           title="Card Width"
@@ -28,7 +27,6 @@
           :min="10"
           :max="300"
           :step="10"
-          @update:model-value="forceRerender"
         />
         <PreviewSlider
           title="Card Height"
@@ -36,7 +34,6 @@
           :min="10"
           :max="300"
           :step="10"
-          @update:model-value="forceRerender"
         />
       </Customize>
       <PropTable :data="propData" />

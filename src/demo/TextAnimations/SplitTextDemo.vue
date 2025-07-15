@@ -24,32 +24,11 @@
       <Customize>
         <PreviewSwitch title="Show Completion Toast" v-model="showCallback" @update:model-value="forceRerender" />
 
-        <PreviewSlider
-          title="Stagger Delay (ms)"
-          v-model="delay"
-          :min="10"
-          :max="500"
-          :step="10"
-          @update:model-value="forceRerender"
-        />
+        <PreviewSlider title="Stagger Delay (ms)" v-model="delay" :min="10" :max="500" :step="10" />
 
-        <PreviewSlider
-          title="Duration (s)"
-          v-model="duration"
-          :min="0.1"
-          :max="3"
-          :step="0.1"
-          @update:model-value="forceRerender"
-        />
+        <PreviewSlider title="Duration (s)" v-model="duration" :min="0.1" :max="3" :step="0.1" />
 
-        <PreviewSlider
-          title="Threshold"
-          v-model="threshold"
-          :min="0.1"
-          :max="1"
-          :step="0.1"
-          @update:model-value="forceRerender"
-        />
+        <PreviewSlider title="Threshold" v-model="threshold" :min="0.1" :max="1" :step="0.1" />
       </Customize>
 
       <PropTable :data="propData" />

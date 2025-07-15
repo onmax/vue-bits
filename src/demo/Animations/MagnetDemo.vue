@@ -36,7 +36,6 @@
           :max="300"
           :step="10"
           value-unit="px"
-          @update:model-value="forceRerender"
         />
 
         <PreviewSlider
@@ -45,7 +44,6 @@
           :min="1"
           :max="10"
           :step="1"
-          @update:model-value="forceRerender"
         />
       </Customize>
 

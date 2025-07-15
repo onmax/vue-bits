@@ -22,59 +22,17 @@
       </div>
 
       <Customize>
-        <PreviewSlider
-          title="Plane Width"
-          v-model="planeWidth"
-          :min="200"
-          :max="400"
-          :step="20"
-          @update:model-value="forceRerender"
-        />
+        <PreviewSlider title="Plane Width" v-model="planeWidth" :min="200" :max="400" :step="20" />
 
-        <PreviewSlider
-          title="Plane Height"
-          v-model="planeHeight"
-          :min="200"
-          :max="400"
-          :step="20"
-          @update:model-value="forceRerender"
-        />
+        <PreviewSlider title="Plane Height" v-model="planeHeight" :min="200" :max="400" :step="20" />
 
-        <PreviewSlider
-          title="Distortion"
-          v-model="distortion"
-          :min="0"
-          :max="10"
-          :step="0.5"
-          @update:model-value="forceRerender"
-        />
+        <PreviewSlider title="Distortion" v-model="distortion" :min="0" :max="10" :step="0.5" />
 
-        <PreviewSlider
-          title="Scroll Ease"
-          v-model="scrollEase"
-          :min="0.005"
-          :max="0.05"
-          :step="0.005"
-          @update:model-value="forceRerender"
-        />
+        <PreviewSlider title="Scroll Ease" v-model="scrollEase" :min="0.005" :max="0.05" :step="0.005" />
 
-        <PreviewSlider
-          title="Camera FOV"
-          v-model="cameraFov"
-          :min="30"
-          :max="90"
-          :step="5"
-          @update:model-value="forceRerender"
-        />
+        <PreviewSlider title="Camera FOV" v-model="cameraFov" :min="30" :max="90" :step="5" />
 
-        <PreviewSlider
-          title="Camera Z"
-          v-model="cameraZ"
-          :min="10"
-          :max="40"
-          :step="2"
-          @update:model-value="forceRerender"
-        />
+        <PreviewSlider title="Camera Z" v-model="cameraZ" :min="10" :max="40" :step="2" />
       </Customize>
 
       <PropTable :data="propData" />
@@ -112,7 +70,7 @@ const scrollEase = ref(0.01);
 const cameraFov = ref(45);
 const cameraZ = ref(20);
 
-const { rerenderKey, forceRerender } = useForceRerender();
+const { rerenderKey } = useForceRerender();
 
 const items = ref([
   'https://picsum.photos/800/800?grayscale&random=1',

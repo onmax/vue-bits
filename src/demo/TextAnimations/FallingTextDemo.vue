@@ -20,14 +20,7 @@
       <Customize>
         <PreviewSelect title="Animation Trigger" v-model="trigger" :options="triggerOptions" />
 
-        <PreviewSlider
-          title="Gravity"
-          v-model="gravity"
-          :min="0.1"
-          :max="2"
-          :step="0.01"
-          @update:model-value="forceRerender"
-        />
+        <PreviewSlider title="Gravity" v-model="gravity" :min="0.1" :max="2" :step="0.01" />
 
         <PreviewSlider
           title="Mouse Constraint Stiffness"
@@ -35,7 +28,6 @@
           :min="0.1"
           :max="2"
           :step="0.1"
-          @update:model-value="forceRerender"
         />
       </Customize>
 
@@ -68,7 +60,7 @@ import FallingText from '../../content/TextAnimations/FallingText/FallingText.vu
 import { fallingText } from '@/constants/code/TextAnimations/fallingTextCode';
 import { useForceRerender } from '@/composables/useForceRerender';
 
-const { rerenderKey: key, forceRerender } = useForceRerender();
+const { rerenderKey: key } = useForceRerender();
 
 const gravity = ref(0.56);
 const mouseConstraintStiffness = ref(0.9);

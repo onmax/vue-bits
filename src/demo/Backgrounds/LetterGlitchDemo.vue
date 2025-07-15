@@ -22,14 +22,7 @@
             Randomize Colors
           </button>
 
-          <PreviewSlider
-            title="Glitch Speed"
-            :model-value="speed"
-            @update:model-value="speed = $event"
-            :min="0"
-            :max="100"
-            :step="5"
-          />
+          <PreviewSlider title="Glitch Speed" v-model="speed" :min="0" :max="100" :step="5" />
 
           <PreviewSwitch title="Smooth Animation" :model-value="smooth" @update:model-value="updateSmooth" />
 

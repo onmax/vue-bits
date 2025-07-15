@@ -57,24 +57,9 @@
 
         <PreviewSwitch title="Original Chars" v-model="useOriginalCharsOnly" @update:model-value="forceRerender" />
 
-        <PreviewSlider
-          title="Speed"
-          v-model="speed"
-          :min="10"
-          :max="200"
-          :step="10"
-          value-unit="ms"
-          @update:model-value="forceRerender"
-        />
+        <PreviewSlider title="Speed" v-model="speed" :min="10" :max="200" :step="10" value-unit="ms" />
 
-        <PreviewSlider
-          title="Iterations"
-          v-model="maxIterations"
-          :min="1"
-          :max="50"
-          :step="1"
-          @update:model-value="forceRerender"
-        />
+        <PreviewSlider title="Iterations" v-model="maxIterations" :min="1" :max="50" :step="1" />
 
         <PreviewSelect title="Animation Trigger" v-model="animateOn" :options="animateOptions" />
 
