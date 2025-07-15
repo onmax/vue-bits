@@ -124,7 +124,7 @@ const { command } = defineProps<{
 .code-block {
   border-radius: 15px;
   overflow: hidden;
-  border: 1px solid #142216;
+  border: 1px solid #333;
 }
 
 :deep(.p-accordionpanel) {
@@ -133,19 +133,19 @@ const { command } = defineProps<{
 
 :deep(.p-accordion-header) {
   background: #0b0b0b !important;
-  border: 1px solid #142216 !important;
+  border: 1px solid #333 !important;
   border-radius: 20px !important;
 }
 
 :deep(.p-accordionpanel:not(.p-disabled).p-accordionpanel-active > .p-accordionheader) {
   background: #0b0b0b !important;
-  border: 1px solid #142216 !important;
+  border: 1px solid #333 !important;
   border-radius: 15px 15px 0 0;
   border-bottom: none !important;
 }
 
 :deep(.p-accordionpanel:not(.p-disabled) > .p-accordionheader) {
-  border: 1px solid #142216 !important;
+  border: 1px solid #333 !important;
   border-radius: 15px;
   background: #0b0b0b !important;
 }
@@ -171,14 +171,14 @@ const { command } = defineProps<{
 
 :deep(.p-accordion-content) {
   background: #0b0b0b !important;
-  border: 1px solid #142216 !important;
+  border: 1px solid #333 !important;
   border-top: none;
   border-radius: 0 0 15px 15px;
 }
 
 :deep(.p-accordioncontent-content) {
   background: #0b0b0b !important;
-  border: 1px solid #142216 !important;
+  border: 1px solid #333 !important;
   border-radius: 0 0 15px 15px;
   border-top: none !important;
 }

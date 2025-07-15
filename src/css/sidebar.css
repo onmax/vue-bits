@@ -55,7 +55,7 @@
 }
 
 .sidebar::-webkit-scrollbar-thumb:hover {
-  background: #142216;
+  background: #222;
 }
 
 .sidebar-logo {
@@ -353,7 +353,7 @@
   padding: 0 0.5rem 0 0.75rem;
   border-radius: 50px;
   background: #0b0b0b;
-  border: 1px solid #142216;
+  border: 1px solid #333;
   font-weight: 600;
   cursor: text;
   user-select: none;
@@ -366,7 +366,7 @@
 }
 
 .search-icon {
-  color: #142216;
+  color: #333;
   font-size: 16px;
 }
 
