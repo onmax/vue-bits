@@ -17,7 +17,7 @@
       </div>
 
       <Customize>
-        <PreviewColor title="Color" v-model="color" @update:model-value="forceRerender" />
+        <PreviewColor title="Color" v-model="color" />
 
         <PreviewSlider
           title="Ball Count"

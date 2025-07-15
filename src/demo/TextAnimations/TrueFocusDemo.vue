@@ -8,7 +8,7 @@
       </div>
 
       <Customize>
-        <PreviewColor title="Corners Color" v-model="borderColor" @update:model-value="forceRerender" />
+        <PreviewColor title="Corners Color" v-model="borderColor" />
 
         <PreviewSwitch title="Hover Mode" v-model="manualMode" @update:model-value="forceRerender" />
 

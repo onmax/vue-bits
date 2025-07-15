@@ -49,7 +49,7 @@
           width="200"
         />
 
-        <PreviewColor title="Pixel Color" v-model="pixelColor" @update:model-value="forceRerender" />
+        <PreviewColor title="Pixel Color" v-model="pixelColor" />
       </Customize>
 
       <PropTable :data="propData" />

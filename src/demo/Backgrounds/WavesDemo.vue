@@ -17,7 +17,7 @@
           />
 
           <div class="flex gap-4 items-center">
-            <PreviewColor title="Waves Color" :model-value="color" @update:model-value="color = $event" />
+            <PreviewColor title="Waves Color" v-model="color" />
           </div>
         </Customize>
 

@@ -31,9 +31,9 @@
         </div>
 
         <div class="color-controls">
-          <PreviewColor title="Text Color" v-model="textColor" @update:model-value="forceRerender" />
+          <PreviewColor title="Text Color" v-model="textColor" />
 
-          <PreviewColor title="Stroke Color" v-model="strokeColor" @update:model-value="forceRerender" />
+          <PreviewColor title="Stroke Color" v-model="strokeColor" />
         </div>
 
         <p class="mt-6 text-[#999] text-sm">Animation Settings</p>

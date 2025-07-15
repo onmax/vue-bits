@@ -16,7 +16,7 @@
         </div>
 
         <Customize>
-          <PreviewColor title="Color" :model-value="lightColor" @update:model-value="lightColor = $event" />
+          <PreviewColor title="Color" v-model="lightColor" />
 
           <PreviewSlider
             title="Beam Width"

@@ -50,7 +50,7 @@
           @update:model-value="forceRerender"
         />
 
-        <PreviewColor title="Text Color" v-model="textColor" @update:model-value="forceRerender" />
+        <PreviewColor title="Text Color" v-model="textColor" />
 
         <PreviewSelect title="Font" v-model="font" :options="fontOptions" @update:model-value="forceRerender" />
       </Customize>

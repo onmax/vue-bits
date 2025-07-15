@@ -22,9 +22,9 @@
 
         <Customize>
           <div class="color-controls">
-            <PreviewColor title="Base Color" v-model="baseColor" @update:model-value="forceRerender" />
+            <PreviewColor title="Base Color" v-model="baseColor" />
 
-            <PreviewColor title="Active Color" v-model="activeColor" @update:model-value="forceRerender" />
+            <PreviewColor title="Active Color" v-model="activeColor" />
           </div>
 
           <PreviewSlider

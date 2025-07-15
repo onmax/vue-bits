@@ -22,7 +22,7 @@
       </div>
 
       <Customize>
-        <PreviewColor title="Spark Color" v-model="sparkColor" @update:model-value="forceRerender" />
+        <PreviewColor title="Spark Color" v-model="sparkColor" />
 
         <PreviewSlider
           title="Spark Size"

@@ -50,7 +50,7 @@
             :step="0.1"
           />
 
-          <PreviewColor title="Color" :model-value="color" @update:model-value="color = $event" />
+          <PreviewColor title="Color" v-model="color" />
         </Customize>
 
         <PropTable :data="propData" />

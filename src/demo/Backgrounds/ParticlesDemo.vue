@@ -19,7 +19,7 @@
 
         <Customize>
           <div class="flex gap-4 items-center">
-            <PreviewColor title="Color" :model-value="color" @update:model-value="updateColor" />
+            <PreviewColor title="Color" v-model="color" />
           </div>
 
           <PreviewSlider
@@ -117,12 +117,7 @@ const moveParticlesOnHover = ref(true);
 const alphaParticles = ref(false);
 const disableRotation = ref(false);
 
-const { rerenderKey, forceRerender } = useForceRerender();
-
-const updateColor = (value: string) => {
-  color.value = value;
-  forceRerender();
-};
+const { rerenderKey } = useForceRerender();
 
 const propData = [
   { name: 'particleCount', type: 'number', default: '200', description: 'The number of particles to generate.' },

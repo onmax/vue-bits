@@ -33,9 +33,9 @@
           <span class="ml-1 text-gray-400">{{ blobType }}</span>
         </button>
 
-        <PreviewColor title="Fill Color" v-model="fillColor" @update:model-value="forceRerender" />
-        <PreviewColor title="Inner Color" v-model="innerColor" @update:model-value="forceRerender" />
-        <PreviewColor title="Shadow Color" v-model="shadowColor" @update:model-value="forceRerender" />
+        <PreviewColor title="Fill Color" v-model="fillColor" />
+        <PreviewColor title="Inner Color" v-model="innerColor" />
+        <PreviewColor title="Shadow Color" v-model="shadowColor" />
 
         <PreviewSlider
           title="Trail Count"
@@ -214,9 +214,6 @@ import Customize from '../../components/common/Customize.vue';
 import PreviewSlider from '../../components/common/PreviewSlider.vue';
 import PreviewColor from '../../components/common/PreviewColor.vue';
 import BlobCursor from '../../content/Animations/BlobCursor/BlobCursor.vue';
-import { useForceRerender } from '@/composables/useForceRerender';
-
-const { forceRerender } = useForceRerender();
 
 const blobType = ref<'circle' | 'square'>('circle');
 const fillColor = ref<string>('#27FF64');

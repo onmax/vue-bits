@@ -16,11 +16,10 @@
       <Customize>
         <div class="flex gap-4">
           <PreviewColor
-            v-for="(color, index) in colorStops"
+            v-for="(_, index) in colorStops"
             :key="index"
             :title="`Color ${index + 1}`"
-            :model-value="color"
-            @update:model-value="value => updateColorStop(index, value)"
+            v-model="colorStops[index]"
           />
         </div>
 
@@ -63,10 +62,6 @@ const colorStops = ref(['#DE443B', '#006BB4', '#162325']);
 const pixelation = ref(745);
 const mouseInteractionEnabled = ref(true);
 const rotate = ref(false);
-
-const updateColorStop = (index: number, color: string) => {
-  colorStops.value[index] = color;
-};
 
 const propData = [
   {

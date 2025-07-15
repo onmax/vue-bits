@@ -22,8 +22,7 @@
                 v-for="(color, index) in colorStops"
                 :key="index"
                 :title="`Color ${index + 1}`"
-                :model-value="color"
-                @update:model-value="value => updateColorStop(index, value)"
+                v-model="colorStops[index]"
               />
             </div>
           </div>
@@ -99,10 +98,6 @@ const amplitude = ref(1.0);
 const blend = ref(0.5);
 const speed = ref(1.0);
 const intensity = ref(1.0);
-
-const updateColorStop = (index: number, color: string) => {
-  colorStops.value[index] = color;
-};
 
 const propData = [
   {
