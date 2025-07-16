@@ -23,43 +23,15 @@
       </div>
 
       <Customize>
-        <PreviewSwitch title="Enable Blur Effect" v-model="blur" @update:model-value="forceRerender" />
+        <PreviewSwitch title="Enable Blur Effect" v-model="blur" />
 
-        <PreviewSlider
-          title="Duration (ms)"
-          v-model="duration"
-          :min="100"
-          :max="3000"
-          :step="100"
-          @update:model-value="forceRerender"
-        />
+        <PreviewSlider title="Duration (ms)" v-model="duration" :min="100" :max="3000" :step="100" />
 
-        <PreviewSlider
-          title="Delay (ms)"
-          v-model="delay"
-          :min="0"
-          :max="1000"
-          :step="50"
-          @update:model-value="forceRerender"
-        />
+        <PreviewSlider title="Delay (ms)" v-model="delay" :min="0" :max="1000" :step="50" />
 
-        <PreviewSlider
-          title="Threshold"
-          v-model="threshold"
-          :min="0.1"
-          :max="1"
-          :step="0.1"
-          @update:model-value="forceRerender"
-        />
+        <PreviewSlider title="Threshold" v-model="threshold" :min="0.1" :max="1" :step="0.1" />
 
-        <PreviewSlider
-          title="Initial Opacity"
-          v-model="initialOpacity"
-          :min="0"
-          :max="1"
-          :step="0.1"
-          @update:model-value="forceRerender"
-        />
+        <PreviewSlider title="Initial Opacity" v-model="initialOpacity" :min="0" :max="1" :step="0.1" />
       </Customize>
 
       <PropTable :data="propData" />
@@ -76,7 +48,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import TabbedLayout from '../../components/common/TabbedLayout.vue';
 import RefreshButton from '../../components/common/RefreshButton.vue';
 import PropTable from '../../components/common/PropTable.vue';
@@ -111,6 +83,10 @@ const propData = [
   { name: 'initialOpacity', type: 'number', default: '0', description: 'Initial opacity before animation (0-1).' },
   { name: 'className', type: 'string', default: '""', description: 'Additional CSS classes for styling.' }
 ];
+
+watch(blur, () => {
+  forceRerender();
+});
 </script>
 
 <style scoped>

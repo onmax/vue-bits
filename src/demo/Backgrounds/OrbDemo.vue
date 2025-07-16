@@ -12,35 +12,13 @@
       </div>
 
       <Customize>
-        <PreviewSlider
-          title="Hue Shift"
-          :min="0"
-          :max="360"
-          :step="1"
-          v-model="hue"
-          @onChange="
-            (val: number) => {
-              hue = val;
-            }
-          "
-        />
+        <PreviewSlider title="Hue Shift" :min="0" :max="360" :step="1" v-model="hue" />
 
-        <PreviewSlider
-          title="Hover Intensity"
-          :min="0"
-          :max="5"
-          :step="0.01"
-          v-model="hoverIntensity"
-          @onChange="
-            (val: number) => {
-              hoverIntensity = val;
-            }
-          "
-        />
+        <PreviewSlider title="Hover Intensity" :min="0" :max="5" :step="0.01" v-model="hoverIntensity" />
 
-        <PreviewSwitch title="Rotate on Hover" v-model="rotateOnHover" @update:model-value="forceRerender" />
+        <PreviewSwitch title="Rotate on Hover" v-model="rotateOnHover" />
 
-        <PreviewSwitch title="Force Hover State" v-model="forceHoverState" @update:model-value="forceRerender" />
+        <PreviewSwitch title="Force Hover State" v-model="forceHoverState" />
       </Customize>
 
       <PropTable :data="propData" />
@@ -58,7 +36,6 @@
 </template>
 
 <script setup lang="ts">
-import { useForceRerender } from '@/composables/useForceRerender';
 import { ref, watch } from 'vue';
 import CliInstallation from '../../components/code/CliInstallation.vue';
 import CodeExample from '../../components/code/CodeExample.vue';
@@ -70,8 +47,6 @@ import PropTable from '../../components/common/PropTable.vue';
 import TabbedLayout from '../../components/common/TabbedLayout.vue';
 import { orb } from '../../constants/code/Backgrounds/orbCode';
 import Orb from '../../content/Backgrounds/Orb/Orb.vue';
-
-const { forceRerender } = useForceRerender();
 
 const hue = ref(100);
 const hoverIntensity = ref(0.5);

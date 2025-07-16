@@ -53,52 +53,17 @@
       </div>
 
       <Customize>
-        <PreviewSwitch title="Sequential" v-model="sequential" @update:model-value="forceRerender" />
+        <PreviewSwitch title="Sequential" v-model="sequential" />
 
-        <PreviewSwitch title="Original Chars" v-model="useOriginalCharsOnly" @update:model-value="forceRerender" />
+        <PreviewSwitch title="Original Chars" v-model="useOriginalCharsOnly" />
 
-        <PreviewSlider
-          title="Speed"
-          v-model="speed"
-          :min="10"
-          :max="200"
-          :step="10"
-          value-unit="ms"
-          @update:model-value="forceRerender"
-        />
+        <PreviewSlider title="Speed" v-model="speed" :min="10" :max="200" :step="10" value-unit="ms" />
 
-        <PreviewSlider
-          title="Iterations"
-          v-model="maxIterations"
-          :min="1"
-          :max="50"
-          :step="1"
-          @update:model-value="forceRerender"
-        />
+        <PreviewSlider title="Iterations" v-model="maxIterations" :min="1" :max="50" :step="1" />
 
-        <PreviewSelect
-          title="Animation Trigger"
-          v-model="animateOn"
-          :options="animateOptions"
-          @update:model-value="
-            val => {
-              animateOn = val as 'view' | 'hover';
-              forceRerender();
-            }
-          "
-        />
+        <PreviewSelect title="Animation Trigger" v-model="animateOn" :options="animateOptions" />
 
-        <PreviewSelect
-          title="Animation Direction"
-          v-model="revealDirection"
-          :options="directionOptions"
-          @update:model-value="
-            val => {
-              revealDirection = val as 'start' | 'end' | 'center';
-              forceRerender();
-            }
-          "
-        />
+        <PreviewSelect title="Animation Direction" v-model="revealDirection" :options="directionOptions" />
       </Customize>
 
       <PropTable :data="propData" />
@@ -115,7 +80,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import TabbedLayout from '../../components/common/TabbedLayout.vue';
 import PropTable from '../../components/common/PropTable.vue';
 import CliInstallation from '../../components/code/CliInstallation.vue';
@@ -211,6 +176,13 @@ const propData = [
     description: 'Trigger scrambling on hover or scroll-into-view.'
   }
 ];
+
+watch(
+  () => [sequential.value, useOriginalCharsOnly.value],
+  () => {
+    forceRerender();
+  }
+);
 </script>
 
 <style scoped>

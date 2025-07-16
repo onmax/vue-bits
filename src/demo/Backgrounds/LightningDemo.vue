@@ -14,50 +14,15 @@
         </div>
 
         <Customize>
-          <PreviewSlider
-            title="Hue"
-            :model-value="hue"
-            @update:model-value="hue = $event"
-            :min="0"
-            :max="360"
-            :step="1"
-          />
+          <PreviewSlider title="Hue" v-model="hue" :min="0" :max="360" :step="1" />
 
-          <PreviewSlider
-            title="X Offset"
-            :model-value="xOffset"
-            @update:model-value="xOffset = $event"
-            :min="-2"
-            :max="2"
-            :step="0.1"
-          />
+          <PreviewSlider title="X Offset" v-model="xOffset" :min="-2" :max="2" :step="0.1" />
 
-          <PreviewSlider
-            title="Speed"
-            :model-value="speed"
-            @update:model-value="speed = $event"
-            :min="0.5"
-            :max="2"
-            :step="0.1"
-          />
+          <PreviewSlider title="Speed" v-model="speed" :min="0.5" :max="2" :step="0.1" />
 
-          <PreviewSlider
-            title="Intensity"
-            :model-value="intensity"
-            @update:model-value="intensity = $event"
-            :min="0.1"
-            :max="2"
-            :step="0.1"
-          />
+          <PreviewSlider title="Intensity" v-model="intensity" :min="0.1" :max="2" :step="0.1" />
 
-          <PreviewSlider
-            title="Size"
-            :model-value="size"
-            @update:model-value="size = $event"
-            :min="0.1"
-            :max="3"
-            :step="0.1"
-          />
+          <PreviewSlider title="Size" v-model="size" :min="0.1" :max="3" :step="0.1" />
         </Customize>
 
         <PropTable :data="propData" />

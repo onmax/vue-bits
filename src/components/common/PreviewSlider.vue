@@ -2,15 +2,7 @@
   <div class="preview-slider">
     <span class="slider-label">{{ title }}</span>
 
-    <Slider
-      :model-value="modelValue"
-      @update:model-value="handleSliderChange"
-      :min="min"
-      :max="max"
-      :step="step"
-      :disabled="disabled"
-      class="custom-slider"
-    />
+    <Slider v-model="model" :min="min" :max="max" :step="step" :disabled="disabled" class="custom-slider" />
 
     <span class="slider-value">{{ modelValue }}{{ valueUnit }}</span>
   </div>
@@ -21,7 +13,6 @@ import Slider from 'primevue/slider';
 
 defineProps<{
   title: string;
-  modelValue: number;
   min?: number;
   max?: number;
   step?: number;
@@ -29,14 +20,7 @@ defineProps<{
   disabled?: boolean;
 }>();
 
-const emit = defineEmits<{
-  'update:modelValue': [value: number];
-}>();
-
-const handleSliderChange = (value: number | number[]) => {
-  const numValue = Array.isArray(value) ? value[0] : value;
-  emit('update:modelValue', numValue);
-};
+const model = defineModel<number>();
 </script>
 
 <style scoped>

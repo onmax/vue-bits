@@ -1,7 +1,7 @@
 <template>
   <div class="preview-color">
     <span class="color-label">{{ title }}</span>
-    <input :value="modelValue" @input="handleColorChange" type="color" :disabled="disabled" class="color-input" />
+    <input :value="color" @input="handleColorChange" type="color" :disabled="disabled" class="color-input" />
   </div>
 </template>
 
@@ -12,13 +12,10 @@ defineProps<{
   disabled?: boolean;
 }>();
 
-const emit = defineEmits<{
-  'update:modelValue': [value: string];
-}>();
+const color = defineModel<string>();
 
 const handleColorChange = (event: Event) => {
-  const target = event.target as HTMLInputElement;
-  emit('update:modelValue', target.value);
+  color.value = (event.target as HTMLInputElement).value;
 };
 </script>
 

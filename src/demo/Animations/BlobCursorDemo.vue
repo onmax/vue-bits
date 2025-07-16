@@ -33,9 +33,9 @@
           <span class="ml-1 text-gray-400">{{ blobType }}</span>
         </button>
 
-        <PreviewColor title="Fill Color" v-model="fillColor" @update:model-value="forceRerender" />
-        <PreviewColor title="Inner Color" v-model="innerColor" @update:model-value="forceRerender" />
-        <PreviewColor title="Shadow Color" v-model="shadowColor" @update:model-value="forceRerender" />
+        <PreviewColor title="Fill Color" v-model="fillColor" />
+        <PreviewColor title="Inner Color" v-model="innerColor" />
+        <PreviewColor title="Shadow Color" v-model="shadowColor" />
 
         <PreviewSlider
           title="Trail Count"
@@ -68,11 +68,6 @@
           :max="200"
           :step="1"
           v-model="sizes[0]"
-          @onChange="
-            (val: number) => {
-              sizes[0] = val;
-            }
-          "
           :isDisabled="trailCount < 1"
         />
 
@@ -82,11 +77,6 @@
           :max="100"
           :step="1"
           v-model="innerSizes[0]"
-          @onChange="
-            (val: number) => {
-              innerSizes[0] = val;
-            }
-          "
           :isDisabled="trailCount < 1"
         />
 
@@ -96,91 +86,20 @@
           :max="1"
           :step="0.05"
           v-model="opacities[0]"
-          @onChange="
-            (val: number) => {
-              opacities[0] = val;
-            }
-          "
           :isDisabled="trailCount < 1"
         />
 
-        <PreviewSlider
-          title="Shadow Blur"
-          :min="0"
-          :max="50"
-          :step="1"
-          v-model="shadowBlur"
-          @onChange="
-            (val: number) => {
-              shadowBlur = val;
-            }
-          "
-        />
+        <PreviewSlider title="Shadow Blur" :min="0" :max="50" :step="1" v-model="shadowBlur" />
 
-        <PreviewSlider
-          title="Shadow Offset X"
-          :min="-50"
-          :max="50"
-          :step="1"
-          v-model="shadowOffsetX"
-          @onChange="
-            (val: number) => {
-              shadowOffsetX = val;
-            }
-          "
-        />
+        <PreviewSlider title="Shadow Offset X" :min="-50" :max="50" :step="1" v-model="shadowOffsetX" />
 
-        <PreviewSlider
-          title="Shadow Offset Y"
-          :min="-50"
-          :max="50"
-          :step="1"
-          v-model="shadowOffsetY"
-          @onChange="
-            (val: number) => {
-              shadowOffsetY = val;
-            }
-          "
-        />
+        <PreviewSlider title="Shadow Offset Y" :min="-50" :max="50" :step="1" v-model="shadowOffsetY" />
 
-        <PreviewSlider
-          title="Fast Duration (Lead)"
-          :min="0.01"
-          :max="2"
-          :step="0.01"
-          v-model="fastDuration"
-          @onChange="
-            (val: number) => {
-              fastDuration = val;
-            }
-          "
-        />
+        <PreviewSlider title="Fast Duration (Lead)" :min="0.01" :max="2" :step="0.01" v-model="fastDuration" />
 
-        <PreviewSlider
-          title="Slow Duration (Trail)"
-          :min="0.01"
-          :max="3"
-          :step="0.01"
-          v-model="slowDuration"
-          @onChange="
-            (val: number) => {
-              slowDuration = val;
-            }
-          "
-        />
+        <PreviewSlider title="Slow Duration (Trail)" :min="0.01" :max="3" :step="0.01" v-model="slowDuration" />
 
-        <PreviewSlider
-          title="Z-Index"
-          :min="0"
-          :max="1000"
-          :step="10"
-          v-model="zIndex"
-          @onChange="
-            (val: number) => {
-              zIndex = val;
-            }
-          "
-        />
+        <PreviewSlider title="Z-Index" :min="0" :max="1000" :step="10" v-model="zIndex" />
       </Customize>
 
       <p class="flex items-center gap-[0.5em] mx-0 my-[1em] text-[#a1a1aa]">
@@ -214,9 +133,6 @@ import Customize from '../../components/common/Customize.vue';
 import PreviewSlider from '../../components/common/PreviewSlider.vue';
 import PreviewColor from '../../components/common/PreviewColor.vue';
 import BlobCursor from '../../content/Animations/BlobCursor/BlobCursor.vue';
-import { useForceRerender } from '@/composables/useForceRerender';
-
-const { forceRerender } = useForceRerender();
 
 const blobType = ref<'circle' | 'square'>('circle');
 const fillColor = ref<string>('#27FF64');

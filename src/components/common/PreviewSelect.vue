@@ -3,8 +3,7 @@
     <span class="select-label">{{ title }}</span>
 
     <Select
-      :model-value="modelValue"
-      @update:model-value="handleSelectChange"
+      v-model="model"
       :options="options"
       v-bind="selectAttributes"
       :placeholder="placeholder"
@@ -25,7 +24,6 @@ interface Option {
 
 const props = defineProps<{
   title: string;
-  modelValue: string | number;
   options: Option[] | string[] | number[];
   optionLabel?: string;
   optionValue?: string;
@@ -33,13 +31,7 @@ const props = defineProps<{
   disabled?: boolean;
 }>();
 
-const emit = defineEmits<{
-  'update:modelValue': [value: string | number];
-}>();
-
-const handleSelectChange = (value: string | number) => {
-  emit('update:modelValue', value);
-};
+const model = defineModel<string | number>();
 
 const isObjectArray = computed(() => {
   return props.options.length > 0 && typeof props.options[0] === 'object';

@@ -23,11 +23,11 @@
       <Customize>
         <button @click="generateRandomGradients" class="randomize-btn">Randomize Colors</button>
 
-        <PreviewSwitch title="Show Icon Pattern" v-model="showIcon" @update:model-value="forceRerender" />
+        <PreviewSwitch title="Show Icon Pattern" v-model="showIcon" />
 
-        <PreviewSwitch title="Show User Info" v-model="showUserInfo" @update:model-value="forceRerender" />
+        <PreviewSwitch title="Show User Info" v-model="showUserInfo" />
 
-        <PreviewSwitch title="Show BG Gradient" v-model="showBehindGradient" @update:model-value="forceRerender" />
+        <PreviewSwitch title="Show BG Gradient" v-model="showBehindGradient" />
       </Customize>
 
       <PropTable :data="propData" />

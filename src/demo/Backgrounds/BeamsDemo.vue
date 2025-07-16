@@ -16,70 +16,21 @@
         </div>
 
         <Customize>
-          <PreviewColor title="Color" :model-value="lightColor" @update:model-value="lightColor = $event" />
+          <PreviewColor title="Color" v-model="lightColor" />
 
-          <PreviewSlider
-            title="Beam Width"
-            :model-value="beamWidth"
-            @update:model-value="beamWidth = $event"
-            :min="0.1"
-            :max="10"
-            :step="0.1"
-          />
+          <PreviewSlider title="Beam Width" v-model="beamWidth" :min="0.1" :max="10" :step="0.1" />
 
-          <PreviewSlider
-            title="Beam Height"
-            :model-value="beamHeight"
-            @update:model-value="beamHeight = $event"
-            :min="1"
-            :max="25"
-            :step="1"
-          />
+          <PreviewSlider title="Beam Height" v-model="beamHeight" :min="1" :max="25" :step="1" />
 
-          <PreviewSlider
-            title="Beam Count"
-            :model-value="beamNumber"
-            @update:model-value="beamNumber = $event"
-            :min="1"
-            :max="50"
-            :step="1"
-          />
+          <PreviewSlider title="Beam Count" v-model="beamNumber" :min="1" :max="50" :step="1" />
 
-          <PreviewSlider
-            title="Speed"
-            :model-value="speed"
-            @update:model-value="speed = $event"
-            :min="0.1"
-            :max="10"
-            :step="0.1"
-          />
+          <PreviewSlider title="Speed" v-model="speed" :min="0.1" :max="10" :step="0.1" />
 
-          <PreviewSlider
-            title="Noise Intensity"
-            :model-value="noiseIntensity"
-            @update:model-value="noiseIntensity = $event"
-            :min="0"
-            :max="5"
-            :step="0.05"
-          />
+          <PreviewSlider title="Noise Intensity" v-model="noiseIntensity" :min="0" :max="5" :step="0.05" />
 
-          <PreviewSlider
-            title="Noise Scale"
-            :model-value="scale"
-            @update:model-value="scale = $event"
-            :min="0.01"
-            :max="1"
-            :step="0.01"
-          />
+          <PreviewSlider title="Noise Scale" v-model="scale" :min="0.01" :max="1" :step="0.01" />
 
-          <PreviewSlider
-            title="Rotation"
-            :model-value="rotation"
-            @update:model-value="rotation = $event"
-            :min="0"
-            :max="360"
-            :step="1"
-          />
+          <PreviewSlider title="Rotation" v-model="rotation" :min="0" :max="360" :step="1" />
         </Customize>
 
         <PropTable :data="propData" />

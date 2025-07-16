@@ -17,59 +17,15 @@
       </div>
 
       <Customize>
-        <PreviewSwitch title="Display Cursor" v-model="followCursor" @update:model-value="forceRerender" />
+        <PreviewSwitch title="Display Cursor" v-model="followCursor" />
 
-        <PreviewSlider
-          title="Ball Count"
-          :min="50"
-          :max="500"
-          :step="10"
-          v-model="count"
-          @onChange="
-            (val: number) => {
-              count = val;
-            }
-          "
-        />
+        <PreviewSlider title="Ball Count" :min="50" :max="500" :step="10" v-model="count" />
 
-        <PreviewSlider
-          title="Gravity"
-          :min="0.1"
-          :max="1"
-          :step="0.1"
-          v-model="gravity"
-          @onChange="
-            (val: number) => {
-              gravity = val;
-            }
-          "
-        />
+        <PreviewSlider title="Gravity" :min="0.1" :max="1" :step="0.1" v-model="gravity" />
 
-        <PreviewSlider
-          title="Friction"
-          :min="0.9"
-          :max="1"
-          :step="0.001"
-          v-model="friction"
-          @onChange="
-            (val: number) => {
-              friction = val;
-            }
-          "
-        />
+        <PreviewSlider title="Friction" :min="0.9" :max="1" :step="0.001" v-model="friction" />
 
-        <PreviewSlider
-          title="Wall Bounce"
-          :min="0.1"
-          :max="1"
-          :step="0.05"
-          v-model="wallBounce"
-          @onChange="
-            (val: number) => {
-              wallBounce = val;
-            }
-          "
-        />
+        <PreviewSlider title="Wall Bounce" :min="0.1" :max="1" :step="0.05" v-model="wallBounce" />
       </Customize>
 
       <PropTable :data="propData" />

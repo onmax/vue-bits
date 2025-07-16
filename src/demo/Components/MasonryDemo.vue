@@ -20,11 +20,11 @@
       </div>
 
       <Customize>
-        <PreviewSwitch title="Scale on Hover" v-model="scaleOnHover" @update:model-value="forceRerender" />
+        <PreviewSwitch title="Scale on Hover" v-model="scaleOnHover" />
 
-        <PreviewSwitch title="Blur to Focus" v-model="blurToFocus" @update:model-value="forceRerender" />
+        <PreviewSwitch title="Blur to Focus" v-model="blurToFocus" />
 
-        <PreviewSwitch title="Color Shift on Hover" v-model="colorShiftOnHover" @update:model-value="forceRerender" />
+        <PreviewSwitch title="Color Shift on Hover" v-model="colorShiftOnHover" />
 
         <PreviewSelect
           title="Animation Direction"
@@ -37,35 +37,13 @@
             { label: 'Center', value: 'center' },
             { label: 'Random', value: 'random' }
           ]"
-          @update:model-value="forceRerender"
         />
 
-        <PreviewSlider
-          title="Duration (s)"
-          v-model="duration"
-          :min="0.1"
-          :max="2"
-          :step="0.1"
-          @update:model-value="forceRerender"
-        />
+        <PreviewSlider title="Duration (s)" v-model="duration" :min="0.1" :max="2" :step="0.1" />
 
-        <PreviewSlider
-          title="Stagger Delay (s)"
-          v-model="stagger"
-          :min="0.01"
-          :max="0.2"
-          :step="0.01"
-          @update:model-value="forceRerender"
-        />
+        <PreviewSlider title="Stagger Delay (s)" v-model="stagger" :min="0.01" :max="0.2" :step="0.01" />
 
-        <PreviewSlider
-          title="Hover Scale"
-          v-model="hoverScale"
-          :min="0.8"
-          :max="1.2"
-          :step="0.05"
-          @update:model-value="forceRerender"
-        />
+        <PreviewSlider title="Hover Scale" v-model="hoverScale" :min="0.8" :max="1.2" :step="0.05" />
       </Customize>
 
       <PropTable :data="propData" />
@@ -84,7 +62,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import TabbedLayout from '../../components/common/TabbedLayout.vue';
 import RefreshButton from '../../components/common/RefreshButton.vue';
 import PropTable from '../../components/common/PropTable.vue';
@@ -164,4 +142,11 @@ const propData = [
     description: 'Whether to show color overlay on hover.'
   }
 ];
+
+watch(
+  () => [scaleOnHover.value, blurToFocus.value, colorShiftOnHover.value],
+  () => {
+    forceRerender();
+  }
+);
 </script>

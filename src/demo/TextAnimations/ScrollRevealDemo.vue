@@ -22,16 +22,7 @@
       </div>
 
       <Customize>
-        <PreviewSwitch
-          title="Enable Hover"
-          :model-value="enableBlur"
-          @update:model-value="
-            (val: boolean) => {
-              enableBlur = val;
-              forceRerender();
-            }
-          "
-        />
+        <PreviewSwitch title="Enable Blur" v-model="enableBlur" />
         <PreviewSlider title="Base Opacity:" v-model="baseOpacity" :min="0" :max="1" :step="0.1" value-unit="" />
         <PreviewSlider title="Base Rotation:" v-model="baseRotation" :min="0" :max="10" :step="0.5" value-unit="deg" />
         <PreviewSlider title="Blur Strength:" v-model="blurStrength" :min="0" :max="10" :step="0.5" value-unit="px" />
@@ -51,7 +42,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, onMounted, onUnmounted, watch } from 'vue';
 import { gsap } from 'gsap';
 import TabbedLayout from '../../components/common/TabbedLayout.vue';
 import PropTable from '../../components/common/PropTable.vue';
@@ -62,6 +53,7 @@ import ScrollReveal from '../../content/TextAnimations/ScrollReveal/ScrollReveal
 import PreviewSlider from '../../components/common/PreviewSlider.vue';
 import PreviewSwitch from '../../components/common/PreviewSwitch.vue';
 import { scrollRevealCode } from '@/constants/code/TextAnimations/scrollRevealCode';
+import { useForceRerender } from '@/composables/useForceRerender';
 
 const containerRef = ref<HTMLElement | null>(null);
 const scrollText = ref(
@@ -75,11 +67,8 @@ const containerClassName = ref('');
 const textClassName = ref('');
 const rotationEnd = ref('bottom bottom');
 const wordAnimationEnd = ref('bottom bottom');
-const rerenderKey = ref(0);
 
-const forceRerender = () => {
-  rerenderKey.value++;
-};
+const { rerenderKey, forceRerender } = useForceRerender();
 
 const smoothScroll = (e: WheelEvent) => {
   e.preventDefault();
@@ -109,6 +98,13 @@ onUnmounted(() => {
     container.removeEventListener('wheel', smoothScroll);
   }
 });
+
+watch(
+  () => enableBlur.value,
+  () => {
+    forceRerender();
+  }
+);
 
 const propData = [
   {
