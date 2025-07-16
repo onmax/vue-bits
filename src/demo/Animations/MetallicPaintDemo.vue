@@ -18,47 +18,17 @@
       </div>
 
       <Customize>
-        <PreviewSlider title="Edge" v-model="edge" :min="0" :max="1" :step="0.1" @update:model-value="forceRerender" />
+        <PreviewSlider title="Edge" v-model="edge" :min="0" :max="1" :step="0.1" />
 
-        <PreviewSlider
-          title="Pattern Scale"
-          v-model="patternScale"
-          :min="1"
-          :max="5"
-          :step="0.1"
-        />
+        <PreviewSlider title="Pattern Scale" v-model="patternScale" :min="1" :max="5" :step="0.1" />
 
-        <PreviewSlider
-          title="Pattern Blur"
-          v-model="patternBlur"
-          :min="0"
-          :max="0.1"
-          :step="0.001"
-        />
+        <PreviewSlider title="Pattern Blur" v-model="patternBlur" :min="0" :max="0.1" :step="0.001" />
 
-        <PreviewSlider
-          title="Refraction"
-          v-model="refraction"
-          :min="0"
-          :max="0.1"
-          :step="0.01"
-        />
+        <PreviewSlider title="Refraction" v-model="refraction" :min="0" :max="0.1" :step="0.01" />
 
-        <PreviewSlider
-          title="Liquid"
-          v-model="liquid"
-          :min="0"
-          :max="1"
-          :step="0.01"
-        />
+        <PreviewSlider title="Liquid" v-model="liquid" :min="0" :max="1" :step="0.01" />
 
-        <PreviewSlider
-          title="Speed"
-          v-model="speed"
-          :min="0"
-          :max="1"
-          :step="0.01"
-        />
+        <PreviewSlider title="Speed" v-model="speed" :min="0" :max="1" :step="0.01" />
       </Customize>
 
       <PropTable :data="propData" />
