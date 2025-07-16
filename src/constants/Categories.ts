@@ -68,7 +68,8 @@ export const CATEGORIES = [
       'Decay Card',
       'Flowing Menu',
       'Elastic Slider',
-      'Stack'
+      'Stack',
+      'Chroma Grid'
     ]
   },
   {

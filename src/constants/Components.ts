@@ -57,6 +57,7 @@ const components = {
   'elastic-slider': () => import('../demo/Components/ElasticSliderDemo.vue'),
   'tilted-card': () => import('../demo/Components/TiltedCardDemo.vue'),
   'stack': () => import('../demo/Components/StackDemo.vue'),
+  'chroma-grid': () => import('../demo/Components/ChromaGridDemo.vue'),
 };
 
 const backgrounds = {
