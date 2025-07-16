@@ -19,55 +19,19 @@
       <Customize>
         <PreviewColor title="Color" v-model="color" />
 
-        <PreviewSlider
-          title="Ball Count"
-          :min="2"
-          :max="30"
-          :step="1"
-          v-model="ballCount"
-        />
+        <PreviewSlider title="Ball Count" :min="2" :max="30" :step="1" v-model="ballCount" />
 
-        <PreviewSlider
-          title="Speed"
-          :min="0.1"
-          :max="1"
-          :step="0.1"
-          v-model="speed"
-        />
+        <PreviewSlider title="Speed" :min="0.1" :max="1" :step="0.1" v-model="speed" />
 
-        <PreviewSlider
-          title="Size"
-          :min="10"
-          :max="50"
-          :step="1"
-          v-model="animationSize"
-        />
+        <PreviewSlider title="Size" :min="10" :max="50" :step="1" v-model="animationSize" />
 
-        <PreviewSlider
-          title="Clump Factor"
-          :min="0.1"
-          :max="2"
-          :step="0.1"
-          v-model="clumpFactor"
-        />
+        <PreviewSlider title="Clump Factor" :min="0.1" :max="2" :step="0.1" v-model="clumpFactor" />
 
-        <PreviewSwitch title="Follow Cursor" v-model="enableMouseInteraction" @update:model-value="forceRerender" />
+        <PreviewSwitch title="Follow Cursor" v-model="enableMouseInteraction" />
 
-        <PreviewSlider
-          title="Cursor Smoothing"
-          :min="0.001"
-          :max="0.25"
-          :step="0.001"
-          v-model="hoverSmoothness"
-        />
+        <PreviewSlider title="Cursor Smoothing" :min="0.001" :max="0.25" :step="0.001" v-model="hoverSmoothness" />
 
-        <PreviewSlider
-          title="Cursor Size"
-          :min="1"
-          :max="5"
-          :step="1"
-          v-model="cursorBallSize"
-        />
+        <PreviewSlider title="Cursor Size" :min="1" :max="5" :step="1" v-model="cursorBallSize" />
       </Customize>
 
       <PropTable :data="propData" />
@@ -85,7 +49,6 @@
 </template>
 
 <script setup lang="ts">
-import { useForceRerender } from '@/composables/useForceRerender';
 import { ref } from 'vue';
 import CliInstallation from '../../components/code/CliInstallation.vue';
 import CodeExample from '../../components/code/CodeExample.vue';
@@ -98,8 +61,6 @@ import PropTable from '../../components/common/PropTable.vue';
 import TabbedLayout from '../../components/common/TabbedLayout.vue';
 import { metaBalls } from '../../constants/code/Animations/metaBallsCode';
 import MetaBalls from '../../content/Animations/MetaBalls/MetaBalls.vue';
-
-const { forceRerender } = useForceRerender();
 
 const color = ref('#27FF64');
 const speed = ref(0.3);

@@ -39,71 +39,17 @@
         <p class="mt-6 text-[#999] text-sm">Animation Settings</p>
 
         <div class="flex gap-4 flex-wrap">
-          <PreviewSwitch
-            title="Flex"
-            :model-value="flex"
-            @update:model-value="
-              (val: boolean) => {
-                flex = val;
-                forceRerender();
-              }
-            "
-          />
+          <PreviewSwitch title="Flex" v-model="flex" />
 
-          <PreviewSwitch
-            title="Alpha"
-            :model-value="alpha"
-            @update:model-value="
-              (val: boolean) => {
-                alpha = val;
-                forceRerender();
-              }
-            "
-          />
+          <PreviewSwitch title="Alpha" v-model="alpha" />
 
-          <PreviewSwitch
-            title="Stroke"
-            :model-value="stroke"
-            @update:model-value="
-              (val: boolean) => {
-                stroke = val;
-                forceRerender();
-              }
-            "
-          />
+          <PreviewSwitch title="Stroke" v-model="stroke" />
 
-          <PreviewSwitch
-            title="Width"
-            :model-value="width"
-            @update:model-value="
-              (val: boolean) => {
-                width = val;
-                forceRerender();
-              }
-            "
-          />
+          <PreviewSwitch title="Width" v-model="width" />
 
-          <PreviewSwitch
-            title="Weight"
-            :model-value="weight"
-            @update:model-value="
-              (val: boolean) => {
-                weight = val;
-                forceRerender();
-              }
-            "
-          />
+          <PreviewSwitch title="Weight" v-model="weight" />
 
-          <PreviewSwitch
-            title="Italic"
-            :model-value="italic"
-            @update:model-value="
-              (val: boolean) => {
-                italic = val;
-                forceRerender();
-              }
-            "
-          />
+          <PreviewSwitch title="Italic" v-model="italic" />
         </div>
       </Customize>
 
@@ -121,7 +67,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import TabbedLayout from '../../components/common/TabbedLayout.vue';
 import PropTable from '../../components/common/PropTable.vue';
 import CliInstallation from '../../components/code/CliInstallation.vue';
@@ -231,6 +177,13 @@ const propData = [
     description: 'Sets a minimum font-size to avoid overly tiny text on smaller screens.'
   }
 ];
+
+watch(
+  () => [flex.value, alpha.value, stroke.value, width.value, weight.value, italic.value],
+  () => {
+    forceRerender();
+  }
+);
 </script>
 
 <style scoped>

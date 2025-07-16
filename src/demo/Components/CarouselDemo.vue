@@ -16,11 +16,11 @@
       <Customize>
         <PreviewSlider title="Width" v-model="width" :min="250" :max="330" :step="10" />
 
-        <PreviewSwitch title="Round Variant" v-model="round" @update:model-value="forceRerender" />
+        <PreviewSwitch title="Round Variant" v-model="round" />
 
-        <PreviewSwitch title="Loop" v-model="loop" @update:model-value="forceRerender" />
+        <PreviewSwitch title="Loop" v-model="loop" />
 
-        <PreviewSwitch title="Autoplay" v-model="autoplay" @update:model-value="forceRerender" />
+        <PreviewSwitch title="Autoplay" v-model="autoplay" />
 
         <PreviewSlider
           title="Delay"
@@ -31,12 +31,7 @@
           :disabled="!autoplay"
         />
 
-        <PreviewSwitch
-          title="Pause On Hover"
-          v-model="pauseOnHover"
-          :disabled="!autoplay"
-          @update:model-value="forceRerender"
-        />
+        <PreviewSwitch title="Pause On Hover" v-model="pauseOnHover" :disabled="!autoplay" />
       </Customize>
 
       <PropTable :data="propData" />
@@ -55,7 +50,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import TabbedLayout from '../../components/common/TabbedLayout.vue';
 import PropTable from '../../components/common/PropTable.vue';
 import Dependencies from '../../components/code/Dependencies.vue';
@@ -121,4 +116,11 @@ const propData = [
     description: 'When true, the carousel is rendered with a 1:1 aspect ratio and circular container/items.'
   }
 ];
+
+watch(
+  () => [pauseOnHover.value, loop.value],
+  () => {
+    forceRerender();
+  }
+);
 </script>

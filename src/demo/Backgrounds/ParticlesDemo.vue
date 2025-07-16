@@ -30,23 +30,11 @@
 
           <PreviewSlider title="Base Size" v-model="baseSize" :min="100" :max="1000" :step="100" />
 
-          <PreviewSwitch
-            title="Mouse Interaction"
-            :model-value="moveParticlesOnHover"
-            @update:model-value="moveParticlesOnHover = $event"
-          />
+          <PreviewSwitch title="Mouse Interaction" v-model="moveParticlesOnHover" />
 
-          <PreviewSwitch
-            title="Particle Transparency"
-            :model-value="alphaParticles"
-            @update:model-value="alphaParticles = $event"
-          />
+          <PreviewSwitch title="Particle Transparency" v-model="alphaParticles" />
 
-          <PreviewSwitch
-            title="Disable Rotation"
-            :model-value="disableRotation"
-            @update:model-value="disableRotation = $event"
-          />
+          <PreviewSwitch title="Disable Rotation" v-model="disableRotation" />
         </Customize>
 
         <PropTable :data="propData" />

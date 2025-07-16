@@ -22,7 +22,7 @@
       </div>
 
       <Customize>
-        <PreviewSwitch title="Show Completion Toast" v-model="showCallback" @update:model-value="forceRerender" />
+        <PreviewSwitch title="Show Completion Toast" v-model="showCallback" />
 
         <PreviewSlider title="Stagger Delay (ms)" v-model="delay" :min="10" :max="500" :step="10" />
 
@@ -47,7 +47,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import TabbedLayout from '../../components/common/TabbedLayout.vue';
 import RefreshButton from '../../components/common/RefreshButton.vue';
 import PropTable from '../../components/common/PropTable.vue';
@@ -123,4 +123,11 @@ const propData = [
     description: 'Callback function when all animations complete.'
   }
 ];
+
+watch(
+  () => showCallback.value,
+  () => {
+    forceRerender();
+  }
+);
 </script>

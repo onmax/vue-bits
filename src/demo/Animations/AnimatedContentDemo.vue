@@ -29,59 +29,21 @@
 
         <PreviewSelect title="Easing Function" v-model="ease" :options="easeOptions" />
 
-        <PreviewSlider
-          title="Distance"
-          v-model="distance"
-          :min="50"
-          :max="300"
-          :step="10"
-        />
+        <PreviewSlider title="Distance" v-model="distance" :min="50" :max="300" :step="10" />
 
-        <PreviewSlider
-          title="Duration"
-          v-model="duration"
-          :min="0.1"
-          :max="3"
-          :step="0.1"
-          value-unit="s"
-        />
+        <PreviewSlider title="Duration" v-model="duration" :min="0.1" :max="3" :step="0.1" value-unit="s" />
 
-        <PreviewSlider
-          title="Delay"
-          v-model="delay"
-          :min="0"
-          :max="2"
-          :step="0.1"
-          value-unit="s"
-        />
+        <PreviewSlider title="Delay" v-model="delay" :min="0" :max="2" :step="0.1" value-unit="s" />
 
-        <PreviewSlider
-          title="Initial Opacity"
-          v-model="initialOpacity"
-          :min="0"
-          :max="1"
-          :step="0.1"
-        />
+        <PreviewSlider title="Initial Opacity" v-model="initialOpacity" :min="0" :max="1" :step="0.1" />
 
-        <PreviewSlider
-          title="Initial Scale"
-          v-model="scale"
-          :min="0.1"
-          :max="2"
-          :step="0.1"
-        />
+        <PreviewSlider title="Initial Scale" v-model="scale" :min="0.1" :max="2" :step="0.1" />
 
-        <PreviewSlider
-          title="Threshold"
-          v-model="threshold"
-          :min="0.1"
-          :max="1"
-          :step="0.1"
-        />
+        <PreviewSlider title="Threshold" v-model="threshold" :min="0.1" :max="1" :step="0.1" />
 
-        <PreviewSwitch title="Reverse Direction" v-model="reverse" @update:model-value="forceRerender" />
+        <PreviewSwitch title="Reverse Direction" v-model="reverse" />
 
-        <PreviewSwitch title="Animate Opacity" v-model="animateOpacity" @update:model-value="forceRerender" />
+        <PreviewSwitch title="Animate Opacity" v-model="animateOpacity" />
       </Customize>
 
       <PropTable :data="propData" />

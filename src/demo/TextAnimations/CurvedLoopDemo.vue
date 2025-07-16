@@ -24,33 +24,11 @@
           />
         </div>
 
-        <PreviewSlider
-          title="Speed"
-          v-model="speed"
-          :min="0"
-          :max="10"
-          :step="0.1"
-        />
+        <PreviewSlider title="Speed" v-model="speed" :min="0" :max="10" :step="0.1" />
 
-        <PreviewSlider
-          title="Curve Amount"
-          v-model="curveAmount"
-          :min="-400"
-          :max="400"
-          :step="10"
-          value-unit="px"
-        />
+        <PreviewSlider title="Curve Amount" v-model="curveAmount" :min="-400" :max="400" :step="10" value-unit="px" />
 
-        <PreviewSwitch
-          title="Draggable"
-          :model-value="interactive"
-          @update:model-value="
-            (val: boolean) => {
-              interactive = val;
-              forceRerender();
-            }
-          "
-        />
+        <PreviewSwitch title="Draggable" v-model="interactive" />
       </Customize>
 
       <PropTable :data="propData" />

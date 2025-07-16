@@ -10,7 +10,7 @@
       <Customize>
         <PreviewColor title="Corners Color" v-model="borderColor" />
 
-        <PreviewSwitch title="Hover Mode" v-model="manualMode" @update:model-value="forceRerender" />
+        <PreviewSwitch title="Hover Mode" v-model="manualMode" />
 
         <PreviewSlider title="Blur Amount" v-model="blurAmount" :min="0" :max="15" :step="0.5" value-unit="px" />
 
@@ -65,7 +65,7 @@ import TrueFocus from '../../content/TextAnimations/TrueFocus/TrueFocus.vue';
 import { trueFocus } from '../../constants/code/TextAnimations/trueFocusCode';
 import { useForceRerender } from '@/composables/useForceRerender';
 
-const { rerenderKey: key, forceRerender } = useForceRerender();
+const { rerenderKey: key } = useForceRerender();
 
 const manualMode = ref(false);
 const blurAmount = ref(5);

@@ -23,7 +23,7 @@
       </div>
 
       <Customize>
-        <PreviewSwitch title="Show Completion Toast" v-model="showCallback" @update:model-value="forceRerender" />
+        <PreviewSwitch title="Show Completion Toast" v-model="showCallback" />
 
         <div class="flex gap-4 flex-wrap">
           <button
@@ -43,29 +43,11 @@
           </button>
         </div>
 
-        <PreviewSlider
-          title="Delay (ms)"
-          v-model="delay"
-          :min="50"
-          :max="500"
-          :step="10"
-        />
+        <PreviewSlider title="Delay (ms)" v-model="delay" :min="50" :max="500" :step="10" />
 
-        <PreviewSlider
-          title="Step Duration (s)"
-          v-model="stepDuration"
-          :min="0.1"
-          :max="1"
-          :step="0.05"
-        />
+        <PreviewSlider title="Step Duration (s)" v-model="stepDuration" :min="0.1" :max="1" :step="0.05" />
 
-        <PreviewSlider
-          title="Threshold"
-          v-model="threshold"
-          :min="0.1"
-          :max="1"
-          :step="0.1"
-        />
+        <PreviewSlider title="Threshold" v-model="threshold" :min="0.1" :max="1" :step="0.1" />
       </Customize>
 
       <PropTable :data="propData" />
