@@ -90,6 +90,7 @@ export const CATEGORIES = [
       'Threads',
       'Grid Motion',
       'Orb',
+      'Ballpit'
     ]
   }
 ];
