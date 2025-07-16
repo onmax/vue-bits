@@ -77,6 +77,7 @@ const backgrounds = {
   'balatro': () => import('../demo/Backgrounds/BalatroDemo.vue'),
   'orb': () => import('../demo/Backgrounds/OrbDemo.vue'),
   'ballpit': () => import('../demo/Backgrounds/BallpitDemo.vue'),
+  'liquid-chrome': () => import('../demo/Backgrounds/LiquidChromeDemo.vue'),
 };
 
 export const componentMap = {
