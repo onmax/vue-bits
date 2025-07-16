@@ -66,7 +66,7 @@ const patternBlur = ref(0.005);
 const liquid = ref(0.07);
 const speed = ref(0.3);
 
-const { rerenderKey, forceRerender } = useForceRerender();
+const { rerenderKey } = useForceRerender();
 
 const propData = [
   {
