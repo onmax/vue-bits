@@ -14,17 +14,13 @@
         </div>
 
         <Customize>
-          <div class="space-y-2">
-            <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">Color Stops</h3>
-
-            <div class="flex gap-4">
-              <PreviewColor
-                v-for="(color, index) in colorStops"
-                :key="index"
-                :title="`Color ${index + 1}`"
-                v-model="colorStops[index]"
-              />
-            </div>
+          <div class="flex gap-2">
+            <PreviewColor
+              v-for="(_, index) in colorStops"
+              :key="index"
+              :title="`Color ${index + 1}`"
+              v-model="colorStops[index]"
+            />
           </div>
 
           <PreviewSlider title="Amplitude" v-model="amplitude" :min="0" :max="2" :step="0.1" />

@@ -125,8 +125,8 @@ import ContributionSection from './ContributionSection.vue';
 }
 
 :deep(.p-tab[aria-selected='true'] .tab-header) {
-  background: #333333;
-  color: #a7ef9e;
+  background: #222;
+  color: #27ff64;
 }
 
 :deep(.p-tabpanels) {

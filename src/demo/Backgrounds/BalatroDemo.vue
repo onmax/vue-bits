@@ -14,7 +14,7 @@
       </div>
 
       <Customize>
-        <div class="flex gap-4">
+        <div class="flex gap-2">
           <PreviewColor
             v-for="(_, index) in colorStops"
             :key="index"
@@ -23,7 +23,7 @@
           />
         </div>
 
-        <PreviewSlider title="Pixelation" v-model="pixelation" :min="0" :max="2000" :step="10" />
+        <PreviewSlider title="Pixelation" v-model="pixelation" :min="100" :max="2000" :step="10" />
 
         <PreviewSwitch title="Enable Mouse Interaction" v-model="mouseInteractionEnabled" />
 

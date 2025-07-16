@@ -1,12 +1,17 @@
 <template>
   <div class="preview-color">
     <span class="color-label">{{ title }}</span>
-    <input :value="color" @input="handleColorChange" type="color" :disabled="props.disabled" class="color-input" />
+    <input :value="color" @input="handleColorChange" type="color" :disabled="disabled" class="color-input" />
   </div>
 </template>
 
 <script setup lang="ts">
-const props = defineProps<{ title: string; disabled?: boolean }>();
+defineProps<{
+  title?: string;
+  modelValue: string;
+  disabled?: boolean;
+}>();
+
 const color = defineModel<string>();
 
 const handleColorChange = (event: Event) => {
@@ -19,7 +24,6 @@ const handleColorChange = (event: Event) => {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  margin-bottom: 1.5rem;
 }
 
 .color-label {

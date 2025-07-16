@@ -18,8 +18,8 @@ defineEmits<{
   top: 0.75rem;
   right: 0.75rem;
   z-index: 2;
-  background-color: #111;
-  border: 1px solid #142216;
+  background-color: #0b0b0b;
+  border: 1px solid #333;
   color: white;
   border-radius: 12px;
   padding: 0.5rem;
@@ -29,11 +29,11 @@ defineEmits<{
 .refresh-button:hover {
   background-color: #222 !important;
   color: #fff !important;
-  border: 1px solid #142216 !important;
+  border: 1px solid #333 !important;
   outline: 1px solid transparent !important;
 }
 
 .refresh-button:active {
-  background-color: #142216;
+  background-color: #0b0b0b;
 }
 </style>

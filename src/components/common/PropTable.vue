@@ -92,14 +92,14 @@ defineProps<{
 
 :deep(.p-datatable-header) {
   background: #111;
-  border: 1px solid #142216;
+  border: 1px solid #333;
   border-bottom: none;
 }
 
 :deep(.p-datatable-thead > tr > th) {
   background: #111;
-  border-right: 1px solid #142216;
-  border-bottom: 1px solid #142216;
+  border-right: 1px solid #333;
+  border-bottom: 1px solid #333;
   color: #fff;
   font-weight: 600;
   text-transform: capitalize;
@@ -114,8 +114,8 @@ defineProps<{
 
 :deep(.p-datatable-tbody > tr > td) {
   background: #0b0b0b;
-  border-right: 1px solid #142216;
-  border-bottom: 1px solid #142216;
+  border-right: 1px solid #333;
+  border-bottom: 1px solid #333;
   color: #fff;
   padding: 1rem;
   font-size: 14px;

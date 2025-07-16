@@ -88,7 +88,9 @@ export const CATEGORIES = [
       'Squares',
       'Iridescence',
       'Threads',
-      'Grid Motion'
+      'Grid Motion',
+      'Orb',
+      'Ballpit'
     ]
   }
 ];
