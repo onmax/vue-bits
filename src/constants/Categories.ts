@@ -91,6 +91,7 @@ export const CATEGORIES = [
       'Grid Motion',
       'Orb',
       'Ballpit',
+      'Liquid Chrome',
       'Grid Distortion'
     ]
   }
