@@ -11,42 +11,15 @@
           :relaxation="0.9"
           className="grid-distortion"
         />
-        <p class="absolute font-black text-8xl text-center select-none mix-blend-difference">Distortion.</p>
-
-        <button
-          class="right-[2em] bottom-[2em] absolute bg-[#060010] hover:bg-[#111] active:bg-[#111] px-6 rounded-[15px] h-16 text-sm"
-          @click="!isFullScreen ? enterFullScreen() : exitFullScreen()"
-        >
-          {{ !isFullScreen ? 'Go Fullscreen!' : 'Exit Fullscreen' }}
-        </button>
+        <p class="absolute font-black text-8xl text-center pointer-events-none select-none mix-blend-difference">
+          Distortion.
+        </p>
       </div>
 
       <Customize>
-        <PreviewSlider
-          title="Grid Size"
-          :min="6"
-          :max="200"
-          :step="1"
-          v-model="grid"
-          @onChange="
-            (val: number) => {
-              grid = val;
-            }
-          "
-        />
+        <PreviewSlider title="Grid Size" :min="6" :max="200" :step="1" v-model="grid" />
 
-        <PreviewSlider
-          title="Mouse Size"
-          :min="0.1"
-          :max="0.5"
-          :step="0.01"
-          v-model="mouse"
-          @onChange="
-            (val: number) => {
-              mouse = val;
-            }
-          "
-        />
+        <PreviewSlider title="Mouse Size" :min="0.1" :max="0.5" :step="0.01" v-model="mouse" />
       </Customize>
 
       <PropTable :data="propData" />
@@ -80,29 +53,16 @@ const { rerenderKey: key, forceRerender } = useForceRerender();
 
 const grid = ref(10);
 const mouse = ref(0.25);
-const isFullScreen = ref(false);
 
 const containerRef = ref<HTMLDivElement | null>(null);
 
 watch(
-  () => [grid, mouse, isFullScreen],
+  () => [grid, mouse],
   () => {
     forceRerender();
   },
   { deep: true }
 );
-
-const enterFullScreen = () => {
-  if (containerRef.value) {
-    containerRef.value.requestFullscreen().then(() => (isFullScreen.value = true));
-  }
-};
-
-const exitFullScreen = () => {
-  if (document.fullscreenElement) {
-    document.exitFullscreen().then(() => (isFullScreen.value = false));
-  }
-};
 
 const propData = [
   {
@@ -143,3 +103,9 @@ const propData = [
   }
 ];
 </script>
+
+<style scoped>
+.demo-container {
+  padding: 0;
+}
+</style>
