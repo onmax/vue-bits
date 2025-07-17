@@ -36,7 +36,6 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 
-// Definir tipos
 interface PaperOffset {
   x: number
   y: number
@@ -49,7 +48,6 @@ interface Props {
   class?: string
 }
 
-// Props con valores por defecto
 const props = withDefaults(defineProps<Props>(), {
   color: '#5227FF',
   size: 1,
@@ -57,7 +55,6 @@ const props = withDefaults(defineProps<Props>(), {
   class: ''
 })
 
-// Función para oscurecer colores
 const darkenColor = (hex: string, percent: number): string => {
   let color = hex.startsWith('#') ? hex.slice(1) : hex
   if (color.length === 3) {
@@ -79,14 +76,12 @@ const darkenColor = (hex: string, percent: number): string => {
   )
 }
 
-// Estado reactivo
 const open = ref(false)
 const maxItems = 3
 const paperOffsets = ref<PaperOffset[]>(
   Array.from({ length: maxItems }, () => ({ x: 0, y: 0 }))
 )
 
-// Computed properties
 const papers = computed(() => {
   const result = props.items.slice(0, maxItems)
   while (result.length < maxItems) {
@@ -114,7 +109,6 @@ const scaleStyle = computed(() => ({
   transform: `scale(${props.size})`
 }))
 
-// Métodos
 const handleClick = () => {
   open.value = !open.value
   if (!open.value) {
