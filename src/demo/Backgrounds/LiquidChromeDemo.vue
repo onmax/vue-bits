@@ -6,75 +6,17 @@
       </div>
 
       <Customize>
-        <PreviewSlider
-          :min="0"
-          :max="1"
-          :width="50"
-          :step="0.1"
-          v-model="baseColor[0]"
-          title="Red"
-          @onChange="
-            (val: number) => {
-              baseColor[0] = val;
-            }
-          "
-        />
+        <PreviewSlider :min="0" :max="1" :width="50" :step="0.1" v-model="baseColor[0]" title="Red" />
 
-        <PreviewSlider
-          :min="0"
-          :max="1"
-          :width="50"
-          :step="0.1"
-          v-model="baseColor[1]"
-          title="Green"
-          @onChange="
-            (val: number) => {
-              baseColor[1] = val;
-            }
-          "
-        />
+        <PreviewSlider :min="0" :max="1" :width="50" :step="0.1" v-model="baseColor[1]" title="Green" />
 
-        <PreviewSlider
-          :min="0"
-          :max="1"
-          :width="50"
-          :step="0.1"
-          v-model="baseColor[2]"
-          title="Blue"
-          @onChange="
-            (val: number) => {
-              baseColor[2] = val;
-            }
-          "
-        />
+        <PreviewSlider :min="0" :max="1" :width="50" :step="0.1" v-model="baseColor[2]" title="Blue" />
 
-        <PreviewSlider
-          :min="0"
-          title="Speed"
-          :max="5"
-          :step="0.01"
-          v-model="speed"
-          @update:model-value="
-            (val: number) => {
-              speed = val;
-            }
-          "
-        />
+        <PreviewSlider :min="0" title="Speed" :max="5" :step="0.01" v-model="speed" />
 
-        <PreviewSlider
-          :min="0.1"
-          title="Amplitude"
-          :max="1"
-          :step="0.01"
-          v-model="amplitude"
-          @update:model-value="
-            val => {
-              amplitude = val;
-            }
-          "
-        />
+        <PreviewSlider :min="0.1" title="Amplitude" :max="1" :step="0.01" v-model="amplitude" />
 
-        <PreviewSwitch title="Enable Interaction" v-model="interactive" @update:model-value="forceRerender" />
+        <PreviewSwitch title="Enable Interaction" v-model="interactive" />
       </Customize>
 
       <PropTable :data="propData" />
@@ -159,3 +101,9 @@ const propData = [
   }
 ];
 </script>
+
+<style scoped>
+.demo-container {
+  padding: 0;
+}
+</style>
