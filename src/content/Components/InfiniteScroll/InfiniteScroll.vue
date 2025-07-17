@@ -241,7 +241,7 @@ watch(
 .infinite-scroll-wrapper::after {
   content: '';
   position: absolute;
-  background: linear-gradient(var(--dir, to bottom), #060010, transparent);
+  background: linear-gradient(var(--dir, to bottom), #0b0b0b, transparent);
   height: 25%;
   width: 100%;
   z-index: 1;

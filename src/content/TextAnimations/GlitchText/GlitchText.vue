@@ -53,7 +53,7 @@ const baseClasses = [
   'before:absolute',
   'before:top-0',
   'before:text-white',
-  'before:bg-[#060010]',
+  'before:bg-[#0b0b0b]',
   'before:overflow-hidden',
   'before:[clip-path:inset(0_0_0_0)]',
 
@@ -61,7 +61,7 @@ const baseClasses = [
   'after:absolute',
   'after:top-0',
   'after:text-white',
-  'after:bg-[#060010]',
+  'after:bg-[#0b0b0b]',
   'after:overflow-hidden',
   'after:[clip-path:inset(0_0_0_0)]'
 ];

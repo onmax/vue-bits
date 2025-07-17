@@ -27,7 +27,7 @@ import Magnet from '@/content/Animations/Magnet/Magnet.vue'
 <style scoped>
 .magnet-element {
   padding: 2rem;
-  background: #060010;
+  background: #0b0b0b;
   border: 1px solid #333;
   border-radius: 12px;
   color: white;

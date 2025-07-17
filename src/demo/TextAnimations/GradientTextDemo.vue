@@ -46,7 +46,7 @@
             </div>
 
             <div
-              class="w-[300px] h-3 rounded-md border border-[#271E37]"
+              class="w-[300px] h-3 rounded-md border border-[#333333]"
               :style="{
                 background: `linear-gradient(to right, ${gradientPreview.join(', ')})`
               }"

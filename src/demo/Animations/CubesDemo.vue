@@ -121,7 +121,7 @@ const propData = [
   {
     name: 'faceColor',
     type: 'string',
-    default: "'#060010'",
+    default: "'#0b0b0b'",
     description: 'Background color for cube faces'
   },
   {

@@ -7,8 +7,8 @@ export const glareHover: CodeObject = {
   <GlareHover
     width="400px"
     height="300px"
-    background="#060010"
-    border-color="#271E37"
+    background="#0b0b0b"
+    border-color="#222222"
     border-radius="20px"
     glare-color="#ffffff"
     :glare-opacity="0.3"

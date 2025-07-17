@@ -46,7 +46,7 @@
         :transition="effectiveTransition"
       >
         <div :class="round ? 'p-0 m-0' : 'mb-4 p-5'">
-          <span class="flex h-[28px] w-[28px] items-center justify-center rounded-full bg-[#060010]">
+          <span class="flex h-[28px] w-[28px] items-center justify-center rounded-full bg-[#0b0b0b]">
             <i :class="item.icon" class="text-white text-base"></i>
           </span>
         </div>

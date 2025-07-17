@@ -126,7 +126,7 @@ const propData = [
   {
     name: 'backgroundColor',
     type: 'number | string',
-    default: '0x271e37',
+    default: '0x151515',
     description: 'Background color (hex number or string)'
   },
   {
