@@ -105,10 +105,6 @@ const folderStyle = computed(() => ({
 
 const folderClass = computed(() => `folder ${open.value ? 'open' : ''}`.trim())
 
-const scaleStyle = computed(() => ({
-  transform: `scale(${props.size})`
-}))
-
 const handleClick = () => {
   open.value = !open.value
   if (!open.value) {
