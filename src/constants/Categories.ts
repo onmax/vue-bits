@@ -61,6 +61,7 @@ export const CATEGORIES = [
       'Spotlight Card',
       'Circular Gallery',
       'Flying Posters',
+      'Folder',
       'Card Swap',
       'Infinite Scroll',
       'Tilted Card',
