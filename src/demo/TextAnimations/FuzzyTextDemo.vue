@@ -27,34 +27,11 @@
       </div>
 
       <Customize>
-        <PreviewSlider
-          title="Base Intensity"
-          v-model="baseIntensity"
-          :min="0"
-          :max="1"
-          :step="0.01"
-          @update:model-value="forceRerender"
-        />
+        <PreviewSlider title="Base Intensity" v-model="baseIntensity" :min="0" :max="1" :step="0.01" />
 
-        <PreviewSlider
-          title="Hover Intensity"
-          v-model="hoverIntensity"
-          :min="0"
-          :max="2"
-          :step="0.01"
-          @update:model-value="forceRerender"
-        />
+        <PreviewSlider title="Hover Intensity" v-model="hoverIntensity" :min="0" :max="2" :step="0.01" />
 
-        <PreviewSwitch
-          title="Enable Hover"
-          :model-value="enableHover"
-          @update:model-value="
-            (val: boolean) => {
-              enableHover = val;
-              forceRerender();
-            }
-          "
-        />
+        <PreviewSwitch title="Enable Hover" v-model="enableHover" />
       </Customize>
 
       <PropTable :data="propData" />
@@ -87,7 +64,7 @@ const baseIntensity = ref(0.2);
 const hoverIntensity = ref(0.5);
 const enableHover = ref(true);
 
-const { rerenderKey, forceRerender } = useForceRerender();
+const { rerenderKey } = useForceRerender();
 
 const propData = [
   {

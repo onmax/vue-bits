@@ -13,31 +13,10 @@
       </div>
 
       <Customize>
-        <PreviewSwitch title="Random Rotation" v-model="randomRotation" @update:model-value="forceRerender" />
-        <PreviewSlider
-          title="Sensitivity"
-          v-model="sensitivity"
-          :min="10"
-          :max="300"
-          :step="10"
-          @update:model-value="forceRerender"
-        />
-        <PreviewSlider
-          title="Card Width"
-          v-model="cardDimensions.width"
-          :min="10"
-          :max="300"
-          :step="10"
-          @update:model-value="forceRerender"
-        />
-        <PreviewSlider
-          title="Card Height"
-          v-model="cardDimensions.height"
-          :min="10"
-          :max="300"
-          :step="10"
-          @update:model-value="forceRerender"
-        />
+        <PreviewSwitch title="Random Rotation" v-model="randomRotation" />
+        <PreviewSlider title="Sensitivity" v-model="sensitivity" :min="10" :max="300" :step="10" />
+        <PreviewSlider title="Card Width" v-model="cardDimensions.width" :min="10" :max="300" :step="10" />
+        <PreviewSlider title="Card Height" v-model="cardDimensions.height" :min="10" :max="300" :step="10" />
       </Customize>
       <PropTable :data="propData" />
     </template>
@@ -72,7 +51,7 @@ const images = [
   { id: 4, img: 'https://images.unsplash.com/photo-1572120360610-d971b9d7767c?q=80&w=500&auto=format' }
 ];
 
-const { rerenderKey, forceRerender } = useForceRerender();
+const { rerenderKey } = useForceRerender();
 const randomRotation = ref<boolean>(false);
 const sensitivity = ref<number>(200);
 const cardDimensions = ref({

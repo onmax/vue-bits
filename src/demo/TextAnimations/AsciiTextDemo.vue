@@ -14,36 +14,15 @@
       </div>
 
       <Customize>
-        <PreviewText title="Text" v-model="text" @update:model-value="forceRerender" />
+        <PreviewText title="Text" v-model="text" />
 
-        <PreviewSlider
-          title="ASCII Font Size"
-          v-model="asciiFontSize"
-          :min="2"
-          :max="20"
-          :step="1"
-          @update:model-value="forceRerender"
-        />
+        <PreviewSlider title="ASCII Font Size" v-model="asciiFontSize" :min="2" :max="20" :step="1" />
 
-        <PreviewSlider
-          title="Text Font Size"
-          v-model="textFontSize"
-          :min="100"
-          :max="400"
-          :step="25"
-          @update:model-value="forceRerender"
-        />
+        <PreviewSlider title="Text Font Size" v-model="textFontSize" :min="100" :max="400" :step="25" />
 
-        <PreviewSlider
-          title="Base Height"
-          v-model="planeBaseHeight"
-          :min="4"
-          :max="16"
-          :step="1"
-          @update:model-value="forceRerender"
-        />
+        <PreviewSlider title="Base Height" v-model="planeBaseHeight" :min="4" :max="16" :step="1" />
 
-        <PreviewSwitch title="Enable Waves" v-model="enableWaves" @update:model-value="forceRerender" />
+        <PreviewSwitch title="Enable Waves" v-model="enableWaves" />
 
         <div class="flex gap-2 flex-wrap">
           <button

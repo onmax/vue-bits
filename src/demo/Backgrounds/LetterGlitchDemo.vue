@@ -22,28 +22,13 @@
             Randomize Colors
           </button>
 
-          <PreviewSlider
-            title="Glitch Speed"
-            :model-value="speed"
-            @update:model-value="speed = $event"
-            :min="0"
-            :max="100"
-            :step="5"
-          />
+          <PreviewSlider title="Glitch Speed" v-model="speed" :min="0" :max="100" :step="5" />
 
-          <PreviewSwitch title="Smooth Animation" :model-value="smooth" @update:model-value="updateSmooth" />
+          <PreviewSwitch title="Smooth Animation" v-model="smooth" />
 
-          <PreviewSwitch
-            title="Show Center Vignette"
-            :model-value="showCenterVignette"
-            @update:model-value="updateCenterVignette"
-          />
+          <PreviewSwitch title="Show Center Vignette" v-model="showCenterVignette" />
 
-          <PreviewSwitch
-            title="Show Outer Vignette"
-            :model-value="showOuterVignette"
-            @update:model-value="updateOuterVignette"
-          />
+          <PreviewSwitch title="Show Outer Vignette" v-model="showOuterVignette" />
         </Customize>
 
         <PropTable :data="propData" />
@@ -95,21 +80,6 @@ const randomHex = () => {
 
 const randomizeColors = () => {
   colors.value = [randomHex(), randomHex(), randomHex()];
-  forceRerender();
-};
-
-const updateSmooth = (value: boolean) => {
-  smooth.value = value;
-  forceRerender();
-};
-
-const updateCenterVignette = (value: boolean) => {
-  showCenterVignette.value = value;
-  forceRerender();
-};
-
-const updateOuterVignette = (value: boolean) => {
-  showOuterVignette.value = value;
   forceRerender();
 };
 

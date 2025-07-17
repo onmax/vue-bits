@@ -18,32 +18,11 @@
       </div>
 
       <Customize>
-        <PreviewSlider
-          title="Particle Count"
-          v-model="particleCount"
-          :min="1"
-          :max="50"
-          :step="1"
-          @update:model-value="forceRerender"
-        />
+        <PreviewSlider title="Particle Count" v-model="particleCount" :min="1" :max="50" :step="1" />
 
-        <PreviewSlider
-          title="Animation Variance"
-          v-model="timeVariance"
-          :min="0"
-          :max="2000"
-          :step="100"
-          @update:model-value="forceRerender"
-        />
+        <PreviewSlider title="Animation Variance" v-model="timeVariance" :min="0" :max="2000" :step="100" />
 
-        <PreviewSlider
-          title="Radius Factor"
-          v-model="particleR"
-          :min="0"
-          :max="1000"
-          :step="100"
-          @update:model-value="forceRerender"
-        />
+        <PreviewSlider title="Radius Factor" v-model="particleR" :min="0" :max="1000" :step="100" />
       </Customize>
 
       <PropTable :data="propData" />
@@ -74,7 +53,7 @@ import { useForceRerender } from '@/composables/useForceRerender';
 const particleCount = ref(15);
 const timeVariance = ref(300);
 const particleR = ref(100);
-const { rerenderKey, forceRerender } = useForceRerender();
+const { rerenderKey } = useForceRerender();
 
 const navItems = [
   { label: 'Home', href: null },

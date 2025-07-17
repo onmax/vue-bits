@@ -32,7 +32,7 @@ const focusRect = ref({ x: 0, y: 0, width: 0, height: 0 });
 let interval: number | null = null;
 
 watch(
-  [() => props.manualMode, () => props.animationDuration, () => props.pauseBetweenAnimations, words],
+  [() => props.manualMode, () => props.animationDuration, () => props.pauseBetweenAnimations, () => words.value],
   () => {
     if (interval) {
       clearInterval(interval);
@@ -52,7 +52,7 @@ watch(
 );
 
 watch(
-  [currentIndex, words.value.length],
+  [currentIndex, () => words.value.length],
   async () => {
     if (currentIndex.value === null || currentIndex.value === -1) return;
     if (!wordRefs.value[currentIndex.value] || !containerRef.value) return;
