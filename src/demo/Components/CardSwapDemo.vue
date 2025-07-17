@@ -92,7 +92,7 @@
       </div>
 
       <Customize>
-        <PreviewSwitch title="Pause On Hover" v-model="pauseOnHover" @update:model-value="forceRerender" />
+        <PreviewSwitch title="Pause On Hover" v-model="pauseOnHover" />
 
         <PreviewSlider title="Card Distance" v-model="cardDistance" :min="30" :max="100" :step="5" />
 

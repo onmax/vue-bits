@@ -29,13 +29,9 @@
           />
         </div>
 
-        <PreviewSwitch
-          title="Follow Mouse Direction"
-          v-model="followMouseDirection"
-          @update:model-value="forceRerender"
-        />
+        <PreviewSwitch title="Follow Mouse Direction" v-model="followMouseDirection" />
 
-        <PreviewSwitch title="Enable Random Floating" v-model="randomFloat" @update:model-value="forceRerender" />
+        <PreviewSwitch title="Enable Random Floating" v-model="randomFloat" />
       </Customize>
 
       <PropTable :data="propData" />
@@ -66,7 +62,7 @@ import TextCursor from '../../content/TextAnimations/TextCursor/TextCursor.vue';
 import { textCursor } from '@/constants/code/TextAnimations/textCursorCode';
 import { useForceRerender } from '@/composables/useForceRerender';
 
-const { rerenderKey: key, forceRerender } = useForceRerender();
+const { rerenderKey: key } = useForceRerender();
 
 const text = ref('💚');
 const followMouseDirection = ref(true);

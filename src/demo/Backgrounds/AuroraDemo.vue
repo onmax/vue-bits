@@ -16,49 +16,20 @@
         <Customize>
           <div class="flex gap-2">
             <PreviewColor
-              v-for="(color, index) in colorStops"
+              v-for="(_, index) in colorStops"
               :key="index"
               :title="`Color ${index + 1}`"
-              :model-value="color"
-              @update:model-value="value => updateColorStop(index, value)"
+              v-model="colorStops[index]"
             />
           </div>
 
-          <PreviewSlider
-            title="Amplitude"
-            :model-value="amplitude"
-            @update:model-value="amplitude = $event"
-            :min="0"
-            :max="2"
-            :step="0.1"
-          />
+          <PreviewSlider title="Amplitude" v-model="amplitude" :min="0" :max="2" :step="0.1" />
 
-          <PreviewSlider
-            title="Blend"
-            :model-value="blend"
-            @update:model-value="blend = $event"
-            :min="0"
-            :max="1"
-            :step="0.1"
-          />
+          <PreviewSlider title="Blend" v-model="blend" :min="0" :max="1" :step="0.1" />
 
-          <PreviewSlider
-            title="Speed"
-            :model-value="speed"
-            @update:model-value="speed = $event"
-            :min="0"
-            :max="3"
-            :step="0.1"
-          />
+          <PreviewSlider title="Speed" v-model="speed" :min="0" :max="3" :step="0.1" />
 
-          <PreviewSlider
-            title="Intensity"
-            :model-value="intensity"
-            @update:model-value="intensity = $event"
-            :min="0"
-            :max="2"
-            :step="0.1"
-          />
+          <PreviewSlider title="Intensity" v-model="intensity" :min="0" :max="2" :step="0.1" />
         </Customize>
 
         <PropTable :data="propData" />
@@ -95,10 +66,6 @@ const amplitude = ref(1.0);
 const blend = ref(0.5);
 const speed = ref(1.0);
 const intensity = ref(1.0);
-
-const updateColorStop = (index: number, color: string) => {
-  colorStops.value[index] = color;
-};
 
 const propData = [
   {

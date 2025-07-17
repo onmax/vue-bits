@@ -46,6 +46,7 @@ import PropTable from '../../components/common/PropTable.vue';
 import PreviewText from '../../components/common/PreviewText.vue';
 import PreviewSlider from '../../components/common/PreviewSlider.vue';
 import PreviewSwitch from '../../components/common/PreviewSwitch.vue';
+import Customize from '@/components/common/Customize.vue';
 import { glitchText } from '@/constants/code/TextAnimations/glitchTextCode';
 
 const text = ref('Vue Bits');

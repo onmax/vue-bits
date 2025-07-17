@@ -27,26 +27,11 @@
       </div>
 
       <Customize>
-        <PreviewSwitch title="Disabled" v-model="disabled" @update:model-value="forceRerender" />
+        <PreviewSwitch title="Disabled" v-model="disabled" />
 
-        <PreviewSlider
-          title="Padding"
-          v-model="padding"
-          :min="0"
-          :max="300"
-          :step="10"
-          value-unit="px"
-          @update:model-value="forceRerender"
-        />
+        <PreviewSlider title="Padding" v-model="padding" :min="0" :max="300" :step="10" value-unit="px" />
 
-        <PreviewSlider
-          title="Strength"
-          v-model="magnetStrength"
-          :min="1"
-          :max="10"
-          :step="1"
-          @update:model-value="forceRerender"
-        />
+        <PreviewSlider title="Strength" v-model="magnetStrength" :min="1" :max="10" :step="1" />
       </Customize>
 
       <PropTable :data="propData" />
@@ -78,7 +63,7 @@ import { useForceRerender } from '@/composables/useForceRerender';
 const disabled = ref(false);
 const padding = ref(100);
 const magnetStrength = ref(2);
-const { rerenderKey, forceRerender } = useForceRerender();
+const { rerenderKey } = useForceRerender();
 
 const propData = [
   {

@@ -14,45 +14,17 @@
       </div>
 
       <Customize>
-        <PreviewSlider
-          title="Bend Level"
-          v-model="bend"
-          :min="-10"
-          :max="10"
-          :step="1"
-          @update:model-value="forceRerender"
-        />
+        <PreviewSlider title="Bend Level" v-model="bend" :min="-10" :max="10" :step="1" />
 
-        <PreviewSlider
-          title="Border Radius"
-          v-model="borderRadius"
-          :min="0"
-          :max="0.5"
-          :step="0.01"
-          @update:model-value="forceRerender"
-        />
+        <PreviewSlider title="Border Radius" v-model="borderRadius" :min="0" :max="0.5" :step="0.01" />
 
-        <PreviewSlider
-          title="Scroll Speed"
-          v-model="scrollSpeed"
-          :min="0.5"
-          :max="5"
-          :step="0.1"
-          @update:model-value="forceRerender"
-        />
+        <PreviewSlider title="Scroll Speed" v-model="scrollSpeed" :min="0.5" :max="5" :step="0.1" />
 
-        <PreviewSlider
-          title="Scroll Ease"
-          v-model="scrollEase"
-          :min="0.01"
-          :max="0.15"
-          :step="0.01"
-          @update:model-value="forceRerender"
-        />
+        <PreviewSlider title="Scroll Ease" v-model="scrollEase" :min="0.01" :max="0.15" :step="0.01" />
 
-        <PreviewColor title="Text Color" v-model="textColor" @update:model-value="forceRerender" />
+        <PreviewColor title="Text Color" v-model="textColor" />
 
-        <PreviewSelect title="Font" v-model="font" :options="fontOptions" @update:model-value="forceRerender" />
+        <PreviewSelect title="Font" v-model="font" :options="fontOptions" />
       </Customize>
 
       <PropTable :data="propData" />
@@ -92,7 +64,7 @@ const scrollEase = ref(0.05);
 const textColor = ref('#ffffff');
 const font = ref('bold 30px Figtree');
 
-const { rerenderKey, forceRerender } = useForceRerender();
+const { rerenderKey } = useForceRerender();
 
 const fontOptions = [
   { label: 'Figtree Bold', value: 'bold 30px Figtree' },

@@ -19,62 +19,22 @@
 
         <Customize>
           <div class="flex gap-4 items-center">
-            <PreviewColor title="Color" :model-value="color" @update:model-value="updateColor" />
+            <PreviewColor title="Color" v-model="color" />
           </div>
 
-          <PreviewSlider
-            title="Count"
-            :model-value="particleCount"
-            @update:model-value="particleCount = $event"
-            :min="100"
-            :max="1000"
-            :step="100"
-          />
+          <PreviewSlider title="Count" v-model="particleCount" :min="100" :max="1000" :step="100" />
 
-          <PreviewSlider
-            title="Spread"
-            :model-value="particleSpread"
-            @update:model-value="particleSpread = $event"
-            :min="10"
-            :max="100"
-            :step="10"
-          />
+          <PreviewSlider title="Spread" v-model="particleSpread" :min="10" :max="100" :step="10" />
 
-          <PreviewSlider
-            title="Speed"
-            :model-value="speed"
-            @update:model-value="speed = $event"
-            :min="0"
-            :max="2"
-            :step="0.1"
-          />
+          <PreviewSlider title="Speed" v-model="speed" :min="0" :max="2" :step="0.1" />
 
-          <PreviewSlider
-            title="Base Size"
-            :model-value="baseSize"
-            @update:model-value="baseSize = $event"
-            :min="100"
-            :max="1000"
-            :step="100"
-          />
+          <PreviewSlider title="Base Size" v-model="baseSize" :min="100" :max="1000" :step="100" />
 
-          <PreviewSwitch
-            title="Mouse Interaction"
-            :model-value="moveParticlesOnHover"
-            @update:model-value="moveParticlesOnHover = $event"
-          />
+          <PreviewSwitch title="Mouse Interaction" v-model="moveParticlesOnHover" />
 
-          <PreviewSwitch
-            title="Particle Transparency"
-            :model-value="alphaParticles"
-            @update:model-value="alphaParticles = $event"
-          />
+          <PreviewSwitch title="Particle Transparency" v-model="alphaParticles" />
 
-          <PreviewSwitch
-            title="Disable Rotation"
-            :model-value="disableRotation"
-            @update:model-value="disableRotation = $event"
-          />
+          <PreviewSwitch title="Disable Rotation" v-model="disableRotation" />
         </Customize>
 
         <PropTable :data="propData" />
@@ -117,12 +77,7 @@ const moveParticlesOnHover = ref(true);
 const alphaParticles = ref(false);
 const disableRotation = ref(false);
 
-const { rerenderKey, forceRerender } = useForceRerender();
-
-const updateColor = (value: string) => {
-  color.value = value;
-  forceRerender();
-};
+const { rerenderKey } = useForceRerender();
 
 const propData = [
   { name: 'particleCount', type: 'number', default: '200', description: 'The number of particles to generate.' },

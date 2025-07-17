@@ -4,7 +4,10 @@ import type { CodeObject } from '../../../types/code';
 export const ballpit: CodeObject = {
   cli: `npx jsrepo add https://vue-bits.dev/ui/Backgrounds/Ballpit`,
   installation: `npm i three`,
-  usage: `<template>
+  usage: `//Component inspired by Kevin Levron:
+//https://x.com/soju22/status/1858925191671271801
+
+<template>
   <div class="relative w-full h-[500px] overflow-hidden">
     <Ballpit
       :count="200"

@@ -10,12 +10,7 @@
       </div>
 
       <Customize>
-        <PreviewSelect
-          title="Animation Variant"
-          :options="variantOptions"
-          v-model="selectedVariant"
-          @update:model-value="forceRerender"
-        />
+        <PreviewSelect title="Animation Variant" :options="variantOptions" v-model="selectedVariant" />
       </Customize>
 
       <PropTable :data="propData" />
@@ -44,7 +39,7 @@ import { pixelCard } from '@/constants/code/Components/pixelCardCode';
 import { useForceRerender } from '@/composables/useForceRerender';
 
 const selectedVariant = ref<'default' | 'blue' | 'yellow' | 'pink'>('default');
-const { rerenderKey, forceRerender } = useForceRerender();
+const { rerenderKey } = useForceRerender();
 
 const variantOptions = [
   { value: 'default', label: 'Default' },

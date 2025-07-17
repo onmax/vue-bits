@@ -21,47 +21,11 @@
       </div>
 
       <Customize>
-        <PreviewSlider
-          title="Background Height"
-          :min="30"
-          :max="200"
-          :step="10"
-          :model-value="panelHeight"
-          @update:model-value="
-            (val: number) => {
-              panelHeight = val;
-              forceRerender();
-            }
-          "
-        />
+        <PreviewSlider title="Background Height" :min="100" :max="200" :step="10" v-model="panelHeight" />
 
-        <PreviewSlider
-          title="Item Size"
-          :min="20"
-          :max="60"
-          :step="10"
-          :model-value="baseItemSize"
-          @update:model-value="
-            (val: number) => {
-              baseItemSize = val;
-              forceRerender();
-            }
-          "
-        />
+        <PreviewSlider title="Base Item Size" :min="40" :max="100" :step="5" v-model="baseItemSize" />
 
-        <PreviewSlider
-          title="Magnification"
-          :min="50"
-          :max="100"
-          :step="10"
-          :model-value="magnification"
-          @update:model-value="
-            (val: number) => {
-              magnification = val;
-              forceRerender();
-            }
-          "
-        />
+        <PreviewSlider title="Magnification" :min="50" :max="100" :step="10" v-model="magnification" />
       </Customize>
 
       <PropTable :data="propData" />
@@ -80,7 +44,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, h } from 'vue';
+import { ref, h, watch } from 'vue';
 import TabbedLayout from '../../components/common/TabbedLayout.vue';
 import PropTable from '../../components/common/PropTable.vue';
 import CliInstallation from '../../components/code/CliInstallation.vue';
@@ -99,6 +63,10 @@ const magnification = ref(70);
 
 const toast = useToast();
 const { rerenderKey, forceRerender } = useForceRerender();
+
+watch([magnification, panelHeight, baseItemSize], () => {
+  forceRerender();
+});
 
 const HomeIcon = () => h('i', { class: 'pi pi-home', style: { fontSize: '18px', color: 'white' } });
 const ArchiveIcon = () => h('i', { class: 'pi pi-inbox', style: { fontSize: '18px', color: 'white' } });

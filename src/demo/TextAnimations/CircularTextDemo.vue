@@ -22,14 +22,7 @@
           </button>
         </div>
 
-        <PreviewSlider
-          title="Spin Duration (s)"
-          v-model="spinDuration"
-          :min="1"
-          :max="50"
-          :step="1"
-          @update:model-value="forceRerender"
-        />
+        <PreviewSlider title="Spin Duration (s)" v-model="spinDuration" :min="1" :max="50" :step="1" />
       </Customize>
 
       <PropTable :data="propData" />

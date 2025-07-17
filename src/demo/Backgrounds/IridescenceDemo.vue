@@ -12,18 +12,11 @@
 
         <PreviewSlider :min="0" :max="1" :step="0.1" v-model="colors[2]" title="Blue" />
 
-        <PreviewSlider :min="0" :max="2" :step="0.1" v-model="speed" title="Speed" @update:modelValue="forceRerender" />
+        <PreviewSlider :min="0" :max="2" :step="0.1" v-model="speed" title="Speed" />
 
-        <PreviewSlider
-          :min="0"
-          :max="0.5"
-          :step="0.01"
-          v-model="amplitude"
-          title="Amplitude"
-          @update:modelValue="forceRerender"
-        />
+        <PreviewSlider :min="0" :max="0.5" :step="0.01" v-model="amplitude" title="Amplitude" />
 
-        <PreviewSwitch v-model="mouseInteraction" title="Enable Mouse Interaction" @update:modelValue="forceRerender" />
+        <PreviewSwitch v-model="mouseInteraction" title="Enable Mouse Interaction" />
       </Customize>
 
       <PropTable :data="propData" />
@@ -60,7 +53,7 @@ const speed = ref(1);
 const amplitude = ref(0.1);
 const mouseInteraction = ref(true);
 
-const { rerenderKey: key, forceRerender } = useForceRerender();
+const { rerenderKey: key } = useForceRerender();
 
 const propData = [
   {

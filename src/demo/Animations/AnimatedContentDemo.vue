@@ -25,89 +25,25 @@
       </div>
 
       <Customize>
-        <PreviewSelect
-          title="Animation Direction"
-          v-model="direction"
-          :options="directionOptions"
-          @update:model-value="
-            val => {
-              direction = val as 'vertical' | 'horizontal';
-              forceRerender();
-            }
-          "
-        />
+        <PreviewSelect title="Animation Direction" v-model="direction" :options="directionOptions" />
 
-        <PreviewSelect
-          title="Easing Function"
-          v-model="ease"
-          :options="easeOptions"
-          @update:model-value="
-            val => {
-              ease = val as string;
-              forceRerender();
-            }
-          "
-        />
+        <PreviewSelect title="Easing Function" v-model="ease" :options="easeOptions" />
 
-        <PreviewSlider
-          title="Distance"
-          v-model="distance"
-          :min="50"
-          :max="300"
-          :step="10"
-          @update:model-value="forceRerender"
-        />
+        <PreviewSlider title="Distance" v-model="distance" :min="50" :max="300" :step="10" />
 
-        <PreviewSlider
-          title="Duration"
-          v-model="duration"
-          :min="0.1"
-          :max="3"
-          :step="0.1"
-          value-unit="s"
-          @update:model-value="forceRerender"
-        />
+        <PreviewSlider title="Duration" v-model="duration" :min="0.1" :max="3" :step="0.1" value-unit="s" />
 
-        <PreviewSlider
-          title="Delay"
-          v-model="delay"
-          :min="0"
-          :max="2"
-          :step="0.1"
-          value-unit="s"
-          @update:model-value="forceRerender"
-        />
+        <PreviewSlider title="Delay" v-model="delay" :min="0" :max="2" :step="0.1" value-unit="s" />
 
-        <PreviewSlider
-          title="Initial Opacity"
-          v-model="initialOpacity"
-          :min="0"
-          :max="1"
-          :step="0.1"
-          @update:model-value="forceRerender"
-        />
+        <PreviewSlider title="Initial Opacity" v-model="initialOpacity" :min="0" :max="1" :step="0.1" />
 
-        <PreviewSlider
-          title="Initial Scale"
-          v-model="scale"
-          :min="0.1"
-          :max="2"
-          :step="0.1"
-          @update:model-value="forceRerender"
-        />
+        <PreviewSlider title="Initial Scale" v-model="scale" :min="0.1" :max="2" :step="0.1" />
 
-        <PreviewSlider
-          title="Threshold"
-          v-model="threshold"
-          :min="0.1"
-          :max="1"
-          :step="0.1"
-          @update:model-value="forceRerender"
-        />
+        <PreviewSlider title="Threshold" v-model="threshold" :min="0.1" :max="1" :step="0.1" />
 
-        <PreviewSwitch title="Reverse Direction" v-model="reverse" @update:model-value="forceRerender" />
+        <PreviewSwitch title="Reverse Direction" v-model="reverse" />
 
-        <PreviewSwitch title="Animate Opacity" v-model="animateOpacity" @update:model-value="forceRerender" />
+        <PreviewSwitch title="Animate Opacity" v-model="animateOpacity" />
       </Customize>
 
       <PropTable :data="propData" />
@@ -126,7 +62,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import TabbedLayout from '../../components/common/TabbedLayout.vue';
 import PropTable from '../../components/common/PropTable.vue';
 import Dependencies from '../../components/code/Dependencies.vue';
@@ -233,6 +169,10 @@ const propData = [
     description: 'Additional CSS classes for styling.'
   }
 ];
+
+watch([direction, ease], () => {
+  forceRerender();
+});
 </script>
 
 <style scoped>
