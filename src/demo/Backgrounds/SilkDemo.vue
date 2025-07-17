@@ -14,37 +14,13 @@
         </div>
 
         <Customize>
-          <PreviewSlider
-            title="Speed"
-            v-model="speed"
-            :min="0"
-            :max="10"
-            :step="0.1"
-          />
+          <PreviewSlider title="Speed" v-model="speed" :min="0" :max="10" :step="0.1" />
 
-          <PreviewSlider
-            title="Scale"
-            v-model="scale"
-            :min="0.1"
-            :max="3"
-            :step="0.1"
-          />
+          <PreviewSlider title="Scale" v-model="scale" :min="0.1" :max="3" :step="0.1" />
 
-          <PreviewSlider
-            title="Noise Intensity"
-            v-model="noiseIntensity"
-            :min="0"
-            :max="3"
-            :step="0.1"
-          />
+          <PreviewSlider title="Noise Intensity" v-model="noiseIntensity" :min="0" :max="3" :step="0.1" />
 
-          <PreviewSlider
-            title="Rotation"
-            v-model="rotation"
-            :min="0"
-            :max="6.28"
-            :step="0.1"
-          />
+          <PreviewSlider title="Rotation" v-model="rotation" :min="0" :max="6.28" :step="0.1" />
 
           <PreviewColor title="Color" v-model="color" />
         </Customize>

@@ -7,13 +7,7 @@
         </div>
 
         <Customize>
-          <PreviewSlider
-            title="Wave Speed X"
-            v-model="waveSpeedX"
-            :min="0"
-            :max="0.1"
-            :step="0.01"
-          />
+          <PreviewSlider title="Wave Speed X" v-model="waveSpeedX" :min="0" :max="0.1" :step="0.01" />
 
           <div class="flex gap-4 items-center">
             <PreviewColor title="Waves Color" v-model="color" />
