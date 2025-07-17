@@ -90,7 +90,8 @@ export const CATEGORIES = [
       'Threads',
       'Grid Motion',
       'Orb',
-      'Ballpit'
+      'Ballpit',
+      'Grid Distortion'
     ]
   }
 ];

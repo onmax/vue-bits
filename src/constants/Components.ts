@@ -77,6 +77,7 @@ const backgrounds = {
   'balatro': () => import('../demo/Backgrounds/BalatroDemo.vue'),
   'orb': () => import('../demo/Backgrounds/OrbDemo.vue'),
   'ballpit': () => import('../demo/Backgrounds/BallpitDemo.vue'),
+  'grid-distortion': () => import('../demo/Backgrounds/GridDistortionDemo.vue'),
 };
 
 export const componentMap = {
