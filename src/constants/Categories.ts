@@ -92,6 +92,7 @@ export const CATEGORIES = [
       'Orb',
       'Ballpit',
       'Liquid Chrome',
+      'Grid Distortion'
     ]
   }
 ];
