@@ -144,8 +144,10 @@ const handleCardClick = (url?: string) => {
 const handleCardMove = (e: MouseEvent) => {
   const c = e.currentTarget as HTMLElement;
   const rect = c.getBoundingClientRect();
-  c.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
-  c.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+  const x = e.clientX - rect.left;
+  const y = e.clientY - rect.top;
+  c.style.setProperty('--mouse-x', `${x}px`);
+  c.style.setProperty('--mouse-y', `${y}px`);
 };
 
 const spotlightStyle = {
@@ -183,11 +185,14 @@ const fadeStyle = {
     <article
       v-for="(c, i) in data"
       :key="i"
-      class="group relative flex flex-col w-[300px] rounded-[20px] overflow-hidden border-2 border-transparent transition-colors duration-300 cursor-pointer"
+      class="group relative flex flex-col w-[300px] rounded-[20px] overflow-hidden border border-[#333] hover:border-[var(--card-border)] transition-all duration-300"
       :style="{
+        '--mouse-x': '50%',
+        '--mouse-y': '50%',
         '--card-border': c.borderColor || 'transparent',
+        '--spotlight-color': 'rgba(255,255,255,0.3)',
         background: c.gradient,
-        '--spotlight-color': 'rgba(255,255,255,0.3)'
+        cursor: c.url ? 'pointer' : 'default'
       }"
       @mousemove="handleCardMove"
       @click="() => handleCardClick(c.url)"
@@ -199,14 +204,16 @@ const fadeStyle = {
             'radial-gradient(circle at var(--mouse-x) var(--mouse-y), var(--spotlight-color), transparent 70%)'
         }"
       />
-      <div class="relative z-10 flex-1 p-[10px] box-border">
-        <img :src="c.image" :alt="c.title" loading="lazy" class="w-full h-full object-cover rounded-[10px]" />
+
+      <div class="relative z-10 flex-1 p-[10px] box-border bg-transparent transition-colors duration-300">
+        <img :src="c.image" :alt="c.title" loading="lazy" class="w-full h-full object-cover rounded-[10px] block" />
       </div>
+
       <footer class="relative z-10 p-3 text-white font-sans grid grid-cols-[1fr_auto] gap-x-3 gap-y-1">
         <h3 class="m-0 text-[1.05rem] font-semibold">{{ c.title }}</h3>
-        <span v-if="c.handle" class="text-[0.95rem] opacity-80 text-right">{{ c.handle }}</span>
-        <p class="m-0 text-[0.85rem] opacity-85">{{ c.subtitle }}</p>
-        <span v-if="c.location" class="text-[0.85rem] opacity-85 text-right">{{ c.location }}</span>
+        <span v-if="c.handle" class="text-[0.95rem] text-[#aaa] text-right">{{ c.handle }}</span>
+        <p class="m-0 text-[0.85rem] text-[#aaa]">{{ c.subtitle }}</p>
+        <span v-if="c.location" class="text-[0.85rem] text-[#aaa] text-right">{{ c.location }}</span>
       </footer>
     </article>
 
