@@ -26,7 +26,7 @@ import {
   type WebGLRendererParameters
 } from 'three';
 import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js';
-import { onMounted, onUnmounted, ref } from 'vue';
+import { defineProps, onMounted, onUnmounted, useTemplateRef, ref } from 'vue';
 
 gsap.registerPlugin(Observer);
 
@@ -86,7 +86,7 @@ const props = withDefaults(defineProps<Props>(), {
   controlSphere0: false
 });
 
-const canvasRef = ref<HTMLCanvasElement | null>(null);
+const canvasRef = useTemplateRef<HTMLCanvasElement>('canvasRef');
 const spheresInstanceRef = ref<CreateBallpitReturn | null>(null);
 
 interface PostProcessing {

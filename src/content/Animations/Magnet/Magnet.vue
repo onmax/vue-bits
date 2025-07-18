@@ -19,7 +19,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted, watch } from 'vue';
+import { ref, computed, onMounted, onUnmounted, watch, useTemplateRef } from 'vue';
 
 interface Props {
   padding?: number;
@@ -45,7 +45,7 @@ defineOptions({
   inheritAttrs: false
 });
 
-const magnetRef = ref<HTMLDivElement | null>(null);
+const magnetRef = useTemplateRef<HTMLDivElement>('magnetRef');
 const isActive = ref(false);
 const position = ref({ x: 0, y: 0 });
 

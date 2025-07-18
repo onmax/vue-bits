@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, watch, onUnmounted, nextTick } from 'vue';
+import { ref, onMounted, watch, onUnmounted, nextTick, useTemplateRef } from 'vue';
 import { gsap } from 'gsap';
 
 interface PixelTransitionProps {
@@ -20,9 +20,9 @@ const props = withDefaults(defineProps<PixelTransitionProps>(), {
   aspectRatio: '100%'
 });
 
-const containerRef = ref<HTMLDivElement | null>(null);
-const pixelGridRef = ref<HTMLDivElement | null>(null);
-const activeRef = ref<HTMLDivElement | null>(null);
+const containerRef = useTemplateRef<HTMLDivElement>('containerRef');
+const pixelGridRef = useTemplateRef<HTMLDivElement>('pixelGridRef');
+const activeRef = useTemplateRef<HTMLDivElement>('activeRef');
 const isActive = ref(false);
 let delayedCall: gsap.core.Tween | null = null;
 

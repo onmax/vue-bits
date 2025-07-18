@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, computed } from 'vue';
+import { onMounted, onUnmounted, computed, useTemplateRef } from 'vue';
 
 interface MagnetLinesProps {
   rows?: number;
@@ -25,7 +25,7 @@ const props = withDefaults(defineProps<MagnetLinesProps>(), {
   style: () => ({})
 });
 
-const containerRef = ref<HTMLDivElement | null>(null);
+const containerRef = useTemplateRef<HTMLDivElement>('containerRef');
 
 const total = computed(() => props.rows * props.columns);
 

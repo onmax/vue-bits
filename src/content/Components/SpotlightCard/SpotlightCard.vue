@@ -21,7 +21,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, useTemplateRef } from 'vue';
 
 interface Position {
   x: number;
@@ -35,7 +35,7 @@ interface SpotlightCardProps {
 
 const { className = '', spotlightColor = 'rgba(255, 255, 255, 0.25)' } = defineProps<SpotlightCardProps>();
 
-const divRef = ref<HTMLDivElement>();
+const divRef = useTemplateRef<HTMLDivElement>('divRef');
 const isFocused = ref<boolean>(false);
 const position = ref<Position>({ x: 0, y: 0 });
 const opacity = ref<number>(0);

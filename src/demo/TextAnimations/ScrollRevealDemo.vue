@@ -42,7 +42,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, watch } from 'vue';
+import { ref, onMounted, onUnmounted, watch, useTemplateRef } from 'vue';
 import { gsap } from 'gsap';
 import TabbedLayout from '../../components/common/TabbedLayout.vue';
 import PropTable from '../../components/common/PropTable.vue';
@@ -55,7 +55,7 @@ import PreviewSwitch from '../../components/common/PreviewSwitch.vue';
 import { scrollRevealCode } from '@/constants/code/TextAnimations/scrollRevealCode';
 import { useForceRerender } from '@/composables/useForceRerender';
 
-const containerRef = ref<HTMLElement | null>(null);
+const containerRef = useTemplateRef<HTMLElement>('containerRef');
 const scrollText = ref(
   'When does a man die? When he is hit by a bullet? No! When he suffers a disease? No! When he ate a soup made out of a poisonous mushroom? No! A man dies when he is forgotten!'
 );

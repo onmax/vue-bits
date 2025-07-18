@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, watch } from 'vue';
+import { onMounted, onUnmounted, watch, useTemplateRef } from 'vue';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -37,7 +37,7 @@ const emit = defineEmits<{
   complete: [];
 }>();
 
-const containerRef = ref<HTMLDivElement>();
+const containerRef = useTemplateRef<HTMLDivElement>('containerRef');
 
 onMounted(() => {
   const el = containerRef.value;

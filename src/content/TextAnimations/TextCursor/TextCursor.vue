@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, onMounted, onUnmounted, useTemplateRef } from 'vue';
 import { Motion } from 'motion-v';
 
 interface TextCursorProps {
@@ -34,7 +34,7 @@ const props = withDefaults(defineProps<TextCursorProps>(), {
   maxPoints: 5
 });
 
-const containerRef = ref<HTMLDivElement>();
+const containerRef = useTemplateRef<HTMLDivElement>('containerRef');
 const trail = ref<TrailItem[]>([]);
 const lastMoveTime = ref(Date.now());
 const idCounter = ref(0);

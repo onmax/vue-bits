@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, watch, type CSSProperties } from 'vue';
+import { onMounted, onUnmounted, watch, type CSSProperties, useTemplateRef } from 'vue';
 import { Renderer, Program, Mesh, Plane, Camera } from 'ogl';
 
 interface SilkProps {
@@ -26,7 +26,7 @@ const props = withDefaults(defineProps<SilkProps>(), {
   style: () => ({})
 });
 
-const containerRef = ref<HTMLDivElement>();
+const containerRef = useTemplateRef<HTMLDivElement>('containerRef');
 
 const hexToNormalizedRGB = (hex: string): [number, number, number] => {
   const clean = hex.replace('#', '');

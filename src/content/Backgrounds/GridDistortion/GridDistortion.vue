@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import * as THREE from 'three';
-import { onMounted, onUnmounted, ref, watch } from 'vue';
+import { onMounted, onUnmounted, ref, watch, useTemplateRef } from 'vue';
 
 interface GridDistortionProps {
   grid?: number;
@@ -44,7 +44,7 @@ void main() {
 }
 `;
 
-const containerRef = ref<HTMLDivElement | null>(null);
+const containerRef = useTemplateRef<HTMLDivElement>('containerRef');
 const imageAspectRef = ref(1);
 const cameraRef = ref<THREE.OrthographicCamera | null>(null);
 const initialDataRef = ref<Float32Array | null>(null);

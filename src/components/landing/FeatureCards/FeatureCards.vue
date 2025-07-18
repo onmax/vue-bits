@@ -44,13 +44,13 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, defineComponent, h } from 'vue';
+import { ref, onMounted, onUnmounted, defineComponent, h, useTemplateRef } from 'vue';
 import { gsap } from 'gsap';
 import CountUp from '../../../content/Animations/CountUp/CountUp.vue';
 import './FeatureCards.css';
 
 const isMobile = ref(false);
-const gridRef = ref<HTMLDivElement | null>(null);
+const gridRef = useTemplateRef<HTMLDivElement>('gridRef');
 
 const checkIsMobile = () => {
   isMobile.value = window.innerWidth <= 768;

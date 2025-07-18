@@ -47,7 +47,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, onMounted, onUnmounted, useTemplateRef } from 'vue';
 import { gsap } from 'gsap';
 import TabbedLayout from '../../components/common/TabbedLayout.vue';
 import PropTable from '../../components/common/PropTable.vue';
@@ -58,7 +58,7 @@ import ScrollFloat from '../../content/TextAnimations/ScrollFloat/ScrollFloat.vu
 import PreviewSlider from '../../components/common/PreviewSlider.vue';
 import { scrollFloatCode } from '@/constants/code/TextAnimations/scrollFloatCode';
 
-const containerRef = ref<HTMLElement | null>(null);
+const containerRef = useTemplateRef<HTMLElement>('containerRef');
 const scrollText = ref('Vue Bits!');
 const animationDuration = ref(1);
 const ease = ref('back.inOut(2)');

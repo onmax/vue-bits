@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, watch, nextTick } from 'vue';
+import { ref, onMounted, onUnmounted, watch, nextTick, useTemplateRef } from 'vue';
 
 interface ShaderParams {
   patternScale: number;
@@ -30,7 +30,7 @@ const props = withDefaults(defineProps<Props>(), {
   })
 });
 
-const canvasRef = ref<HTMLCanvasElement | null>(null);
+const canvasRef = useTemplateRef<HTMLCanvasElement>('canvasRef');
 const gl = ref<WebGL2RenderingContext | null>(null);
 const uniforms = ref<Record<string, WebGLUniformLocation>>({});
 const totalAnimationTime = ref(0);

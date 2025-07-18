@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, watch } from 'vue';
+import { ref, onMounted, onUnmounted, watch, useTemplateRef } from 'vue';
 
 type CanvasStrokeStyle = string | CanvasGradient | CanvasPattern;
 
@@ -28,7 +28,7 @@ const props = withDefaults(defineProps<Props>(), {
   hoverFillColor: '#222'
 });
 
-const canvasRef = ref<HTMLCanvasElement | null>(null);
+const canvasRef = useTemplateRef<HTMLCanvasElement>('canvasRef');
 const requestRef = ref<number | null>(null);
 const numSquaresX = ref<number>(0);
 const numSquaresY = ref<number>(0);

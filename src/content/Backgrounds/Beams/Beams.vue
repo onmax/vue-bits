@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, watch, computed } from 'vue';
+import { onMounted, onUnmounted, watch, computed, useTemplateRef } from 'vue';
 import * as THREE from 'three';
 import { degToRad } from 'three/src/math/MathUtils.js';
 
@@ -29,7 +29,7 @@ const props = withDefaults(defineProps<BeamsProps>(), {
   rotation: 0
 });
 
-const containerRef = ref<HTMLDivElement>();
+const containerRef = useTemplateRef<HTMLDivElement>('containerRef');
 
 let renderer: THREE.WebGLRenderer | null = null;
 let scene: THREE.Scene | null = null;

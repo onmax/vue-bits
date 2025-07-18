@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { computed, useTemplateRef } from 'vue';
 
 interface GlareHoverProps {
   width?: string;
@@ -33,7 +33,7 @@ const props = withDefaults(defineProps<GlareHoverProps>(), {
   style: () => ({})
 });
 
-const overlayRef = ref<HTMLDivElement | null>(null);
+const overlayRef = useTemplateRef<HTMLDivElement>('overlayRef');
 
 const rgba = computed(() => {
   const hex = props.glareColor.replace('#', '');

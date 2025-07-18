@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, watch } from 'vue';
+import { onMounted, onUnmounted, watch, useTemplateRef } from 'vue';
 
 interface LightningProps {
   hue?: number;
@@ -21,7 +21,7 @@ const props = withDefaults(defineProps<LightningProps>(), {
   size: 1
 });
 
-const canvasRef = ref<HTMLCanvasElement>();
+const canvasRef = useTemplateRef<HTMLCanvasElement>('canvasRef');
 let animationId = 0;
 let gl: WebGLRenderingContext | null = null;
 let program: WebGLProgram | null = null;

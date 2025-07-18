@@ -6,7 +6,7 @@
       </router-link>
 
       <div class="nav-cta-group">
-        <nav class="landing-nav-items" ref="navRef">
+        <nav class="landing-nav-items">
           <router-link class="nav-link" :class="{ 'active-link': activeItem === 'home' }" to="/">Home</router-link>
 
           <router-link class="nav-link" to="/text-animations/split-text">Docs</router-link>
@@ -25,7 +25,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from 'vue';
+import { watch, useTemplateRef } from 'vue';
 import { gsap } from 'gsap';
 import VueBitsLogo from '@/components/common/Logo.vue';
 import { useStars } from '@/composables/useStars';
@@ -38,8 +38,7 @@ interface Props {
 
 defineProps<Props>();
 
-const navRef = ref<HTMLElement | null>(null);
-const starCountRef = ref<HTMLElement | null>(null);
+const starCountRef = useTemplateRef<HTMLElement>('starCountRef');
 const stars = useStars();
 
 const openGitHub = () => {

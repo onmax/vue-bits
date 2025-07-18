@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, watch, nextTick } from 'vue';
+import { onMounted, onUnmounted, watch, nextTick, useTemplateRef } from 'vue';
 
 interface FuzzyTextProps {
   text: string;
@@ -23,7 +23,7 @@ const props = withDefaults(defineProps<FuzzyTextProps>(), {
   hoverIntensity: 0.5
 });
 
-const canvasRef = ref<HTMLCanvasElement | null>(null);
+const canvasRef = useTemplateRef<HTMLCanvasElement>('canvasRef');
 let animationFrameId: number;
 let isCancelled = false;
 let cleanup: (() => void) | null = null;

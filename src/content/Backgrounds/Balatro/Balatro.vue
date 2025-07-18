@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch, onMounted, onUnmounted, type CSSProperties } from 'vue';
+import { watch, onMounted, onUnmounted, type CSSProperties, useTemplateRef } from 'vue';
 import { Renderer, Program, Mesh, Triangle } from 'ogl';
 
 interface BalatroProps {
@@ -42,7 +42,7 @@ const props = withDefaults(defineProps<BalatroProps>(), {
   style: () => ({})
 });
 
-const containerRef = ref<HTMLDivElement>();
+const containerRef = useTemplateRef<HTMLDivElement>('containerRef');
 
 const hexToVec4 = (hex: string): [number, number, number, number] => {
   const hexStr = hex.replace('#', '');

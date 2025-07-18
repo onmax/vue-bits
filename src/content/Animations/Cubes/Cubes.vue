@@ -77,7 +77,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted, withDefaults } from 'vue';
+import { ref, computed, onMounted, onUnmounted, withDefaults, useTemplateRef } from 'vue';
 import gsap from 'gsap';
 
 interface Gap {
@@ -122,7 +122,7 @@ const props = withDefaults(defineProps<Props>(), {
   rippleSpeed: 2
 });
 
-const sceneRef = ref<HTMLDivElement | null>(null);
+const sceneRef = useTemplateRef<HTMLDivElement>('sceneRef');
 const rafRef = ref<number | null>(null);
 const idleTimerRef = ref<number | null>(null);
 const userActiveRef = ref(false);

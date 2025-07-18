@@ -36,7 +36,7 @@
 
 <script setup lang="ts">
 import { useForceRerender } from '@/composables/useForceRerender';
-import { ref, watch } from 'vue';
+import { ref, watch, useTemplateRef } from 'vue';
 import CliInstallation from '../../components/code/CliInstallation.vue';
 import CodeExample from '../../components/code/CodeExample.vue';
 import Dependencies from '../../components/code/Dependencies.vue';
@@ -53,7 +53,7 @@ const { rerenderKey: key, forceRerender } = useForceRerender();
 const grid = ref(10);
 const mouse = ref(0.25);
 
-const containerRef = ref<HTMLDivElement | null>(null);
+const containerRef = useTemplateRef<HTMLDivElement>('containerRef');
 
 watch(
   () => [grid, mouse],

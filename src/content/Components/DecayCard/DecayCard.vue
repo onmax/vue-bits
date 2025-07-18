@@ -56,7 +56,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, onMounted, onUnmounted, useTemplateRef } from 'vue';
 import { gsap } from 'gsap';
 
 interface Props {
@@ -71,7 +71,7 @@ withDefaults(defineProps<Props>(), {
   image: 'https://picsum.photos/300/400?grayscale'
 });
 
-const svgRef = ref<HTMLDivElement | null>(null);
+const svgRef = useTemplateRef<HTMLDivElement>('svgRef');
 const displacementMapRef = ref<SVGFEDisplacementMapElement | null>(null);
 
 let cursor = {

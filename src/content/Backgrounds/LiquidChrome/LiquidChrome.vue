@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref, watch } from 'vue';
+import { onMounted, onUnmounted, watch, useTemplateRef } from 'vue';
 import { Renderer, Program, Mesh, Triangle } from 'ogl';
 
 interface LiquidChromeProps {
@@ -20,7 +20,7 @@ const props = withDefaults(defineProps<LiquidChromeProps>(), {
   interactive: true
 });
 
-const containerRef = ref<HTMLDivElement | null>(null);
+const containerRef = useTemplateRef<HTMLDivElement>('containerRef');
 
 let cleanupAnimation: (() => void) | null = null;
 

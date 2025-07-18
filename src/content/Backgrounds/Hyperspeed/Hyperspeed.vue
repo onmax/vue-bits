@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, watch } from 'vue';
+import { onMounted, onUnmounted, watch, useTemplateRef } from 'vue';
 import * as THREE from 'three';
 import { BloomEffect, EffectComposer, EffectPass, RenderPass, SMAAEffect, SMAAPreset } from 'postprocessing';
 
@@ -66,7 +66,7 @@ const props = withDefaults(defineProps<HyperspeedProps>(), {
   effectOptions: () => ({})
 });
 
-const hyperspeedContainer = ref<HTMLDivElement>();
+const hyperspeedContainer = useTemplateRef<HTMLDivElement>('hyperspeedContainer');
 let appRef: App | null = null;
 
 const defaultOptions: HyperspeedOptions = {

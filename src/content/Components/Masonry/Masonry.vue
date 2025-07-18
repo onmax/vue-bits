@@ -24,7 +24,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted, watchEffect, nextTick } from 'vue';
+import { ref, computed, onMounted, onUnmounted, watchEffect, nextTick, useTemplateRef } from 'vue';
 import { gsap } from 'gsap';
 
 interface Item {
@@ -74,7 +74,7 @@ const useMedia = (queries: string[], values: number[], defaultValue: number) => 
 };
 
 const useMeasure = () => {
-  const containerRef = ref<HTMLDivElement | null>(null);
+  const containerRef = useTemplateRef<HTMLDivElement>('containerRef');
   const size = ref({ width: 0, height: 0 });
   let resizeObserver: ResizeObserver | null = null;
 

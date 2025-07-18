@@ -9,7 +9,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted, watch } from 'vue';
+import { computed, onMounted, onUnmounted, watch, useTemplateRef } from 'vue';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -39,7 +39,7 @@ const props = withDefaults(defineProps<Props>(), {
   wordAnimationEnd: 'bottom bottom'
 });
 
-const containerRef = ref<HTMLElement | null>(null);
+const containerRef = useTemplateRef<HTMLElement>('containerRef');
 let scrollTriggerInstances: ScrollTrigger[] = [];
 
 const splitText = computed(() => {

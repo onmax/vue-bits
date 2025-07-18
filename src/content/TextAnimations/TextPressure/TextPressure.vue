@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, nextTick, computed, watch } from 'vue';
+import { ref, onMounted, onUnmounted, nextTick, computed, watch, useTemplateRef } from 'vue';
 
 interface TextPressureProps {
   text?: string;
@@ -37,8 +37,8 @@ const props = withDefaults(defineProps<TextPressureProps>(), {
   minFontSize: 24
 });
 
-const containerRef = ref<HTMLDivElement | null>(null);
-const titleRef = ref<HTMLHeadingElement | null>(null);
+const containerRef = useTemplateRef<HTMLDivElement>('containerRef');
+const titleRef = useTemplateRef<HTMLHeadingElement>('titleRef');
 const spansRef = ref<(HTMLSpanElement | null)[]>([]);
 
 const mouseRef = ref({ x: 0, y: 0 });

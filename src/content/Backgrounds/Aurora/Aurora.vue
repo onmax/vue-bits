@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, watch, type CSSProperties } from 'vue';
+import { onMounted, onUnmounted, watch, type CSSProperties, useTemplateRef } from 'vue';
 import { Renderer, Program, Mesh, Color, Triangle } from 'ogl';
 
 interface AuroraProps {
@@ -27,7 +27,7 @@ const props = withDefaults(defineProps<AuroraProps>(), {
   style: () => ({})
 });
 
-const containerRef = ref<HTMLDivElement>();
+const containerRef = useTemplateRef<HTMLDivElement>('containerRef');
 
 const VERT = `#version 300 es
 in vec2 position;

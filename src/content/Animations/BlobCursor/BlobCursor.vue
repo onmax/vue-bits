@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import gsap from 'gsap';
-import { onMounted, onUnmounted, ref } from 'vue';
+import { onMounted, onUnmounted, ref, useTemplateRef } from 'vue';
 
 interface BlobCursorProps {
   blobType?: 'circle' | 'square';
@@ -48,7 +48,7 @@ const props = withDefaults(defineProps<BlobCursorProps>(), {
   zIndex: 100
 });
 
-const containerRef = ref<HTMLDivElement | null>(null);
+const containerRef = useTemplateRef<HTMLDivElement>('containerRef');
 const blobsRef = ref<(HTMLElement | null)[]>([]);
 
 const updateOffset = () => {
