@@ -546,7 +546,7 @@ export { Canvas, Media };
 </script>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, watch } from 'vue';
+import { ref, onMounted, onUnmounted, watch, useTemplateRef } from 'vue';
 
 const props = withDefaults(defineProps<FlyingPostersProps>(), {
   items: () => [],
@@ -559,8 +559,8 @@ const props = withDefaults(defineProps<FlyingPostersProps>(), {
   className: ''
 });
 
-const containerRef = ref<HTMLDivElement>();
-const canvasRef = ref<HTMLCanvasElement>();
+const containerRef = useTemplateRef<HTMLDivElement>('containerRef');
+const canvasRef = useTemplateRef<HTMLCanvasElement>('canvasRef');
 const instanceRef = ref<Canvas | null>(null);
 
 const initCanvas = () => {

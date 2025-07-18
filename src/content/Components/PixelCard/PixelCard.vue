@@ -18,7 +18,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, computed, watch } from 'vue';
+import { ref, onMounted, onUnmounted, computed, watch, useTemplateRef } from 'vue';
 
 class Pixel {
   width: number;
@@ -189,8 +189,8 @@ const props = withDefaults(defineProps<PixelCardProps>(), {
   className: ''
 });
 
-const containerRef = ref<HTMLDivElement>();
-const canvasRef = ref<HTMLCanvasElement>();
+const containerRef = useTemplateRef<HTMLDivElement>('containerRef');
+const canvasRef = useTemplateRef<HTMLCanvasElement>('canvasRef');
 const pixelsRef = ref<Pixel[]>([]);
 const animationRef = ref<number | null>(null);
 const timePreviousRef = ref(performance.now());

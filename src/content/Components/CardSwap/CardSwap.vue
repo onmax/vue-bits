@@ -70,7 +70,7 @@ export { makeSlot, placeNow };
 </script>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, watch, nextTick, computed } from 'vue';
+import { ref, onMounted, onUnmounted, watch, nextTick, computed, useTemplateRef } from 'vue';
 
 const props = withDefaults(defineProps<CardSwapProps>(), {
   width: 500,
@@ -87,7 +87,7 @@ const emit = defineEmits<{
   'card-click': [index: number];
 }>();
 
-const containerRef = ref<HTMLDivElement>();
+const containerRef = useTemplateRef<HTMLDivElement>('containerRef');
 const cardRefs = ref<HTMLElement[]>([]);
 const order = ref<number[]>([0, 1, 2]);
 const tlRef = ref<gsap.core.Timeline | null>(null);

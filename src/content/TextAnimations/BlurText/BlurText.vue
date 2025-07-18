@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted, watch } from 'vue';
+import { ref, computed, onMounted, onUnmounted, watch, useTemplateRef } from 'vue';
 import { Motion } from 'motion-v';
 
 interface BlurTextProps {
@@ -45,7 +45,7 @@ const buildKeyframes = (
 const elements = computed(() => (props.animateBy === 'words' ? props.text.split(' ') : props.text.split('')));
 
 const inView = ref(false);
-const rootRef = ref<HTMLParagraphElement | null>(null);
+const rootRef = useTemplateRef<HTMLParagraphElement>('rootRef');
 let observer: IntersectionObserver | null = null;
 
 const defaultFrom = computed(() =>

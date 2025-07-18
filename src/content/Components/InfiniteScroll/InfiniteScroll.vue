@@ -38,7 +38,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, watch } from 'vue';
+import { onMounted, onUnmounted, watch, useTemplateRef } from 'vue';
 import { gsap } from 'gsap';
 import { Observer } from 'gsap/Observer';
 
@@ -76,8 +76,8 @@ const props = withDefaults(defineProps<Props>(), {
   pauseOnHover: false
 });
 
-const wrapperRef = ref<HTMLDivElement | null>(null);
-const containerRef = ref<HTMLDivElement | null>(null);
+const wrapperRef = useTemplateRef<HTMLDivElement>('wrapperRef');
+const containerRef = useTemplateRef<HTMLDivElement>('containerRef');
 let observer: Observer | null = null;
 let rafId: number | null = null;
 let velocity = 0;

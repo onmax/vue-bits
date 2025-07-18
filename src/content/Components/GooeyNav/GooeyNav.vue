@@ -38,7 +38,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, watch } from 'vue';
+import { ref, onMounted, onUnmounted, watch, useTemplateRef } from 'vue';
 
 interface GooeyNavItem {
   label: string;
@@ -66,10 +66,10 @@ const props = withDefaults(defineProps<GooeyNavProps>(), {
   initialActiveIndex: 0
 });
 
-const containerRef = ref<HTMLDivElement>();
-const navRef = ref<HTMLUListElement>();
-const filterRef = ref<HTMLSpanElement>();
-const textRef = ref<HTMLSpanElement>();
+const containerRef = useTemplateRef<HTMLDivElement>('containerRef');
+const navRef = useTemplateRef<HTMLUListElement>('navRef');
+const filterRef = useTemplateRef<HTMLSpanElement>('filterRef');
+const textRef = useTemplateRef<HTMLSpanElement>('textRef');
 const activeIndex = ref<number>(props.initialActiveIndex);
 
 let resizeObserver: ResizeObserver | null = null;

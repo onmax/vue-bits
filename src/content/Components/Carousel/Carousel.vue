@@ -139,7 +139,7 @@ export const DEFAULT_ITEMS: CarouselItem[] = [
 </script>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted, watch } from 'vue';
+import { ref, computed, onMounted, onUnmounted, watch, useTemplateRef } from 'vue';
 import { Motion, useMotionValue, useTransform } from 'motion-v';
 
 const DRAG_BUFFER = 0;
@@ -167,7 +167,7 @@ const motionX = useMotionValue(0);
 const isHovered = ref<boolean>(false);
 const isResetting = ref<boolean>(false);
 
-const containerRef = ref<HTMLDivElement>();
+const containerRef = useTemplateRef<HTMLDivElement>('containerRef');
 let autoplayTimer: number | null = null;
 
 const dragConstraints = computed(() => {

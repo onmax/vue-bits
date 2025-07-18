@@ -15,7 +15,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, watch } from 'vue';
+import { ref, onMounted, onUnmounted, watch, useTemplateRef } from 'vue';
 
 interface Props {
   glitchColors?: string[];
@@ -33,7 +33,7 @@ const props = withDefaults(defineProps<Props>(), {
   smooth: true
 });
 
-const canvasRef = ref<HTMLCanvasElement | null>(null);
+const canvasRef = useTemplateRef<HTMLCanvasElement>('canvasRef');
 const animationRef = ref<number | null>(null);
 const letters = ref<
   {

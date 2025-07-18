@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, watch } from 'vue';
+import { ref, onMounted, onUnmounted, watch, useTemplateRef } from 'vue';
 import { Renderer, Camera, Transform, Program, Mesh, Geometry } from 'ogl';
 
 interface Props {
@@ -150,7 +150,7 @@ void main() {
 
 const isMobile = ref(false);
 const isVisible = ref(true);
-const containerRef = ref<HTMLDivElement | null>(null);
+const containerRef = useTemplateRef<HTMLDivElement>('containerRef');
 const uniformOffset = ref(new Float32Array([props.xOffset, props.yOffset]));
 const uniformResolution = ref(new Float32Array([1, 1]));
 const rendererRef = ref<Renderer | null>(null);

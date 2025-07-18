@@ -19,14 +19,14 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, watch, onMounted, nextTick, defineAsyncComponent } from 'vue';
+import { computed, watch, onMounted, nextTick, defineAsyncComponent, useTemplateRef } from 'vue';
 import { useRoute } from 'vue-router';
 import { componentMap } from '../constants/Components';
 import { decodeLabel } from '../utils/utils';
 import BackToTopButton from '@/components/common/BackToTopButton.vue';
 
 const route = useRoute();
-const scrollRef = ref<HTMLDivElement | null>(null);
+const scrollRef = useTemplateRef<HTMLDivElement>('scrollRef');
 
 const subcategory = computed(() => route.params.subcategory as string);
 const decodedLabel = computed(() => decodeLabel(subcategory.value));

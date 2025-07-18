@@ -65,7 +65,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { ref, computed, useTemplateRef } from 'vue';
 import { Motion } from 'motion-v';
 
 interface TiltedCardProps {
@@ -99,7 +99,7 @@ const props = withDefaults(defineProps<TiltedCardProps>(), {
   displayOverlayContent: false
 });
 
-const cardRef = ref<HTMLElement | null>(null);
+const cardRef = useTemplateRef<HTMLElement>('cardRef');
 const xValue = ref(0);
 const yValue = ref(0);
 const rotateXValue = ref(0);

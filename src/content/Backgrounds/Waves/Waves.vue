@@ -18,7 +18,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, watch, type CSSProperties } from 'vue';
+import { onMounted, onUnmounted, watch, type CSSProperties, useTemplateRef } from 'vue';
 
 class Grad {
   x: number;
@@ -180,8 +180,8 @@ const props = withDefaults(defineProps<WavesProps>(), {
   className: ''
 });
 
-const containerRef = ref<HTMLDivElement>();
-const canvasRef = ref<HTMLCanvasElement>();
+const containerRef = useTemplateRef<HTMLDivElement>('containerRef');
+const canvasRef = useTemplateRef<HTMLCanvasElement>('canvasRef');
 
 let ctx: CanvasRenderingContext2D | null = null;
 let bounding = { width: 0, height: 0, left: 0, top: 0 };

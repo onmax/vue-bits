@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount, computed } from 'vue';
+import { ref, onMounted, onBeforeUnmount, computed, useTemplateRef } from 'vue';
 import { gsap } from 'gsap';
 
 interface GridMotionProps {
@@ -12,7 +12,7 @@ const props = withDefaults(defineProps<GridMotionProps>(), {
   gradientColor: '#222222'
 });
 
-const gridRef = ref<HTMLElement | null>(null);
+const gridRef = useTemplateRef<HTMLElement>('gridRef');
 const rowRefs = ref<HTMLElement[]>([]);
 const mouseX = ref(window.innerWidth / 2);
 

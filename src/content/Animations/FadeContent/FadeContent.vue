@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, onMounted, onUnmounted, useTemplateRef } from 'vue';
 
 interface Props {
   blur?: boolean;
@@ -36,7 +36,7 @@ const props = withDefaults(defineProps<Props>(), {
 });
 
 const inView = ref(false);
-const elementRef = ref<HTMLDivElement | null>(null);
+const elementRef = useTemplateRef<HTMLDivElement>('elementRef');
 let observer: IntersectionObserver | null = null;
 
 onMounted(() => {

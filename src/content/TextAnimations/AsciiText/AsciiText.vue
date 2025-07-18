@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, watch } from 'vue';
+import { onMounted, onUnmounted, watch, useTemplateRef } from 'vue';
 import * as THREE from 'three';
 
 interface AsciiTextProps {
@@ -495,7 +495,7 @@ class CanvAscii {
   }
 }
 
-const containerRef = ref<HTMLDivElement | null>(null);
+const containerRef = useTemplateRef<HTMLDivElement>('containerRef');
 let asciiRef: CanvAscii | null = null;
 
 const initializeAscii = () => {

@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, withDefaults } from 'vue';
+import { onMounted, withDefaults, useTemplateRef } from 'vue';
 
 /* ---------- types ---------- */
 interface ColorRGB {
@@ -50,7 +50,7 @@ const props = withDefaults(defineProps<SplashCursorProps>(), {
 });
 
 /* ---------- refs ---------- */
-const canvasRef = ref<HTMLCanvasElement | null>(null);
+const canvasRef = useTemplateRef<HTMLCanvasElement>('canvasRef');
 
 /* ---------- helper types ---------- */
 interface Pointer {

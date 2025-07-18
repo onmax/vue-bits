@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { nextTick, onMounted, ref } from 'vue';
+import { nextTick, onMounted, useTemplateRef } from 'vue';
 import { gsap } from 'gsap';
 
 function lerp(a: number, b: number, n: number): number {
@@ -1194,7 +1194,7 @@ const props = withDefaults(defineProps<ImageTrailProps>(), {
   variant: 1
 });
 
-const containerRef = ref<HTMLDivElement>();
+const containerRef = useTemplateRef<HTMLDivElement>('containerRef');
 
 onMounted(async () => {
   await nextTick();

@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, watch } from 'vue';
+import { onMounted, onUnmounted, watch, useTemplateRef } from 'vue';
 import * as THREE from 'three';
 
 interface ShapeBlurProps {
@@ -28,7 +28,7 @@ const props = withDefaults(defineProps<ShapeBlurProps>(), {
   circleEdge: 0.5
 });
 
-const shapeBlurContainer = ref<HTMLDivElement>();
+const shapeBlurContainer = useTemplateRef<HTMLDivElement>('shapeBlurContainer');
 
 let animationFrameId: number;
 let time = 0;

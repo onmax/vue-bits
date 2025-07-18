@@ -12,7 +12,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, watch, nextTick } from 'vue';
+import { ref, onMounted, onUnmounted, watch, nextTick, useTemplateRef } from 'vue';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { SplitText as GSAPSplitText } from 'gsap/SplitText';
@@ -51,7 +51,7 @@ const emit = defineEmits<{
   'animation-complete': [];
 }>();
 
-const textRef = ref<HTMLParagraphElement | null>(null);
+const textRef = useTemplateRef<HTMLParagraphElement>('textRef');
 const animationCompletedRef = ref(false);
 const scrollTriggerRef = ref<ScrollTrigger | null>(null);
 const timelineRef = ref<gsap.core.Timeline | null>(null);

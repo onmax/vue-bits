@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref, watch } from 'vue';
+import { onMounted, onUnmounted, watch, useTemplateRef } from 'vue';
 import { Renderer, Program, Mesh, Triangle, Vec3 } from 'ogl';
 
 interface OrbProps {
@@ -16,7 +16,7 @@ const props = withDefaults(defineProps<OrbProps>(), {
   forceHoverState: false
 });
 
-const ctnDom = ref<HTMLDivElement | null>(null);
+const ctnDom = useTemplateRef<HTMLDivElement>('ctnDom');
 
 const vert = /* glsl */ `
     precision highp float;

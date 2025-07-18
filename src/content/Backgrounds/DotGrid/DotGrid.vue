@@ -7,7 +7,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, computed, watch, nextTick } from 'vue';
+import { ref, onMounted, onUnmounted, computed, watch, nextTick, useTemplateRef } from 'vue';
 import { gsap } from 'gsap';
 import { InertiaPlugin } from 'gsap/InertiaPlugin';
 
@@ -64,8 +64,8 @@ const props = withDefaults(defineProps<DotGridProps>(), {
   style: () => ({})
 });
 
-const wrapperRef = ref<HTMLDivElement>();
-const canvasRef = ref<HTMLCanvasElement>();
+const wrapperRef = useTemplateRef<HTMLDivElement>('wrapperRef');
+const canvasRef = useTemplateRef<HTMLCanvasElement>('canvasRef');
 const dots = ref<Dot[]>([]);
 const pointer = ref({
   x: 0,

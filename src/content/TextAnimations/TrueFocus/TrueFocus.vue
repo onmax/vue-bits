@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { motion } from 'motion-v';
-import { computed, nextTick, onMounted, onUnmounted, ref, watch } from 'vue';
+import { computed, nextTick, onMounted, onUnmounted, ref, watch, useTemplateRef } from 'vue';
 
 interface TrueFocusProps {
   sentence?: string;
@@ -25,7 +25,7 @@ const props = withDefaults(defineProps<TrueFocusProps>(), {
 const words = computed(() => props.sentence.split(' '));
 const currentIndex = ref(0);
 const lastActiveIndex = ref<number | null>(null);
-const containerRef = ref<HTMLDivElement>();
+const containerRef = useTemplateRef<HTMLDivElement>('containerRef');
 const wordRefs = ref<HTMLSpanElement[]>([]);
 const focusRect = ref({ x: 0, y: 0, width: 0, height: 0 });
 

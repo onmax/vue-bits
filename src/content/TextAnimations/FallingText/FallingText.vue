@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, watch, nextTick } from 'vue';
+import { ref, onMounted, onUnmounted, watch, nextTick, useTemplateRef } from 'vue';
 import Matter from 'matter-js';
 
 interface FallingTextProps {
@@ -24,9 +24,9 @@ const props = withDefaults(defineProps<FallingTextProps>(), {
   fontSize: '1rem'
 });
 
-const containerRef = ref<HTMLDivElement>();
-const textRef = ref<HTMLDivElement>();
-const canvasContainerRef = ref<HTMLDivElement>();
+const containerRef = useTemplateRef<HTMLDivElement>('containerRef');
+const textRef = useTemplateRef<HTMLDivElement>('textRef');
+const canvasContainerRef = useTemplateRef<HTMLDivElement>('canvasContainerRef');
 
 const effectStarted = ref(false);
 

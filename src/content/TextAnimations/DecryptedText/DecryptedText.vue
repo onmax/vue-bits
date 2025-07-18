@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, watch, nextTick } from 'vue';
+import { ref, onMounted, onUnmounted, watch, nextTick, useTemplateRef } from 'vue';
 
 interface DecryptedTextProps {
   text: string;
@@ -33,7 +33,7 @@ const emit = defineEmits<{
   animationComplete: [];
 }>();
 
-const containerRef = ref<HTMLSpanElement>();
+const containerRef = useTemplateRef<HTMLSpanElement>('containerRef');
 const displayText = ref(props.text);
 const isHovering = ref(false);
 const isScrambling = ref(false);

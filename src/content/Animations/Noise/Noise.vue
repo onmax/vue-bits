@@ -7,7 +7,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount } from 'vue';
+import { onMounted, onBeforeUnmount, useTemplateRef } from 'vue';
 
 interface NoiseProps {
   patternRefreshInterval?: number;
@@ -21,7 +21,7 @@ const props = withDefaults(defineProps<NoiseProps>(), {
   mixBlendMode: 'normal'
 });
 
-const grainRef = ref<HTMLCanvasElement | null>(null);
+const grainRef = useTemplateRef<HTMLCanvasElement>('grainRef');
 
 let animationId = 0;
 let frame = 0;

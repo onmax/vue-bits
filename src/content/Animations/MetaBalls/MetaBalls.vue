@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Camera, Mesh, Program, Renderer, Transform, Triangle, Vec3 } from 'ogl';
-import { onMounted, onUnmounted, shallowRef, watch } from 'vue';
+import { onMounted, onUnmounted, useTemplateRef, watch } from 'vue';
 
 interface MetaBallsProps {
   color?: string;
@@ -118,7 +118,7 @@ void main() {
 }
 `;
 
-const containerRef = shallowRef<HTMLDivElement>();
+const containerRef = useTemplateRef<HTMLDivElement>('containerRef');
 let cleanUpAnimation: () => void = () => {};
 
 const setupAnimation = () => {

@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, watch, computed } from 'vue';
+import { ref, onMounted, onUnmounted, watch, computed, useTemplateRef } from 'vue';
 
 interface Props {
   to: number;
@@ -28,7 +28,7 @@ const props = withDefaults(defineProps<Props>(), {
   separator: ''
 });
 
-const elementRef = ref<HTMLSpanElement | null>(null);
+const elementRef = useTemplateRef<HTMLSpanElement>('elementRef');
 const currentValue = ref(props.direction === 'down' ? props.to : props.from);
 const isInView = ref(false);
 const animationId = ref<number | null>(null);

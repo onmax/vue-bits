@@ -101,7 +101,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, nextTick, watch, defineComponent, h, computed } from 'vue';
+import { ref, onMounted, onUnmounted, nextTick, watch, defineComponent, h, computed, useTemplateRef } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { CATEGORIES, NEW, UPDATED } from '../../constants/Categories';
 import Logo from '../../assets/logos/vue-bits-logo.svg';
@@ -118,8 +118,8 @@ const pendingActivePath = ref<string | null>(null);
 const isScrolledToBottom = ref(false);
 const isTransitioning = ref(false);
 
-const sidebarRef = ref<HTMLDivElement>();
-const sidebarContainerRef = ref<HTMLDivElement>();
+const sidebarRef = useTemplateRef<HTMLDivElement>('sidebarRef');
+const sidebarContainerRef = useTemplateRef<HTMLDivElement>('sidebarContainerRef');
 
 let hoverTimeoutRef: number | null = null;
 let hoverDelayTimeoutRef: number | null = null;

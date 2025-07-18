@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, watch } from 'vue';
+import { onMounted, onUnmounted, watch, useTemplateRef } from 'vue';
 import { gsap } from 'gsap';
 import { SplitText } from 'gsap/SplitText';
 import { ScrambleTextPlugin } from 'gsap/ScrambleTextPlugin';
@@ -24,7 +24,7 @@ const props = withDefaults(defineProps<ScrambleTextProps>(), {
   style: () => ({})
 });
 
-const rootRef = ref<HTMLDivElement | null>(null);
+const rootRef = useTemplateRef<HTMLDivElement>('rootRef');
 
 let splitText: SplitText | null = null;
 let handleMove: ((e: PointerEvent) => void) | null = null;

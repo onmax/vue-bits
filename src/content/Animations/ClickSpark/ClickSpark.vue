@@ -7,7 +7,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, computed, watch } from 'vue';
+import { ref, onMounted, onUnmounted, computed, watch, useTemplateRef } from 'vue';
 
 interface Spark {
   x: number;
@@ -36,8 +36,8 @@ const props = withDefaults(defineProps<Props>(), {
   extraScale: 1.0
 });
 
-const containerRef = ref<HTMLDivElement | null>(null);
-const canvasRef = ref<HTMLCanvasElement | null>(null);
+const containerRef = useTemplateRef<HTMLDivElement>('containerRef');
+const canvasRef = useTemplateRef<HTMLCanvasElement>('canvasRef');
 const sparks = ref<Spark[]>([]);
 const startTimeRef = ref<number | null>(null);
 const animationId = ref<number | null>(null);

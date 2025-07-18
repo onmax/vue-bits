@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, watch } from 'vue';
+import { ref, onMounted, onUnmounted, watch, useTemplateRef } from 'vue';
 import {
   CanvasTexture,
   Clock,
@@ -49,7 +49,7 @@ const props = withDefaults(defineProps<TextTrailProps>(), {
   supersample: 2
 });
 
-const containerRef = ref<HTMLDivElement>();
+const containerRef = useTemplateRef<HTMLDivElement>('containerRef');
 
 const hexToRgb = (hex: string): [number, number, number] => {
   let h = hex.replace('#', '');

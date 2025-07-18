@@ -72,7 +72,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, watch, onMounted, type Component } from 'vue';
+import { ref, computed, watch, onMounted, type Component, useTemplateRef } from 'vue';
 
 const MAX_OVERFLOW = 50;
 
@@ -98,9 +98,9 @@ const props = withDefaults(defineProps<Props>(), {
   rightIcon: '+'
 });
 
-const sliderRef = ref<HTMLDivElement>();
-const leftIconRef = ref<HTMLDivElement>();
-const rightIconRef = ref<HTMLDivElement>();
+const sliderRef = useTemplateRef<HTMLDivElement>('sliderRef');
+const leftIconRef = useTemplateRef<HTMLDivElement>('leftIconRef');
+const rightIconRef = useTemplateRef<HTMLDivElement>('rightIconRef');
 
 const value = ref(props.defaultValue);
 const region = ref<'left' | 'middle' | 'right'>('middle');

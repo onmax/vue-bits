@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, watch } from 'vue';
+import { onMounted, onUnmounted, watch, useTemplateRef } from 'vue';
 import { Renderer, Program, Mesh, Triangle, Color } from 'ogl';
 import type { OGLRenderingContext } from 'ogl';
 
@@ -21,7 +21,7 @@ const props = withDefaults(defineProps<Props>(), {
   enableMouseInteraction: false
 });
 
-const containerRef = ref<HTMLDivElement | null>(null);
+const containerRef = useTemplateRef<HTMLDivElement>('containerRef');
 
 let renderer: Renderer | null = null;
 let gl: OGLRenderingContext | null = null;

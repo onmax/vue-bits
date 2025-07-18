@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, watch } from 'vue';
+import { onMounted, onUnmounted, watch, useTemplateRef } from 'vue';
 import { Camera, Mesh, Plane, Program, Renderer, Texture, Transform } from 'ogl';
 
 interface CircularGalleryProps {
@@ -25,7 +25,7 @@ const props = withDefaults(defineProps<CircularGalleryProps>(), {
   scrollEase: 0.05
 });
 
-const containerRef = ref<HTMLDivElement>();
+const containerRef = useTemplateRef<HTMLDivElement>('containerRef');
 let app: App | null = null;
 
 type GL = Renderer['gl'];

@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, watch } from 'vue';
+import { onMounted, onUnmounted, watch, useTemplateRef } from 'vue';
 import { Renderer, Transform, Vec3, Color, Polyline } from 'ogl';
 
 interface RibbonsProps {
@@ -36,7 +36,7 @@ const props = withDefaults(defineProps<RibbonsProps>(), {
   backgroundColor: () => [0, 0, 0, 0]
 });
 
-const ribbonsContainer = ref<HTMLDivElement>();
+const ribbonsContainer = useTemplateRef<HTMLDivElement>('ribbonsContainer');
 
 let renderer: Renderer;
 let scene: Transform;
