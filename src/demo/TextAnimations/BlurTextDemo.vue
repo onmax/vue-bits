@@ -27,7 +27,7 @@
 
         <div class="flex gap-4 flex-wrap">
           <button
-            class="text-xs bg-[#0b0b0b] rounded-[10px] border border-[#1e3721] hover:bg-[#1e3721] text-white h-8 px-3 transition-colors"
+            class="text-xs bg-[#0b0b0b] rounded-[10px] border border-[#333] hover:bg-[#222] text-white h-8 px-3 transition-colors cursor-pointer"
             @click="toggleAnimateBy"
           >
             Animate By:
@@ -35,7 +35,7 @@
           </button>
 
           <button
-            class="text-xs bg-[#0b0b0b] rounded-[10px] border border-[#1e3721] hover:bg-[#1e3721] text-white h-8 px-3 transition-colors"
+            class="text-xs bg-[#0b0b0b] rounded-[10px] border border-[#333] hover:bg-[#222] text-white h-8 px-3 transition-colors cursor-pointer"
             @click="toggleDirection"
           >
             Direction:
