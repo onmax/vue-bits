@@ -1,33 +1,31 @@
 <template>
-  <div class="waves-demo">
-    <TabbedLayout>
-      <template #preview>
-        <div class="demo-container">
-          <Waves :wave-speed-x="waveSpeedX" :line-color="color" class="w-full h-full" />
+  <TabbedLayout>
+    <template #preview>
+      <div class="h-[600px] overflow-hidden demo-container">
+        <Waves :wave-speed-x="waveSpeedX" :line-color="color" class="w-full h-full" />
+      </div>
+
+      <Customize>
+        <PreviewSlider title="Wave Speed X" v-model="waveSpeedX" :min="0" :max="0.1" :step="0.01" />
+
+        <div class="flex items-center gap-4">
+          <PreviewColor title="Waves Color" v-model="color" />
         </div>
+      </Customize>
 
-        <Customize>
-          <PreviewSlider title="Wave Speed X" v-model="waveSpeedX" :min="0" :max="0.1" :step="0.01" />
+      <PropTable :data="propData" />
 
-          <div class="flex gap-4 items-center">
-            <PreviewColor title="Waves Color" v-model="color" />
-          </div>
-        </Customize>
+      <Dependencies :dependency-list="[]" />
+    </template>
 
-        <PropTable :data="propData" />
+    <template #code>
+      <CodeExample :code-object="waves" />
+    </template>
 
-        <Dependencies :dependency-list="[]" />
-      </template>
-
-      <template #code>
-        <CodeExample :code-object="waves" />
-      </template>
-
-      <template #cli>
-        <CliInstallation :command="waves.cli" />
-      </template>
-    </TabbedLayout>
-  </div>
+    <template #cli>
+      <CliInstallation :command="waves.cli" />
+    </template>
+  </TabbedLayout>
 </template>
 
 <script setup lang="ts">
@@ -105,7 +103,6 @@ const propData = [
 
 <style scoped>
 .demo-container {
-  overflow: hidden;
   padding: 0;
 }
 </style>

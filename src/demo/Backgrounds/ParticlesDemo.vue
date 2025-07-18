@@ -1,7 +1,7 @@
 <template>
   <TabbedLayout>
     <template #preview>
-      <div class="overflow-hidden demo-container">
+      <div class="h-[600px] overflow-hidden demo-container">
         <Particles
           :key="rerenderKey"
           :particle-colors="[color]"

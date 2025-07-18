@@ -1,7 +1,7 @@
 <template>
   <TabbedLayout>
     <template #preview>
-      <div class="relative p-0 h-[500px] overflow-hidden demo-container">
+      <div class="relative p-0 h-[600px] overflow-hidden demo-container">
         <RefreshButton @click="forceRerender" />
         <p class="z-0 absolute font-black text-[#271e37] text-[200px]">Balls.</p>
         <Ballpit

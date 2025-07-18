@@ -2,7 +2,7 @@
   <TabbedLayout>
     <template #preview>
       <div class="relative p-0 min-h-[200px] overflow-hidden demo-container">
-        <div class="w-full h-[500px] overflow-hidden">
+        <div class="w-full h-[600px] overflow-hidden">
           <Squares
             :squareSize="size"
             :speed="speed"

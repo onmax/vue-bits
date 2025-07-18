@@ -1,7 +1,7 @@
 <template>
   <TabbedLayout>
     <template #preview>
-      <div class="relative p-0 h-[500px] overflow-hidden demo-container">
+      <div class="relative p-0 h-[600px] overflow-hidden demo-container">
         <LiquidChrome :baseColor="baseColor" :speed="speed" :amplitude="amplitude" :interactive="interactive" />
         <BackgroundContent pill-text="New Background" headline="Swirl around in the deep sea of liquid chrome!" />
       </div>

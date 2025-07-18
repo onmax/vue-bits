@@ -1,7 +1,7 @@
 <template>
   <TabbedLayout>
     <template #preview>
-      <div class="demo-container h-[600px]">
+      <div class="h-[600px] overflow-hidden demo-container">
         <GridMotion :items="images" />
       </div>
 
@@ -53,6 +53,5 @@ const images = Array.from({ length: numberOfImages }, () => imageUrl);
 <style scoped>
 .demo-container {
   padding: 0;
-  overflow: hidden;
 }
 </style>
