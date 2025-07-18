@@ -25,7 +25,8 @@ export const CATEGORIES = [
       'Scroll Float',
       'Scroll Reveal',
       'Rotating Text',
-      'Glitch Text'
+      'Glitch Text',
+      'Scroll Velocity'
     ]
   },
   {

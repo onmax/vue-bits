@@ -37,6 +37,7 @@ const textAnimations = {
   'scroll-reveal': () => import("../demo/TextAnimations/ScrollRevealDemo.vue"),
   'rotating-text': () => import("../demo/TextAnimations/RotatingTextDemo.vue"),
   'glitch-text': () => import("../demo/TextAnimations/GlitchTextDemo.vue"),
+  'scroll-velocity': () => import("../demo/TextAnimations/ScrollVelocityDemo.vue"),
 };
 
 const components = {
