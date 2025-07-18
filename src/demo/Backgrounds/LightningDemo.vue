@@ -10,7 +10,7 @@
           :size="size"
           class="w-full h-full"
         />
-        <BackgroundContent pillText="New Background" headline="The power of nature's fury, with React Bits!" />
+        <BackgroundContent pillText="New Background" headline="The power of nature's fury, with Vue Bits!" />
       </div>
 
       <Customize>
