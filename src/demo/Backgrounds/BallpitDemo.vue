@@ -14,6 +14,7 @@
           :followCursor="followCursor"
           :colors="colors"
         />
+        <BackgroundContent pillText="New Background" headline="Balls! What's not to like about them?" />
       </div>
 
       <Customize>
@@ -48,6 +49,7 @@ import { ref, watch } from 'vue';
 import CliInstallation from '../../components/code/CliInstallation.vue';
 import CodeExample from '../../components/code/CodeExample.vue';
 import Dependencies from '../../components/code/Dependencies.vue';
+import BackgroundContent from '../../components/common/BackgroundContent.vue';
 import Customize from '../../components/common/Customize.vue';
 import PreviewSlider from '../../components/common/PreviewSlider.vue';
 import PreviewSwitch from '../../components/common/PreviewSwitch.vue';
@@ -60,7 +62,7 @@ import Ballpit from '../../content/Backgrounds/Ballpit/Ballpit.vue';
 const { rerenderKey: key, forceRerender } = useForceRerender();
 
 const count = ref(100);
-const gravity = ref(0.5);
+const gravity = ref(0.01);
 const friction = ref(0.9975);
 const wallBounce = ref(0.95);
 const followCursor = ref(false);

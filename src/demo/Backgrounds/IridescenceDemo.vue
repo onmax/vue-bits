@@ -1,8 +1,9 @@
 <template>
   <TabbedLayout>
     <template #preview>
-      <div class="relative demo-container h-[500px] p-0 overflow-hidden">
+      <div class="relative p-0 h-[600px] overflow-hidden demo-container">
         <Iridescence :key="key" :speed="speed" :color="colors" :mouseReact="mouseInteraction" :amplitude="amplitude" />
+        <BackgroundContent pillText="New Background" headline="Radiant iridescence with customizable colors" />
       </div>
 
       <Customize>
@@ -36,19 +37,20 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import TabbedLayout from '../../components/common/TabbedLayout.vue';
+import CliInstallation from '../../components/code/CliInstallation.vue';
+import CodeExample from '../../components/code/CodeExample.vue';
+import Dependencies from '../../components/code/Dependencies.vue';
+import BackgroundContent from '../../components/common/BackgroundContent.vue';
 import Customize from '../../components/common/Customize.vue';
 import PreviewSlider from '../../components/common/PreviewSlider.vue';
 import PreviewSwitch from '../../components/common/PreviewSwitch.vue';
 import PropTable from '../../components/common/PropTable.vue';
-import Dependencies from '../../components/code/Dependencies.vue';
-import CodeExample from '../../components/code/CodeExample.vue';
-import CliInstallation from '../../components/code/CliInstallation.vue';
-import Iridescence from '../../content/Backgrounds/Iridescence/Iridescence.vue';
-import { iridescence } from '../../constants/code/Backgrounds/iridescenceCode';
+import TabbedLayout from '../../components/common/TabbedLayout.vue';
 import { useForceRerender } from '../../composables/useForceRerender';
+import { iridescence } from '../../constants/code/Backgrounds/iridescenceCode';
+import Iridescence from '../../content/Backgrounds/Iridescence/Iridescence.vue';
 
-const colors = ref<[number, number, number]>([1, 1, 1]);
+const colors = ref<[number, number, number]>([0.5, 0.6, 0.8]);
 const speed = ref(1);
 const amplitude = ref(0.1);
 const mouseInteraction = ref(true);
@@ -85,7 +87,6 @@ const propData = [
 
 <style scoped>
 .demo-container {
-  overflow: hidden;
   padding: 0;
 }
 </style>

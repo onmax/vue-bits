@@ -4,16 +4,14 @@
       <div class="relative p-0 h-[600px] overflow-hidden demo-container" ref="containerRef">
         <GridDistortion
           :key="key"
-          imageSrc="https://picsum.photos/1920/1080?grayscale"
+          imageSrc="https://picsum.photos/1920/1080"
           :grid="grid"
           :mouse="mouse"
           :strength="0.15"
           :relaxation="0.9"
           className="grid-distortion"
         />
-        <p class="absolute font-black text-8xl text-center pointer-events-none select-none mix-blend-difference">
-          Distortion.
-        </p>
+        <BackgroundContent pillText="New Background" headline="Don't just sit there, move your cursor!" />
       </div>
 
       <Customize>
@@ -48,6 +46,7 @@ import PropTable from '../../components/common/PropTable.vue';
 import TabbedLayout from '../../components/common/TabbedLayout.vue';
 import { gridDistortion } from '../../constants/code/Backgrounds/gridDistortionCode';
 import GridDistortion from '../../content/Backgrounds/GridDistortion/GridDistortion.vue';
+import BackgroundContent from '../../components/common/BackgroundContent.vue';
 
 const { rerenderKey: key, forceRerender } = useForceRerender();
 

@@ -1,56 +1,55 @@
 <template>
-  <div class="particles-demo">
-    <TabbedLayout>
-      <template #preview>
-        <div class="demo-container">
-          <Particles
-            :key="rerenderKey"
-            :particle-colors="[color]"
-            :particle-count="particleCount"
-            :particle-spread="particleSpread"
-            :speed="speed"
-            :particle-base-size="baseSize"
-            :move-particles-on-hover="moveParticlesOnHover"
-            :alpha-particles="alphaParticles"
-            :disable-rotation="disableRotation"
-            class="w-full h-full"
-          />
+  <TabbedLayout>
+    <template #preview>
+      <div class="overflow-hidden demo-container">
+        <Particles
+          :key="rerenderKey"
+          :particle-colors="[color]"
+          :particle-count="particleCount"
+          :particle-spread="particleSpread"
+          :speed="speed"
+          :particle-base-size="baseSize"
+          :move-particles-on-hover="moveParticlesOnHover"
+          :alpha-particles="alphaParticles"
+          :disable-rotation="disableRotation"
+          class="w-full h-full"
+        />
+        <BackgroundContent pillText="New Background" headline="Particles that mimick the dance of the cosmos" />
+      </div>
+
+      <Customize>
+        <div class="flex items-center gap-4">
+          <PreviewColor title="Color" v-model="color" />
         </div>
 
-        <Customize>
-          <div class="flex gap-4 items-center">
-            <PreviewColor title="Color" v-model="color" />
-          </div>
+        <PreviewSlider title="Count" v-model="particleCount" :min="100" :max="1000" :step="100" />
 
-          <PreviewSlider title="Count" v-model="particleCount" :min="100" :max="1000" :step="100" />
+        <PreviewSlider title="Spread" v-model="particleSpread" :min="10" :max="100" :step="10" />
 
-          <PreviewSlider title="Spread" v-model="particleSpread" :min="10" :max="100" :step="10" />
+        <PreviewSlider title="Speed" v-model="speed" :min="0" :max="2" :step="0.1" />
 
-          <PreviewSlider title="Speed" v-model="speed" :min="0" :max="2" :step="0.1" />
+        <PreviewSlider title="Base Size" v-model="baseSize" :min="100" :max="1000" :step="100" />
 
-          <PreviewSlider title="Base Size" v-model="baseSize" :min="100" :max="1000" :step="100" />
+        <PreviewSwitch title="Mouse Interaction" v-model="moveParticlesOnHover" />
 
-          <PreviewSwitch title="Mouse Interaction" v-model="moveParticlesOnHover" />
+        <PreviewSwitch title="Particle Transparency" v-model="alphaParticles" />
 
-          <PreviewSwitch title="Particle Transparency" v-model="alphaParticles" />
+        <PreviewSwitch title="Disable Rotation" v-model="disableRotation" />
+      </Customize>
 
-          <PreviewSwitch title="Disable Rotation" v-model="disableRotation" />
-        </Customize>
+      <PropTable :data="propData" />
 
-        <PropTable :data="propData" />
+      <Dependencies :dependency-list="['ogl']" />
+    </template>
 
-        <Dependencies :dependency-list="['ogl']" />
-      </template>
+    <template #code>
+      <CodeExample :code-object="particles" />
+    </template>
 
-      <template #code>
-        <CodeExample :code-object="particles" />
-      </template>
-
-      <template #cli>
-        <CliInstallation :command="particles.cli" />
-      </template>
-    </TabbedLayout>
-  </div>
+    <template #cli>
+      <CliInstallation :command="particles.cli" />
+    </template>
+  </TabbedLayout>
 </template>
 
 <script setup lang="ts">
@@ -62,6 +61,7 @@ import CliInstallation from '../../components/code/CliInstallation.vue';
 import CodeExample from '../../components/code/CodeExample.vue';
 import Customize from '../../components/common/Customize.vue';
 import Particles from '@/content/Backgrounds/Particles/Particles.vue';
+import BackgroundContent from '../../components/common/BackgroundContent.vue';
 import PreviewSlider from '@/components/common/PreviewSlider.vue';
 import PreviewSwitch from '@/components/common/PreviewSwitch.vue';
 import PreviewColor from '@/components/common/PreviewColor.vue';
@@ -136,7 +136,6 @@ const propData = [
 
 <style scoped>
 .demo-container {
-  overflow: hidden;
   padding: 0;
 }
 </style>

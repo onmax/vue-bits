@@ -1,7 +1,7 @@
 <template>
   <TabbedLayout>
     <template #preview>
-      <div class="relative min-h-[200px] demo-container overflow-hidden p-0">
+      <div class="relative p-0 min-h-[200px] overflow-hidden demo-container">
         <div class="w-full h-[500px] overflow-hidden">
           <Squares
             :squareSize="size"
@@ -10,12 +10,13 @@
             :borderColor="borderColor"
             :hoverFillColor="hoverColor"
           />
+          <BackgroundContent pillText="New Background" headline="Customizable squares moving around smoothly" />
         </div>
       </div>
 
       <Customize>
         <div class="flex items-center mb-6">
-          <span class="text-sm mr-2">Direction</span>
+          <span class="mr-2 text-sm">Direction</span>
 
           <div class="flex">
             <button
@@ -59,15 +60,16 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import TabbedLayout from '../../components/common/TabbedLayout.vue';
-import Customize from '../../components/common/Customize.vue';
-import PreviewSlider from '../../components/common/PreviewSlider.vue';
-import PreviewColor from '../../components/common/PreviewColor.vue';
-import PropTable from '../../components/common/PropTable.vue';
-import CodeExample from '../../components/code/CodeExample.vue';
 import CliInstallation from '../../components/code/CliInstallation.vue';
-import Squares from '../../content/Backgrounds/Squares/Squares.vue';
+import CodeExample from '../../components/code/CodeExample.vue';
+import BackgroundContent from '../../components/common/BackgroundContent.vue';
+import Customize from '../../components/common/Customize.vue';
+import PreviewColor from '../../components/common/PreviewColor.vue';
+import PreviewSlider from '../../components/common/PreviewSlider.vue';
+import PropTable from '../../components/common/PropTable.vue';
+import TabbedLayout from '../../components/common/TabbedLayout.vue';
 import { squares } from '../../constants/code/Backgrounds/squaresCode';
+import Squares from '../../content/Backgrounds/Squares/Squares.vue';
 
 const direction = ref<'diagonal' | 'up' | 'right' | 'down' | 'left'>('diagonal');
 const borderColor = ref('#333');
@@ -119,7 +121,6 @@ const propData = [
 
 <style scoped>
 .demo-container {
-  overflow: hidden;
   padding: 0;
 }
 </style>

@@ -1,65 +1,65 @@
 <template>
-  <div class="letter-glitch-demo">
-    <TabbedLayout>
-      <template #preview>
-        <div class="demo-container">
-          <LetterGlitch
-            :key="rerenderKey"
-            :glitch-colors="colors"
-            :glitch-speed="speed"
-            :center-vignette="showCenterVignette"
-            :outer-vignette="showOuterVignette"
-            :smooth="smooth"
-            class="w-full h-full"
-          />
-        </div>
+  <TabbedLayout>
+    <template #preview>
+      <div class="overflow-hidden demo-container">
+        <LetterGlitch
+          :key="rerenderKey"
+          :glitch-colors="colors"
+          :glitch-speed="speed"
+          :center-vignette="showCenterVignette"
+          :outer-vignette="showOuterVignette"
+          :smooth="smooth"
+          class="w-full h-full"
+        />
+        <BackgroundContent pillText="New Background" headline="Am I finally a real hacker now, mom?" />
+      </div>
 
-        <Customize>
-          <button
-            @click="randomizeColors"
-            class="px-3 py-2 text-xs bg-[#111] hover:bg-[#222] text-white rounded-lg border border-[#333] transition-colors"
-          >
-            Randomize Colors
-          </button>
+      <Customize>
+        <button
+          @click="randomizeColors"
+          class="bg-[#111] hover:bg-[#222] px-3 py-2 border border-[#333] rounded-lg text-white text-xs transition-colors"
+        >
+          Randomize Colors
+        </button>
 
-          <PreviewSlider title="Glitch Speed" v-model="speed" :min="0" :max="100" :step="5" />
+        <PreviewSlider title="Glitch Speed" v-model="speed" :min="0" :max="100" :step="5" />
 
-          <PreviewSwitch title="Smooth Animation" v-model="smooth" />
+        <PreviewSwitch title="Smooth Animation" v-model="smooth" />
 
-          <PreviewSwitch title="Show Center Vignette" v-model="showCenterVignette" />
+        <PreviewSwitch title="Show Center Vignette" v-model="showCenterVignette" />
 
-          <PreviewSwitch title="Show Outer Vignette" v-model="showOuterVignette" />
-        </Customize>
+        <PreviewSwitch title="Show Outer Vignette" v-model="showOuterVignette" />
+      </Customize>
 
-        <PropTable :data="propData" />
+      <PropTable :data="propData" />
 
-        <Dependencies :dependency-list="[]" />
-      </template>
+      <Dependencies :dependency-list="[]" />
+    </template>
 
-      <template #code>
-        <CodeExample :code-object="letterGlitch" />
-      </template>
+    <template #code>
+      <CodeExample :code-object="letterGlitch" />
+    </template>
 
-      <template #cli>
-        <CliInstallation :command="letterGlitch.cli" />
-      </template>
-    </TabbedLayout>
-  </div>
+    <template #cli>
+      <CliInstallation :command="letterGlitch.cli" />
+    </template>
+  </TabbedLayout>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-import TabbedLayout from '../../components/common/TabbedLayout.vue';
-import PropTable from '../../components/common/PropTable.vue';
-import Dependencies from '../../components/code/Dependencies.vue';
-import CliInstallation from '../../components/code/CliInstallation.vue';
-import CodeExample from '../../components/code/CodeExample.vue';
-import Customize from '../../components/common/Customize.vue';
-import LetterGlitch from '@/content/Backgrounds/LetterGlitch/LetterGlitch.vue';
 import PreviewSlider from '@/components/common/PreviewSlider.vue';
 import PreviewSwitch from '@/components/common/PreviewSwitch.vue';
-import { letterGlitch } from '@/constants/code/Backgrounds/letterGlitchCode';
 import { useForceRerender } from '@/composables/useForceRerender';
+import { letterGlitch } from '@/constants/code/Backgrounds/letterGlitchCode';
+import LetterGlitch from '@/content/Backgrounds/LetterGlitch/LetterGlitch.vue';
+import { ref } from 'vue';
+import CliInstallation from '../../components/code/CliInstallation.vue';
+import CodeExample from '../../components/code/CodeExample.vue';
+import Dependencies from '../../components/code/Dependencies.vue';
+import BackgroundContent from '../../components/common/BackgroundContent.vue';
+import Customize from '../../components/common/Customize.vue';
+import PropTable from '../../components/common/PropTable.vue';
+import TabbedLayout from '../../components/common/TabbedLayout.vue';
 
 const smooth = ref(true);
 const speed = ref(10);
@@ -119,7 +119,6 @@ const propData = [
 
 <style scoped>
 .demo-container {
-  overflow: hidden;
   padding: 0;
 }
 </style>

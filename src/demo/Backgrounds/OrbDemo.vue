@@ -1,14 +1,14 @@
 <template>
   <TabbedLayout>
     <template #preview>
-      <div class="relative p-0 h-[500px] overflow-hidden demo-container">
+      <div class="relative p-0 h-[600px] overflow-hidden demo-container">
         <Orb
           :hue="debouncedHue"
           :hoverIntensity="debouncedHoverIntensity"
           :rotateOnHover="rotateOnHover"
           :forceHoverState="forceHoverState"
         />
-        <p class="z-0 absolute mb-0 font-black text-[clamp(2rem,2vw,6rem)] mix-blend-difference">Hover.</p>
+        <BackgroundContent pill-text="New Background" headline="This orb is hiding something, try hovering!" />
       </div>
 
       <Customize>
@@ -40,6 +40,7 @@ import { ref, watch } from 'vue';
 import CliInstallation from '../../components/code/CliInstallation.vue';
 import CodeExample from '../../components/code/CodeExample.vue';
 import Dependencies from '../../components/code/Dependencies.vue';
+import BackgroundContent from '../../components/common/BackgroundContent.vue';
 import Customize from '../../components/common/Customize.vue';
 import PreviewSlider from '../../components/common/PreviewSlider.vue';
 import PreviewSwitch from '../../components/common/PreviewSwitch.vue';
@@ -49,7 +50,7 @@ import { orb } from '../../constants/code/Backgrounds/orbCode';
 import Orb from '../../content/Backgrounds/Orb/Orb.vue';
 
 const hue = ref(100);
-const hoverIntensity = ref(0.5);
+const hoverIntensity = ref(2);
 const rotateOnHover = ref(true);
 const forceHoverState = ref(false);
 
