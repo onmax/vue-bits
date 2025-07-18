@@ -1,7 +1,7 @@
 <template>
   <TabbedLayout>
     <template #preview>
-      <div class="demo-container">
+      <div class="h-[600px] overflow-hidden demo-container">
         <Balatro
           :is-rotate="rotate"
           :mouse-interaction="mouseInteractionEnabled"
@@ -9,7 +9,7 @@
           :color1="colorStops[0]"
           :color2="colorStops[1]"
           :color3="colorStops[2]"
-          class="h-full w-full"
+          class="w-full h-full"
         />
       </div>
 
@@ -147,9 +147,6 @@ const propData = [
 
 <style scoped>
 .demo-container {
-  overflow: hidden;
   padding: 0;
-  z-index: 1;
-  height: 500px;
 }
 </style>

@@ -25,7 +25,8 @@ export const CATEGORIES = [
       'Scroll Float',
       'Scroll Reveal',
       'Rotating Text',
-      'Glitch Text'
+      'Glitch Text',
+      'Scroll Velocity'
     ]
   },
   {
@@ -47,6 +48,7 @@ export const CATEGORIES = [
       'Blob Cursor',
       'Meta Balls',
       'Image Trail',
+      'Shape Blur',
       'Target Cursor',
     ]
   },
@@ -85,7 +87,6 @@ export const CATEGORIES = [
       'Balatro',
       'Letter Glitch',
       'Particles',
-      'Shape Blur',
       'Waves',
       'Squares',
       'Iridescence',

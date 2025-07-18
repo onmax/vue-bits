@@ -1,44 +1,43 @@
 <template>
-  <div class="hyperspeed-demo">
-    <TabbedLayout>
-      <template #preview>
-        <div class="demo-container">
-          <div class="instruction-text">Click & Hold</div>
-          <Hyperspeed :effect-options="currentPreset" />
-        </div>
+  <TabbedLayout>
+    <template #preview>
+      <div class="h-[600px] overflow-hidden cursor-pointer demo-container">
+        <Hyperspeed :effect-options="currentPreset" />
+        <BackgroundContent pillText="New Background" headline="Cick & hold to see the real magic of hyperspeed!" />
+      </div>
 
-        <Customize>
-          <PreviewSelect title="Animation Preset" :options="options" v-model="activePreset" />
-        </Customize>
+      <Customize>
+        <PreviewSelect title="Animation Preset" :options="options" v-model="activePreset" />
+      </Customize>
 
-        <PropTable :data="propData" />
+      <PropTable :data="propData" />
 
-        <Dependencies :dependency-list="['three', 'postprocessing']" />
-      </template>
+      <Dependencies :dependency-list="['three', 'postprocessing']" />
+    </template>
 
-      <template #code>
-        <CodeExample :code-object="hyperspeed" />
-      </template>
+    <template #code>
+      <CodeExample :code-object="hyperspeed" />
+    </template>
 
-      <template #cli>
-        <CliInstallation :command="hyperspeed.cli" />
-      </template>
-    </TabbedLayout>
-  </div>
+    <template #cli>
+      <CliInstallation :command="hyperspeed.cli" />
+    </template>
+  </TabbedLayout>
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue';
-import TabbedLayout from '../../components/common/TabbedLayout.vue';
-import PropTable from '../../components/common/PropTable.vue';
-import Dependencies from '../../components/code/Dependencies.vue';
+import { hyperspeed } from '@/constants/code/Backgrounds/hyperspeedCode';
+import { computed, ref } from 'vue';
 import CliInstallation from '../../components/code/CliInstallation.vue';
 import CodeExample from '../../components/code/CodeExample.vue';
+import Dependencies from '../../components/code/Dependencies.vue';
+import BackgroundContent from '../../components/common/BackgroundContent.vue';
 import Customize from '../../components/common/Customize.vue';
 import PreviewSelect from '../../components/common/PreviewSelect.vue';
+import PropTable from '../../components/common/PropTable.vue';
+import TabbedLayout from '../../components/common/TabbedLayout.vue';
 import Hyperspeed from '../../content/Backgrounds/Hyperspeed/Hyperspeed.vue';
 import { hyperspeedPresets } from '../../content/Backgrounds/Hyperspeed/HyperspeedPresets';
-import { hyperspeed } from '@/constants/code/Backgrounds/hyperspeedCode';
 
 const activePreset = ref<string>('one');
 
@@ -67,26 +66,7 @@ const options = [
 </script>
 
 <style scoped>
-.hyperspeed-demo {
-  width: 100%;
-}
-
 .demo-container {
-  height: 600px;
-  overflow: hidden;
-  cursor: pointer;
   padding: 0;
-}
-
-.instruction-text {
-  position: absolute;
-  top: 1.5rem;
-  left: 50%;
-  transform: translateX(-50%);
-  font-weight: 900;
-  font-size: 4rem;
-  color: #222;
-  z-index: 10;
-  pointer-events: none;
 }
 </style>

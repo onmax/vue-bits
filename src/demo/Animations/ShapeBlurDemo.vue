@@ -53,8 +53,8 @@ import CliInstallation from '../../components/code/CliInstallation.vue';
 import CodeExample from '../../components/code/CodeExample.vue';
 import Customize from '../../components/common/Customize.vue';
 import PreviewSlider from '../../components/common/PreviewSlider.vue';
-import ShapeBlur from '../../content/Backgrounds/ShapeBlur/ShapeBlur.vue';
-import { shapeBlur } from '@/constants/code/Backgrounds/shapeBlurCode';
+import ShapeBlur from '../../content/Animations/ShapeBlur/ShapeBlur.vue';
+import { shapeBlur } from '@/constants/code/Animations/shapeBlurCode';
 
 const pixelRatioProp = ref(window.devicePixelRatio || 1);
 const shapeSize = ref(1.0);

@@ -15,6 +15,7 @@ const animations = {
   'blob-cursor': () => import('../demo/Animations/BlobCursorDemo.vue'),
   'meta-balls': () => import('../demo/Animations/MetaBallsDemo.vue'),
   'image-trail': () => import('../demo/Animations/ImageTrailDemo.vue'),
+  'shape-blur': () => import('../demo/Animations/ShapeBlurDemo.vue'),
   'target-cursor': () => import('../demo/Animations/TargetCursorDemo.vue'),
 };
 
@@ -38,6 +39,7 @@ const textAnimations = {
   'scroll-reveal': () => import("../demo/TextAnimations/ScrollRevealDemo.vue"),
   'rotating-text': () => import("../demo/TextAnimations/RotatingTextDemo.vue"),
   'glitch-text': () => import("../demo/TextAnimations/GlitchTextDemo.vue"),
+  'scroll-velocity': () => import("../demo/TextAnimations/ScrollVelocityDemo.vue"),
 };
 
 const components = {
@@ -75,7 +77,6 @@ const backgrounds = {
   'beams': () => import('../demo/Backgrounds/BeamsDemo.vue'),
   'grid-motion': () => import('../demo/Backgrounds/GridMotionDemo.vue'),
   'hyperspeed': () => import('../demo/Backgrounds/HyperspeedDemo.vue'),
-  'shape-blur': () => import('../demo/Backgrounds/ShapeBlurDemo.vue'),
   'balatro': () => import('../demo/Backgrounds/BalatroDemo.vue'),
   'orb': () => import('../demo/Backgrounds/OrbDemo.vue'),
   'ballpit': () => import('../demo/Backgrounds/BallpitDemo.vue'),
