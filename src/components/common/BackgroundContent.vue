@@ -7,7 +7,7 @@
     </div>
 
     <template v-if="showContent">
-      <div class="top-[2em] left-0 z-0 absolute w-full h-[60px] pointer-events-none">
+      <div class="top-[2em] left-0 z-1 absolute w-full h-[60px] pointer-events-none">
         <div
           class="flex justify-between items-center bg-[rgba(255,255,255,0.05)] backdrop-filter backdrop-blur-[10px] mx-auto my-0 px-6 py-4 border border-[rgba(255,255,255,0.2)] rounded-[50px] w-[90%] md:w-[60%] h-full"
           :style="{
