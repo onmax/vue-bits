@@ -3,7 +3,7 @@ import type { CodeObject } from '../../../types/code';
 
 export const orb: CodeObject = {
   cli: `npx jsrepo add https://vue-bits.dev/ui/Backgrounds/Orb`,
-  installation: `npm i ogl`,
+  installation: `npm install ogl`,
   usage: `<template>
   <div class="relative w-full h-[600px]">
     <Orb :hoverIntensity="0.5" :rotateOnHover="true" :hue="0" :forceHoverState="false" />

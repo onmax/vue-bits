@@ -3,7 +3,7 @@ import type { CodeObject } from '../../../types/code';
 
 export const ballpit: CodeObject = {
   cli: `npx jsrepo add https://vue-bits.dev/ui/Backgrounds/Ballpit`,
-  installation: `npm i three`,
+  installation: `npm install three @types/three gsap`,
   usage: `//Component inspired by Kevin Levron:
 //https://x.com/soju22/status/1858925191671271801
 

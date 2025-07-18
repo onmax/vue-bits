@@ -3,7 +3,7 @@ import type { CodeObject } from '../../../types/code';
 
 export const shapeBlur: CodeObject = {
   cli: `npx jsrepo add https://vue-bits.dev/ui/Backgrounds/ShapeBlur`,
-  installation: `npm install three`,
+  installation: `npm install three @types/three`,
   usage: `<template>
   <ShapeBlur
     :variation="0"

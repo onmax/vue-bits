@@ -3,7 +3,7 @@ import type { CodeObject } from '../../../types/code';
 
 export const blobCursor: CodeObject = {
   cli: `npx jsrepo add https://vue-bits.dev/ui/Animations/BlobCursor`,
-  installation: `npm i gsap`,
+  installation: `npm install gsap`,
   usage: `<template>
   <BlobCursor
     blobType="circle"

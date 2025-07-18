@@ -3,7 +3,7 @@ import type { CodeObject } from '../../../types/code';
 
 export const metaBalls: CodeObject = {
   cli: `npx jsrepo add https://vue-bits.dev/ui/Animations/MetaBalls`,
-  installation: `npm i ogl`,
+  installation: `npm install ogl`,
   usage: `<template>
     <MetaBalls
         color="#27ff64"

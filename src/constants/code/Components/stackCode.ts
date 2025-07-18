@@ -3,6 +3,7 @@ import type { CodeObject } from '../../../types/code';
 
 export const stack: CodeObject = {
   cli: `npx jsrepo add https://vue-bits.dev/ui/Components/Stack`,
+  installation: `npm install motion-v`,
   usage: `<template>
   <Stack
     :randomRotation="true"
