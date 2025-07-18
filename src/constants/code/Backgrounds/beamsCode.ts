@@ -3,7 +3,7 @@ import type { CodeObject } from '../../../types/code';
 
 export const beams: CodeObject = {
   cli: `npx jsrepo add https://vue-bits.dev/ui/Backgrounds/Beams`,
-  installation: `npm install three`,
+  installation: `npm install three @types/three`,
   usage: `<template>
   <div class="beams-container">
     <Beams

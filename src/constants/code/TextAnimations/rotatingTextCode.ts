@@ -3,7 +3,7 @@ import type { CodeObject } from '../../../types/code';
 
 export const rotatingText: CodeObject = {
   cli: `npx jsrepo add https://vue-bits.dev/ui/TextAnimations/RotatingText`,
-  installation: `npm i motion-v`,
+  installation: `npm install motion-v`,
   usage: `<template>
     <RotatingText
       :texts="['Vue', 'Bits', 'is', 'Cool!']"

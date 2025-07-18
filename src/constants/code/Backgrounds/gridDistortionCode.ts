@@ -3,7 +3,7 @@ import type { CodeObject } from '../../../types/code';
 
 export const gridDistortion: CodeObject = {
   cli: `npx jsrepo add https://vue-bits.dev/ui/Backgrounds/GridDistortion`,
-  installation: `npm i three`,
+  installation: `npm install three @types/three`,
   usage: `<template>
   <div class="relative w-full h-[600px]">
     <GridDistortion

@@ -3,6 +3,7 @@ import type { CodeObject } from '../../../types/code';
 
 export const scrollFloatCode: CodeObject = {
   cli: `npx jsrepo add https://vue-bits.dev/ui/TextAnimations/ScrollFloat`,
+  installation: `npm install gsap`,
   usage: `<template>
   <ScrollFloat
     :children="scrollText"

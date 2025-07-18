@@ -3,7 +3,7 @@ import type { CodeObject } from '../../../types/code';
 
 export const gridMotion: CodeObject = {
   cli: `npx jsrepo add https://vue-bits.dev/ui/Backgrounds/GridMotion`,
-  installation: `npm i gsap`,
+  installation: `npm install gsap`,
   usage: `<template>
     <GridMotion
       :items="images"
