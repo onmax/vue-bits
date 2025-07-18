@@ -15,6 +15,7 @@ const animations = {
   'blob-cursor': () => import('../demo/Animations/BlobCursorDemo.vue'),
   'meta-balls': () => import('../demo/Animations/MetaBallsDemo.vue'),
   'image-trail': () => import('../demo/Animations/ImageTrailDemo.vue'),
+  'target-cursor': () => import('../demo/Animations/TargetCursorDemo.vue'),
 };
 
 const textAnimations = {
