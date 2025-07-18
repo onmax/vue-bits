@@ -1,8 +1,9 @@
 <template>
   <TabbedLayout>
     <template #preview>
-      <div class="relative p-0 h-[500px] overflow-hidden demo-container">
+      <div class="relative p-0 h-[600px] overflow-hidden demo-container">
         <LiquidChrome :baseColor="baseColor" :speed="speed" :amplitude="amplitude" :interactive="interactive" />
+        <BackgroundContent pill-text="New Background" headline="Swirl around in the deep sea of liquid chrome!" />
       </div>
 
       <Customize>
@@ -39,6 +40,7 @@ import { ref, watch } from 'vue';
 import CliInstallation from '../../components/code/CliInstallation.vue';
 import CodeExample from '../../components/code/CodeExample.vue';
 import Dependencies from '../../components/code/Dependencies.vue';
+import BackgroundContent from '../../components/common/BackgroundContent.vue';
 import Customize from '../../components/common/Customize.vue';
 import PreviewSlider from '../../components/common/PreviewSlider.vue';
 import PreviewSwitch from '../../components/common/PreviewSwitch.vue';

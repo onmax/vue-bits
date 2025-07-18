@@ -1,13 +1,14 @@
 <template>
   <TabbedLayout>
     <template #preview>
-      <div class="relative demo-container h-[500px] overflow-hidden p-0">
+      <div class="relative p-0 h-[600px] overflow-hidden demo-container">
         <Threads
           :amplitude="amplitude"
           :distance="distance"
           :enableMouseInteraction="enableMouseInteraction"
           :color="[1, 1, 1]"
         />
+        <BackgroundContent pillText="New Background" headline="Not to be confused with the Threads app by Meta!" />
       </div>
 
       <Customize>
@@ -35,16 +36,17 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import TabbedLayout from '../../components/common/TabbedLayout.vue';
+import CliInstallation from '../../components/code/CliInstallation.vue';
+import CodeExample from '../../components/code/CodeExample.vue';
+import Dependencies from '../../components/code/Dependencies.vue';
+import BackgroundContent from '../../components/common/BackgroundContent.vue';
 import Customize from '../../components/common/Customize.vue';
 import PreviewSlider from '../../components/common/PreviewSlider.vue';
 import PreviewSwitch from '../../components/common/PreviewSwitch.vue';
 import PropTable from '../../components/common/PropTable.vue';
-import Dependencies from '../../components/code/Dependencies.vue';
-import CodeExample from '../../components/code/CodeExample.vue';
-import CliInstallation from '../../components/code/CliInstallation.vue';
-import Threads from '../../content/Backgrounds/Threads/Threads.vue';
+import TabbedLayout from '../../components/common/TabbedLayout.vue';
 import { threads } from '../../constants/code/Backgrounds/threadsCode';
+import Threads from '../../content/Backgrounds/Threads/Threads.vue';
 
 const amplitude = ref(1);
 const distance = ref(0);
@@ -80,7 +82,6 @@ const propData = [
 
 <style scoped>
 .demo-container {
-  overflow: hidden;
   padding: 0;
 }
 </style>

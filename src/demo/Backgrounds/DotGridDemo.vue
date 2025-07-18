@@ -1,80 +1,80 @@
 <template>
-  <div class="dot-grid-demo">
-    <TabbedLayout>
-      <template #preview>
-        <div class="demo-container" style="height: 500px; overflow: hidden">
-          <DotGrid
-            :key="rerenderKey"
-            :dot-size="dotSize"
-            :gap="gap"
-            :base-color="baseColor"
-            :active-color="activeColor"
-            :proximity="proximity"
-            :speed-trigger="speedTrigger"
-            :shock-radius="shockRadius"
-            :shock-strength="shockStrength"
-            :max-speed="maxSpeed"
-            :resistance="resistance"
-            :return-duration="returnDuration"
-            class-name="dot-grid-demo-canvas"
-          />
+  <TabbedLayout>
+    <template #preview>
+      <div class="h-[600px] overflow-hidden demo-container">
+        <DotGrid
+          :key="rerenderKey"
+          :dot-size="dotSize"
+          :gap="gap"
+          :base-color="baseColor"
+          :active-color="activeColor"
+          :proximity="proximity"
+          :speed-trigger="speedTrigger"
+          :shock-radius="shockRadius"
+          :shock-strength="shockStrength"
+          :max-speed="maxSpeed"
+          :resistance="resistance"
+          :return-duration="returnDuration"
+          class-name="dot-grid-demo-canvas"
+        />
+        <BackgroundContent pillText="New Background" headline="Organized chaos with every cursor movement!" />
+      </div>
+
+      <Customize>
+        <div class="flex gap-4 mb-4">
+          <PreviewColor title="Base Color" v-model="baseColor" />
+
+          <PreviewColor title="Active Color" v-model="activeColor" />
         </div>
 
-        <Customize>
-          <div class="color-controls">
-            <PreviewColor title="Base Color" v-model="baseColor" />
+        <PreviewSlider title="Dot Size" v-model="dotSize" :min="2" :max="50" :step="1" />
 
-            <PreviewColor title="Active Color" v-model="activeColor" />
-          </div>
+        <PreviewSlider title="Gap" v-model="gap" :min="5" :max="100" :step="1" />
 
-          <PreviewSlider title="Dot Size" v-model="dotSize" :min="2" :max="50" :step="1" />
+        <PreviewSlider title="Proximity" v-model="proximity" :min="50" :max="500" :step="10" />
 
-          <PreviewSlider title="Gap" v-model="gap" :min="5" :max="100" :step="1" />
+        <PreviewSlider title="Speed Trigger" v-model="speedTrigger" :min="50" :max="500" :step="10" />
 
-          <PreviewSlider title="Proximity" v-model="proximity" :min="50" :max="500" :step="10" />
+        <PreviewSlider title="Shock Radius" v-model="shockRadius" :min="50" :max="500" :step="10" />
 
-          <PreviewSlider title="Speed Trigger" v-model="speedTrigger" :min="50" :max="500" :step="10" />
+        <PreviewSlider title="Shock Strength" v-model="shockStrength" :min="1" :max="20" :step="1" />
 
-          <PreviewSlider title="Shock Radius" v-model="shockRadius" :min="50" :max="500" :step="10" />
+        <PreviewSlider title="Max Speed" v-model="maxSpeed" :min="1000" :max="10000" :step="100" />
 
-          <PreviewSlider title="Shock Strength" v-model="shockStrength" :min="1" :max="20" :step="1" />
+        <PreviewSlider title="Resistance (Inertia)" v-model="resistance" :min="100" :max="2000" :step="50" />
 
-          <PreviewSlider title="Max Speed" v-model="maxSpeed" :min="1000" :max="10000" :step="100" />
+        <PreviewSlider title="Return Duration (Inertia)" v-model="returnDuration" :min="0.1" :max="5" :step="0.1" />
+      </Customize>
 
-          <PreviewSlider title="Resistance (Inertia)" v-model="resistance" :min="100" :max="2000" :step="50" />
+      <PropTable :data="propData" />
 
-          <PreviewSlider title="Return Duration (Inertia)" v-model="returnDuration" :min="0.1" :max="5" :step="0.1" />
-        </Customize>
+      <Dependencies :dependency-list="['gsap']" />
+    </template>
 
-        <PropTable :data="propData" />
+    <template #code>
+      <CodeExample :code-object="dotGrid" />
+    </template>
 
-        <Dependencies :dependency-list="['gsap']" />
-      </template>
-
-      <template #code>
-        <CodeExample :code-object="dotGrid" />
-      </template>
-
-      <template #cli>
-        <CliInstallation :command="dotGrid.cli" />
-      </template>
-    </TabbedLayout>
-  </div>
+    <template #cli>
+      <CliInstallation :command="dotGrid.cli" />
+    </template>
+  </TabbedLayout>
 </template>
 
 <script setup lang="ts">
+import { useForceRerender } from '@/composables/useForceRerender';
+import { dotGrid } from '@/constants/code/Backgrounds/dotGridCode';
 import { ref } from 'vue';
-import TabbedLayout from '../../components/common/TabbedLayout.vue';
-import PropTable from '../../components/common/PropTable.vue';
-import Dependencies from '../../components/code/Dependencies.vue';
 import CliInstallation from '../../components/code/CliInstallation.vue';
 import CodeExample from '../../components/code/CodeExample.vue';
+import Dependencies from '../../components/code/Dependencies.vue';
+import BackgroundContent from '../../components/common/BackgroundContent.vue';
 import Customize from '../../components/common/Customize.vue';
-import PreviewSlider from '../../components/common/PreviewSlider.vue';
 import PreviewColor from '../../components/common/PreviewColor.vue';
+import PreviewSlider from '../../components/common/PreviewSlider.vue';
+import PropTable from '../../components/common/PropTable.vue';
+import TabbedLayout from '../../components/common/TabbedLayout.vue';
 import DotGrid from '../../content/Backgrounds/DotGrid/DotGrid.vue';
-import { dotGrid } from '@/constants/code/Backgrounds/dotGridCode';
-import { useForceRerender } from '@/composables/useForceRerender';
 
 const dotSize = ref(5);
 const gap = ref(15);
@@ -130,11 +130,5 @@ const propData = [
 .dot-grid-demo-canvas {
   width: 100%;
   height: 100%;
-}
-
-.color-controls {
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 1rem;
 }
 </style>
