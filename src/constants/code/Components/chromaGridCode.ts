@@ -5,7 +5,7 @@ export const chromaGrid: CodeObject = {
   cli: `npx jsrepo add https://vue-bits.dev/ui/Components/ChromaGrid`,
   installation: `npm install gsap`,
   usage: `<template>
-  <div style="height: 600px; position: relative">
+  <div class="w-[600px] relative">
     <ChromaGrid
       :items="items"
       :radius="300"
