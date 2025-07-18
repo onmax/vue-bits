@@ -3,7 +3,6 @@
     <template #preview>
       <div class="relative p-0 h-[600px] overflow-hidden demo-container">
         <RefreshButton @click="forceRerender" />
-        <p class="z-0 absolute font-black text-[#222] text-[140px]">Balls.</p>
         <Ballpit
           className="relative"
           :key="key"
