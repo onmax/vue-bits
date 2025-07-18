@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, computed } from 'vue';
+import { onMounted, computed, useTemplateRef, shallowRef, reactive } from 'vue';
 import gsap from 'gsap';
 
 interface CardItem {
@@ -31,11 +31,11 @@ const props = withDefaults(defineProps<GridMotionProps>(), {
   ease: 'power3.out'
 });
 
-const rootRef = ref<HTMLElement | null>(null);
-const fadeRef = ref<HTMLElement | null>(null);
-const setX = ref<((value: number | string) => void) | null>(null);
-const setY = ref<((value: number | string) => void) | null>(null);
-const pos = ref({ x: 0, y: 0 });
+const rootRef = useTemplateRef<HTMLElement>('rootRef');
+const fadeRef = useTemplateRef<HTMLElement>('fadeRef');
+const setX = shallowRef<(value: number | string) => void>();
+const setY = shallowRef<(value: number | string) => void>();
+const pos = reactive({ x: 0, y: 0 });
 
 const demo: CardItem[] = [
   {
@@ -103,20 +103,21 @@ onMounted(() => {
   setX.value = gsap.quickSetter(el, '--x', 'px') as (value: number | string) => void;
   setY.value = gsap.quickSetter(el, '--y', 'px') as (value: number | string) => void;
   const { width, height } = el.getBoundingClientRect();
-  pos.value = { x: width / 2, y: height / 2 };
-  setX.value?.(pos.value.x);
-  setY.value?.(pos.value.y);
+  pos.x = width / 2;
+  pos.y = height / 2;
+  setX.value?.(pos.x);
+  setY.value?.(pos.y);
 });
 
 const moveTo = (x: number, y: number) => {
-  gsap.to(pos.value, {
+  gsap.to(pos, {
     x,
     y,
     duration: props.damping,
     ease: props.ease,
     onUpdate: () => {
-      setX.value?.(pos.value.x);
-      setY.value?.(pos.value.y);
+      setX.value?.(pos.x);
+      setY.value?.(pos.y);
     },
     overwrite: true
   });
@@ -126,15 +127,19 @@ const handleMove = (e: PointerEvent) => {
   const r = rootRef.value?.getBoundingClientRect();
   if (!r) return;
   moveTo(e.clientX - r.left, e.clientY - r.top);
-  gsap.to(fadeRef.value, { opacity: 0, duration: 0.25, overwrite: true });
+  if (fadeRef.value) {
+    gsap.to(fadeRef.value, { opacity: 0, duration: 0.25, overwrite: true });
+  }
 };
 
 const handleLeave = () => {
-  gsap.to(fadeRef.value, {
-    opacity: 1,
-    duration: props.fadeOut,
-    overwrite: true
-  });
+  if (fadeRef.value) {
+    gsap.to(fadeRef.value, {
+      opacity: 1,
+      duration: props.fadeOut,
+      overwrite: true
+    });
+  }
 };
 
 const handleCardClick = (url?: string) => {
