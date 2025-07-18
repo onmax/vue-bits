@@ -48,6 +48,7 @@ export const CATEGORIES = [
       'Blob Cursor',
       'Meta Balls',
       'Image Trail',
+      'Shape Blur',
     ]
   },
   {
@@ -85,7 +86,6 @@ export const CATEGORIES = [
       'Balatro',
       'Letter Glitch',
       'Particles',
-      'Shape Blur',
       'Waves',
       'Squares',
       'Iridescence',

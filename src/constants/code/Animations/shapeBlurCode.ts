@@ -1,8 +1,8 @@
-import code from '@content/Backgrounds/ShapeBlur/ShapeBlur.vue?raw';
+import code from '@/content/Animations/ShapeBlur/ShapeBlur.vue?raw';
 import type { CodeObject } from '../../../types/code';
 
 export const shapeBlur: CodeObject = {
-  cli: `npx jsrepo add https://vue-bits.dev/ui/Backgrounds/ShapeBlur`,
+  cli: `npx jsrepo add https://vue-bits.dev/ui/Animations/ShapeBlur`,
   installation: `npm install three @types/three`,
   usage: `<template>
   <ShapeBlur
