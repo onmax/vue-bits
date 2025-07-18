@@ -1,0 +1,22 @@
+import code from '@/content/Animations/TargetCursor/TargetCursor.vue?raw';
+import type { CodeObject } from '../../../types/code';
+
+export const targetCursor: CodeObject = {
+  cli: `npx jsrepo add https://vue-bits.dev/ui/Animations/TargetCursor`,
+  installation: `npm install gsap`,
+  usage: `<template>
+    <TargetCursor
+        :spin-duration="2"
+        :hide-default-cursor="true"
+    />
+
+    <h1>Hover over the elements below</h1>
+    <button class="cursor-target">Click me!</button>
+    <div class="cursor-target">Hover target</div>
+</template>
+
+<script setup lang="ts">
+  import TargetCursor from "./TargetCursor.vue";
+</script>`,
+  code
+};

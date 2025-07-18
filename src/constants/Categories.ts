@@ -49,6 +49,7 @@ export const CATEGORIES = [
       'Meta Balls',
       'Image Trail',
       'Shape Blur',
+      'Target Cursor',
     ]
   },
   {
