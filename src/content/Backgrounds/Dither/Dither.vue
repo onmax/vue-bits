@@ -244,16 +244,19 @@ const handleMouseMove = (e: MouseEvent) => {
   if (!containerRef.value || !gl) return;
 
   const rect = containerRef.value.getBoundingClientRect();
-  const dpr = window.devicePixelRatio || 1;
-  const x = (e.clientX - rect.left) * dpr;
-  const y = (e.clientY - rect.top) * dpr;
+
+  const normalizedX = (e.clientX - rect.left) / rect.width;
+  const normalizedY = (e.clientY - rect.top) / rect.height;
+
+  const x = normalizedX * gl.canvas.width;
+  const y = normalizedY * gl.canvas.height;
+
   targetMouse = [x, y];
 };
 
 const handleMouseLeave = () => {
   if (!gl) return;
-  const dpr = window.devicePixelRatio || 1;
-  targetMouse = [gl.canvas.width / (2 * dpr), gl.canvas.height / (2 * dpr)];
+  targetMouse = [gl.canvas.width / 2, gl.canvas.height / 2];
 };
 
 const update = (t: number) => {
@@ -267,16 +270,15 @@ const update = (t: number) => {
     program.uniforms.mousePos.value[1] = currentMouse[1];
   } else {
     if (gl) {
-      const dpr = window.devicePixelRatio || 1;
-      program.uniforms.mousePos.value[0] = gl.canvas.width / (2 * dpr);
-      program.uniforms.mousePos.value[1] = gl.canvas.height / (2 * dpr);
+      program.uniforms.mousePos.value[0] = gl.canvas.width / 2;
+      program.uniforms.mousePos.value[1] = gl.canvas.height / 2;
     }
   }
 
   if (!props.disableAnimation) {
     program.uniforms.time.value = t * 0.001;
   }
-  
+
   program.uniforms.waveSpeed.value = props.waveSpeed;
   program.uniforms.waveFrequency.value = props.waveFrequency;
   program.uniforms.waveAmplitude.value = props.waveAmplitude;

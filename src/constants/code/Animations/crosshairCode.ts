@@ -18,4 +18,4 @@ export const crosshair: CodeObject = {
   const containerElement = computed(() => containerRef.value);
 </script>`,
   code
-}; 
+};

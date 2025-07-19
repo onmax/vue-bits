@@ -24,4 +24,4 @@ export const dither: CodeObject = {
   import Dither from "./Dither.vue";
 </script>`,
   code
-}; 
+};

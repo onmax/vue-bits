@@ -22,21 +22,11 @@
     >
       <defs>
         <filter id="filter-noise-x">
-          <feTurbulence
-            type="fractalNoise"
-            baseFrequency="0.000001"
-            numOctaves="1"
-            ref="filterXRef"
-          />
+          <feTurbulence type="fractalNoise" baseFrequency="0.000001" numOctaves="1" ref="filterXRef" />
           <feDisplacementMap in="SourceGraphic" scale="40" />
         </filter>
         <filter id="filter-noise-y">
-          <feTurbulence
-            type="fractalNoise"
-            baseFrequency="0.000001"
-            numOctaves="1"
-            ref="filterYRef"
-          />
+          <feTurbulence type="fractalNoise" baseFrequency="0.000001" numOctaves="1" ref="filterYRef" />
           <feDisplacementMap in="SourceGraphic" scale="40" />
         </filter>
       </defs>
@@ -215,9 +205,7 @@ onMounted(() => {
       animationId = requestAnimationFrame(render);
     };
 
-    const links = props.containerRef
-      ? props.containerRef.querySelectorAll('a')
-      : document.querySelectorAll('a');
+    const links = props.containerRef ? props.containerRef.querySelectorAll('a') : document.querySelectorAll('a');
 
     links.forEach((link: HTMLAnchorElement) => {
       link.addEventListener('mouseenter', enter);
@@ -227,12 +215,12 @@ onMounted(() => {
     cleanup = () => {
       target.removeEventListener('mousemove', handleMouseMove);
       target.removeEventListener('mousemove', onMouseMove);
-      
+
       if (animationId !== null) {
         cancelAnimationFrame(animationId);
         animationId = null;
       }
-      
+
       links.forEach((link: HTMLAnchorElement) => {
         link.removeEventListener('mouseenter', enter);
         link.removeEventListener('mouseleave', leave);
@@ -246,4 +234,4 @@ onMounted(() => {
     }
   });
 });
-</script> 
+</script>

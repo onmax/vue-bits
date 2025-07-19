@@ -73,18 +73,28 @@ import Dither from '../../content/Backgrounds/Dither/Dither.vue';
 
 const { rerenderKey, forceRerender } = useForceRerender();
 
-const waveSpeed = ref(0.05);
-const waveFrequency = ref(3);
-const waveAmplitude = ref(0.3);
-const waveColor = ref<[number, number, number]>([0.5, 0.5, 0.5]);
+const waveSpeed = ref(0.1);
+const waveFrequency = ref(2.5);
+const waveAmplitude = ref(0.2);
+const waveColor = ref<[number, number, number]>([0.1, 0.7, 0.5]);
 const colorNum = ref(4);
-const pixelSize = ref(2);
+const pixelSize = ref(3);
 const disableAnimation = ref(false);
 const enableMouseInteraction = ref(true);
-const mouseRadius = ref(1);
+const mouseRadius = ref(0.5);
 
 watch(
-  [waveSpeed, waveFrequency, waveAmplitude, waveColor, colorNum, pixelSize, disableAnimation, enableMouseInteraction, mouseRadius],
+  [
+    waveSpeed,
+    waveFrequency,
+    waveAmplitude,
+    waveColor,
+    colorNum,
+    pixelSize,
+    disableAnimation,
+    enableMouseInteraction,
+    mouseRadius
+  ],
   () => {
     forceRerender();
   },
@@ -147,4 +157,4 @@ const propData = [
     description: 'Radius of the mouse interaction effect.'
   }
 ];
-</script> 
+</script>

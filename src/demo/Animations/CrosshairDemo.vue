@@ -28,17 +28,16 @@
       </div>
 
       <Customize>
-        <PreviewColor title="Crosshair Color" v-model="color" />
+        <PreviewSelect
+          title="Target"
+          :options="[
+            { label: 'Container', value: 'targeted' },
+            { label: 'Viewport', value: 'viewport' }
+          ]"
+          v-model="targetedMode"
+        />
 
-        <button
-          class="bg-[#170D27] hover:bg-[#271E37] text-white text-xs px-3 py-2 border border-[#271E37] rounded-[10px] h-8 transition-colors mt-2"
-          @click="toggleTargeted"
-        >
-          Cursor Container
-          <span :class="targeted ? 'text-green-400' : 'text-orange-400'">
-            &nbsp;{{ targeted ? 'Viewport' : 'Targeted' }}
-          </span>
-        </button>
+        <PreviewColor title="Crosshair Color" v-model="color" />
       </Customize>
 
       <PropTable :data="propData" />
@@ -64,6 +63,8 @@ import CliInstallation from '@/components/code/CliInstallation.vue';
 import CodeExample from '@/components/code/CodeExample.vue';
 import Customize from '@/components/common/Customize.vue';
 import PreviewColor from '@/components/common/PreviewColor.vue';
+import PreviewSelect from '@/components/common/PreviewSelect.vue';
+
 import Crosshair from '@/content/Animations/Crosshair/Crosshair.vue';
 import { crosshair } from '@/constants/code/Animations/crosshairCode';
 
@@ -71,7 +72,7 @@ const DEFAULT_TEXT = 'Aim... aand...';
 
 const linkText = ref(DEFAULT_TEXT);
 const color = ref('#ffffff');
-const targeted = ref(true);
+const targetedMode = ref('targeted');
 const minWidth = ref(0);
 
 const containerRef = useTemplateRef<HTMLDivElement>('containerRef');
@@ -79,6 +80,7 @@ const linkRef = useTemplateRef<HTMLAnchorElement>('linkRef');
 const hiddenRef = useTemplateRef<HTMLSpanElement>('hiddenRef');
 
 const containerElement = computed(() => containerRef.value);
+const targeted = computed(() => targetedMode.value === 'targeted');
 
 const propData = [
   {
@@ -91,7 +93,8 @@ const propData = [
     name: 'containerRef',
     type: 'Ref<HTMLElement | null>',
     default: 'null',
-    description: 'Optional container ref to limit crosshair to specific element. If null, crosshair will be active on entire viewport.'
+    description:
+      'Optional container ref to limit crosshair to specific element. If null, crosshair will be active on entire viewport.'
   }
 ];
 
@@ -101,10 +104,6 @@ const handleMouseEnter = () => {
 
 const handleMouseLeave = () => {
   linkText.value = DEFAULT_TEXT;
-};
-
-const toggleTargeted = () => {
-  targeted.value = !targeted.value;
 };
 
 const updateMinWidth = async () => {
@@ -137,4 +136,4 @@ onUnmounted(() => {
     resizeObserver.disconnect();
   }
 });
-</script> 
+</script>
