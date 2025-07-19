@@ -36,7 +36,7 @@ These components are all enhanced with customization options as props, to make i
 
 ## Key Features
 
-- 60+ total components (text animations, animations, components, backgrounds), growing every week
+- 70+ total components (text animations, animations, components, backgrounds), growing every week
 - All components have minimal dependencies, and are highly customizable through props
 - Designed to integrate seamlessly with any modern Vue/Nuxt project
 

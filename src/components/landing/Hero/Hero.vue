@@ -31,7 +31,7 @@
         split-type="words"
         :delay="10"
         :duration="1"
-        text="Sixty-plus snippets, ready to be dropped into your Vue projects"
+        text="Seventy-plus snippets, ready to be dropped into your Vue projects"
       />
 
       <router-link to="/text-animations/split-text" class="landing-button">
