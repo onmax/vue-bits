@@ -1,5 +1,5 @@
 // Highlighted sidebar items
-export const NEW = [];
+export const NEW = ['Target Cursor', 'Ripple Grid'];
 export const UPDATED = [];
 
 // Used for main sidebar navigation
@@ -37,6 +37,7 @@ export const CATEGORIES = [
       'Noise',
       'Splash Cursor',
       'Pixel Transition',
+      'Target Cursor',
       'Ribbons',
       'Glare Hover',
       'Magnet Lines',
@@ -48,8 +49,7 @@ export const CATEGORIES = [
       'Blob Cursor',
       'Meta Balls',
       'Image Trail',
-      'Shape Blur',
-      'Target Cursor',
+      'Shape Blur'
     ]
   },
   {
@@ -82,6 +82,7 @@ export const CATEGORIES = [
       'Beams',
       'Dot Grid',
       'Hyperspeed',
+      'Ripple Grid',
       'Silk',
       'Lightning',
       'Balatro',
@@ -95,8 +96,7 @@ export const CATEGORIES = [
       'Orb',
       'Ballpit',
       'Liquid Chrome',
-      'Grid Distortion',
-      'Ripple Grid',
+      'Grid Distortion'
     ]
   }
 ];
