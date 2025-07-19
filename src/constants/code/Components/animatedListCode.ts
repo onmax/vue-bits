@@ -1,5 +1,5 @@
-import code from '@content/Components/AnimatedList/AnimatedList.vue?raw'
-import type { CodeObject } from '../../../types/code'
+import code from '@content/Components/AnimatedList/AnimatedList.vue?raw';
+import type { CodeObject } from '../../../types/code';
 
 export const animatedList: CodeObject = {
   cli: `npx jsrepo add https://vue-bits.dev/ui/Components/AnimatedList`,
@@ -24,4 +24,4 @@ const items = [
 ]
 </script>`,
   code
-} 
+};

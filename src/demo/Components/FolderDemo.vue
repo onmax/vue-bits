@@ -2,8 +2,7 @@
   <TabbedLayout>
     <template #preview>
       <div class="demo-container">
-        <Folder :items="items" :size="size" :color="color">
-        </Folder>
+        <Folder :size="size" :color="color"></Folder>
       </div>
 
       <Customize>
@@ -37,7 +36,6 @@ import PreviewSlider from '@/components/common/PreviewSlider.vue';
 import PropTable from '@/components/common/PropTable.vue';
 import TabbedLayout from '@/components/common/TabbedLayout.vue';
 
-const items = ['Doc 1', 'Doc 2', 'Doc 3'];
 const color = ref('#5227FF');
 const size = ref(2);
 
@@ -65,6 +63,6 @@ const propData = [
     type: 'number',
     default: '1',
     description: 'Size multiplier for the folder.'
-  },
+  }
 ];
 </script>
