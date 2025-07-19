@@ -17,6 +17,7 @@ const animations = {
   'image-trail': () => import('../demo/Animations/ImageTrailDemo.vue'),
   'shape-blur': () => import('../demo/Animations/ShapeBlurDemo.vue'),
   'target-cursor': () => import('../demo/Animations/TargetCursorDemo.vue'),
+  'crosshair': () => import('../demo/Animations/CrosshairDemo.vue'),
 };
 
 const textAnimations = {
