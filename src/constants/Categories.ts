@@ -50,7 +50,8 @@ export const CATEGORIES = [
       'Meta Balls',
       'Image Trail',
       'Shape Blur',
-      'Crosshair'
+      'Crosshair',
+      'Star Border',
     ]
   },
   {
