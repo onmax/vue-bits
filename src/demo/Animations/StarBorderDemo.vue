@@ -39,10 +39,10 @@ import { starBorder } from '@/constants/code/Animations/starBorderCode';
 const thickness = ref<number>(3);
 const speed = ref<number>(6);
 const speedProp = ref<string>('6s');
-const color = ref<string>('magenta');
+const color = ref<string>('lightgreen');
 const colorOptions = [
   { label: 'Magenta', value: 'magenta' },
-  { label: 'Cyan', value: 'cyan' },
+  { label: 'Green', value: 'lightgreen' },
   { label: 'white', value: 'white' }
 ];
 
