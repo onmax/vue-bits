@@ -82,6 +82,7 @@ const backgrounds = {
   'ballpit': () => import('../demo/Backgrounds/BallpitDemo.vue'),
   'liquid-chrome': () => import('../demo/Backgrounds/LiquidChromeDemo.vue'),
   'grid-distortion': () => import('../demo/Backgrounds/GridDistortionDemo.vue'),
+  'ripple-grid': () => import('../demo/Backgrounds/RippleGridDemo.vue'),
 };
 
 export const componentMap = {
