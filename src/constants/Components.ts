@@ -45,6 +45,7 @@ const textAnimations = {
 };
 
 const components = {
+  'animated-list': () => import('../demo/Components/AnimatedListDemo.vue'),
   'masonry': () => import('../demo/Components/MasonryDemo.vue'),
   'profile-card': () => import('../demo/Components/ProfileCardDemo.vue'),
   'dock': () => import('../demo/Components/DockDemo.vue'),
