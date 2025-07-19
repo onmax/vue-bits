@@ -55,6 +55,7 @@ export const CATEGORIES = [
   {
     name: 'Components',
     subcategories: [
+      'Animated List',
       'Masonry',
       'Profile Card',
       'Dock',
