@@ -1,14 +1,22 @@
 <template>
-    <component :is="as" class="star-border-container" :class="customClass" v-bind="restAttrs" :style="componentStyle">
-        <div class="border-gradient-bottom" :style="{
-            background: `radial-gradient(circle, ${color}, transparent 10%)`,
-            animationDuration: speed
-        }"></div>
-        <div class="border-gradient-top" :style="{
-            background: `radial-gradient(circle, ${color}, transparent 10%)`,
-            animationDuration: speed
-        }"></div>
-        <div class="inner-content">
+    <component :is="as" :class="[
+        'relative inline-block overflow-hidden !bg-transparent !border-none !rounded-[20px]',
+        customClass
+    ]" v-bind="restAttrs" :style="componentStyle">
+        <div class="absolute w-[300%] h-[50%] opacity-70 bottom-[-11px] right-[-250%] rounded-full animate-star-movement-bottom z-0"
+            :style="{
+                background: `radial-gradient(circle, ${color}, transparent 10%)`,
+                animationDuration: speed
+            }"></div>
+
+        <div class="absolute w-[300%] h-[50%] opacity-70 top-[-10px] left-[-250%] rounded-full animate-star-movement-top z-0"
+            :style="{
+                background: `radial-gradient(circle, ${color}, transparent 10%)`,
+                animationDuration: speed
+            }"></div>
+
+        <div
+            class="relative z-10 border border-[#222] bg-black text-white text-[16px] text-center px-[26px] py-[16px] rounded-[20px]">
             <slot />
         </div>
     </component>
@@ -45,51 +53,6 @@ const componentStyle = computed(() => {
 </script>
 
 <style scoped>
-.star-border-container {
-    all: unset;
-    display: inline-block;
-    position: relative;
-    border-radius: 20px;
-    overflow: hidden;
-    cursor: pointer;
-}
-
-.border-gradient-bottom {
-    position: absolute;
-    width: 300%;
-    height: 50%;
-    opacity: 0.7;
-    bottom: -12px;
-    right: -250%;
-    border-radius: 50%;
-    animation: star-movement-bottom linear infinite alternate;
-    z-index: 0;
-}
-
-.border-gradient-top {
-    position: absolute;
-    opacity: 0.7;
-    width: 300%;
-    height: 50%;
-    top: -12px;
-    left: -250%;
-    border-radius: 50%;
-    animation: star-movement-top linear infinite alternate;
-    z-index: 0;
-}
-
-.inner-content {
-    position: relative;
-    border: 1px solid #222;
-    background: #000;
-    color: white;
-    font-size: 16px;
-    text-align: center;
-    padding: 16px 26px;
-    border-radius: 20px;
-    z-index: 1;
-}
-
 @keyframes star-movement-bottom {
     0% {
         transform: translate(0%, 0%);
@@ -112,5 +75,13 @@ const componentStyle = computed(() => {
         transform: translate(100%, 0%);
         opacity: 0;
     }
+}
+
+.animate-star-movement-bottom {
+    animation: star-movement-bottom linear infinite alternate;
+}
+
+.animate-star-movement-top {
+    animation: star-movement-top linear infinite alternate;
 }
 </style>
