@@ -75,6 +75,7 @@ const backgrounds = {
   'threads': () => import('../demo/Backgrounds/ThreadsDemo.vue'),
   'aurora': () => import('../demo/Backgrounds/AuroraDemo.vue'),
   'beams': () => import('../demo/Backgrounds/BeamsDemo.vue'),
+  'dither': () => import('../demo/Backgrounds/DitherDemo.vue'),
   'grid-motion': () => import('../demo/Backgrounds/GridMotionDemo.vue'),
   'hyperspeed': () => import('../demo/Backgrounds/HyperspeedDemo.vue'),
   'balatro': () => import('../demo/Backgrounds/BalatroDemo.vue'),

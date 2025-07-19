@@ -80,6 +80,7 @@ export const CATEGORIES = [
     subcategories: [
       'Aurora',
       'Beams',
+      'Dither',
       'Dot Grid',
       'Hyperspeed',
       'Ripple Grid',
