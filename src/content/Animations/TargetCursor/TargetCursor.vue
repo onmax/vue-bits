@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { gsap } from 'gsap';
-import { onMounted, onUnmounted, ref, useTemplateRef, watch } from 'vue';
+import { onMounted, onBeforeUnmount, ref, useTemplateRef, watch } from 'vue';
 
 interface TargetCursorProps {
   targetSelector?: string;
@@ -69,7 +69,9 @@ const setupAnimation = () => {
     xPercent: -50,
     yPercent: -50,
     x: window.innerWidth / 2,
-    y: window.innerHeight / 2
+    y: window.innerHeight / 2,
+    opacity: 1,
+    display: 'block'
   });
 
   const createSpinTimeline = () => {
@@ -271,8 +273,33 @@ const setupAnimation = () => {
       cleanupTarget(activeTarget);
     }
 
+    if (resumeTimeout) {
+      clearTimeout(resumeTimeout);
+      resumeTimeout = null;
+    }
+
     spinTl.value?.kill();
+    spinTl.value = null;
+
+    if (cursorRef.value) {
+      gsap.killTweensOf(cursorRef.value);
+    }
+    if (cornersRef.value) {
+      gsap.killTweensOf(Array.from(cornersRef.value));
+    }
+
+    if (cursorRef.value) {
+      gsap.set(cursorRef.value, {
+        x: 0,
+        y: 0,
+        rotation: 0,
+        opacity: 0,
+        display: 'none'
+      });
+    }
+
     document.body.style.cursor = originalCursor;
+    activeTarget = null;
   };
 };
 
@@ -280,17 +307,16 @@ onMounted(() => {
   setupAnimation();
 });
 
-onUnmounted(() => {
+onBeforeUnmount(() => {
   cleanupAnimation();
 });
 
 watch(
-  () => [props.targetSelector, props.spinDuration, moveCursor, constants, props.hideDefaultCursor],
+  () => [props.targetSelector, props.spinDuration, props.hideDefaultCursor],
   () => {
     cleanupAnimation();
     setupAnimation();
-  },
-  { immediate: true }
+  }
 );
 
 watch(
@@ -312,7 +338,7 @@ watch(
 <template>
   <div
     ref="cursorRef"
-    class="top-0 left-0 z-[9999] fixed w-0 h-0 -translate-x-1/2 -translate-y-1/2 pointer-events-none mix-blend-difference transform"
+    class="top-0 left-0 z-[9999] fixed w-0 h-0 -translate-x-1/2 -translate-y-1/2 pointer-events-none mix-blend-difference transform opacity-0"
     :style="{ willChange: 'transform' }"
   >
     <div
