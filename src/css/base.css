@@ -49,6 +49,23 @@ body {
   cursor: pointer;
 }
 
+.v-code-block--code-copy-button {
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: .8em !important;
+  height: 35px !important;
+  top: .5em !important;
+  right: .5em !important;
+}
+
+.v-code-block--code-copy-button.v-code-block--code-copy-button-status-success svg {
+  fill: #27FF64 !important;
+}
+
+.v-code-block--code-copy-button svg {
+  fill: #ffffff !important;
+}
+
 @media (max-width: 640px) {
   .p-toast {
     position: fixed !important;
