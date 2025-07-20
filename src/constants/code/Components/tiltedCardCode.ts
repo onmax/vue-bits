@@ -1,8 +1,7 @@
 import code from '@content/Components/TiltedCard/TiltedCard.vue?raw';
-import type { CodeObject } from '../../../types/code';
+import { createCodeObject } from '../../../types/code';
 
-export const tiltedCard: CodeObject = {
-  cli: `npx jsrepo add https://vue-bits.dev/ui/Components/TiltedCard`,
+export const tiltedCard = createCodeObject(code, 'Components/TiltedCard', {
   installation: `npm install motion-v`,
   usage: `<template>
   <TiltedCard
@@ -29,6 +28,5 @@ export const tiltedCard: CodeObject = {
 
 <script setup lang="ts">
   import TiltedCard from "./TiltedCard.vue";
-</script>`,
-  code
-};
+</script>`
+});

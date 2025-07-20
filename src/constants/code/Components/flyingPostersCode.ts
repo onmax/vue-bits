@@ -1,8 +1,7 @@
 import code from '@content/Components/FlyingPosters/FlyingPosters.vue?raw';
-import type { CodeObject } from '../../../types/code';
+import { createCodeObject } from '../../../types/code';
 
-export const flyingPosters: CodeObject = {
-  cli: `npx jsrepo add https://vue-bits.dev/ui/Components/FlyingPosters`,
+export const flyingPosters = createCodeObject(code, 'Components/FlyingPosters', {
   installation: `npm install ogl`,
   usage: `<template>
   <FlyingPosters 
@@ -32,6 +31,5 @@ export const flyingPosters: CodeObject = {
   'https://picsum.photos/800/800?grayscale&random=9',
   'https://picsum.photos/800/800?grayscale&random=10',
   ];
-</script>`,
-  code
-};
+</script>`
+});

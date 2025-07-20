@@ -1,8 +1,7 @@
 import code from '@content/TextAnimations/ScrollFloat/ScrollFloat.vue?raw';
-import type { CodeObject } from '../../../types/code';
+import { createCodeObject } from '@/types/code';
 
-export const scrollFloatCode: CodeObject = {
-  cli: `npx jsrepo add https://vue-bits.dev/ui/TextAnimations/ScrollFloat`,
+export const scrollFloatCode = createCodeObject(code, 'TextAnimations/ScrollFloat', {
   installation: `npm install gsap`,
   usage: `<template>
   <ScrollFloat
@@ -21,6 +20,5 @@ export const scrollFloatCode: CodeObject = {
 
 <script setup lang="ts">
   import ScrollFloat from "./ScrollFloat.vue";
-</script>`,
-  code
-};
+</script>`
+});

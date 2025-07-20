@@ -1,8 +1,7 @@
 import code from '@content/Components/CardSwap/CardSwap.vue?raw';
-import type { CodeObject } from '../../../types/code';
+import { createCodeObject } from '../../../types/code';
 
-export const cardSwap: CodeObject = {
-  cli: `npx jsrepo add https://vue-bits.dev/ui/Components/CardSwap`,
+export const cardSwap = createCodeObject(code, 'Components/CardSwap', {
   installation: `npm install gsap`,
   usage: `<template>
   <CardSwap 
@@ -49,6 +48,5 @@ export const cardSwap: CodeObject = {
   const handleCardClick = (index: number) => {
     console.log(\`Card \${index} clicked\`);
   };
-</script>`,
-  code
-};
+</script>`
+});

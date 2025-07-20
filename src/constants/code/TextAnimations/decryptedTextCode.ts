@@ -1,8 +1,7 @@
 import code from '@/content/TextAnimations/DecryptedText/DecryptedText.vue?raw';
-import type { CodeObject } from '@/types/code';
+import { createCodeObject } from '@/types/code';
 
-export const decryptedText: CodeObject = {
-  cli: `npx jsrepo add https://vue-bits.dev/ui/TextAnimations/DecryptedText`,
+export const decryptedText = createCodeObject(code, 'TextAnimations/DecryptedText', {
   usage: `<template>
   <DecryptedText
     text="Hello World!"
@@ -19,6 +18,5 @@ export const decryptedText: CodeObject = {
 
 <script setup lang="ts">
   import DecryptedText from "./DecryptedText.vue";
-</script>`,
-  code
-};
+</script>`
+});

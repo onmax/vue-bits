@@ -1,8 +1,7 @@
 import code from '@/content/TextAnimations/TextCursor/TextCursor.vue?raw';
-import type { CodeObject } from '@/types/code';
+import { createCodeObject } from '@/types/code';
 
-export const textCursor: CodeObject = {
-  cli: `npx jsrepo add https://vue-bits.dev/ui/TextAnimations/TextCursor`,
+export const textCursor = createCodeObject(code, 'TextAnimations/TextCursor', {
   installation: `npm install motion-v`,
   usage: `<template>
   <TextCursor
@@ -19,6 +18,5 @@ export const textCursor: CodeObject = {
 
 <script setup lang="ts">
   import TextCursor from "./TextCursor.vue";
-</script>`,
-  code
-};
+</script>`
+});

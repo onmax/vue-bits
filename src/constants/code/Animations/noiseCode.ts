@@ -1,8 +1,7 @@
 import code from '@content/Animations/Noise/Noise.vue?raw';
-import type { CodeObject } from '../../../types/code';
+import { createCodeObject } from '@/types/code';
 
-export const noise: CodeObject = {
-  cli: `npx jsrepo add https://vue-bits.dev/ui/Animations/Noise`,
+export const noise = createCodeObject(code, 'Animations/Noise', {
   usage: `<template>
   <Noise 
     :pattern-size="250" 
@@ -14,6 +13,5 @@ export const noise: CodeObject = {
 
 <script setup lang="ts">
   import Noise from './Noise.vue'
-</script>`,
-  code
-};
+</script>`
+});

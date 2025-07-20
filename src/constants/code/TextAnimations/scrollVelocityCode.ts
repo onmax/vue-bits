@@ -1,8 +1,7 @@
 import code from '@content/TextAnimations/ScrollVelocity/ScrollVelocity.vue?raw';
-import type { CodeObject } from '../../../types/code';
+import { createCodeObject } from '@/types/code';
 
-export const scrollVelocity: CodeObject = {
-  cli: `npx jsrepo add https://vue-bits.dev/ui/TextAnimations/ScrollVelocity`,
+export const scrollVelocity = createCodeObject(code, 'TextAnimations/ScrollVelocity', {
   installation: `npm install gsap`,
   usage: `<template>
   <ScrollVelocity
@@ -19,6 +18,5 @@ export const scrollVelocity: CodeObject = {
 
 <script setup lang="ts">
   import ScrollVelocity from "./ScrollVelocity.vue";
-</script>`,
-  code
-};
+</script>`
+});

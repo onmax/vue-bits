@@ -1,8 +1,7 @@
 import code from '@content/TextAnimations/CircularText/CircularText.vue?raw';
-import type { CodeObject } from '../../../types/code';
+import { createCodeObject } from '@/types/code';
 
-export const circularText: CodeObject = {
-  cli: `npx jsrepo add https://vue-bits.dev/ui/TextAnimations/CircularText`,
+export const circularText = createCodeObject(code, 'TextAnimations/CircularText', {
   installation: `npm install motion-v`,
   usage: `<template>
   <CircularText
@@ -15,6 +14,5 @@ export const circularText: CodeObject = {
 
 <script setup lang="ts">
   import CircularText from "./CircularText.vue";
-</script>`,
-  code
-};
+</script>`
+});

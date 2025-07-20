@@ -1,8 +1,7 @@
 import code from '@content/Backgrounds/Lightning/Lightning.vue?raw';
-import type { CodeObject } from '../../../types/code';
+import { createCodeObject } from '../../../types/code';
 
-export const lightning: CodeObject = {
-  cli: `npx jsrepo add https://vue-bits.dev/ui/Backgrounds/Lightning`,
+export const lightning = createCodeObject(code, 'Backgrounds/Lightning', {
   installation: `No additional dependencies required`,
   usage: `<template>
   <div class="lightning-container">
@@ -28,6 +27,5 @@ export const lightning: CodeObject = {
     position: relative;
     overflow: hidden;
   }
-</style>`,
-  code
-};
+</style>`
+});

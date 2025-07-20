@@ -1,8 +1,7 @@
 import code from '@content/Components/Masonry/Masonry.vue?raw';
-import type { CodeObject } from '../../../types/code';
+import { createCodeObject } from '../../../types/code';
 
-export const masonry: CodeObject = {
-  cli: `npx jsrepo add https://vue-bits.dev/ui/Components/Masonry`,
+export const masonry = createCodeObject(code, 'Components/Masonry', {
   installation: `npm install gsap`,
   usage: `<template>
   <Masonry
@@ -27,6 +26,5 @@ const items = ref([
   { id: '3', img: 'https://picsum.photos/300/350?random=3', url: 'https://picsum.photos', height: 350 },
   // ... more items
 ])
-</script>`,
-  code
-};
+</script>`
+});

@@ -1,8 +1,7 @@
 import code from '@content/Backgrounds/Iridescence/Iridescence.vue?raw';
-import type { CodeObject } from '../../../types/code';
+import { createCodeObject } from '../../../types/code';
 
-export const iridescence: CodeObject = {
-  cli: `npx jsrepo add https://vue-bits.dev/ui/Backgrounds/Iridescence`,
+export const iridescence = createCodeObject(code, 'Backgrounds/Iridescence', {
   installation: `npm install ogl`,
   usage: `<template>
   <div class="w-full h-[400px]">
@@ -17,6 +16,5 @@ export const iridescence: CodeObject = {
 
 <script setup lang="ts">
   import Iridescence from "./Iridescence.vue";
-</script>`,
-  code
-};
+</script>`
+});

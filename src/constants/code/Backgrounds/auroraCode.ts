@@ -1,8 +1,7 @@
 import code from '@content/Backgrounds/Aurora/Aurora.vue?raw';
-import type { CodeObject } from '../../../types/code';
+import { createCodeObject } from '../../../types/code';
 
-export const aurora: CodeObject = {
-  cli: `npx jsrepo add https://vue-bits.dev/ui/Backgrounds/Aurora`,
+export const aurora = createCodeObject(code, 'Backgrounds/Aurora', {
   installation: `npm install ogl`,
   usage: `<template>
   <div class="aurora-container">
@@ -28,6 +27,5 @@ export const aurora: CodeObject = {
     position: relative;
     overflow: hidden;
   }
-</style>`,
-  code
-};
+</style>`
+});

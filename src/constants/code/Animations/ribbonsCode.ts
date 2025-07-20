@@ -1,8 +1,7 @@
 import code from '@content/Animations/Ribbons/Ribbons.vue?raw';
-import type { CodeObject } from '../../../types/code';
+import { createCodeObject } from '../../../types/code';
 
-export const ribbons: CodeObject = {
-  cli: `npx jsrepo add https://vue-bits.dev/ui/Animations/Ribbons`,
+export const ribbons = createCodeObject(code, 'Animations/Ribbons', {
   installation: `npm install ogl`,
   usage: `<template>
   <Ribbons
@@ -23,6 +22,5 @@ export const ribbons: CodeObject = {
 
 <script setup lang="ts">
   import Ribbons from "./Ribbons.vue";
-</script>`,
-  code
-};
+</script>`
+});

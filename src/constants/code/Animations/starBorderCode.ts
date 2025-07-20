@@ -1,8 +1,7 @@
 import code from '@content/Animations/StarBorder/StarBorder.vue?raw';
-import type { CodeObject } from '../../../types/code';
+import { createCodeObject } from '@/types/code';
 
-export const starBorder: CodeObject = {
-  cli: `npx jsrepo add https://vue-bits.dev/ui/Animations/StarBorder`,
+export const starBorder = createCodeObject(code, 'Animations/StarBorder', {
   usage: `<template>
     <StarBorder 
         as="button" 
@@ -16,6 +15,5 @@ export const starBorder: CodeObject = {
 
 <script setup lang="ts">
   import StarBorder from './StarBorder.vue'
-</script>`,
-  code
-};
+</script>`
+});

@@ -1,8 +1,7 @@
 import code from '@content/Components/MagicBento/MagicBento.vue?raw';
-import type { CodeObject } from '../../../types/code';
+import { createCodeObject } from '../../../types/code';
 
-export const magicBento: CodeObject = {
-  cli: `npx jsrepo add https://vue-bits.dev/ui/Components/MagicBento`,
+export const magicBento = createCodeObject(code, 'Components/MagicBento', {
   installation: `npm install gsap`,
   usage: `<template>
     <MagicBento
@@ -21,6 +20,5 @@ export const magicBento: CodeObject = {
 
 <script setup lang="ts">
   import MagicBento from "./MagicBento.vue";
-</script>`,
-  code
-};
+</script>`
+});

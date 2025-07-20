@@ -1,8 +1,7 @@
 import code from '@content/Backgrounds/Beams/Beams.vue?raw';
-import type { CodeObject } from '../../../types/code';
+import { createCodeObject } from '../../../types/code';
 
-export const beams: CodeObject = {
-  cli: `npx jsrepo add https://vue-bits.dev/ui/Backgrounds/Beams`,
+export const beams = createCodeObject(code, 'Backgrounds/Beams', {
   installation: `npm install three @types/three`,
   usage: `<template>
   <div class="beams-container">
@@ -31,6 +30,5 @@ export const beams: CodeObject = {
     overflow: hidden;
     background: #000;
   }
-</style>`,
-  code
-};
+</style>`
+});

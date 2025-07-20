@@ -1,8 +1,7 @@
 import code from '@content/Animations/SplashCursor/SplashCursor.vue?raw';
-import type { CodeObject } from '../../../types/code';
+import { createCodeObject } from '@/types/code';
 
-export const splashCursor: CodeObject = {
-  cli: `npx jsrepo add https://vue-bits.dev/ui/Animations/SplashCursor`,
+export const splashCursor = createCodeObject(code, 'Animations/SplashCursor', {
   usage: `<template>
   <SplashCursor
     :SIM_RESOLUTION="128"
@@ -24,6 +23,5 @@ export const splashCursor: CodeObject = {
 
 <script setup lang="ts">
   import SplashCursor from "./SplashCursor.vue";
-</script>`,
-  code
-};
+</script>`
+});

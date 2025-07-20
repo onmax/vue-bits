@@ -1,8 +1,7 @@
 import code from '@/content/Animations/TargetCursor/TargetCursor.vue?raw';
-import type { CodeObject } from '../../../types/code';
+import { createCodeObject } from '@/types/code';
 
-export const targetCursor: CodeObject = {
-  cli: `npx jsrepo add https://vue-bits.dev/ui/Animations/TargetCursor`,
+export const targetCursor = createCodeObject(code, 'Animations/TargetCursor', {
   installation: `npm install gsap`,
   usage: `<template>
     <TargetCursor
@@ -17,6 +16,5 @@ export const targetCursor: CodeObject = {
 
 <script setup lang="ts">
   import TargetCursor from "./TargetCursor.vue";
-</script>`,
-  code
-};
+</script>`
+});

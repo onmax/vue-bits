@@ -1,8 +1,7 @@
 import code from '@content/TextAnimations/ScrollReveal/ScrollReveal.vue?raw';
-import type { CodeObject } from '../../../types/code';
+import { createCodeObject } from '@/types/code';
 
-export const scrollRevealCode: CodeObject = {
-  cli: `npx jsrepo add https://vue-bits.dev/ui/TextAnimations/ScrollReveal`,
+export const scrollRevealCode = createCodeObject(code, 'TextAnimations/ScrollReveal', {
   installation: `npm install gsap`,
   usage: `<template>
     <ScrollReveal
@@ -22,6 +21,5 @@ export const scrollRevealCode: CodeObject = {
 
 <script setup lang="ts">
   import ScrollReveal from "./ScrollReveal.vue";
-</script>`,
-  code
-};
+</script>`
+});

@@ -1,8 +1,7 @@
 import code from '@content/Components/ChromaGrid/ChromaGrid.vue?raw';
-import type { CodeObject } from '../../../types/code';
+import { createCodeObject } from '../../../types/code';
 
-export const chromaGrid: CodeObject = {
-  cli: `npx jsrepo add https://vue-bits.dev/ui/Components/ChromaGrid`,
+export const chromaGrid = createCodeObject(code, 'Components/ChromaGrid', {
   installation: `npm install gsap`,
   usage: `<template>
   <div class="w-[600px] relative">
@@ -39,6 +38,5 @@ export const chromaGrid: CodeObject = {
     url: "https://linkedin.com/in/mikechen"
   }
 ]
-</script>`,
-  code
-};
+</script>`
+});

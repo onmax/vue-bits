@@ -1,8 +1,7 @@
 import code from '@/content/Animations/MetaBalls/MetaBalls.vue?raw';
-import type { CodeObject } from '../../../types/code';
+import { createCodeObject } from '@/types/code';
 
-export const metaBalls: CodeObject = {
-  cli: `npx jsrepo add https://vue-bits.dev/ui/Animations/MetaBalls`,
+export const metaBalls = createCodeObject(code, 'Animations/MetaBalls', {
   installation: `npm install ogl`,
   usage: `<template>
     <MetaBalls
@@ -21,6 +20,5 @@ export const metaBalls: CodeObject = {
 
 <script setup lang="ts">
   import MetaBalls from "./MetaBalls.vue";
-</script>`,
-  code
-};
+</script>`
+});

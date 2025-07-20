@@ -1,8 +1,7 @@
 import code from '@content/Components/FlowingMenu/FlowingMenu.vue?raw';
-import type { CodeObject } from '../../../types/code';
+import { createCodeObject } from '../../../types/code';
 
-export const flowingMenu: CodeObject = {
-  cli: `npx jsrepo add https://vue-bits.dev/ui/Components/FlowingMenu`,
+export const flowingMenu = createCodeObject(code, 'Components/FlowingMenu', {
   installation: `npm install gsap`,
   usage: `<template>
   <FlowingMenu :items="items" />
@@ -17,6 +16,5 @@ export const flowingMenu: CodeObject = {
     { link: '#', text: 'Monterey', image: 'https://picsum.photos/600/400?random=3' },
     { link: '#', text: 'Sequoia', image: 'https://picsum.photos/600/400?random=4' }
   ];
-</script>`,
-  code
-};
+</script>`
+});

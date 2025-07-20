@@ -1,8 +1,7 @@
 import code from '@content/Backgrounds/Dither/Dither.vue?raw';
-import type { CodeObject } from '../../../types/code';
+import { createCodeObject } from '../../../types/code';
 
-export const dither: CodeObject = {
-  cli: `npx jsrepo add https://vue-bits.dev/ui/Backgrounds/Dither`,
+export const dither = createCodeObject(code, 'Backgrounds/Dither', {
   installation: `npm install ogl`,
   usage: `<template>
   <div class="relative w-full h-[500px] overflow-hidden">
@@ -22,6 +21,5 @@ export const dither: CodeObject = {
 
 <script setup lang="ts">
   import Dither from "./Dither.vue";
-</script>`,
-  code
-};
+</script>`
+});

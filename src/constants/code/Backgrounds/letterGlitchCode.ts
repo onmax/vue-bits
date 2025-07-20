@@ -1,8 +1,7 @@
 import code from '@content/Backgrounds/LetterGlitch/LetterGlitch.vue?raw';
-import type { CodeObject } from '../../../types/code';
+import { createCodeObject } from '../../../types/code';
 
-export const letterGlitch: CodeObject = {
-  cli: `npx jsrepo add https://vue-bits.dev/ui/Backgrounds/LetterGlitch`,
+export const letterGlitch = createCodeObject(code, 'Backgrounds/LetterGlitch', {
   usage: `<template>
   <div class="letter-glitch-container">
     <LetterGlitch
@@ -27,6 +26,5 @@ export const letterGlitch: CodeObject = {
     position: relative;
     overflow: hidden;
   }
-</style>`,
-  code
-};
+</style>`
+});

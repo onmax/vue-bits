@@ -1,8 +1,7 @@
 import code from '@content/TextAnimations/TextPressure/TextPressure.vue?raw';
-import type { CodeObject } from '../../../types/code';
+import { createCodeObject } from '@/types/code';
 
-export const textPressure: CodeObject = {
-  cli: `npx jsrepo add https://vue-bits.dev/ui/TextAnimations/TextPressure`,
+export const textPressure = createCodeObject(code, 'TextAnimations/TextPressure', {
   usage: `<template>
   <TextPressure
     text="Hello!"
@@ -20,6 +19,5 @@ export const textPressure: CodeObject = {
 
 <script setup lang="ts">
   import TextPressure from "./TextPressure.vue";
-</script>`,
-  code
-};
+</script>`
+});

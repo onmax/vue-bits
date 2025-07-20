@@ -1,8 +1,7 @@
 import code from '@content/TextAnimations/BlurText/BlurText.vue?raw';
-import type { CodeObject } from '../../../types/code';
+import { createCodeObject } from '@/types/code';
 
-export const blurText: CodeObject = {
-  cli: `npx jsrepo add https://vue-bits.dev/ui/TextAnimations/BlurText`,
+export const blurText = createCodeObject(code, 'TextAnimations/BlurText', {
   installation: `npm install motion-v`,
   usage: `<template>
   <BlurText
@@ -22,8 +21,7 @@ export const blurText: CodeObject = {
   import BlurText from "./BlurText.vue";
 
   const handleAnimationComplete = () => {
-    console.log('All animations complete!');
-  };
-</script>`,
-  code
-};
+    console.log('All animations complete!');,
+});
+</script>`
+});

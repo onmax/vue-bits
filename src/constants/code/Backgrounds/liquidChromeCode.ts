@@ -1,8 +1,7 @@
 import code from '@content/Backgrounds/LiquidChrome/LiquidChrome.vue?raw';
-import type { CodeObject } from '../../../types/code';
+import { createCodeObject } from '../../../types/code';
 
-export const liquidChrome: CodeObject = {
-  cli: `npx jsrepo add https://vue-bits.dev/ui/Backgrounds/LiquidChrome`,
+export const liquidChrome = createCodeObject(code, 'Backgrounds/LiquidChrome', {
   installation: `npm install ogl`,
   usage: `<template>
   <div class="relative w-full h-[600px]">
@@ -17,6 +16,5 @@ export const liquidChrome: CodeObject = {
 
 <script setup lang="ts">
   import LiquidChrome from "./LiquidChrome.vue";
-</script>`,
-  code
-};
+</script>`
+});

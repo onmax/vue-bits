@@ -1,8 +1,7 @@
 import code from '@content/Backgrounds/DotGrid/DotGrid.vue?raw';
-import type { CodeObject } from '../../../types/code';
+import { createCodeObject } from '../../../types/code';
 
-export const dotGrid: CodeObject = {
-  cli: `npx jsrepo add https://vue-bits.dev/ui/Backgrounds/DotGrid`,
+export const dotGrid = createCodeObject(code, 'Backgrounds/DotGrid', {
   installation: `npm install gsap`,
   usage: `<template>
   <div class="dot-grid-container">
@@ -34,6 +33,5 @@ export const dotGrid: CodeObject = {
     position: relative;
     overflow: hidden;
   }
-</style>`,
-  code
-};
+</style>`
+});

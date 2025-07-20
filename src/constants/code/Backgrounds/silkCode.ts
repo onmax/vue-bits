@@ -1,8 +1,7 @@
 import code from '@content/Backgrounds/Silk/Silk.vue?raw';
-import type { CodeObject } from '../../../types/code';
+import { createCodeObject } from '../../../types/code';
 
-export const silk: CodeObject = {
-  cli: `npx jsrepo add https://vue-bits.dev/ui/Backgrounds/Silk`,
+export const silk = createCodeObject(code, 'Backgrounds/Silk', {
   installation: `npm install ogl`,
   usage: `<template>
   <div class="silk-container">
@@ -28,6 +27,5 @@ export const silk: CodeObject = {
     position: relative;
     overflow: hidden;
   }
-</style>`,
-  code
-};
+</style>`
+});

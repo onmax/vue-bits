@@ -1,8 +1,7 @@
 import code from '@content/Components/DecayCard/DecayCard.vue?raw';
-import type { CodeObject } from '../../../types/code';
+import { createCodeObject } from '../../../types/code';
 
-export const decayCard: CodeObject = {
-  cli: `npx jsrepo add https://vue-bits.dev/ui/Components/DecayCard`,
+export const decayCard = createCodeObject(code, 'Components/DecayCard', {
   installation: `npm install gsap`,
   usage: `<template>
   <DecayCard
@@ -18,6 +17,5 @@ export const decayCard: CodeObject = {
 
 <script setup lang="ts">
   import DecayCard from "./DecayCard.vue";
-</script>`,
-  code
-};
+</script>`
+});

@@ -1,8 +1,7 @@
 import code from '@content/Animations/ClickSpark/ClickSpark.vue?raw';
-import type { CodeObject } from '../../../types/code';
+import { createCodeObject } from '@/types/code';
 
-export const clickSpark: CodeObject = {
-  cli: `npx jsrepo add https://vue-bits.dev/ui/Animations/ClickSpark`,
+export const clickSpark = createCodeObject(code, 'Animations/ClickSpark', {
   usage: `<template>
   <ClickSpark
     spark-color="#ff6b6b"
@@ -42,6 +41,5 @@ import ClickSpark from '@/content/Animations/ClickSpark/ClickSpark.vue'
   pointer-events: none;
   user-select: none;
 }
-</style>`,
-  code
-};
+</style>`
+});

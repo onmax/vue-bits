@@ -1,8 +1,7 @@
 import code from '@content/Components/Stack/Stack.vue?raw';
-import type { CodeObject } from '../../../types/code';
+import { createCodeObject } from '../../../types/code';
 
-export const stack: CodeObject = {
-  cli: `npx jsrepo add https://vue-bits.dev/ui/Components/Stack`,
+export const stack = createCodeObject(code, 'Components/Stack', {
   installation: `npm install motion-v`,
   usage: `<template>
   <Stack
@@ -22,6 +21,5 @@ export const stack: CodeObject = {
     { id: 3, img: "https://images.unsplash.com/photo-1452626212852-811d58933cae?q=80&w=500&auto=format" },
     { id: 4, img: "https://images.unsplash.com/photo-1572120360610-d971b9d7767c?q=80&w=500&auto=format" }
   ];
-</script>`,
-  code
-};
+</script>`
+});

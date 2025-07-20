@@ -1,8 +1,7 @@
 import code from '@content/TextAnimations/CurvedLoop/CurvedLoop.vue?raw';
-import type { CodeObject } from '../../../types/code';
+import { createCodeObject } from '@/types/code';
 
-export const curvedLoop: CodeObject = {
-  cli: `npx jsrepo add https://vue-bits.dev/ui/TextAnimations/CurvedLoop`,
+export const curvedLoop = createCodeObject(code, 'TextAnimations/CurvedLoop', {
   usage: `<template>
   <CurvedLoop
     marquee-text="Be ✦ Creative ✦ With ✦ Vue ✦ Bits ✦"
@@ -15,6 +14,5 @@ export const curvedLoop: CodeObject = {
 
 <script setup lang="ts">
   import CurvedLoop from "./CurvedLoop.vue";
-</script>`,
-  code
-};
+</script>`
+});

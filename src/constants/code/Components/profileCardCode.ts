@@ -1,8 +1,7 @@
 import code from '@content/Components/ProfileCard/ProfileCard.vue?raw';
-import type { CodeObject } from '../../../types/code';
+import { createCodeObject } from '../../../types/code';
 
-export const profileCard: CodeObject = {
-  cli: `npx jsrepo add https://vue-bits.dev/ui/Components/ProfileCard`,
+export const profileCard = createCodeObject(code, 'Components/ProfileCard', {
   usage: `<template>
   <ProfileCard
     name="Javi A. Torres"
@@ -26,6 +25,5 @@ export const profileCard: CodeObject = {
   const handleContactClick = () => {
     console.log('Contact button clicked!');
   };
-</script>`,
-  code
-};
+</script>`
+});

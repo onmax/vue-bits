@@ -1,8 +1,7 @@
 import code from '@content/Components/GooeyNav/GooeyNav.vue?raw';
-import type { CodeObject } from '../../../types/code';
+import { createCodeObject } from '../../../types/code';
 
-export const gooeyNav: CodeObject = {
-  cli: `npx jsrepo add https://vue-bits.dev/ui/Components/GooeyNav`,
+export const gooeyNav = createCodeObject(code, 'Components/GooeyNav', {
   usage: `<template>
   <GooeyNav
     :items="navItems"
@@ -35,6 +34,5 @@ export const gooeyNav: CodeObject = {
     --color-3: #45b7d1;
     --color-4: #f9ca24;
   }
-</style>`,
-  code
-};
+</style>`
+});

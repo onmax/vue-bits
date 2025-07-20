@@ -116,10 +116,10 @@ const cleanup = () => {
 
 const resize = () => {
   if (!canvasRef.value || !renderer || !program) return;
-  
+
   const parent = canvasRef.value.parentElement;
   if (!parent) return;
-  
+
   const w = parent.clientWidth;
   const h = parent.clientHeight;
   renderer.setSize(w * props.resolutionScale, h * props.resolutionScale);
@@ -128,7 +128,7 @@ const resize = () => {
 
 const loop = () => {
   if (!program || !renderer || !mesh) return;
-  
+
   program.uniforms.uTime.value = ((performance.now() - start) / 1000) * props.speed;
   program.uniforms.uHueShift.value = props.hueShift;
   program.uniforms.uNoise.value = props.noiseIntensity;
@@ -141,14 +141,14 @@ const loop = () => {
 
 onMounted(() => {
   if (!canvasRef.value) return;
-  
+
   const canvas = canvasRef.value;
   const parent = canvas.parentElement;
   if (!parent) return;
 
   renderer = new Renderer({
     dpr: Math.min(window.devicePixelRatio, 2),
-    canvas,
+    canvas
   });
 
   const gl = renderer.gl;
@@ -164,8 +164,8 @@ onMounted(() => {
       uNoise: { value: props.noiseIntensity },
       uScan: { value: props.scanlineIntensity },
       uScanFreq: { value: props.scanlineFrequency },
-      uWarp: { value: props.warpAmount },
-    },
+      uWarp: { value: props.warpAmount }
+    }
   });
 
   mesh = new Mesh(gl, { geometry, program });
@@ -181,13 +181,23 @@ onUnmounted(() => {
   cleanup();
 });
 
-watch(() => [props.hueShift, props.noiseIntensity, props.scanlineIntensity, props.speed, props.scanlineFrequency, props.warpAmount], () => {
-  if (program) {
-    program.uniforms.uHueShift.value = props.hueShift;
-    program.uniforms.uNoise.value = props.noiseIntensity;
-    program.uniforms.uScan.value = props.scanlineIntensity;
-    program.uniforms.uScanFreq.value = props.scanlineFrequency;
-    program.uniforms.uWarp.value = props.warpAmount;
+watch(
+  () => [
+    props.hueShift,
+    props.noiseIntensity,
+    props.scanlineIntensity,
+    props.speed,
+    props.scanlineFrequency,
+    props.warpAmount
+  ],
+  () => {
+    if (program) {
+      program.uniforms.uHueShift.value = props.hueShift;
+      program.uniforms.uNoise.value = props.noiseIntensity;
+      program.uniforms.uScan.value = props.scanlineIntensity;
+      program.uniforms.uScanFreq.value = props.scanlineFrequency;
+      program.uniforms.uWarp.value = props.warpAmount;
+    }
   }
-});
+);
 </script>

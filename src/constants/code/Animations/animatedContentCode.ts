@@ -1,8 +1,7 @@
 import code from '@/content/Animations/AnimatedContent/AnimatedContent.vue?raw';
-import type { CodeObject } from '@/types/code';
+import { createCodeObject } from '@/types/code';
 
-export const animatedContent: CodeObject = {
-  cli: `npx jsrepo add https://vue-bits.dev/ui/Animations/AnimatedContent`,
+export const animatedContent = createCodeObject(code, 'Animations/AnimatedContent', {
   installation: `npm install gsap`,
   usage: `<template>
   <AnimatedContent
@@ -28,8 +27,7 @@ export const animatedContent: CodeObject = {
   import AnimatedContent from "./AnimatedContent.vue";
   
   const handleComplete = () => {
-    console.log("Animation completed!");
-  };
-</script>`,
-  code
-};
+    console.log("Animation completed!");,
+});
+</script>`
+});

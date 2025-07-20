@@ -1,9 +1,8 @@
 // Fun fact: this is the first component ever made for Vue Bits!
 import code from '@content/TextAnimations/SplitText/SplitText.vue?raw';
-import type { CodeObject } from '../../../types/code';
+import { createCodeObject } from '@/types/code';
 
-export const splitText: CodeObject = {
-  cli: `npx jsrepo add https://vue-bits.dev/ui/TextAnimations/SplitText`,
+export const splitText = createCodeObject(code, 'TextAnimations/SplitText', {
   installation: `npm install gsap`,
   usage: `<template>
   <SplitText
@@ -28,6 +27,5 @@ export const splitText: CodeObject = {
   const handleAnimationComplete = () => {
     console.log('All letters have animated!');
   };
-</script>`,
-  code
-};
+</script>`
+});

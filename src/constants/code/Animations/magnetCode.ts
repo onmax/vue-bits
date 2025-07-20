@@ -1,8 +1,7 @@
 import code from '@content/Animations/Magnet/Magnet.vue?raw';
-import type { CodeObject } from '../../../types/code';
+import { createCodeObject } from '@/types/code';
 
-export const magnet: CodeObject = {
-  cli: `npx jsrepo add https://vue-bits.dev/ui/Animations/Magnet`,
+export const magnet = createCodeObject(code, 'Animations/Magnet', {
   usage: `<template>
   <Magnet
     :padding="120"
@@ -43,6 +42,5 @@ import Magnet from '@/content/Animations/Magnet/Magnet.vue'
   margin: 0;
   opacity: 0.8;
 }
-</style>`,
-  code
-};
+</style>`
+});

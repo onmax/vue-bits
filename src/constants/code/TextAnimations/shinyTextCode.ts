@@ -1,8 +1,7 @@
 import code from '@content/TextAnimations/ShinyText/ShinyText.vue?raw';
-import type { CodeObject } from '../../../types/code';
+import { createCodeObject } from '@/types/code';
 
-export const shinyText: CodeObject = {
-  cli: `npx jsrepo add https://vue-bits.dev/ui/TextAnimations/ShinyText`,
+export const shinyText = createCodeObject(code, 'TextAnimations/ShinyText', {
   usage: `<template>
   <ShinyText 
     text="Just some shiny text!" 
@@ -14,6 +13,5 @@ export const shinyText: CodeObject = {
 
 <script setup lang="ts">
   import ShinyText from "./ShinyText.vue";
-</script>`,
-  code
-};
+</script>`
+});

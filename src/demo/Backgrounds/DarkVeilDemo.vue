@@ -10,56 +10,17 @@
           :scanline-frequency="scanlineFrequency"
           :warp-amount="warpAmount"
         />
-        
-        <BackgroundContent
-          pill-text="New Background"
-          headline="Become emboldened by the flame of ambition"
-        />
+
+        <BackgroundContent pill-text="New Background" headline="Become emboldened by the flame of ambition" />
       </div>
 
       <Customize>
-        <PreviewSlider 
-          title="Speed" 
-          :min="0" 
-          :max="3" 
-          :step="0.1" 
-          v-model="speed" 
-        />
-        <PreviewSlider 
-          title="Hue Shift" 
-          :min="0" 
-          :max="360" 
-          :step="1" 
-          v-model="hueShift" 
-        />
-        <PreviewSlider 
-          title="Noise Intensity" 
-          :min="0" 
-          :max="0.2" 
-          :step="0.01" 
-          v-model="noiseIntensity" 
-        />
-        <PreviewSlider 
-          title="Scanline Frequency" 
-          :min="0.5" 
-          :max="5" 
-          :step="0.1" 
-          v-model="scanlineFrequency" 
-        />
-        <PreviewSlider 
-          title="Scanline Intensity" 
-          :min="0" 
-          :max="1" 
-          :step="0.01" 
-          v-model="scanlineIntensity" 
-        />
-        <PreviewSlider 
-          title="Warp Amount" 
-          :min="0" 
-          :max="5" 
-          :step="0.1" 
-          v-model="warpAmount" 
-        />
+        <PreviewSlider title="Speed" :min="0" :max="3" :step="0.1" v-model="speed" />
+        <PreviewSlider title="Hue Shift" :min="0" :max="360" :step="1" v-model="hueShift" />
+        <PreviewSlider title="Noise Intensity" :min="0" :max="0.2" :step="0.01" v-model="noiseIntensity" />
+        <PreviewSlider title="Scanline Frequency" :min="0.5" :max="5" :step="0.1" v-model="scanlineFrequency" />
+        <PreviewSlider title="Scanline Intensity" :min="0" :max="1" :step="0.01" v-model="scanlineIntensity" />
+        <PreviewSlider title="Warp Amount" :min="0" :max="5" :step="0.1" v-model="warpAmount" />
       </Customize>
 
       <PropTable :data="propData" />

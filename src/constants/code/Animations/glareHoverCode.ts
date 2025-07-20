@@ -1,8 +1,7 @@
 import code from '@/content/Animations/GlareHover/GlareHover.vue?raw';
-import type { CodeObject } from '@/types/code';
+import { createCodeObject } from '@/types/code';
 
-export const glareHover: CodeObject = {
-  cli: `npx jsrepo add https://vue-bits.dev/ui/Animations/GlareHover`,
+export const glareHover = createCodeObject(code, 'Animations/GlareHover', {
   usage: `<template>
   <GlareHover
     width="400px"
@@ -24,6 +23,5 @@ export const glareHover: CodeObject = {
 
 <script setup lang="ts">
   import GlareHover from "./GlareHover.vue";
-</script>`,
-  code
-};
+</script>`
+});

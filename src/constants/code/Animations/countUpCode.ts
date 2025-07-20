@@ -1,8 +1,7 @@
 import code from '@/content/Animations/CountUp/CountUp.vue?raw';
-import type { CodeObject } from '@/types/code';
+import { createCodeObject } from '@/types/code';
 
-export const countup: CodeObject = {
-  cli: `npx jsrepo add https://vue-bits.dev/ui/Animations/CountUp`,
+export const countup = createCodeObject(code, 'Animations/CountUp', {
   usage: `<template>
   <CountUp
     :from="0"
@@ -28,6 +27,5 @@ export const countup: CodeObject = {
   const handleEnd = () => {
     console.log("Count animation ended!");
   };
-</script>`,
-  code
-};
+</script>`
+});

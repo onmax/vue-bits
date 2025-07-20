@@ -1,9 +1,8 @@
 import code from '@content/Animations/MetallicPaint/MetallicPaint.vue?raw';
 import utility from '@content/Animations/MetallicPaint/parseImage.ts?raw';
-import type { CodeObject } from '../../../types/code';
+import { createCodeObject } from '@/types/code';
 
-export const metallicPaint: CodeObject = {
-  cli: `npx jsrepo add https://vue-bits.dev/ui/Animations/MetallicPaint`,
+export const metallicPaint = createCodeObject(code, 'Animations/MetallicPaint', {
   usage: `<template>
   <MetallicPaint
     :image-data="imageData"
@@ -42,6 +41,5 @@ import { ref, onMounted } from 'vue';
     }
   });
 </script>`,
-  code,
   utility
-};
+});

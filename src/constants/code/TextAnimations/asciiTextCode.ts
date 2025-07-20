@@ -1,8 +1,7 @@
 import code from '@/content/TextAnimations/AsciiText/AsciiText.vue?raw';
-import type { CodeObject } from '../../../types/code';
+import { createCodeObject } from '../../../types/code';
 
-export const asciiText: CodeObject = {
-  cli: `npx jsrepo add https://vue-bits.dev/ui/TextAnimations/AsciiText`,
+export const asciiText = createCodeObject(code, 'TextAnimations/AsciiText', {
   installation: `npm install three @types/three`,
   usage: `<template>
   <AsciiText
@@ -18,6 +17,5 @@ export const asciiText: CodeObject = {
 
 <script setup lang="ts">
   import AsciiText from "./AsciiText.vue";
-</script>`,
-  code
-};
+</script>`
+});

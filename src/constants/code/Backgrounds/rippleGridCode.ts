@@ -1,8 +1,7 @@
 import code from '@content/Backgrounds/RippleGrid/RippleGrid.vue?raw';
-import type { CodeObject } from '../../../types/code';
+import { createCodeObject } from '../../../types/code';
 
-export const rippleGrid: CodeObject = {
-  cli: `npx jsrepo add https://vue-bits.dev/ui/Backgrounds/RippleGrid`,
+export const rippleGrid = createCodeObject(code, 'Backgrounds/RippleGrid', {
   installation: `npm install ogl`,
   usage: `<template>
   <div class="relative overflow-hidden h-[600px]">
@@ -21,6 +20,5 @@ export const rippleGrid: CodeObject = {
 
 <script setup lang="ts">
   import RippleGrid from "./RippleGrid.vue";
-</script>`,
-  code
-};
+</script>`
+});

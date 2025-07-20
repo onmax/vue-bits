@@ -1,8 +1,7 @@
 import code from '@/content/TextAnimations/FallingText/FallingText.vue?raw';
-import type { CodeObject } from '@/types/code';
+import { createCodeObject } from '@/types/code';
 
-export const fallingText: CodeObject = {
-  cli: `npx jsrepo add https://vue-bits.dev/ui/TextAnimations/FallingText`,
+export const fallingText = createCodeObject(code, 'TextAnimations/FallingText', {
   installation: `npm install matter-js @types/matter-js`,
   usage: `<template>
   <FallingText
@@ -17,6 +16,5 @@ export const fallingText: CodeObject = {
 
 <script setup lang="ts">
   import FallingText from "./FallingText.vue";
-</script>`,
-  code
-};
+</script>`
+});

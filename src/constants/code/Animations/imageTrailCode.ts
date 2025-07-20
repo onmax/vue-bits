@@ -1,8 +1,7 @@
 import code from '@/content/Animations/ImageTrail/ImageTrail.vue?raw';
-import type { CodeObject } from '../../../types/code';
+import { createCodeObject } from '@/types/code';
 
-export const imageTrail: CodeObject = {
-  cli: `npx jsrepo add https://vue-bits.dev/ui/Animations/ImageTrail`,
+export const imageTrail = createCodeObject(code, 'Animations/ImageTrail', {
   installation: `npm install gsap`,
   usage: `<template>
   <div :style="{ height: '500px', position: 'relative', overflow: 'hidden'}">
@@ -24,6 +23,5 @@ export const imageTrail: CodeObject = {
 
 <script setup lang="ts">
   import ImageTrail from "./ImageTrail.vue";
-</script>`,
-  code
-};
+</script>`
+});

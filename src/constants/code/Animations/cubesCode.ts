@@ -1,8 +1,7 @@
 import code from '@content/Animations/Cubes/Cubes.vue?raw';
-import type { CodeObject } from '../../../types/code';
+import { createCodeObject } from '@/types/code';
 
-export const cubes: CodeObject = {
-  cli: `npx jsrepo add https://vue-bits.dev/ui/Animations/Cubes`,
+export const cubes = createCodeObject(code, 'Animations/Cubes', {
   installation: `npm install gsap`,
   usage: `// CREDIT
 // Component inspired from Can Tastemel's original work for the lambda.ai landing page
@@ -27,6 +26,5 @@ export const cubes: CodeObject = {
 
 <script setup lang="ts">
   import Cubes from "./Cubes.vue";
-</script>`,
-  code
-};
+</script>`
+});

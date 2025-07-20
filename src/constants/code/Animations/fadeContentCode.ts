@@ -1,8 +1,7 @@
 import code from '@content/Animations/FadeContent/FadeContent.vue?raw';
-import type { CodeObject } from '../../../types/code';
+import { createCodeObject } from '@/types/code';
 
-export const fadeContent: CodeObject = {
-  cli: `npx jsrepo add https://vue-bits.dev/ui/Animations/FadeContent`,
+export const fadeContent = createCodeObject(code, 'Animations/FadeContent', {
   usage: `<template>
   <FadeContent
     :blur="true"
@@ -22,6 +21,5 @@ export const fadeContent: CodeObject = {
 
 <script setup lang="ts">
   import FadeContent from "./FadeContent.vue";
-</script>`,
-  code
-};
+</script>`
+});

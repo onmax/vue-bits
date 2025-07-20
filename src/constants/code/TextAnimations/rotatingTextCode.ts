@@ -1,8 +1,7 @@
 import code from '@/content/TextAnimations/RotatingText/RotatingText.vue?raw';
-import type { CodeObject } from '../../../types/code';
+import { createCodeObject } from '@/types/code';
 
-export const rotatingText: CodeObject = {
-  cli: `npx jsrepo add https://vue-bits.dev/ui/TextAnimations/RotatingText`,
+export const rotatingText = createCodeObject(code, 'TextAnimations/RotatingText', {
   installation: `npm install motion-v`,
   usage: `<template>
     <RotatingText
@@ -21,6 +20,5 @@ export const rotatingText: CodeObject = {
 
 <script setup lang="ts">
   import RotatingText from "./RotatingText.vue";
-</script>`,
-  code
-};
+</script>`
+});

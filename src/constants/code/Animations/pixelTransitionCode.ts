@@ -1,8 +1,7 @@
 import code from '@/content/Animations/PixelTransition/PixelTransition.vue?raw';
-import type { CodeObject } from '@/types/code';
+import { createCodeObject } from '@/types/code';
 
-export const pixelTransition: CodeObject = {
-  cli: `npx jsrepo add https://vue-bits.dev/ui/Animations/PixelTransition`,
+export const pixelTransition = createCodeObject(code, 'Animations/PixelTransition', {
   installation: `npm install gsap`,
   usage: `<template>
   <PixelTransition
@@ -24,6 +23,5 @@ export const pixelTransition: CodeObject = {
 
 <script setup lang=\"ts\">
   import PixelTransition from './PixelTransition.vue';
-</script>`,
-  code
-};
+</script>`
+});

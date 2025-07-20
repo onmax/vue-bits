@@ -1,8 +1,7 @@
 import code from '@content/Components/InfiniteScroll/InfiniteScroll.vue?raw';
-import type { CodeObject } from '../../../types/code';
+import { createCodeObject } from '../../../types/code';
 
-export const infiniteScroll: CodeObject = {
-  cli: `npx jsrepo add https://vue-bits.dev/ui/Components/InfiniteScroll`,
+export const infiniteScroll = createCodeObject(code, 'Components/InfiniteScroll', {
   installation: `npm install gsap`,
   usage: `<template>
   <InfiniteScroll
@@ -29,6 +28,5 @@ export const infiniteScroll: CodeObject = {
     { content: "Item 3" },
     // Add more items as needed
   ];
-</script>`,
-  code
-};
+</script>`
+});

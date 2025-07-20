@@ -1,9 +1,8 @@
 import code from '@/content/Animations/Crosshair/Crosshair.vue?raw';
-import type { CodeObject } from '@/types/code';
+import { createCodeObject } from '@/types/code';
 
-export const crosshair: CodeObject = {
-  cli: `npx jsrepo add https://vue-bits.dev/ui/Animations/Crosshair`,
-  installation: `npm i gsap`,
+export const crosshair = createCodeObject(code, 'Animations/Crosshair', {
+  installation: `npm install gsap`,
   usage: `<template>
   <div ref="containerRef" style="height: 300px; overflow: hidden;">
     <Crosshair :container-ref="containerElement" color="#ffffff" />
@@ -16,6 +15,5 @@ export const crosshair: CodeObject = {
   
   const containerRef = useTemplateRef<HTMLDivElement>('containerRef');
   const containerElement = computed(() => containerRef.value);
-</script>`,
-  code
-};
+</script>`
+});

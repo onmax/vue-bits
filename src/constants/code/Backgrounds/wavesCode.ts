@@ -1,8 +1,7 @@
 import code from '@content/Backgrounds/Waves/Waves.vue?raw';
-import type { CodeObject } from '../../../types/code';
+import { createCodeObject } from '../../../types/code';
 
-export const waves: CodeObject = {
-  cli: `npx jsrepo add https://vue-bits.dev/ui/Backgrounds/Waves`,
+export const waves = createCodeObject(code, 'Backgrounds/Waves', {
   usage: `<template>
   <div class="waves-container">
     <Waves
@@ -33,6 +32,5 @@ export const waves: CodeObject = {
     position: relative;
     overflow: hidden;
   }
-</style>`,
-  code
-};
+</style>`
+});

@@ -1,8 +1,7 @@
 import code from '@content/Backgrounds/Particles/Particles.vue?raw';
-import type { CodeObject } from '../../../types/code';
+import { createCodeObject } from '../../../types/code';
 
-export const particles: CodeObject = {
-  cli: `npx jsrepo add https://vue-bits.dev/ui/Backgrounds/Particles`,
+export const particles = createCodeObject(code, 'Backgrounds/Particles', {
   installation: `npm install ogl`,
   usage: `<template>
   <div class="particles-container">
@@ -34,6 +33,5 @@ export const particles: CodeObject = {
     position: relative;
     overflow: hidden;
   }
-</style>`,
-  code
-};
+</style>`
+});

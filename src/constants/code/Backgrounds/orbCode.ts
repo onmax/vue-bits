@@ -1,8 +1,7 @@
 import code from '@content/Backgrounds/Orb/Orb.vue?raw';
-import type { CodeObject } from '../../../types/code';
+import { createCodeObject } from '../../../types/code';
 
-export const orb: CodeObject = {
-  cli: `npx jsrepo add https://vue-bits.dev/ui/Backgrounds/Orb`,
+export const orb = createCodeObject(code, 'Backgrounds/Orb', {
   installation: `npm install ogl`,
   usage: `<template>
   <div class="relative w-full h-[600px]">
@@ -12,6 +11,5 @@ export const orb: CodeObject = {
 
 <script setup lang="ts">
   import Orb from "./Orb.vue";
-</script>`,
-  code
-};
+</script>`
+});

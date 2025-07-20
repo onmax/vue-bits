@@ -1,8 +1,7 @@
 import code from '@content/Components/Carousel/Carousel.vue?raw';
-import type { CodeObject } from '../../../types/code';
+import { createCodeObject } from '../../../types/code';
 
-export const carousel: CodeObject = {
-  cli: `npx jsrepo add https://vue-bits.dev/ui/Components/Carousel`,
+export const carousel = createCodeObject(code, 'Components/Carousel', {
   installation: `npm install motion-v`,
   usage: `<template>
   <Carousel 
@@ -35,6 +34,5 @@ export const carousel: CodeObject = {
     },
     // Add more items as needed
   ];
-</script>`,
-  code
-};
+</script>`
+});

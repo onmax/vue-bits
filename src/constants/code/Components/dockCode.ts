@@ -1,8 +1,7 @@
 import code from '@content/Components/Dock/Dock.vue?raw';
-import type { CodeObject } from '../../../types/code';
+import { createCodeObject } from '../../../types/code';
 
-export const dock: CodeObject = {
-  cli: `npx jsrepo add https://vue-bits.dev/ui/Components/Dock`,
+export const dock = createCodeObject(code, 'Components/Dock', {
   installation: `npm install motion-v`,
   usage: `<template>
   <Dock
@@ -42,6 +41,5 @@ export const dock: CodeObject = {
       onClick: () => console.log('Settings clicked!') 
     },
   ];
-</script>`,
-  code
-};
+</script>`
+});

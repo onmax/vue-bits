@@ -1,8 +1,7 @@
 import code from '@content/TextAnimations/FuzzyText/FuzzyText.vue?raw';
-import type { CodeObject } from '../../../types/code';
+import { createCodeObject } from '@/types/code';
 
-export const fuzzyText: CodeObject = {
-  cli: `npx jsrepo add https://vue-bits.dev/ui/TextAnimations/FuzzyText`,
+export const fuzzyText = createCodeObject(code, 'TextAnimations/FuzzyText', {
   usage: `<template>
   <FuzzyText
     text="404"
@@ -17,6 +16,5 @@ export const fuzzyText: CodeObject = {
 
 <script setup lang="ts">
   import FuzzyText from "./FuzzyText.vue";
-</script>`,
-  code
-};
+</script>`
+});

@@ -1,8 +1,7 @@
 import code from '@content/Components/SpotlightCard/SpotlightCard.vue?raw';
-import type { CodeObject } from '../../../types/code';
+import { createCodeObject } from '../../../types/code';
 
-export const spotlightCard: CodeObject = {
-  cli: `npx jsrepo add https://vue-bits.dev/ui/Components/SpotlightCard`,
+export const spotlightCard = createCodeObject(code, 'Components/SpotlightCard', {
   usage: `<template>
   <SpotlightCard 
     class-name="custom-spotlight-card"
@@ -14,6 +13,5 @@ export const spotlightCard: CodeObject = {
 
 <script setup lang="ts">
   import SpotlightCard from "./SpotlightCard.vue";
-</script>`,
-  code
-};
+</script>`
+});

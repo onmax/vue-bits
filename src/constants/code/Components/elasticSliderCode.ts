@@ -1,8 +1,7 @@
 import code from '@content/Components/ElasticSlider/ElasticSlider.vue?raw';
-import type { CodeObject } from '../../../types/code';
+import { createCodeObject } from '../../../types/code';
 
-export const elasticSlider: CodeObject = {
-  cli: `npx jsrepo add https://vue-bits.dev/ui/Components/ElasticSlider`,
+export const elasticSlider = createCodeObject(code, 'Components/ElasticSlider', {
   usage: `<template>  
   <ElasticSlider 
     :default-value="75"
@@ -25,6 +24,5 @@ export const elasticSlider: CodeObject = {
 
 <script setup lang="ts">
   import ElasticSlider from "./ElasticSlider.vue";
-</script>`,
-  code
-};
+</script>`
+});

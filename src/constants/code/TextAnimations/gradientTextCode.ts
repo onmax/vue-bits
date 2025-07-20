@@ -1,8 +1,7 @@
 import code from '@content/TextAnimations/GradientText/GradientText.vue?raw';
-import type { CodeObject } from '../../../types/code';
+import { createCodeObject } from '@/types/code';
 
-export const gradientText: CodeObject = {
-  cli: `npx jsrepo add https://vue-bits.dev/ui/TextAnimations/GradientText`,
+export const gradientText = createCodeObject(code, 'TextAnimations/GradientText', {
   usage: `<template>
   <GradientText
     text="Add a splash of color!"
@@ -15,6 +14,5 @@ export const gradientText: CodeObject = {
 
 <script setup lang="ts">
   import GradientText from "./GradientText.vue";
-</script>`,
-  code
-};
+</script>`
+});

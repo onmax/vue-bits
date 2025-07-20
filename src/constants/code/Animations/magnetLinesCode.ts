@@ -1,8 +1,7 @@
 import code from '@/content/Animations/MagnetLines/MagnetLines.vue?raw';
-import type { CodeObject } from '@/types/code';
+import { createCodeObject } from '@/types/code';
 
-export const magnetLines: CodeObject = {
-  cli: `npx jsrepo add https://vue-bits.dev/ui/Animations/MagnetLines`,
+export const magnetLines = createCodeObject(code, 'Animations/MagnetLines', {
   usage: `<template>
   <MagnetLines 
     :rows="10" 
@@ -17,6 +16,5 @@ export const magnetLines: CodeObject = {
 
 <script setup lang="ts">
   import MagnetLines from "./MagnetLines.vue";
-</script>`,
-  code
-};
+</script>`
+});

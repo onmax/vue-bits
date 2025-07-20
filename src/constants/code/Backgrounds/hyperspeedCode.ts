@@ -1,8 +1,7 @@
 import code from '@content/Backgrounds/Hyperspeed/Hyperspeed.vue?raw';
-import type { CodeObject } from '../../../types/code';
+import { createCodeObject } from '../../../types/code';
 
-export const hyperspeed: CodeObject = {
-  cli: `npx jsrepo add https://vue-bits.dev/ui/Backgrounds/Hyperspeed`,
+export const hyperspeed = createCodeObject(code, 'Backgrounds/Hyperspeed', {
   installation: `npm install three postprocessing`,
   usage: `<template>
   <div class="hyperspeed-container">
@@ -62,6 +61,5 @@ export const hyperspeed: CodeObject = {
   height: 100%;
   cursor: pointer;
 }
-</style>`,
-  code
-};
+</style>`
+});

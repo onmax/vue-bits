@@ -1,8 +1,7 @@
 import code from '@content/TextAnimations/ScrambleText/ScrambleText.vue?raw';
-import type { CodeObject } from '../../../types/code';
+import { createCodeObject } from '@/types/code';
 
-export const scrambleTextCode: CodeObject = {
-  cli: `npx jsrepo add https://vue-bits.dev/ui/TextAnimations/ScrambleText`,
+export const scrambleTextCode = createCodeObject(code, 'TextAnimations/ScrambleText', {
   installation: `npm install gsap`,
   usage: `// Component inspired by Tom Miller from the GSAP community
 // https://codepen.io/creativeocean/pen/NPWLwJM
@@ -23,6 +22,5 @@ export const scrambleTextCode: CodeObject = {
 
 <script setup lang="ts">
   import ScrambleText from "./ScrambleText.vue";
-</script>`,
-  code
-};
+</script>`
+});

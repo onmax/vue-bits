@@ -1,8 +1,7 @@
 import code from '@content/Components/AnimatedList/AnimatedList.vue?raw';
-import type { CodeObject } from '../../../types/code';
+import { createCodeObject } from '../../../types/code';
 
-export const animatedList: CodeObject = {
-  cli: `npx jsrepo add https://vue-bits.dev/ui/Components/AnimatedList`,
+export const animatedList = createCodeObject(code, 'Components/AnimatedList', {
   installation: `npm install motion-v`,
   usage: `<template>
   <AnimatedList
@@ -22,6 +21,5 @@ const items = [
   'Item 6', 'Item 7', 'Item 8', 'Item 9', 'Item 10',
   'Item 11', 'Item 12', 'Item 13', 'Item 14', 'Item 15'
 ]
-</script>`,
-  code
-};
+</script>`
+});

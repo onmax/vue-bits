@@ -1,8 +1,7 @@
 import code from '@/content/Animations/BlobCursor/BlobCursor.vue?raw';
-import type { CodeObject } from '../../../types/code';
+import { createCodeObject } from '../../../types/code';
 
-export const blobCursor: CodeObject = {
-  cli: `npx jsrepo add https://vue-bits.dev/ui/Animations/BlobCursor`,
+export const blobCursor = createCodeObject(code, 'Animations/BlobCursor', {
   installation: `npm install gsap`,
   usage: `<template>
   <BlobCursor
@@ -27,6 +26,5 @@ export const blobCursor: CodeObject = {
 
 <script setup lang="ts">
   import BlobCursor from "./BlobCursor.vue";
-</script>`,
-  code
-};
+</script>`
+});

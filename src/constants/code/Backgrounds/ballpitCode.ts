@@ -1,8 +1,7 @@
 import code from '@content/Backgrounds/Ballpit/Ballpit.vue?raw';
-import type { CodeObject } from '../../../types/code';
+import { createCodeObject } from '../../../types/code';
 
-export const ballpit: CodeObject = {
-  cli: `npx jsrepo add https://vue-bits.dev/ui/Backgrounds/Ballpit`,
+export const ballpit = createCodeObject(code, 'Backgrounds/Ballpit', {
   installation: `npm install three @types/three gsap`,
   usage: `//Component inspired by Kevin Levron:
 //https://x.com/soju22/status/1858925191671271801
@@ -21,6 +20,5 @@ export const ballpit: CodeObject = {
 
 <script setup lang="ts">
   import Ballpit from "./Ballpit.vue";
-</script>`,
-  code
-};
+</script>`
+});

@@ -1,8 +1,7 @@
 import code from '@content/Components/CircularGallery/CircularGallery.vue?raw';
-import type { CodeObject } from '../../../types/code';
+import { createCodeObject } from '../../../types/code';
 
-export const circularGallery: CodeObject = {
-  cli: `npx jsrepo add https://vue-bits.dev/ui/Components/CircularGallery`,
+export const circularGallery = createCodeObject(code, 'Components/CircularGallery', {
   installation: `npm install ogl`,
   usage: `<template>
   <CircularGallery
@@ -22,6 +21,5 @@ export const circularGallery: CodeObject = {
 
 <script setup lang="ts">
   import CircularGallery from "./CircularGallery.vue";
-</script>`,
-  code
-};
+</script>`
+});
