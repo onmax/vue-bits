@@ -1,5 +1,5 @@
 // Highlighted sidebar items
-export const NEW = ['Target Cursor', 'Ripple Grid'];
+export const NEW = ['Target Cursor', 'Ripple Grid', 'Magic Bento'];
 export const UPDATED = [];
 
 // Used for main sidebar navigation
@@ -59,6 +59,7 @@ export const CATEGORIES = [
     subcategories: [
       'Animated List',
       'Masonry',
+      'Magic Bento',
       'Profile Card',
       'Dock',
       'Gooey Nav',
