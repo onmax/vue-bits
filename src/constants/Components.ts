@@ -90,6 +90,7 @@ const backgrounds = {
   'liquid-chrome': () => import('../demo/Backgrounds/LiquidChromeDemo.vue'),
   'grid-distortion': () => import('../demo/Backgrounds/GridDistortionDemo.vue'),
   'ripple-grid': () => import('../demo/Backgrounds/RippleGridDemo.vue'),
+  'galaxy': () => import('../demo/Backgrounds/GalaxyDemo.vue'),
 };
 
 export const componentMap = {
