@@ -154,7 +154,12 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <component :is="as" ref="containerRef" :class="`inline-block whitespace-pre-wrap tracking-tight ${className}`" v-bind="$attrs">
+  <component
+    :is="as"
+    ref="containerRef"
+    :class="`inline-block whitespace-pre-wrap tracking-tight ${className}`"
+    v-bind="$attrs"
+  >
     <span class="inline" :style="{ color: getCurrentTextColor() }">
       {{ displayedText }}
     </span>
