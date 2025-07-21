@@ -1,7 +1,7 @@
 <template>
   <TabbedLayout>
     <template #preview>
-      <div class="demo-container relative overflow-hidden flex items-start justify-start">
+      <div class="demo-container">
         <TextType
           :key="key"
           :text="texts"
@@ -217,7 +217,12 @@ const propData = [
   font-weight: 700;
 }
 .demo-container {
-  padding: 16px;
+  padding: 64px;
   min-height: 350px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  display: flex;
+  position: relative;
+  overflow: hidden;
 }
 </style>
