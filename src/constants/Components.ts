@@ -19,6 +19,7 @@ const animations = {
   'shape-blur': () => import('../demo/Animations/ShapeBlurDemo.vue'),
   'target-cursor': () => import('../demo/Animations/TargetCursorDemo.vue'),
   'crosshair': () => import('../demo/Animations/CrosshairDemo.vue'),
+  'sticker-peel': () => import('../demo/Animations/StickerPeelDemo.vue'),
 };
 
 const textAnimations = {
