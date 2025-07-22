@@ -241,31 +241,6 @@ watch(
   },
   { deep: true }
 );
-
-// export const ScrollStackItem = defineComponent({
-//   name: 'ScrollStackItem',
-//   props: {
-//     itemClassName: {
-//       type: String,
-//       default: ''
-//     }
-//   },
-//   setup(props, { slots }) {
-//     return () =>
-//       h(
-//         'div',
-//         {
-//           class:
-//             `scroll-stack-card relative w-full h-80 my-8 p-12 rounded-[40px] shadow-[0_0_30px_rgba(0,0,0,0.1)] box-border origin-top will-change-transform ${props.itemClassName}`.trim(),
-//           style: {
-//             backfaceVisibility: 'hidden',
-//             transformStyle: 'preserve-3d'
-//           }
-//         },
-//         slots.default?.()
-//       );
-//   }
-// });
 </script>
 
 <script lang="ts">
