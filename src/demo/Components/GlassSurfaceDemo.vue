@@ -1,7 +1,7 @@
 <template>
   <TabbedLayout>
     <template #preview>
-      <div class="relative overflow-y-auto no-scrollbar demo-container">
+      <div class="relative overflow-y-auto no-scrollbar demo-container" ref="scrollContainerRef">
         <GlassSurface
           :key="key"
           :width="360"
@@ -22,26 +22,21 @@
         />
 
         <div class="absolute flex flex-col items-center gap-6 top-0 left-0 right-0">
-          <div
-            class="absolute translate-y-1/2 top-12 text-4xl font-bold text-[#27FF64] z-0 whitespace-nowrap text-center"
-          >
+          <div class="absolute translate-y-1/2 top-12 text-4xl font-bold text-[#333] z-0 whitespace-nowrap text-center">
             Try scrolling.
           </div>
 
-          <!-- Top Spacer -->
           <div class="h-60 w-full" />
 
-          <!-- Image Blocks -->
-          <div v-for="(item, index) in imageBlocks" :key="index" class="relative">
+          <div v-for="(item, index) in imageBlocks" :key="index" class="relative py-4">
             <img :src="item.src" class="w-128 rounded-2xl object-cover grayscale-100" />
             <div
-              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-extrabold text-center leading-[100%] text-[3rem] min-w-72"
+              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-extrabold text-center leading-[100%] text-[3rem] min-w-72 mix-blend-overlay text-white"
             >
               {{ item.text }}
             </div>
           </div>
 
-          <!-- Bottom Spacer -->
           <div class="h-60 w-full" />
         </div>
       </div>
@@ -75,7 +70,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from 'vue';
+import { ref, watch, onMounted, onUnmounted, useTemplateRef } from 'vue';
+import Lenis from 'lenis';
 import TabbedLayout from '../../components/common/TabbedLayout.vue';
 import PropTable from '../../components/common/PropTable.vue';
 import CliInstallation from '../../components/code/CliInstallation.vue';
@@ -87,6 +83,10 @@ import { glassSurface } from '@/constants/code/Components/glassSurfaceCode';
 import { useForceRerender } from '@/composables/useForceRerender';
 
 const { rerenderKey: key, forceRerender } = useForceRerender();
+
+const scrollContainerRef = useTemplateRef<HTMLElement>('scrollContainerRef');
+let lenis: Lenis | null = null;
+let rafId: number | null = null;
 
 const borderRadius = ref(50);
 const backgroundOpacity = ref(0.1);
@@ -117,6 +117,49 @@ watch(
     forceRerender();
   }
 );
+
+const initLenis = () => {
+  if (!scrollContainerRef.value) return;
+
+  lenis = new Lenis({
+    wrapper: scrollContainerRef.value,
+    content: scrollContainerRef.value.firstElementChild as HTMLElement,
+    duration: 1.2,
+    easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    orientation: 'vertical',
+    gestureOrientation: 'vertical',
+    smoothWheel: true,
+    wheelMultiplier: 1,
+    touchMultiplier: 2,
+    infinite: false
+  });
+
+  const raf = (time: number) => {
+    lenis?.raf(time);
+    rafId = requestAnimationFrame(raf);
+  };
+
+  rafId = requestAnimationFrame(raf);
+};
+
+const destroyLenis = () => {
+  if (rafId) {
+    cancelAnimationFrame(rafId);
+    rafId = null;
+  }
+  if (lenis) {
+    lenis.destroy();
+    lenis = null;
+  }
+};
+
+onMounted(() => {
+  initLenis();
+});
+
+onUnmounted(() => {
+  destroyLenis();
+});
 
 const imageBlocks = [
   {
