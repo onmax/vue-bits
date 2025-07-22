@@ -1,5 +1,5 @@
 // Highlighted sidebar items
-export const NEW = ['Target Cursor', 'Ripple Grid', 'Magic Bento', 'Galaxy', 'Text Type', 'Glass Surface'];
+export const NEW = ['Target Cursor', 'Ripple Grid', 'Magic Bento', 'Galaxy', 'Text Type', 'Glass Surface', 'Scroll Stack'];
 export const UPDATED = [];
 
 // Used for main sidebar navigation
@@ -62,6 +62,7 @@ export const CATEGORIES = [
       'Masonry',
       'Glass Surface',
       'Magic Bento',
+      'Scroll Stack',
       'Profile Card',
       'Dock',
       'Gooey Nav',
@@ -79,7 +80,7 @@ export const CATEGORIES = [
       'Flowing Menu',
       'Elastic Slider',
       'Stack',
-      'Chroma Grid'
+      'Chroma Grid',
     ]
   },
   {
