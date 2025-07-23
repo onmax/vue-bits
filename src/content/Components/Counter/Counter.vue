@@ -1,29 +1,21 @@
 <template>
-  <div class="counter-container" :style="containerStyle">
-    <div
-      class="counter-counter"
-      :style="counterStyles"
-    >
-      <div
-        v-for="place in places"
-        :key="place"
-        class="counter-digit"
-        :style="digitStyles"
-      >
+  <div class="relative inline-block" :style="containerStyle">
+    <div class="flex overflow-hidden" :style="counterStyles">
+      <div v-for="place in places" :key="place" class="relative w-[1ch] tabular-nums" :style="digitStyles">
         <Motion
           v-for="digit in 10"
           :key="digit - 1"
           tag="span"
-          class="counter-number"
+          class="absolute top-0 left-0 w-full h-full flex items-center justify-center"
           :animate="{ y: getDigitPosition(place, digit - 1) }"
         >
           {{ digit - 1 }}
         </Motion>
       </div>
     </div>
-    <div class="gradient-container">
-      <div class="top-gradient" :style="topGradientStyle || topGradientStyles" />
-      <div class="bottom-gradient" :style="bottomGradientStyle || bottomGradientStyles" />
+    <div class="pointer-events-none absolute inset-0">
+      <div class="absolute top-0 w-full" :style="topGradientStyle ?? topGradientStyles" />
+      <div class="absolute bottom-0 w-full" :style="bottomGradientStyle ?? bottomGradientStyles" />
     </div>
   </div>
 </template>
@@ -90,15 +82,19 @@ const digitStyles = computed(() => ({
   ...props.digitStyle
 }));
 
-const topGradientStyles = computed((): CSSProperties => ({
-  height: `${props.gradientHeight}px`,
-  background: `linear-gradient(to bottom, ${props.gradientFrom}, ${props.gradientTo})`
-}));
+const topGradientStyles = computed(
+  (): CSSProperties => ({
+    height: `${props.gradientHeight}px`,
+    background: `linear-gradient(to bottom, ${props.gradientFrom}, ${props.gradientTo})`
+  })
+);
 
-const bottomGradientStyles = computed((): CSSProperties => ({
-  height: `${props.gradientHeight}px`,
-  background: `linear-gradient(to top, ${props.gradientFrom}, ${props.gradientTo})`
-}));
+const bottomGradientStyles = computed(
+  (): CSSProperties => ({
+    height: `${props.gradientHeight}px`,
+    background: `linear-gradient(to top, ${props.gradientFrom}, ${props.gradientTo})`
+  })
+);
 
 const springValues = ref<Record<number, number>>({});
 
@@ -163,57 +159,3 @@ const getDigitPosition = (place: number, digit: number): number => {
   return position;
 };
 </script>
-
-<style scoped>
-.counter-container {
-  position: relative;
-  display: inline-block;
-}
-
-.counter-counter {
-  display: flex;
-  overflow: hidden;
-  line-height: 1;
-}
-
-.counter-digit {
-  position: relative;
-  width: 1ch;
-  font-variant-numeric: tabular-nums;
-}
-
-.counter-number {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  will-change: transform;
-  transform: translateZ(0);
-  backface-visibility: hidden;
-}
-
-.gradient-container {
-  pointer-events: none;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-
-.top-gradient {
-  position: absolute;
-  top: 0;
-  width: 100%;
-}
-
-.bottom-gradient {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-}
-</style>
