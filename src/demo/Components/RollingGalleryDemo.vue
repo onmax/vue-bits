@@ -1,45 +1,45 @@
 <template>
-  <div class="rolling-gallery-demo">
-    <TabbedLayout>
-      <template #preview>
-        <div class="demo-container" style="background: #060010; overflow: hidden; position: relative; min-height: 500px;">
-          <div class="flex h-full max-w-[600px] items-center justify-center flex-col">
-            <h2 class="mt-6 text-center absolute font-black top-4 md:top-4 whitespace-nowrap text-2xl md:text-5xl text-white">
-              Your trip to Thailand.
-            </h2>
-            <RollingGallery
-              :autoplay="autoplay"
-              :pause-on-hover="pauseOnHover"
-              :images="customImages.length > 0 ? customImages : undefined"
-            />
-          </div>
+  <TabbedLayout>
+    <template #preview>
+      <div class="demo-container relative min-h-[500px] overflow-hidden">
+        <div class="flex h-full max-w-[600px] flex-col items-center justify-center">
+          <h2
+            class="absolute top-4 mt-6 whitespace-nowrap text-center font-black text-2xl text-white md:top-4 md:text-5xl"
+          >
+            Your trip to Thailand.
+          </h2>
+          <RollingGallery
+            :autoplay="autoplay"
+            :pause-on-hover="pauseOnHover"
+            :images="customImages.length > 0 ? customImages : undefined"
+          />
         </div>
+      </div>
 
-        <Customize>
-          <PreviewSwitch
-            title="Autoplay"
-            v-model="autoplay"
-          />
+      <Customize>
+        <PreviewSwitch
+          title="Autoplay"
+          v-model="autoplay"
+        />
 
-          <PreviewSwitch
-            title="Pause on Hover"
-            v-model="pauseOnHover"
-          />
-        </Customize>
+        <PreviewSwitch
+          title="Pause on Hover"
+          v-model="pauseOnHover"
+        />
+      </Customize>
 
-        <PropTable :data="propData" />
-        <Dependencies :dependency-list="['motion-v']" />
-      </template>
+      <PropTable :data="propData" />
+      <Dependencies :dependency-list="['motion-v']" />
+    </template>
 
-      <template #code>
-        <CodeExample :code-object="rollingGallery" />
-      </template>
+    <template #code>
+      <CodeExample :code-object="rollingGallery" />
+    </template>
 
-      <template #cli>
-        <CliInstallation :command="rollingGallery.cli" />
-      </template>
-    </TabbedLayout>
-  </div>
+    <template #cli>
+      <CliInstallation :command="rollingGallery.cli" />
+    </template>
+  </TabbedLayout>
 </template>
 
 <script setup lang="ts">
@@ -79,16 +79,3 @@ const propData = [
   },
 ]
 </script>
-
-<style scoped>
-.rolling-gallery-demo {
-  width: 100%;
-}
-
-.demo-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-}
-</style>

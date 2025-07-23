@@ -1,11 +1,12 @@
 <template>
-  <div class="gallery-container">
-    <div class="gallery-gradient gallery-gradient-left"></div>
-    <div class="gallery-gradient gallery-gradient-right"></div>
-    <div class="gallery-content">
+  <div class="relative h-[500px] w-full overflow-hidden">
+    <div class="absolute top-0 left-0 h-full w-12 z-10 bg-gradient-to-l from-transparent to-[#0b0b0b]" />
+    <div class="absolute top-0 right-0 h-full w-12 z-10 bg-gradient-to-r from-transparent to-[#0b0b0b]" />
+
+    <div class="flex h-full items-center justify-center [perspective:1000px] [transform-style:preserve-3d]">
       <Motion
         tag="div"
-        class="gallery-track"
+        class="flex min-h-[200px] items-center justify-center w-full cursor-grab select-none will-change-transform [transform-style:preserve-3d] active:cursor-grabbing"
         :style="trackStyle"
         :animate="animateProps"
         :transition="springTransition"
@@ -13,8 +14,19 @@
         @mouseleave="handleMouseLeave"
         @mousedown="handleMouseDown"
       >
-        <div v-for="(url, i) in displayImages" :key="`gallery-${i}`" class="gallery-item" :style="getItemStyle(i)">
-          <img :src="url" alt="gallery" class="gallery-img" loading="lazy" decoding="async" />
+        <div
+          v-for="(url, i) in displayImages"
+          :key="`gallery-${i}`"
+          :style="getItemStyle(i)"
+          class="absolute flex items-center justify-center px-[8%] [backface-visibility:hidden] will-change-transform pointer-events-none"
+        >
+          <img
+            :src="url"
+            alt="gallery"
+            loading="lazy"
+            decoding="async"
+            class="pointer-events-auto h-[120px] w-[300px] rounded-[15px] border-[3px] border-white object-cover transition-transform duration-300 ease-in-out will-change-transform hover:scale-105"
+          />
         </div>
       </Motion>
     </div>
@@ -299,94 +311,3 @@ watch(
   }
 );
 </script>
-
-<style scoped>
-.gallery-container {
-  position: relative;
-  height: 500px;
-  width: 100%;
-  overflow: hidden;
-}
-
-.gallery-gradient {
-  position: absolute;
-  top: 0;
-  height: 100%;
-  width: 48px;
-  z-index: 10;
-}
-
-.gallery-gradient-left {
-  left: 0;
-  background: linear-gradient(to left, rgba(0, 0, 0, 0) 0%, #060010 100%);
-}
-
-.gallery-gradient-right {
-  right: 0;
-  background: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, #060010 100%);
-}
-
-.gallery-content {
-  display: flex;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
-  perspective: 1000px;
-  transform-style: preserve-3d;
-}
-
-.gallery-track {
-  display: flex;
-  height: auto;
-  min-height: 200px;
-  justify-content: center;
-  align-items: center;
-  cursor: grab;
-  transform-style: preserve-3d;
-  width: 100%;
-  user-select: none;
-  will-change: transform;
-  pointer-events: auto;
-}
-
-.gallery-track:active {
-  cursor: grabbing;
-}
-
-.gallery-item {
-  position: absolute;
-  display: flex;
-  height: fit-content;
-  align-items: center;
-  justify-content: center;
-  padding: 8%;
-  backface-visibility: hidden;
-  will-change: transform;
-  pointer-events: none;
-}
-
-.gallery-img {
-  pointer-events: auto;
-  height: 120px;
-  width: 300px;
-  border-radius: 15px;
-  border: 3px solid #fff;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-  will-change: transform;
-}
-
-.gallery-item:hover .gallery-img {
-  transform: scale(1.05);
-}
-
-@media (max-width: 768px) {
-  .gallery-item {
-    padding: 6%;
-  }
-  .gallery-img {
-    height: 100px;
-    width: 220px;
-  }
-}
-</style>
