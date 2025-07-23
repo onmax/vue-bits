@@ -70,7 +70,7 @@ import Ribbons from '../../content/Animations/Ribbons/Ribbons.vue';
 import { ribbons } from '@/constants/code/Animations/ribbonsCode';
 
 const baseThickness = ref(30);
-const colors = ref(['#5227FF']);
+const colors = ref(['#27FF64']);
 const speedMultiplier = ref(0.5);
 const maxAge = ref(500);
 const enableFade = ref(false);
