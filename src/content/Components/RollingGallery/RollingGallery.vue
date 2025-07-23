@@ -127,21 +127,17 @@ const springTransition = computed(() => {
 const styleCache = new Map<string, { width: string; transform: string }>();
 
 const getItemStyle = (index: number) => {
-  // Create a cache key based on current values
   const cacheKey = `${index}-${faceWidth.value}-${radius.value}`;
 
-  // Return a cached result if available
   if (styleCache.has(cacheKey)) {
     return styleCache.get(cacheKey)!;
   }
 
-  // Calculate and cache new style
   const style = {
     width: `${faceWidth.value}px`,
     transform: `rotateY(${index * (360 / REFERENCE_FACE_COUNT_SPACING)}deg) translateZ(${radius.value}px)`
   };
 
-  // Limit cache size to prevent memory leaks
   if (styleCache.size > 50) {
     styleCache.clear();
   }
