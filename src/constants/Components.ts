@@ -69,6 +69,7 @@ const components = {
   'tilted-card': () => import('../demo/Components/TiltedCardDemo.vue'),
   'stack': () => import('../demo/Components/StackDemo.vue'),
   'chroma-grid': () => import('../demo/Components/ChromaGridDemo.vue'),
+  'rolling-gallery': () => import('../demo/Components/RollingGalleryDemo.vue'),
 };
 
 const backgrounds = {
