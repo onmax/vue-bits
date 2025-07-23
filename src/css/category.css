@@ -596,23 +596,23 @@ div:has(> .props-table) {
 }
 
 .ssc-demo-1 {
-  background-color: #5227ff;
+  background-color: #35724d;
 }
 
 .ssc-demo-2 {
-  background-color: #f01e9c;
+  background-color: #333;
 }
 
 .ssc-demo-3 {
-  background-color: #5227ff;
+  background-color: #35724d;
 }
 
 .ssc-demo-4 {
-  background-color: #f01e9c;
+  background-color: #333;
 }
 
 .ssc-demo-5 {
-  background-color: #5227ff;
+  background-color: #35724d;
   text-align: center;
   justify-content: center;
   align-items: center;

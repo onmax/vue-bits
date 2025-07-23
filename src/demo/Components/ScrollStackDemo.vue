@@ -11,7 +11,7 @@
           "
         />
         <p
-          class="top-[25%] left-[50%] absolute font-black text-[#271e37] text-[clamp(2rem,4vw,3rem)] text-center transition-all -translate-x-1/2 -translate-y-1/2 duration-300 ease-in-out pointer-events-none transform"
+          class="top-[25%] left-[50%] absolute font-black text-[#333] text-[clamp(2rem,4vw,3rem)] text-center transition-all -translate-x-1/2 -translate-y-1/2 duration-300 ease-in-out pointer-events-none transform"
         >
           {{ isCompleted ? 'Stack Completed!' : 'Scroll Down' }}
         </p>
