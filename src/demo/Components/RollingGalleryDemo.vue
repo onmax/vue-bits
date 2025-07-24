@@ -17,15 +17,9 @@
       </div>
 
       <Customize>
-        <PreviewSwitch
-          title="Autoplay"
-          v-model="autoplay"
-        />
+        <PreviewSwitch title="Autoplay" v-model="autoplay" />
 
-        <PreviewSwitch
-          title="Pause on Hover"
-          v-model="pauseOnHover"
-        />
+        <PreviewSwitch title="Pause on Hover" v-model="pauseOnHover" />
       </Customize>
 
       <PropTable :data="propData" />
@@ -43,39 +37,39 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import TabbedLayout from '@/components/common/TabbedLayout.vue'
-import PropTable from '@/components/common/PropTable.vue'
-import Dependencies from '@/components/code/Dependencies.vue'
-import CliInstallation from '@/components/code/CliInstallation.vue'
-import CodeExample from '@/components/code/CodeExample.vue'
-import Customize from '@/components/common/Customize.vue'
-import PreviewSwitch from '@/components/common/PreviewSwitch.vue'
-import RollingGallery from '@/content/Components/RollingGallery/RollingGallery.vue'
-import { rollingGallery } from '@/constants/code/Components/rollingGalleryCode'
+import { ref } from 'vue';
+import TabbedLayout from '@/components/common/TabbedLayout.vue';
+import PropTable from '@/components/common/PropTable.vue';
+import Dependencies from '@/components/code/Dependencies.vue';
+import CliInstallation from '@/components/code/CliInstallation.vue';
+import CodeExample from '@/components/code/CodeExample.vue';
+import Customize from '@/components/common/Customize.vue';
+import PreviewSwitch from '@/components/common/PreviewSwitch.vue';
+import RollingGallery from '@/content/Components/RollingGallery/RollingGallery.vue';
+import { rollingGallery } from '@/constants/code/Components/rollingGalleryCode';
 
-const autoplay = ref(true)
-const pauseOnHover = ref(true)
-const customImages = ref<string[]>([])
+const autoplay = ref(true);
+const pauseOnHover = ref(true);
+const customImages = ref<string[]>([]);
 
 const propData = [
   {
     name: 'autoplay',
     type: 'boolean',
     default: 'false',
-    description: 'Controls the autoplay toggle of the carousel. When turned on, it rotates and loops infinitely.',
+    description: 'Controls the autoplay toggle of the carousel. When turned on, it rotates and loops infinitely.'
   },
   {
     name: 'pauseOnHover',
     type: 'boolean',
     default: 'false',
-    description: 'Allows the carousel to be paused on hover when autoplay is turned on.',
+    description: 'Allows the carousel to be paused on hover when autoplay is turned on.'
   },
   {
     name: 'images',
     type: 'string[]',
     default: '[]',
-    description: 'Array of image URLs to display in the gallery.',
-  },
-]
+    description: 'Array of image URLs to display in the gallery.'
+  }
+];
 </script>

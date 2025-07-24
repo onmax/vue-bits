@@ -1,5 +1,5 @@
-import code from '@content/Components/Counter/Counter.vue?raw'
-import { createCodeObject } from '../../../types/code'
+import code from '@content/Components/Counter/Counter.vue?raw';
+import { createCodeObject } from '../../../types/code';
 
 export const counter = createCodeObject(code, 'Components/Counter', {
   installation: `npm i motion-v`,
@@ -13,5 +13,5 @@ export const counter = createCodeObject(code, 'Components/Counter', {
   :gap="10"
   textColor="white"
   :fontWeight="900"
-/>`,
-})
+/>`
+});
