@@ -95,6 +95,7 @@ const backgrounds = {
   'grid-distortion': () => import('../demo/Backgrounds/GridDistortionDemo.vue'),
   'ripple-grid': () => import('../demo/Backgrounds/RippleGridDemo.vue'),
   'galaxy': () => import('../demo/Backgrounds/GalaxyDemo.vue'),
+  'faulty-terminal': () => import('../demo/Backgrounds/FaultyTerminalDemo.vue'),
 };
 
 export const componentMap = {
