@@ -1,76 +1,29 @@
 <template>
   <div
-    :class="['bounceCardsContainer', className]"
+    :class="['relative flex items-center justify-center', className]"
     :style="{
-      position: 'relative',
       width: typeof containerWidth === 'number' ? `${containerWidth}px` : containerWidth,
-      height: typeof containerHeight === 'number' ? `${containerHeight}px` : containerHeight,
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center'
+      height: typeof containerHeight === 'number' ? `${containerHeight}px` : containerHeight
     }"
   >
     <div
       v-for="(src, idx) in images"
       :key="idx"
-      :class="`card card-${idx}`"
-      :style="{
-        position: 'absolute',
-        width: '200px',
-        aspectRatio: '1',
-        border: '5px solid #fff',
-        borderRadius: '25px',
-        overflow: 'hidden',
-        boxShadow: '0 4px 10px rgba(0, 0, 0, 0.2)',
-        transform: transformStyles[idx] ?? 'none',
-        backgroundColor: '#f8f9fa'
-      }"
+      ref="cardRefs"
+      class="absolute w-[200px] aspect-square border-[5px] border-white rounded-[25px] overflow-hidden shadow-[0_4px_10px_rgba(0,0,0,0.2)] bg-[#f8f9fa] opacity-0"
+      :style="{ transform: transformStyles[idx] ?? 'none' }"
       @mouseenter="() => pushSiblings(idx)"
       @mouseleave="resetSiblings"
     >
-      <div
-        v-if="!imageLoaded[idx]"
-        class="placeholder"
-        :style="{
-          position: 'absolute',
-          top: '0',
-          left: '0',
-          width: '100%',
-          height: '100%',
-          backgroundColor: 'rgba(0, 0, 0, 0.8)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          zIndex: 1
-        }"
-      >
-        <div
-          class="loading-spinner"
-          :style="{
-            width: '75px',
-            height: '75px',
-            border: '3px solid #a3a3a3',
-            borderTop: '3px solid #27FF64',
-            borderRadius: '50%',
-          }"
-        ></div>
+      <div v-if="!imageLoaded[idx]" class="absolute inset-0 z-[1] flex items-center justify-center bg-black/80">
+        <div class="w-[75px] h-[75px] border-[3px] border-gray-400 border-t-[#27FF64] rounded-full animate-spin"></div>
       </div>
 
       <img
-        class="image"
+        class="absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ease-in-out z-[2]"
         :src="src"
         :alt="`card-${idx}`"
-        :style="{
-          position: 'absolute',
-          top: '0',
-          left: '0',
-          width: '100%',
-          height: '100%',
-          objectFit: 'cover',
-          opacity: imageLoaded[idx] ? 1 : 0,
-          transition: 'opacity 0.3s ease',
-          zIndex: 2
-        }"
+        :style="{ opacity: imageLoaded[idx] ? 1 : 0 }"
         @load="() => onImageLoad(idx)"
         @error="() => onImageError(idx)"
       />
@@ -79,7 +32,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref } from 'vue';
+import { onMounted, onUnmounted, ref, watch, nextTick } from 'vue';
 import { gsap } from 'gsap';
 
 export interface BounceCardsProps {
@@ -113,6 +66,7 @@ const props = withDefaults(defineProps<BounceCardsProps>(), {
 });
 
 const imageLoaded = ref(new Array(props.images.length).fill(false));
+const cardRefs = ref<HTMLElement[]>([]);
 
 const getNoRotationTransform = (transformStr: string): string => {
   const hasRotate = /rotate\([\s\S]*?\)/.test(transformStr);
@@ -133,9 +87,7 @@ const getPushedTransform = (baseTransform: string, offsetX: number): string => {
     const newX = currentX + offsetX;
     return baseTransform.replace(translateRegex, `translate(${newX}px)`);
   } else {
-    return baseTransform === 'none'
-      ? `translate(${offsetX}px)`
-      : `${baseTransform} translate(${offsetX}px)`;
+    return baseTransform === 'none' ? `translate(${offsetX}px)` : `${baseTransform} translate(${offsetX}px)`;
   }
 };
 
@@ -143,13 +95,13 @@ const pushSiblings = (hoveredIdx: number) => {
   if (!props.enableHover) return;
 
   props.images.forEach((_, i) => {
-    gsap.killTweensOf(`.card-${i}`);
+    gsap.killTweensOf(cardRefs.value[i]);
 
     const baseTransform = props.transformStyles[i] || 'none';
 
     if (i === hoveredIdx) {
       const noRotationTransform = getNoRotationTransform(baseTransform);
-      gsap.to(`.card-${i}`, {
+      gsap.to(cardRefs.value[i], {
         transform: noRotationTransform,
         duration: 0.4,
         ease: 'back.out(1.4)',
@@ -158,11 +110,10 @@ const pushSiblings = (hoveredIdx: number) => {
     } else {
       const offsetX = i < hoveredIdx ? -160 : 160;
       const pushedTransform = getPushedTransform(baseTransform, offsetX);
-
       const distance = Math.abs(hoveredIdx - i);
       const delay = distance * 0.05;
 
-      gsap.to(`.card-${i}`, {
+      gsap.to(cardRefs.value[i], {
         transform: pushedTransform,
         duration: 0.4,
         ease: 'back.out(1.4)',
@@ -177,9 +128,9 @@ const resetSiblings = () => {
   if (!props.enableHover) return;
 
   props.images.forEach((_, i) => {
-    gsap.killTweensOf(`.card-${i}`);
+    gsap.killTweensOf(cardRefs.value[i]);
     const baseTransform = props.transformStyles[i] || 'none';
-    gsap.to(`.card-${i}`, {
+    gsap.to(cardRefs.value[i], {
       transform: baseTransform,
       duration: 0.4,
       ease: 'back.out(1.4)',
@@ -196,59 +147,31 @@ const onImageError = (idx: number) => {
   imageLoaded.value[idx] = true;
 };
 
-onMounted(() => {
+const playEntranceAnimation = () => {
+  gsap.killTweensOf(cardRefs.value);
+  gsap.set(cardRefs.value, { opacity: 0, scale: 0 });
+
   gsap.fromTo(
-    '.card',
-    { scale: 0 },
+    cardRefs.value,
+    { scale: 0, opacity: 0 },
     {
       scale: 1,
+      opacity: 1,
       stagger: props.animationStagger,
       ease: props.easeType,
       delay: props.animationDelay
     }
   );
+};
+
+onMounted(playEntranceAnimation);
+watch(() => props.images, async () => {
+  await nextTick();
+  gsap.set(cardRefs.value, { opacity: 0, scale: 0 });
+  playEntranceAnimation();
 });
 
 onUnmounted(() => {
-  gsap.killTweensOf('.card');
-  props.images.forEach((_, i) => {
-    gsap.killTweensOf(`.card-${i}`);
-  });
+  gsap.killTweensOf(cardRefs.value);
 });
 </script>
-
-<style scoped>
-.bounceCardsContainer {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 400px;
-  height: 400px;
-}
-
-.card {
-  position: absolute;
-  width: 200px;
-  aspect-ratio: 1;
-  border: 5px solid #fff;
-  border-radius: 25px;
-  overflow: hidden;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  background-color: transparent !important;
-}
-
-.card .image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.loading-spinner {
-  animation: spin 1s linear infinite;
-}
-@keyframes spin {
-  0% { transform: rotate(0deg);}
-  100% { transform: rotate(360deg);}
-}
-</style>
