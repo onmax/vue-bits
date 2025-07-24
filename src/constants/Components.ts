@@ -70,6 +70,7 @@ const components = {
   'stack': () => import('../demo/Components/StackDemo.vue'),
   'chroma-grid': () => import('../demo/Components/ChromaGridDemo.vue'),
   'rolling-gallery': () => import('../demo/Components/RollingGalleryDemo.vue'),
+  'scroll-stack': () => import('../demo/Components/ScrollStackDemo.vue'),
 };
 
 const backgrounds = {
