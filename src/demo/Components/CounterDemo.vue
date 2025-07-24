@@ -5,7 +5,7 @@
         <Counter
           :value="value"
           :places="[100, 10, 1]"
-          gradientFrom="#060010"
+          gradientFrom="#0b0b0b"
           :fontSize="fontSize"
           :padding="5"
           :gap="gap"
