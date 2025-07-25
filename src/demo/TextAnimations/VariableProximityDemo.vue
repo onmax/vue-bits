@@ -29,7 +29,7 @@
           <button
             v-for="type in falloffTypes"
             :key="type"
-            class="text-xs cursor-pointer bg-[#0b0b0b] rounded-[10px] border border-[#333] hover:bg-[#333] text-white h-8 px-3 transition-colors"
+            class="text-xs cursor-pointer bg-[#0b0b0b] rounded-[10px] border border-[#333] hover:bg-[#222] text-white h-8 px-3 transition-colors"
             :class="{ 'bg-[#333]': falloff === type }"
             @click="falloff = type"
           >
