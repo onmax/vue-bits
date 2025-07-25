@@ -98,6 +98,7 @@ const backgrounds = {
   'ripple-grid': () => import('../demo/Backgrounds/RippleGridDemo.vue'),
   'galaxy': () => import('../demo/Backgrounds/GalaxyDemo.vue'),
   'faulty-terminal': () => import('../demo/Backgrounds/FaultyTerminalDemo.vue'),
+  'light-rays': () => import('../demo/Backgrounds/LightRaysDemo.vue'),
 };
 
 export const componentMap = {
