@@ -27,7 +27,8 @@ export const CATEGORIES = [
       'Rotating Text',
       'Glitch Text',
       'Scroll Velocity',
-      'Text Type'
+      'Text Type',
+      'Variable Proximity',
     ]
   },
   {
