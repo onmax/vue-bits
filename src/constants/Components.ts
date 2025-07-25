@@ -44,6 +44,7 @@ const textAnimations = {
   'glitch-text': () => import("../demo/TextAnimations/GlitchTextDemo.vue"),
   'scroll-velocity': () => import("../demo/TextAnimations/ScrollVelocityDemo.vue"),
   'text-type': () => import("../demo/TextAnimations/TextTypeDemo.vue"),
+  'variable-proximity': () => import("../demo/TextAnimations/VariableProximityDemo.vue"),
 };
 
 const components = {
