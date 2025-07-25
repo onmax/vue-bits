@@ -17,13 +17,7 @@
       </div>
 
       <Customize>
-        <PreviewSlider
-          title="Radius"
-          v-model="radius"
-          :min="50"
-          :max="300"
-          :step="10"
-        />
+        <PreviewSlider title="Radius" v-model="radius" :min="50" :max="300" :step="10" />
 
         <div class="flex gap-2 flex-wrap">
           <button
@@ -80,13 +74,13 @@ const propData = [
   {
     name: 'fromFontVariationSettings',
     type: 'string',
-    default: '"\'wght\' 400, \'opsz\' 9"',
+    default: "\"'wght' 400, 'opsz' 9\"",
     description: 'The starting variation settings.'
   },
   {
     name: 'toFontVariationSettings',
     type: 'string',
-    default: '"\'wght\' 800, \'opsz\' 40"',
+    default: "\"'wght' 800, 'opsz' 40\"",
     description: 'The variation settings to reach at cursor proximity.'
   },
   {
@@ -128,5 +122,5 @@ const propData = [
 ];
 </script>
 <style scoped>
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap');
 </style>

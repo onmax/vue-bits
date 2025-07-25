@@ -26,12 +26,11 @@
       >
         {{ letter }}
       </span>
-      <span
-        v-if="wordIndex < words.length - 1"
-        class="inline-block"
-      >&nbsp;</span>
+      <span v-if="wordIndex < words.length - 1" class="inline-block">&nbsp;</span>
     </span>
-    <span class="absolute w-px h-px p-0 -m-px overflow-hidden whitespace-nowrap clip-rect-0 border-0">{{ props.label }}</span>
+    <span class="absolute w-px h-px p-0 -m-px overflow-hidden whitespace-nowrap clip-rect-0 border-0">
+      {{ props.label }}
+    </span>
   </span>
 </template>
 
@@ -57,7 +56,7 @@ const props = withDefaults(defineProps<VariableProximityProps>(), {
   falloff: 'linear',
   className: '',
   style: () => ({}),
-  onClick: undefined,
+  onClick: undefined
 });
 
 const rootRef = ref<HTMLElement | null>(null);
@@ -90,7 +89,7 @@ const parsedSettings = computed(() => {
   return Array.from(fromSettings.entries()).map(([axis, fromValue]) => ({
     axis,
     fromValue,
-    toValue: toSettings.get(axis) ?? fromValue,
+    toValue: toSettings.get(axis) ?? fromValue
   }));
 });
 
@@ -100,15 +99,17 @@ const calculateDistance = (x1: number, y1: number, x2: number, y2: number) =>
 const calculateFalloff = (distance: number) => {
   const norm = Math.min(Math.max(1 - distance / props.radius, 0), 1);
   switch (props.falloff) {
-    case 'exponential': return norm ** 2;
-    case 'gaussian': return Math.exp(-((distance / (props.radius / 2)) ** 2) / 2);
+    case 'exponential':
+      return norm ** 2;
+    case 'gaussian':
+      return Math.exp(-((distance / (props.radius / 2)) ** 2) / 2);
     case 'linear':
-    default: return norm;
+    default:
+      return norm;
   }
 };
 
-const getLetterKey = (wordIndex: number, letterIndex: number) =>
-  `${wordIndex}-${letterIndex}`;
+const getLetterKey = (wordIndex: number, letterIndex: number) => `${wordIndex}-${letterIndex}`;
 
 const getGlobalLetterIndex = (wordIndex: number, letterIndex: number) => {
   let globalIndex = 0;
@@ -175,12 +176,7 @@ const animationLoop = () => {
     const letterCenterX = rect.left + rect.width / 2 - containerRect.left;
     const letterCenterY = rect.top + rect.height / 2 - containerRect.top;
 
-    const distance = calculateDistance(
-      mousePosition.value.x,
-      mousePosition.value.y,
-      letterCenterX,
-      letterCenterY
-    );
+    const distance = calculateDistance(mousePosition.value.x, mousePosition.value.y, letterCenterX, letterCenterY);
 
     if (distance >= props.radius) {
       return;

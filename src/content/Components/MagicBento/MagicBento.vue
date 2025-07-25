@@ -378,7 +378,7 @@ const ParticleCard = defineComponent({
 const GlobalSpotlight = defineComponent({
   name: 'GlobalSpotlight',
   props: {
-    gridRef: {type: [Object, null] as PropType<HTMLDivElement | null>, required: true},
+    gridRef: { type: [Object, null] as PropType<HTMLDivElement | null>, required: true },
     disableAnimations: { type: Boolean, default: false },
     enabled: { type: Boolean, default: true },
     spotlightRadius: { type: Number, default: DEFAULT_SPOTLIGHT_RADIUS },

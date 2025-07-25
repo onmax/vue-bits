@@ -10,17 +10,15 @@
       v-for="(src, idx) in images"
       :key="idx"
       ref="cardRefs"
-      class="absolute w-[200px] aspect-square border-[5px] border-white rounded-[25px] overflow-hidden shadow-[0_4px_10px_rgba(0,0,0,0.2)] bg-[#f8f9fa] opacity-0"
+      class="absolute w-[200px] aspect-square border-[5px] border-white rounded-[25px] overflow-hidden shadow-[0_4px_10px_rgba(0,0,0,0.2)] bg-[#0b0b0b] opacity-0"
       :style="{ transform: transformStyles[idx] ?? 'none' }"
       @mouseenter="() => pushSiblings(idx)"
       @mouseleave="resetSiblings"
     >
-      <div v-if="!imageLoaded[idx]" class="absolute inset-0 z-[1] flex items-center justify-center bg-black/80">
-        <div class="w-[75px] h-[75px] border-[3px] border-gray-400 border-t-[#27FF64] rounded-full animate-spin"></div>
-      </div>
+      <div v-if="!imageLoaded[idx]" class="absolute inset-0 z-[1] bg-[#0b0b0b] overflow-hidden shimmer-container"></div>
 
       <img
-        class="absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ease-in-out z-[2]"
+        class="absolute inset-0 w-full h-full object-cover z-[2] transition-opacity duration-700 ease-out"
         :src="src"
         :alt="`card-${idx}`"
         :style="{ opacity: imageLoaded[idx] ? 1 : 0 }"
@@ -165,13 +163,34 @@ const playEntranceAnimation = () => {
 };
 
 onMounted(playEntranceAnimation);
-watch(() => props.images, async () => {
-  await nextTick();
-  gsap.set(cardRefs.value, { opacity: 0, scale: 0 });
-  playEntranceAnimation();
-});
+watch(
+  () => props.images,
+  async () => {
+    await nextTick();
+    gsap.set(cardRefs.value, { opacity: 0, scale: 0 });
+    playEntranceAnimation();
+  }
+);
 
 onUnmounted(() => {
   gsap.killTweensOf(cardRefs.value);
 });
 </script>
+
+<style scoped>
+.shimmer-container {
+  background: linear-gradient(110deg, transparent 40%, rgba(255, 255, 255, 0.1) 50%, transparent 60%);
+  background-size: 600% 600%;
+  background-position: -600% 0;
+  animation: shimmer-sweep 6s infinite;
+}
+
+@keyframes shimmer-sweep {
+  0% {
+    background-position: -600% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+</style>

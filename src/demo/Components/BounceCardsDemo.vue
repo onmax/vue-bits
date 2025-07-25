@@ -1,4 +1,3 @@
-
 <template>
   <TabbedLayout>
     <template #preview>
@@ -18,26 +17,11 @@
       </div>
 
       <Customize>
-        <PreviewSwitch
-          title="Enable Hover Effect"
-          v-model="enableHover"
-        />
+        <PreviewSwitch title="Enable Hover Effect" v-model="enableHover" />
 
-        <PreviewSlider
-          title="Animation Delay"
-          v-model="animationDelay"
-          :min="0.1"
-          :max="2"
-          :step="0.1"
-        />
+        <PreviewSlider title="Animation Delay" v-model="animationDelay" :min="0.1" :max="2" :step="0.1" />
 
-        <PreviewSlider
-          title="Animation Stagger"
-          v-model="animationStagger"
-          :min="0"
-          :max="0.3"
-          :step="0.01"
-        />
+        <PreviewSlider title="Animation Stagger" v-model="animationStagger" :min="0" :max="0.3" :step="0.01" />
       </Customize>
 
       <PropTable :data="propData" />
@@ -76,11 +60,11 @@ const animationStagger = ref(0.08);
 const { rerenderKey, forceRerender } = useForceRerender();
 
 const images = ref([
-  'https://picsum.photos/400/400?grayscale',
-  'https://picsum.photos/500/500?grayscale',
-  'https://picsum.photos/600/600?grayscale',
-  'https://picsum.photos/700/700?grayscale',
-  'https://picsum.photos/300/300?grayscale'
+  'https://picsum.photos/id/287/300/300?grayscale',
+  'https://picsum.photos/id/1001/300/300?grayscale',
+  'https://picsum.photos/id/1027/300/300?grayscale',
+  'https://picsum.photos/id/1025/300/300?grayscale',
+  'https://picsum.photos/id/1026/300/300?grayscale'
 ]);
 
 const transformStyles = ref([
@@ -126,7 +110,7 @@ const propData = [
     name: 'animationStagger',
     type: 'number',
     default: '-',
-    description: 'Time (in seconds) between each card\'s animation.'
+    description: "Time (in seconds) between each card's animation."
   },
   {
     name: 'easeType',
@@ -144,7 +128,7 @@ const propData = [
     name: 'enableHover',
     type: 'boolean',
     default: 'false',
-    description: 'If true, hovering pushes siblings aside and flattens the hovered card\'s rotation.'
+    description: "If true, hovering pushes siblings aside and flattens the hovered card's rotation."
   }
 ];
 </script>
