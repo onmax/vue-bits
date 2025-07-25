@@ -3,7 +3,6 @@
     <template #preview>
       <div class="h-[600px] overflow-hidden demo-container relative">
         <LightRays
-          :key="rerenderKey"
           :rays-origin="raysOrigin"
           :rays-color="raysColor"
           :rays-speed="raysSpeed"
@@ -23,21 +22,15 @@
       </div>
 
       <Customize>
-        <div class="flex items-center mb-4">
-          <span class="text-sm mr-2">Rays Color</span>
-          <input
-            type="color"
-            :value="raysColor"
-            @input="updateRaysColor"
-            class="w-12 h-8 border border-gray-300 rounded cursor-pointer"
-          />
-        </div>
+        <PreviewColor
+          title="Rays Color"
+          v-model="raysColor"
+        />
 
         <PreviewSelect
           title="Rays Origin"
           v-model="raysOrigin"
           :options="raysOriginOptions"
-          @update:model-value="forceRerender"
         />
 
         <PreviewSlider
@@ -46,7 +39,6 @@
           :min="0.1"
           :max="3"
           :step="0.1"
-          @update:model-value="forceRerender"
         />
 
         <PreviewSlider
@@ -55,7 +47,6 @@
           :min="0.1"
           :max="2"
           :step="0.1"
-          @update:model-value="forceRerender"
         />
 
         <PreviewSlider
@@ -64,7 +55,6 @@
           :min="0.5"
           :max="3"
           :step="0.1"
-          @update:model-value="forceRerender"
         />
 
         <PreviewSlider
@@ -73,7 +63,6 @@
           :min="0.5"
           :max="2"
           :step="0.1"
-          @update:model-value="forceRerender"
         />
 
         <PreviewSlider
@@ -82,7 +71,6 @@
           :min="0"
           :max="2"
           :step="0.1"
-          @update:model-value="forceRerender"
         />
 
         <PreviewSlider
@@ -91,7 +79,6 @@
           :min="0"
           :max="1"
           :step="0.1"
-          @update:model-value="forceRerender"
         />
 
         <PreviewSlider
@@ -100,7 +87,6 @@
           :min="0"
           :max="0.5"
           :step="0.01"
-          @update:model-value="forceRerender"
         />
 
         <PreviewSlider
@@ -109,10 +95,9 @@
           :min="0"
           :max="1"
           :step="0.1"
-          @update:model-value="forceRerender"
         />
 
-        <PreviewSwitch title="Pulsating" v-model="pulsating" @update:model-value="forceRerender" />
+        <PreviewSwitch title="Pulsating" v-model="pulsating" />
       </Customize>
 
       <PropTable :data="propData" />
@@ -140,11 +125,11 @@ import Customize from '@/components/common/Customize.vue';
 import PreviewSwitch from '@/components/common/PreviewSwitch.vue';
 import PreviewSlider from '@/components/common/PreviewSlider.vue';
 import PreviewSelect from '@/components/common/PreviewSelect.vue';
+import PreviewColor from '@/components/common/PreviewColor.vue';
 import BackgroundContent from '@/components/common/BackgroundContent.vue';
 import LightRays, { type RaysOrigin } from '../../content/Backgrounds/LightRays/LightRays.vue';
 import { lightRays } from '@/constants/code/Backgrounds/lightRaysCode';
 
-const rerenderKey = ref(0);
 const raysOrigin = ref<RaysOrigin>('top-center');
 const raysColor = ref('#ffffff');
 const raysSpeed = ref(1);
@@ -167,16 +152,6 @@ const raysOriginOptions = [
   { value: 'bottom-left', label: 'Bottom Left' },
   { value: 'bottom-right', label: 'Bottom Right' }
 ];
-
-const forceRerender = () => {
-  rerenderKey.value += 1;
-};
-
-const updateRaysColor = (event: Event) => {
-  const target = event.target as HTMLInputElement;
-  raysColor.value = target.value;
-  forceRerender();
-};
 
 const propData = [
   {
@@ -202,61 +177,55 @@ const propData = [
     name: 'lightSpread',
     type: 'number',
     default: '0.5',
-    description: 'How wide the light rays spread. Lower values = tighter rays, higher values = wider spread'
+    description: 'Controls how wide the light rays spread'
   },
   {
     name: 'rayLength',
     type: 'number',
-    default: '1.0',
-    description: 'Maximum length/reach of the rays'
+    default: '3.0',
+    description: 'Length of the light rays'
   },
   {
     name: 'pulsating',
     type: 'boolean',
     default: 'false',
-    description: 'Enable pulsing animation effect'
+    description: 'Whether the rays should pulsate'
   },
   {
     name: 'fadeDistance',
     type: 'number',
     default: '1.0',
-    description: 'How far rays fade out from origin'
+    description: 'Distance at which the rays fade out'
   },
   {
     name: 'saturation',
     type: 'number',
     default: '1.0',
-    description: 'Color saturation level (0-1)'
+    description: 'Color saturation of the rays'
   },
   {
     name: 'followMouse',
     type: 'boolean',
     default: 'false',
-    description: 'Make rays rotate towards the mouse cursor'
+    description: 'Whether the rays should follow the mouse cursor'
   },
   {
     name: 'mouseInfluence',
     type: 'number',
-    default: '0.5',
-    description: 'How much mouse affects rays (0-1)'
+    default: '0.1',
+    description: 'How much the mouse movement affects the rays'
   },
   {
     name: 'noiseAmount',
     type: 'number',
     default: '0.0',
-    description: 'Add noise/grain to rays (0-1)'
+    description: 'Amount of noise/distortion in the rays'
   },
   {
     name: 'distortion',
     type: 'number',
     default: '0.0',
-    description: 'Apply wave distortion to rays'
-  },
-  {
-    name: 'className',
-    type: 'string',
-    default: '""',
-    description: 'Additional CSS classes to apply to the container'
+    description: 'Amount of wave distortion in the rays'
   }
 ];
 </script>
