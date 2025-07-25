@@ -70,6 +70,9 @@ const components = {
   'stack': () => import('../demo/Components/StackDemo.vue'),
   'chroma-grid': () => import('../demo/Components/ChromaGridDemo.vue'),
   'bounce-cards': () => import('../demo/Components/BounceCardsDemo.vue'),
+  'counter': () => import('../demo/Components/CounterDemo.vue'),
+  'rolling-gallery': () => import('../demo/Components/RollingGalleryDemo.vue'),
+  'scroll-stack': () => import('../demo/Components/ScrollStackDemo.vue'),
 };
 
 const backgrounds = {
@@ -95,6 +98,7 @@ const backgrounds = {
   'grid-distortion': () => import('../demo/Backgrounds/GridDistortionDemo.vue'),
   'ripple-grid': () => import('../demo/Backgrounds/RippleGridDemo.vue'),
   'galaxy': () => import('../demo/Backgrounds/GalaxyDemo.vue'),
+  'faulty-terminal': () => import('../demo/Backgrounds/FaultyTerminalDemo.vue'),
 };
 
 export const componentMap = {
