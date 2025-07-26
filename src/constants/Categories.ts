@@ -114,6 +114,7 @@ export const CATEGORIES = [
       'Liquid Chrome',
       'Grid Distortion',
       'Galaxy',
+      'Light Rays',
     ]
   }
 ];
