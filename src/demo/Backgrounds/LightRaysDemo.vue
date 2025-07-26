@@ -134,11 +134,11 @@ const raysOrigin = ref<RaysOrigin>('top-center');
 const raysColor = ref('#ffffff');
 const raysSpeed = ref(1);
 const lightSpread = ref(0.5);
-const rayLength = ref(3.0);
+const rayLength = ref(1.0);
 const pulsating = ref(false);
 const fadeDistance = ref(1.0);
 const saturation = ref(1.0);
-const mouseInfluence = ref(0.1);
+const mouseInfluence = ref(0.5);
 const noiseAmount = ref(0.0);
 const distortion = ref(0.0);
 
@@ -177,55 +177,61 @@ const propData = [
     name: 'lightSpread',
     type: 'number',
     default: '0.5',
-    description: 'Controls how wide the light rays spread'
+    description: 'How wide the light rays spread. Lower values = tighter rays, higher values = wider spread'
   },
   {
     name: 'rayLength',
     type: 'number',
-    default: '3.0',
-    description: 'Length of the light rays'
+    default: '1.0',
+    description: 'Maximum length/reach of the rays'
   },
   {
     name: 'pulsating',
     type: 'boolean',
     default: 'false',
-    description: 'Whether the rays should pulsate'
+    description: 'Enable pulsing animation effect'
   },
   {
     name: 'fadeDistance',
     type: 'number',
     default: '1.0',
-    description: 'Distance at which the rays fade out'
+    description: 'How far rays fade out from origin'
   },
   {
     name: 'saturation',
     type: 'number',
     default: '1.0',
-    description: 'Color saturation of the rays'
+    description: 'Color saturation level (0-1)'
   },
   {
     name: 'followMouse',
     type: 'boolean',
     default: 'false',
-    description: 'Whether the rays should follow the mouse cursor'
+    description: 'Make rays rotate towards the mouse cursor'
   },
   {
     name: 'mouseInfluence',
     type: 'number',
-    default: '0.1',
-    description: 'How much the mouse movement affects the rays'
+    default: '0.5',
+    description: 'How much mouse affects rays (0-1)'
   },
   {
     name: 'noiseAmount',
     type: 'number',
     default: '0.0',
-    description: 'Amount of noise/distortion in the rays'
+    description: 'Add noise/grain to rays (0-1)'
   },
   {
     name: 'distortion',
     type: 'number',
     default: '0.0',
-    description: 'Amount of wave distortion in the rays'
+    description: 'Apply wave distortion to rays'
+  },
+  {
+    name: 'className',
+    type: 'string',
+    default: '""',
+    description: 'Additional CSS classes to apply to the container'
   }
 ];
 </script>
